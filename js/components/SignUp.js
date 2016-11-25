@@ -67,7 +67,7 @@ class SignUp extends Component {
                     <input type="submit" value="Sign Up" className="btn btn-primary" />
                 </form>
                 <div>
-                    <Link className="col-md-3 col-md-offset-9" to="/SignIn">go to Sign In</Link>
+                    <Link to="/SignIn">go to Sign In</Link>
                 </div>
                 {loadingIndicator}
             </div>

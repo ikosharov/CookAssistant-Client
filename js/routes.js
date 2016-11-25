@@ -28,7 +28,7 @@ let configureRoutes = function (store) {
         </Route>
     );
 
+    return routes;
 }
-
 
 export default configureRoutes;
