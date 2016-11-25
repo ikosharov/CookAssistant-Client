@@ -9,11 +9,12 @@ import { Promise } from 'es6-promise';
 
 Promise.polyfill();
 
-import routes from './routes';
+import configureRoutes from './routes';
 import configureStore from './store';
 
 const store = configureStore(browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
+const routes = configureRoutes(store);
 
 ReactDOM.render(
     <Provider store={store}>
