@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router';
-import styles from '../styles';
 
 class SignUp extends Component {
     constructor(props) {
@@ -33,6 +32,14 @@ class SignUp extends Component {
     }
 
     render() {
+        let loadingIndicator;
+        if (this.props.isFetching) {
+            loadingIndicator = (
+                <div>
+                    <label>Loading...</label>
+                </div>);
+        }
+
         return (
             <div>
                 <h1>Sign Up</h1>
@@ -62,6 +69,7 @@ class SignUp extends Component {
                 <div>
                     <Link className="col-md-3 col-md-offset-9" to="/SignIn">go to Sign In</Link>
                 </div>
+                {loadingIndicator}
             </div>
         );
     }

@@ -5,7 +5,7 @@ export default function auth(state, action) {
         return {
             username: null,
             password: null,
-            isAuthenticated: false,
+            token: null,
             signInFailed: false,
             signUpFailed: false
         }
@@ -16,7 +16,7 @@ export default function auth(state, action) {
             return Object.assign({}, state, {
                 username: action.username,
                 password: action.password,
-                isAuthenticated: true,
+                token: action.token,
                 signInFailed: false
             });
 
@@ -24,14 +24,14 @@ export default function auth(state, action) {
             return Object.assign({}, state, {
                 username: action.username,
                 password: action.password,
-                isAuthenticated: true,
+                token: action.token,
                 signUpFailed: false
             });
         case actionTypes.SIGN_IN_FAILED:
             return Object.assign({}, state, {
                 username: action.username,
                 password: action.password,
-                isAuthenticated: false,
+                token: null,
                 signInFailed: true
             });
 
@@ -39,8 +39,10 @@ export default function auth(state, action) {
             return Object.assign({}, state, {
                 username: action.username,
                 password: action.password,
-                isAuthenticated: false,
+                token: null,
                 signUpFailed: true
             });
+        default:
+            return state;
     }
 }

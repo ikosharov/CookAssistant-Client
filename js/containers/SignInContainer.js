@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import SignIn from '../components/SignIn';
 import * as actions from '../actions';
-import auth from '../auth';
+import * as api from '../data/api';
 
 const mapStateToProps = (state) => {
 	return {
@@ -16,10 +16,10 @@ const mapDispatchToProps = (dispatch) => {
 		signIn: (username, password) => {
 			dispatch(actions.fetchStarted());
 
-			auth.signIn(username, password).
-				then(() => {
+			api.signIn(username, password).
+				then((token) => {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signInSucceeded(username, password));
+					dispatch(actions.signInSucceeded(username, password, token));
 					dispatch(push('/'));
 				}).
 				catch(() => {

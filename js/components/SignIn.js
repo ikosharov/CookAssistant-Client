@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router';
-import styles from '../styles';
 
 class SignIn extends Component {
     constructor(props) {
@@ -33,6 +32,14 @@ class SignIn extends Component {
     }
 
     render() {
+        let loadingIndicator;
+        if(this.props.isFetching) {
+            loadingIndicator = (
+				<div>
+					<label>Loading...</label>
+				</div>);
+        } 
+
         return (
             <div>
                 <h1>Login</h1>
@@ -62,6 +69,7 @@ class SignIn extends Component {
                 <div>
                     <Link to="/SignUp">go to Sign Up</Link>
                 </div>
+                {loadingIndicator}
             </div>
         );
     }

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import SignUp from '../components/SignUp';
 import * as actions from '../actions';
-import auth from '../auth';
+import * as api from '../data/api';
 
 const mapStateToProps = (state) => {
 	return {
@@ -16,10 +16,10 @@ const mapDispatchToProps = (dispatch) => {
 		signUp: (username, password) => {
 			dispatch(actions.fetchStarted());
 
-			auth.signUp(username, password).
-				then(() => {
+			api.signUp(username, password).
+				then((token) => {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signUpSucceeded(username, password));
+					dispatch(actions.signUpSucceeded(username, password, token));
 					dispatch(push('/'));
 				}).
 				catch(() => {
