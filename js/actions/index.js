@@ -34,6 +34,12 @@ export function signUpFailed(username, password) {
 	}
 }
 
+export function signOut() {
+	return {
+		type: actionTypes.SIGN_OUT
+	}
+}
+
 export function fetchStarted() {
 	return {
 		type: actionTypes.FETCH_STARTED

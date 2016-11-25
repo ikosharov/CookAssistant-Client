@@ -4,7 +4,7 @@ import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
 import Root from './components/Root';
-import Home from './components/Home';
+import HomeContainer from './containers/HomeContainer';
 import SignInContainer from './containers/SignInContainer';
 import SignUpContainer from './containers/SignUpContainer';
 
@@ -21,7 +21,7 @@ let configureRoutes = function (store) {
 
     let routes = (
         <Route path="/" component={Root}>
-            <IndexRoute component={Home} onEnter={authRequired} />
+            <IndexRoute component={HomeContainer} onEnter={authRequired} />
             <Route path="/SignIn" component={SignInContainer} />
             <Route path="/SignUp" component={SignUpContainer} />
             <Redirect from="*" to="/" />

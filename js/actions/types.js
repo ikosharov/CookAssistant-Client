@@ -4,3 +4,4 @@ export const SIGN_IN_SUCCEEDED = 'SIGN_IN_SUCCEEDED';
 export const SIGN_IN_FAILED = 'SIGN_IN_FAILED';
 export const SIGN_UP_SUCCEEDED = 'SIGN_UP_SUCCEEDED';
 export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
+export const SIGN_OUT = "SIGN_OUT";
