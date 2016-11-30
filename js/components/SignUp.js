@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router';
 
+import styles from '../styles';
+
 class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -39,6 +41,12 @@ class SignUp extends Component {
                     <label>Loading...</label>
                 </div>);
         }
+        let signUpFailedIndicator;
+        if(this.props.signUpFailed) {
+            signUpFailedIndicator = (
+                <h2 style={styles.errorStyle}>Sign up failed</h2>
+            );
+        }
 
         return (
             <div>
@@ -70,6 +78,7 @@ class SignUp extends Component {
                     <Link to="/SignIn">go to Sign In</Link>
                 </div>
                 {loadingIndicator}
+                {signUpFailedIndicator}
             </div>
         );
     }

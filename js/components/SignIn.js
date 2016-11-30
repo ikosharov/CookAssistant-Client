@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router';
 
+import styles from '../styles';
+
 class SignIn extends Component {
     constructor(props) {
         super(props);
@@ -33,12 +35,18 @@ class SignIn extends Component {
 
     render() {
         let loadingIndicator;
-        if(this.props.isFetching) {
+        if (this.props.isFetching) {
             loadingIndicator = (
-				<div>
-					<label>Loading...</label>
-				</div>);
-        } 
+                <div>
+                    <label>Loading...</label>
+                </div>);
+        }
+        let signInFailedIndicator;
+        if (this.props.signInFailed) {
+            signInFailedIndicator = (
+                <h2 style={styles.errorStyle}>Sign in failed</h2>
+            );
+        }
 
         return (
             <div>
@@ -70,6 +78,7 @@ class SignIn extends Component {
                     <Link to="/SignUp">go to Sign Up</Link>
                 </div>
                 {loadingIndicator}
+                {signInFailedIndicator}
             </div>
         );
     }
