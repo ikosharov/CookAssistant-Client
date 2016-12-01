@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router';
+import GoogleLogin from 'react-google-login';
 
 import styles from '../styles';
 
@@ -18,6 +19,7 @@ class SignIn extends Component {
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.responseGoogle = this.responseGoogle.bind(this);
     }
 
     handleUsernameChange(e) {
@@ -31,6 +33,10 @@ class SignIn extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.signIn(this.state.username, this.state.password);
+    }
+
+    responseGoogle(response) {
+        console.log(response);
     }
 
     render() {
@@ -72,10 +78,19 @@ class SignIn extends Component {
                             required />
                     </div>
                     <br />
-                    <input type="submit" value="Login" className="btn btn-primary" />
+                    <input type="submit" value="Sign In" className="btn btn-primary" />
                 </form>
                 <div>
                     <Link to="/SignUp">go to Sign Up</Link>
+                </div>
+                <div>
+                    <h2>Google</h2>
+                    <GoogleLogin
+                        clientId=""
+                        buttonText="Google Sign In"
+                        onSuccess={this.responseGoogle}
+                        onFailure={this.responseGoogle}
+                        />
                 </div>
                 {loadingIndicator}
                 {signInFailedIndicator}
