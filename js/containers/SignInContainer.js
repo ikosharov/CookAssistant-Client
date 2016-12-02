@@ -19,15 +19,23 @@ const mapDispatchToProps = (dispatch) => {
 			api.signIn(username, password).
 				then((token) => {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signInSucceeded(username, password, token));
+					dispatch(actions.signInSucceeded(username, token));
 					dispatch(push('/'));
 				}).
 				catch(() => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signInFailed());
 				});
-
-		}
+		},
+		googleSignIn: (google_response) => {
+			api.googleSignIn(google_response).
+				then(() => {
+					dispatch(actions.signInSucceeded(google_response.profileObj.name, google_response.tokenId));
+				}).
+				catch(() => {
+					dispatch(actions.signInFailed());
+				});
+		} 
 	};
 }
 

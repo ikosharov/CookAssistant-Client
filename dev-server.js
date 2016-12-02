@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
-var webPackServerPort = 3000;
+var webPackServerPort = 8888;
 
 new WebpackDevServer(webpack(config), {
   contentBase: './public',

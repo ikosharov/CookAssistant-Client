@@ -4,7 +4,6 @@ export default function auth(state, action) {
     if (state === undefined) {
         return {
             username: null,
-            password: null,
             token: null,
             signInFailed: false,
             signUpFailed: false
@@ -15,7 +14,6 @@ export default function auth(state, action) {
         case actionTypes.SIGN_IN_SUCCEEDED:
             return Object.assign({}, state, {
                 username: action.username,
-                password: action.password,
                 token: action.token,
                 signInFailed: false,
                 signUpFailed: false
@@ -24,7 +22,6 @@ export default function auth(state, action) {
         case actionTypes.SIGN_UP_SUCCEEDED:
             return Object.assign({}, state, {
                 username: action.username,
-                password: action.password,
                 token: action.token,
                 signInFailed: false,
                 signUpFailed: false
@@ -32,7 +29,6 @@ export default function auth(state, action) {
         case actionTypes.SIGN_IN_FAILED:
             return Object.assign({}, state, {
                 username: action.username,
-                password: action.password,
                 token: null,
                 signInFailed: true
             });
@@ -40,14 +36,12 @@ export default function auth(state, action) {
         case actionTypes.SIGN_UP_FAILED:
             return Object.assign({}, state, {
                 username: action.username,
-                password: action.password,
                 token: null,
                 signUpFailed: true
             });
         case actionTypes.SIGN_OUT:
             return Object.assign({}, state, {
                 username: null,
-                password: null,
                 token: null,
                 signInFailed: false,
                 signUpFailed: false
