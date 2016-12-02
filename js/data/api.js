@@ -73,31 +73,3 @@ export function signUp(username, password) {
 
     return promise;
 }
-
-export function googleSignIn(google_response) {
-    let url = `${API_URL}/google/signin`;
-
-    let options = {
-        "method": "POST",
-        "headers": {
-            "content-type": "application/json"
-        },
-        "body": JSON.stringify(google_response)
-    };
-
-    let promise = new Promise((resolve, reject) => {
-        fetch(url, options).then((response) => {
-            // this will not reject on error. only on network failure
-            if (response.status != 200) {
-                reject();
-            } else {
-                resolve();
-            }
-        }).catch(() => {
-            // network failure
-            reject();
-        });
-    });
-
-    return promise;
-}

@@ -30963,37 +30963,33 @@
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
-	function signInSucceeded(username, password, token) {
+	function signInSucceeded(username, token) {
 		return {
 			type: actionTypes.SIGN_IN_SUCCEEDED,
 			username: username,
-			password: password,
 			token: token
 		};
 	}
 	
-	function signUpSucceeded(username, password, token) {
+	function signUpSucceeded(username, token) {
 		return {
 			type: actionTypes.SIGN_UP_SUCCEEDED,
 			username: username,
-			password: password,
 			token: token
 		};
 	}
 	
-	function signInFailed(username, password) {
+	function signInFailed(username) {
 		return {
 			type: actionTypes.SIGN_IN_FAILED,
-			username: username,
-			password: password
+			username: username
 		};
 	}
 	
-	function signUpFailed(username, password) {
+	function signUpFailed(username) {
 		return {
 			type: actionTypes.SIGN_UP_FAILED,
-			username: username,
-			password: password
+			username: username
 		};
 	}
 	
@@ -31650,7 +31646,7 @@
 	
 				api.signIn(username, password).then(function (token) {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signInSucceeded(username, password, token));
+					dispatch(actions.signInSucceeded(username, token));
 					dispatch((0, _reactRouterRedux.push)('/'));
 				}).catch(function () {
 					dispatch(actions.fetchFinished());
@@ -31736,7 +31732,7 @@
 	    }, {
 	        key: 'responseGoogle',
 	        value: function responseGoogle(response) {
-	            console.log(response);
+	            this.props.googleSignIn(response);
 	        }
 	    }, {
 	        key: 'render',
@@ -31815,21 +31811,6 @@
 	                        { to: '/SignUp' },
 	                        'go to Sign Up'
 	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                        'h2',
-	                        null,
-	                        'Google'
-	                    ),
-	                    _react2.default.createElement(_reactGoogleLogin2.default, {
-	                        clientId: '228508199122-kvl4470njtauhab3fremvsioca60q0il.apps.googleusercontent.com',
-	                        buttonText: 'Google Sign In',
-	                        onSuccess: this.responseGoogle,
-	                        onFailure: this.responseGoogle
-	                    })
 	                ),
 	                loadingIndicator,
 	                signInFailedIndicator
@@ -32010,7 +31991,7 @@
 	
 				api.signUp(username, password).then(function (token) {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signUpSucceeded(username, password, token));
+					dispatch(actions.signUpSucceeded(username, token));
 					dispatch((0, _reactRouterRedux.push)('/'));
 				}).catch(function () {
 					dispatch(actions.fetchFinished());
@@ -32257,7 +32238,6 @@
 	    if (state === undefined) {
 	        return {
 	            username: null,
-	            password: null,
 	            token: null,
 	            signInFailed: false,
 	            signUpFailed: false
@@ -32268,7 +32248,6 @@
 	        case actionTypes.SIGN_IN_SUCCEEDED:
 	            return Object.assign({}, state, {
 	                username: action.username,
-	                password: action.password,
 	                token: action.token,
 	                signInFailed: false,
 	                signUpFailed: false
@@ -32277,7 +32256,6 @@
 	        case actionTypes.SIGN_UP_SUCCEEDED:
 	            return Object.assign({}, state, {
 	                username: action.username,
-	                password: action.password,
 	                token: action.token,
 	                signInFailed: false,
 	                signUpFailed: false
@@ -32285,7 +32263,6 @@
 	        case actionTypes.SIGN_IN_FAILED:
 	            return Object.assign({}, state, {
 	                username: action.username,
-	                password: action.password,
 	                token: null,
 	                signInFailed: true
 	            });
@@ -32293,14 +32270,12 @@
 	        case actionTypes.SIGN_UP_FAILED:
 	            return Object.assign({}, state, {
 	                username: action.username,
-	                password: action.password,
 	                token: null,
 	                signUpFailed: true
 	            });
 	        case actionTypes.SIGN_OUT:
 	            return Object.assign({}, state, {
 	                username: null,
-	                password: null,
 	                token: null,
 	                signInFailed: false,
 	                signUpFailed: false

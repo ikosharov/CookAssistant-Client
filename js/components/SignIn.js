@@ -83,15 +83,6 @@ class SignIn extends Component {
                 <div>
                     <Link to="/SignUp">go to Sign Up</Link>
                 </div>
-                <div>
-                    <h2>Google</h2>
-                    <GoogleLogin
-                        clientId="228508199122-kvl4470njtauhab3fremvsioca60q0il.apps.googleusercontent.com"
-                        buttonText="Google Sign In"
-                        onSuccess={this.responseGoogle}
-                        onFailure={this.responseGoogle}
-                        />
-                </div>
                 {loadingIndicator}
                 {signInFailedIndicator}
             </div>

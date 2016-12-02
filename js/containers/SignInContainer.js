@@ -26,16 +26,7 @@ const mapDispatchToProps = (dispatch) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signInFailed());
 				});
-		},
-		googleSignIn: (google_response) => {
-			api.googleSignIn(google_response).
-				then(() => {
-					dispatch(actions.signInSucceeded(google_response.profileObj.name, google_response.tokenId));
-				}).
-				catch(() => {
-					dispatch(actions.signInFailed());
-				});
-		} 
+		}
 	};
 }
 
