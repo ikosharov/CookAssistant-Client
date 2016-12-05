@@ -47,3 +47,17 @@ export function fetchFinished() {
 		type: actionTypes.FETCH_FINISHED
 	}
 }
+
+export function loadPersonalRecipesSuccess(recipes) {
+	return {
+		type: actionTypes.LOAD_PERSONAL_RECIPES_SUCCESS,
+		recipes: recipes
+	}
+}
+
+export function loadPublicRecipesSuccess(recipes) {
+	return {
+		type: actionTypes.LOAD_PUBLIC_RECIPES_SUCCESS,
+		recipes: recipes
+	}
+}
