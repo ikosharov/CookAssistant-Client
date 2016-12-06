@@ -1,22 +1,33 @@
 import React from 'react';
 
 class Home extends React.Component {
-    componentWillMount() {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
         this.props.loadRecipes();
     }
 
     render() {
-        let personalRecipesMarkup = this.props.personalRecipes.map(function (recipe) {
-            return (
-                <h3>{recipe.title}</h3>
-            );
-        });
+        let personalRecipesMarkup = (<label>Loading...</label>);
+        let publicRecipesMarkup = (<label>Loading...</label>);
 
-        let publicRecipesMarkup = this.props.publicRecipes.map(function (recipe) {
-            return (
-                <h3>{recipe.title}</h3>
-            );
-        });
+        if (this.props.personalRecipes.length) {
+            personalRecipesMarkup = this.props.personalRecipes.map(function (recipe) {
+                return (
+                    <h3>{recipe.title}</h3>
+                );
+            });
+        }
+
+        if (this.props.publicRecipes.length) {
+            publicRecipesMarkup = this.props.publicRecipes.map(function (recipe) {
+                return (
+                    <h3>{recipe.title}</h3>
+                );
+            });
+        }
 
         return (
             <div>
@@ -24,9 +35,9 @@ class Home extends React.Component {
                 <h2>Hello {this.props.username}</h2>
                 <button onClick={this.props.signOut}>Sign Out</button>
                 <h2>Your recipes:</h2>
-                {personalRecipes}
+                {personalRecipesMarkup}
                 <h2>Public recipes:</h2>
-                {publicRecipes}
+                {publicRecipesMarkup}
             </div>
         );
     }
