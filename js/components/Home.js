@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RecipeSummary from './RecipeSummary';
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,12 @@ class Home extends React.Component {
         if (this.props.personalRecipes.length) {
             personalRecipesMarkup = this.props.personalRecipes.map(function (recipe) {
                 return (
-                    <h3>{recipe.title}</h3>
+                    <RecipeSummary 
+                        key={recipe._id}
+                        title={recipe.title}
+                        isPublic={recipe.isPublic}
+                        image={recipe.image}
+                    />
                 );
             });
         }
@@ -24,7 +31,12 @@ class Home extends React.Component {
         if (this.props.publicRecipes.length) {
             publicRecipesMarkup = this.props.publicRecipes.map(function (recipe) {
                 return (
-                    <h3>{recipe.title}</h3>
+                    <RecipeSummary 
+                        key={recipe._id}
+                        title={recipe.title}
+                        isPublic={recipe.isPublic}
+                        image={recipe.image}
+                    />
                 );
             });
         }
