@@ -44,7 +44,7 @@ class SignUp extends Component {
         let signUpFailedIndicator;
         if(this.props.signUpFailed) {
             signUpFailedIndicator = (
-                <h2 style={styles.errorStyle}>Sign up failed</h2>
+                <h2 style={styles.error}>Sign up failed</h2>
             );
         }
 

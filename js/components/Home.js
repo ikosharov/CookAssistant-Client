@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RecipeSummary from './RecipeSummary';
+import styles from '../styles';
 
 class Home extends React.Component {
     constructor(props) {
@@ -43,13 +44,40 @@ class Home extends React.Component {
 
         return (
             <div>
-                <h1>Cook Assistant</h1>
-                <h2>Hello {this.props.username}</h2>
-                <button onClick={this.props.signOut}>Sign Out</button>
-                <h2>Your recipes:</h2>
-                {personalRecipesMarkup}
-                <h2>Public recipes:</h2>
-                {publicRecipesMarkup}
+                <div className="col-sm-9">
+                    <div className="page-header">
+                        <h1>Cook Assistant</h1>
+                    </div>
+                    <h2>Your recipes:</h2>
+                    <table class="table table-striped table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Private Recipes</th>
+                            </tr>
+                        </thead>
+                        {personalRecipesMarkup}
+                    </table>
+                    <h2>Public recipes:</h2>
+                    <table class="table table-striped table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Public Recipes</th>
+                            </tr>
+                        </thead>
+                        {publicRecipesMarkup}
+                    </table>
+                </div>
+                <div className="col-sm-3 align='center'">
+                    <div style={styles.avatar}>
+                        <h3>{this.props.username}</h3>
+                        <img src="http://placehold.it/100x100" 
+                            className="img-circle" 
+                            alt="User image" 
+                            width="100" height="100"
+                            style={styles.avatarImage} /> 
+                        <button onClick={this.props.signOut} className="btn btn-primary">Sign Out</button>
+                    </div>
+                </div>
             </div>
         );
     }

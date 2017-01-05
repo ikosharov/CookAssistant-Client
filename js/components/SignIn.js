@@ -50,7 +50,7 @@ class SignIn extends Component {
         let signInFailedIndicator;
         if (this.props.signInFailed) {
             signInFailedIndicator = (
-                <h2 style={styles.errorStyle}>Sign in failed</h2>
+                <h2 style={styles.error}>Sign in failed</h2>
             );
         }
 

@@ -24,17 +24,19 @@ class RecipeSummary extends Component {
         }
 
         return (
-            <table>
-                <tbody>
-                    <tr>
-                        <td>{this.props.title}</td>
-                        <td>{this.props.isPublic.toString()}</td>
-                        <td>
-                            {imgMarkup}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <li className="list-group-item">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>{this.props.title}</td>
+                            <td>{this.props.isPublic.toString()}</td>
+                            <td>
+                                {imgMarkup}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
         );
     }
 }
