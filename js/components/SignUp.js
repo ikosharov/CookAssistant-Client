@@ -49,37 +49,33 @@ class SignUp extends Component {
         }
 
         return (
-            <div>
-                <h1>Sign Up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="input-group">
-                        <span className="input-group-addon">Username</span>
-                        <input type="text"
-                            value={this.state.username}
-                            name="username"
-                            onChange={this.handleUsernameChange}
-                            className="form-control"
-                            required />
-                    </div>
-                    <br />
-                    <div className="input-group">
-                        <span className="input-group-addon">Password</span>
-                        <input type="password"
-                            value={this.state.password}
-                            name="password"
-                            onChange={this.handlePasswordChange}
-                            className="form-control"
-                            required />
-                    </div>
-                    <br />
-                    <input type="submit" value="Sign Up" className="btn btn-primary" />
-                </form>
-                <div>
-                    <Link to="/SignIn">go to Sign In</Link>
-                </div>
+            <form className="form-signup" onSubmit={this.handleSubmit}>
+                <h2 className="form-signup-heading">Please sign up</h2>
+
+                <label htmlFor="inputUsername" className="sr-only">Username</label>
+                <input type="text" 
+                    id="inputUsername" 
+                    className="form-control" 
+                    placeholder="Username" 
+                    required 
+                    autoFocus
+                    value={this.state.username}
+                    onChange={this.handleUsernameChange} />
+
+                <label htmlFor="inputPassword" className="sr-only">Password</label>
+                <input type="password" 
+                    id="inputPassword" 
+                    className="form-control" 
+                    placeholder="Password" 
+                    required 
+                    value={this.state.password}
+                    onChange={this.handlePasswordChange} />
+
+                <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 {loadingIndicator}
                 {signUpFailedIndicator}
-            </div>
+                <Link to="/SignIn">go to Sign In</Link>
+             </form>
         );
     }
 }

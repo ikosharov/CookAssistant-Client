@@ -73,7 +73,7 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(297);
+	var _store = __webpack_require__(298);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -30744,11 +30744,11 @@
 	
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 	
-	var _SignInContainer = __webpack_require__(303);
+	var _SignInContainer = __webpack_require__(305);
 	
 	var _SignInContainer2 = _interopRequireDefault(_SignInContainer);
 	
-	var _SignUpContainer = __webpack_require__(307);
+	var _SignUpContainer = __webpack_require__(309);
 	
 	var _SignUpContainer2 = _interopRequireDefault(_SignUpContainer);
 	
@@ -30846,15 +30846,15 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _actions = __webpack_require__(291);
+	var _actions = __webpack_require__(292);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(293);
+	var _api = __webpack_require__(294);
 	
 	var api = _interopRequireWildcard(_api);
 	
-	var _constants = __webpack_require__(302);
+	var _constants = __webpack_require__(304);
 	
 	var constants = _interopRequireWildcard(_constants);
 	
@@ -30909,6 +30909,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _RecipeSummary = __webpack_require__(291);
+	
+	var _RecipeSummary2 = _interopRequireDefault(_RecipeSummary);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30947,21 +30951,23 @@
 	
 	            if (this.props.personalRecipes.length) {
 	                personalRecipesMarkup = this.props.personalRecipes.map(function (recipe) {
-	                    return _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        recipe.title
-	                    );
+	                    return _react2.default.createElement(_RecipeSummary2.default, {
+	                        key: recipe._id,
+	                        title: recipe.title,
+	                        isPublic: recipe.isPublic,
+	                        image: recipe.image
+	                    });
 	                });
 	            }
 	
 	            if (this.props.publicRecipes.length) {
 	                publicRecipesMarkup = this.props.publicRecipes.map(function (recipe) {
-	                    return _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        recipe.title
-	                    );
+	                    return _react2.default.createElement(_RecipeSummary2.default, {
+	                        key: recipe._id,
+	                        title: recipe.title,
+	                        isPublic: recipe.isPublic,
+	                        image: recipe.image
+	                    });
 	                });
 	            }
 	
@@ -31012,6 +31018,88 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RecipeSummary = function (_Component) {
+	    _inherits(RecipeSummary, _Component);
+	
+	    function RecipeSummary(props) {
+	        _classCallCheck(this, RecipeSummary);
+	
+	        return _possibleConstructorReturn(this, (RecipeSummary.__proto__ || Object.getPrototypeOf(RecipeSummary)).call(this, props));
+	    }
+	
+	    _createClass(RecipeSummary, [{
+	        key: 'render',
+	        value: function render() {
+	            var imgMarkup = _react2.default.createElement('img', { src: 'http://placehold.it/100x100',
+	                width: '100px',
+	                height: '100px' });
+	
+	            if (this.props.image) {
+	                var imageSrc = "data:image/png;base64," + this.props.image;
+	                var imgMarkup = _react2.default.createElement('img', { src: imageSrc,
+	                    width: '100px',
+	                    height: '100px' });
+	            }
+	
+	            return _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            this.props.title
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            this.props.isPublic.toString()
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            imgMarkup
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return RecipeSummary;
+	}(_react.Component);
+	
+	exports.default = RecipeSummary;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.signInSucceeded = signInSucceeded;
@@ -31024,7 +31112,7 @@
 	exports.loadPersonalRecipesSuccess = loadPersonalRecipesSuccess;
 	exports.loadPublicRecipesSuccess = loadPublicRecipesSuccess;
 	
-	var _types = __webpack_require__(292);
+	var _types = __webpack_require__(293);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -31093,7 +31181,7 @@
 	}
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31115,7 +31203,7 @@
 	var LOAD_PERSONAL_RECIPES_SUCCESS = exports.LOAD_PERSONAL_RECIPES_SUCCESS = "LOAD_PERSONAL_RECIPES_SUCCESS";
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31127,15 +31215,15 @@
 	exports.signUp = signUp;
 	exports.loadRecipes = loadRecipes;
 	
-	var _isomorphicFetch = __webpack_require__(294);
+	var _isomorphicFetch = __webpack_require__(295);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _web = __webpack_require__(296);
+	var _web = __webpack_require__(297);
 	
-	var _store = __webpack_require__(297);
+	var _store = __webpack_require__(298);
 	
-	var _constants = __webpack_require__(302);
+	var _constants = __webpack_require__(304);
 	
 	var constants = _interopRequireWildcard(_constants);
 	
@@ -31252,7 +31340,7 @@
 	}
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31261,11 +31349,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(295);
+	__webpack_require__(296);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31725,7 +31813,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31736,7 +31824,7 @@
 	var API_URL = exports.API_URL = "https://cook-assistant-server.herokuapp.com";
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31751,7 +31839,9 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _reducers = __webpack_require__(298);
+	var _localStorage = __webpack_require__(299);
+	
+	var _reducers = __webpack_require__(300);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -31762,13 +31852,50 @@
 	function configureStore(browserHistory) {
 	  var middleware = (0, _reactRouterRedux.routerMiddleware)(browserHistory);
 	
-	  exports.store = store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(middleware));
+	  var persistedState = (0, _localStorage.loadState)();
+	  exports.store = store = (0, _redux.createStore)(_reducers2.default, persistedState, (0, _redux.applyMiddleware)(middleware));
+	
+	  store.subscribe(function () {
+	    (0, _localStorage.saveState)({
+	      auth: store.getState().auth
+	    });
+	  });
 	
 	  return store;
 	}
 
 /***/ },
-/* 298 */
+/* 299 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var loadState = exports.loadState = function loadState() {
+	    try {
+	        var serializedState = localStorage.getItem('state');
+	        if (serializedState === null) {
+	            return undefined;
+	        }
+	        return JSON.parse(serializedState);
+	    } catch (err) {
+	        return undefined;
+	    }
+	};
+	
+	var saveState = exports.saveState = function saveState(state) {
+	    try {
+	        var serializedState = JSON.stringify(state);
+	        localStorage.setItem('state', serializedState);
+	    } catch (err) {
+	        // swallow the exception
+	    }
+	};
+
+/***/ },
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31781,15 +31908,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _auth = __webpack_require__(299);
+	var _auth = __webpack_require__(301);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
-	var _isFetching = __webpack_require__(300);
+	var _isFetching = __webpack_require__(302);
 	
 	var _isFetching2 = _interopRequireDefault(_isFetching);
 	
-	var _recipes = __webpack_require__(301);
+	var _recipes = __webpack_require__(303);
 	
 	var recipes = _interopRequireWildcard(_recipes);
 	
@@ -31808,7 +31935,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31818,7 +31945,7 @@
 	});
 	exports.default = auth;
 	
-	var _types = __webpack_require__(292);
+	var _types = __webpack_require__(293);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -31876,7 +32003,7 @@
 	}
 
 /***/ },
-/* 300 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31886,7 +32013,7 @@
 	});
 	exports.default = isFetching;
 	
-	var _types = __webpack_require__(292);
+	var _types = __webpack_require__(293);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -31908,7 +32035,7 @@
 	}
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31919,7 +32046,7 @@
 	exports.personalRecipes = personalRecipes;
 	exports.publicRecipes = publicRecipes;
 	
-	var _types = __webpack_require__(292);
+	var _types = __webpack_require__(293);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -31977,7 +32104,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31991,7 +32118,7 @@
 	};
 
 /***/ },
-/* 303 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32004,15 +32131,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _SignIn = __webpack_require__(304);
+	var _SignIn = __webpack_require__(306);
 	
 	var _SignIn2 = _interopRequireDefault(_SignIn);
 	
-	var _actions = __webpack_require__(291);
+	var _actions = __webpack_require__(292);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(293);
+	var _api = __webpack_require__(294);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -32047,7 +32174,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SignIn2.default);
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32064,11 +32191,11 @@
 	
 	var _reactRouter = __webpack_require__(184);
 	
-	var _reactGoogleLogin = __webpack_require__(305);
+	var _reactGoogleLogin = __webpack_require__(307);
 	
 	var _reactGoogleLogin2 = _interopRequireDefault(_reactGoogleLogin);
 	
-	var _styles = __webpack_require__(306);
+	var _styles = __webpack_require__(308);
 	
 	var _styles2 = _interopRequireDefault(_styles);
 	
@@ -32147,61 +32274,50 @@
 	            }
 	
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                'form',
+	                { className: 'form-signin', onSubmit: this.handleSubmit },
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Login'
+	                    'h2',
+	                    { className: 'form-signin-heading' },
+	                    'Please sign in'
 	                ),
 	                _react2.default.createElement(
-	                    'form',
-	                    { onSubmit: this.handleSubmit },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'input-group' },
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: 'input-group-addon' },
-	                            'Username'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'text',
-	                            value: this.state.username,
-	                            name: 'username',
-	                            onChange: this.handleUsernameChange,
-	                            className: 'form-control',
-	                            required: true })
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'input-group' },
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: 'input-group-addon' },
-	                            'Password'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'password',
-	                            value: this.state.password,
-	                            name: 'password',
-	                            onChange: this.handlePasswordChange,
-	                            className: 'form-control',
-	                            required: true })
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('input', { type: 'submit', value: 'Sign In', className: 'btn btn-primary' })
+	                    'label',
+	                    { htmlFor: 'inputUsername', className: 'sr-only' },
+	                    'Username'
 	                ),
+	                _react2.default.createElement('input', { type: 'text',
+	                    id: 'inputUsername',
+	                    className: 'form-control',
+	                    placeholder: 'Username',
+	                    required: true,
+	                    autoFocus: true,
+	                    value: this.state.username,
+	                    onChange: this.handleUsernameChange }),
 	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '/SignUp' },
-	                        'go to Sign Up'
-	                    )
+	                    'label',
+	                    { htmlFor: 'inputPassword', className: 'sr-only' },
+	                    'Password'
+	                ),
+	                _react2.default.createElement('input', { type: 'password',
+	                    id: 'inputPassword',
+	                    className: 'form-control',
+	                    placeholder: 'Password',
+	                    required: true,
+	                    value: this.state.password,
+	                    onChange: this.handlePasswordChange }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	                    'Sign in'
 	                ),
 	                loadingIndicator,
-	                signInFailedIndicator
+	                signInFailedIndicator,
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/SignUp' },
+	                    'go to Sign Up'
+	                )
 	            );
 	        }
 	    }]);
@@ -32212,7 +32328,7 @@
 	exports.default = (0, _reactRouter.withRouter)(SignIn);
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -32319,7 +32435,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(261)(module)))
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32336,7 +32452,7 @@
 	exports.default = styles;
 
 /***/ },
-/* 307 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32349,15 +32465,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _SignUp = __webpack_require__(308);
+	var _SignUp = __webpack_require__(310);
 	
 	var _SignUp2 = _interopRequireDefault(_SignUp);
 	
-	var _actions = __webpack_require__(291);
+	var _actions = __webpack_require__(292);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(293);
+	var _api = __webpack_require__(294);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -32392,7 +32508,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SignUp2.default);
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32409,7 +32525,7 @@
 	
 	var _reactRouter = __webpack_require__(184);
 	
-	var _styles = __webpack_require__(306);
+	var _styles = __webpack_require__(308);
 	
 	var _styles2 = _interopRequireDefault(_styles);
 	
@@ -32482,61 +32598,50 @@
 	            }
 	
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                'form',
+	                { className: 'form-signup', onSubmit: this.handleSubmit },
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Sign Up'
+	                    'h2',
+	                    { className: 'form-signup-heading' },
+	                    'Please sign up'
 	                ),
 	                _react2.default.createElement(
-	                    'form',
-	                    { onSubmit: this.handleSubmit },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'input-group' },
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: 'input-group-addon' },
-	                            'Username'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'text',
-	                            value: this.state.username,
-	                            name: 'username',
-	                            onChange: this.handleUsernameChange,
-	                            className: 'form-control',
-	                            required: true })
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'input-group' },
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: 'input-group-addon' },
-	                            'Password'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'password',
-	                            value: this.state.password,
-	                            name: 'password',
-	                            onChange: this.handlePasswordChange,
-	                            className: 'form-control',
-	                            required: true })
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('input', { type: 'submit', value: 'Sign Up', className: 'btn btn-primary' })
+	                    'label',
+	                    { htmlFor: 'inputUsername', className: 'sr-only' },
+	                    'Username'
 	                ),
+	                _react2.default.createElement('input', { type: 'text',
+	                    id: 'inputUsername',
+	                    className: 'form-control',
+	                    placeholder: 'Username',
+	                    required: true,
+	                    autoFocus: true,
+	                    value: this.state.username,
+	                    onChange: this.handleUsernameChange }),
 	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '/SignIn' },
-	                        'go to Sign In'
-	                    )
+	                    'label',
+	                    { htmlFor: 'inputPassword', className: 'sr-only' },
+	                    'Password'
+	                ),
+	                _react2.default.createElement('input', { type: 'password',
+	                    id: 'inputPassword',
+	                    className: 'form-control',
+	                    placeholder: 'Password',
+	                    required: true,
+	                    value: this.state.password,
+	                    onChange: this.handlePasswordChange }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	                    'Sign up'
 	                ),
 	                loadingIndicator,
-	                signUpFailedIndicator
+	                signUpFailedIndicator,
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/SignIn' },
+	                    'go to Sign In'
+	                )
 	            );
 	        }
 	    }]);
