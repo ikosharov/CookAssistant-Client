@@ -13,7 +13,7 @@ let configureRoutes = function (store) {
         if (!store.getState().auth.token) {
             // not signed in. redirect to sign in
             replace({
-                pathname: '/SignIn',
+                pathname: 'SignIn',
                 state: { nextPathname: nextState.location.pathname }
             });
         }
@@ -21,10 +21,10 @@ let configureRoutes = function (store) {
 
     let routes = (
         <Route path="/" component={Root}>
-            <IndexRoute component={HomeContainer} onEnter={authRequired} />
-            <Route path="/SignIn" component={SignInContainer} />
-            <Route path="/SignUp" component={SignUpContainer} />
-            <Redirect from="*" to="/" />
+            <Route path="Home" component={HomeContainer} onEnter={authRequired} />
+            <Route path="SignIn" component={SignInContainer} />
+            <Route path="SignUp" component={SignUpContainer} />
+            <Redirect from="*" to="Home" />
         </Route>
     );
 

@@ -74,7 +74,7 @@ class SignUp extends Component {
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                 {loadingIndicator}
                 {signUpFailedIndicator}
-                <Link to="/SignIn">go to Sign In</Link>
+                <Link to="SignIn">go to Sign In</Link>
              </form>
         );
     }

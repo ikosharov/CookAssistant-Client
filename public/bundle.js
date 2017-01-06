@@ -30759,7 +30759,7 @@
 	        if (!store.getState().auth.token) {
 	            // not signed in. redirect to sign in
 	            replace({
-	                pathname: '/SignIn',
+	                pathname: 'SignIn',
 	                state: { nextPathname: nextState.location.pathname }
 	            });
 	        }
@@ -30768,10 +30768,10 @@
 	    var routes = _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: _Root2.default },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default, onEnter: authRequired }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/SignIn', component: _SignInContainer2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/SignUp', component: _SignUpContainer2.default }),
-	        _react2.default.createElement(_reactRouter.Redirect, { from: '*', to: '/' })
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Home', component: _HomeContainer2.default, onEnter: authRequired }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'SignIn', component: _SignInContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'SignUp', component: _SignUpContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Redirect, { from: '*', to: 'Home' })
 	    );
 	
 	    return routes;
@@ -32797,7 +32797,7 @@
 				api.signIn(username, password).then(function (token) {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signInSucceeded(username, token));
-					dispatch((0, _reactRouterRedux.push)('/'));
+					dispatch((0, _reactRouterRedux.push)('Home'));
 				}).catch(function () {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signInFailed());
@@ -32950,7 +32950,7 @@
 	                signInFailedIndicator,
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/SignUp' },
+	                    { to: 'SignUp' },
 	                    'go to Sign Up'
 	                )
 	            );
@@ -33114,7 +33114,7 @@
 				api.signUp(username, password).then(function (token) {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signUpSucceeded(username, token));
-					dispatch((0, _reactRouterRedux.push)('/'));
+					dispatch((0, _reactRouterRedux.push)('Home'));
 				}).catch(function () {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signUpFailed());
@@ -33257,7 +33257,7 @@
 	                signUpFailedIndicator,
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/SignIn' },
+	                    { to: 'SignIn' },
 	                    'go to Sign In'
 	                )
 	            );
