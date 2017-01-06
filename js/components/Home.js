@@ -13,8 +13,8 @@ class Home extends React.Component {
     }
 
     render() {
-        let personalRecipesMarkup = (<label>Loading...</label>);
-        let publicRecipesMarkup = (<label>Loading...</label>);
+        let personalRecipesMarkup = "";
+        let publicRecipesMarkup = "";
 
         if (this.props.personalRecipes.length) {
             personalRecipesMarkup = this.props.personalRecipes.map(function (recipe) {
@@ -49,22 +49,30 @@ class Home extends React.Component {
                         <h1>Cook Assistant</h1>
                     </div>
                     <h2>Your recipes:</h2>
-                    <table class="table table-striped table-hover table-condensed">
+                    <table className="table table-striped table-hover table-condensed">
                         <thead>
                             <tr>
-                                <th>Private Recipes</th>
+                                <th>title</th>
+                                <th>is public</th>
+                                <th>image</th>
                             </tr>
                         </thead>
-                        {personalRecipesMarkup}
+                        <tbody>
+                            {personalRecipesMarkup}
+                        </tbody>
                     </table>
                     <h2>Public recipes:</h2>
-                    <table class="table table-striped table-hover table-condensed">
+                    <table className="table table-striped table-hover table-condensed">
                         <thead>
                             <tr>
-                                <th>Public Recipes</th>
+                                <th>title</th>
+                                <th>is public</th>
+                                <th>image</th>
                             </tr>
                         </thead>
-                        {publicRecipesMarkup}
+                        <tbody>
+                            {publicRecipesMarkup}
+                        </tbody>
                     </table>
                 </div>
                 <div className="col-sm-3 align='center'">
@@ -75,6 +83,7 @@ class Home extends React.Component {
                             alt="User image" 
                             width="100" height="100"
                             style={styles.avatarImage} /> 
+                            <br/>
                         <button onClick={this.props.signOut} className="btn btn-primary">Sign Out</button>
                     </div>
                 </div>
