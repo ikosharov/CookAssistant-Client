@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RecipeSummary from './RecipeSummary';
+import Avatar from './Avatar';
 import styles from '../styles';
 
 class Home extends React.Component {
@@ -19,12 +20,12 @@ class Home extends React.Component {
         if (this.props.personalRecipes.length) {
             personalRecipesMarkup = this.props.personalRecipes.map(function (recipe) {
                 return (
-                    <RecipeSummary 
+                    <RecipeSummary
                         key={recipe._id}
                         title={recipe.title}
                         isPublic={recipe.isPublic}
                         image={recipe.image}
-                    />
+                        />
                 );
             });
         }
@@ -32,12 +33,12 @@ class Home extends React.Component {
         if (this.props.publicRecipes.length) {
             publicRecipesMarkup = this.props.publicRecipes.map(function (recipe) {
                 return (
-                    <RecipeSummary 
+                    <RecipeSummary
                         key={recipe._id}
                         title={recipe.title}
                         isPublic={recipe.isPublic}
                         image={recipe.image}
-                    />
+                        />
                 );
             });
         }
@@ -76,16 +77,10 @@ class Home extends React.Component {
                     </table>
                 </div>
                 <div className="col-sm-3 align='center'">
-                    <div style={styles.avatar}>
-                        <h3>{this.props.username}</h3>
-                        <img src="http://placehold.it/100x100" 
-                            className="img-circle" 
-                            alt="User image" 
-                            width="100" height="100"
-                            style={styles.avatarImage} /> 
-                            <br/>
-                        <button onClick={this.props.signOut} className="btn btn-primary">Sign Out</button>
-                    </div>
+                    <Avatar
+                        username={this.props.username}
+                        signOut={this.props.signOut}
+                    />
                 </div>
             </div>
         );
