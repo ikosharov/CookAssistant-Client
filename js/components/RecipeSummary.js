@@ -12,8 +12,7 @@ class RecipeSummary extends Component {
     }
 
     cook() {
-        alert('title ' + this.props.title);
-        alert('id ' + this.props.id);
+        this.props.cookRecipe(this.props.id);
     }
 
     render() {

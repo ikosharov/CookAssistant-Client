@@ -32,6 +32,9 @@ const mapDispatchToProps = (dispatch) => {
 				}).catch(() => {
 					// some error
 				});
+		},
+		cookRecipe: (recipeId) => {
+			dispatch(push('Recipes/' + recipeId));
 		}
 	};
 }

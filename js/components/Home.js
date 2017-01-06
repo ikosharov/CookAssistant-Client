@@ -27,6 +27,7 @@ class Home extends React.Component {
                         isPublic={recipe.isPublic}
                         image={recipe.image}
                         rating={recipe.rating}
+                        cookRecipe={this.props.cookRecipe}
                         />
                 );
             });
@@ -42,6 +43,7 @@ class Home extends React.Component {
                         isPublic={recipe.isPublic}
                         image={recipe.image}
                         rating={recipe.rating}
+                        cookRecipe={this.props.cookRecipe}
                         />
                 );
             });
