@@ -14,4 +14,8 @@ styles.avatarImage = {
     marginBottom: '10px'
 }
 
+styles.recipeSummaryTd = {
+    verticalAlign: 'middle'
+}
+
 export default styles;

@@ -22,9 +22,11 @@ class Home extends React.Component {
                 return (
                     <RecipeSummary
                         key={recipe._id}
+                        id={recipe._id}
                         title={recipe.title}
                         isPublic={recipe.isPublic}
                         image={recipe.image}
+                        rating={recipe.rating}
                         />
                 );
             });
@@ -35,9 +37,11 @@ class Home extends React.Component {
                 return (
                     <RecipeSummary
                         key={recipe._id}
+                        id={recipe._id}
                         title={recipe.title}
                         isPublic={recipe.isPublic}
                         image={recipe.image}
+                        rating={recipe.rating}
                         />
                 );
             });
@@ -54,8 +58,9 @@ class Home extends React.Component {
                         <thead>
                             <tr>
                                 <th>title</th>
-                                <th>is public</th>
+                                <th>visibility</th>
                                 <th>image</th>
+                                <th>rating</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,8 +72,9 @@ class Home extends React.Component {
                         <thead>
                             <tr>
                                 <th>title</th>
-                                <th>is public</th>
+                                <th>visibility</th>
                                 <th>image</th>
+                                <th>rating</th>
                             </tr>
                         </thead>
                         <tbody>
