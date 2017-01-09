@@ -22,7 +22,7 @@ let configureRoutes = function (store) {
 
     let routes = (
         <Route path="/" component={Root}>
-            <Route path="Home" component={HomeContainer} onEnter={authRequired} />
+            <IndexRoute component={HomeContainer} onEnter={authRequired} />
             <Route path="Recipes/:recipeType/:recipeId" component={RecipeDetailsContainer} onEnter={authRequired} />
             <Route path="SignIn" component={SignInContainer} />
             <Route path="SignUp" component={SignUpContainer} />

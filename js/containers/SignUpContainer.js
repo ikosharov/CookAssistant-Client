@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 				then((token) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signUpSucceeded(username, token));
-					dispatch(push('Home'));
+					dispatch(push('/'));
 				}).
 				catch(() => {
 					dispatch(actions.fetchFinished());
