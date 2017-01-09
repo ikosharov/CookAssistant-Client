@@ -15,12 +15,12 @@ export default function recipeDetails(state, action) {
     switch (action.type) {
         case actionTypes.LOAD_RECIPE_DETAILS_SUCCESS:
             return Object.assign({}, state, {
-                id: action.id,
-                title: action.title,
-                isPublic: action.isPublic,
-                ingredients: action.ingredients,
-                image: action.image,
-                rating: action.rating
+                id: action.recipe._id,
+                title: action.recipe.title,
+                isPublic: action.recipe.isPublic,
+                ingredients: action.recipe.ingredients,
+                image: action.recipe.image,
+                rating: action.recipe.rating
             });
 
         case actionTypes.LOAD_RECIPE_DETAILS_FAILED:

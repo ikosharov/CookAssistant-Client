@@ -65,7 +65,7 @@ export function loadPublicRecipesSuccess(recipes) {
 export function loadRecipeDetailsSuccess(recipeDetails) {
 	return {
 		type: actionTypes.LOAD_RECIPE_DETAILS_SUCCESS,
-		recipes: recipeDetails
+		recipe: recipeDetails
 	}
 }
 
