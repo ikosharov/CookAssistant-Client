@@ -13,6 +13,10 @@ class RecipeDetails extends Component {
     }
 
     render() {
+        if(this.props.isFetching) {
+            return (<h1>Loading...</h1>)
+        }
+
         var imgMarkup = (
             <img src='http://placehold.it/100x100'
                 width='100px'

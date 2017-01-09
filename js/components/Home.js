@@ -14,6 +14,10 @@ class Home extends React.Component {
     }
 
     render() {
+        if(this.props.isFetching) {
+            return (<h1>Loading...</h1>)
+        }
+
         let personalRecipesMarkup = "";
         let publicRecipesMarkup = "";
 

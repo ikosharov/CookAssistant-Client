@@ -30871,7 +30871,8 @@
 		return {
 			username: state.auth.username,
 			publicRecipes: state.publicRecipes,
-			personalRecipes: state.personalRecipes
+			personalRecipes: state.personalRecipes,
+			isFetching: state.isFetching
 		};
 	};
 	
@@ -30882,12 +30883,16 @@
 				dispatch((0, _reactRouterRedux.push)('/SignIn'));
 			},
 			loadRecipes: function loadRecipes() {
+				dispatch(actions.fetchStarted());
 				api.loadRecipes(constants.recipeTypes.PERSONAL).then(function (recipes) {
+					dispatch(actions.fetchFinished());
 					dispatch(actions.loadPersonalRecipesSuccess(recipes));
 				}).catch(function () {
 					// some error
 				});
+				dispatch(actions.fetchStarted());
 				api.loadRecipes(constants.recipeTypes.PUBLIC).then(function (recipes) {
+					dispatch(actions.fetchFinished());
 					dispatch(actions.loadPublicRecipesSuccess(recipes));
 				}).catch(function () {
 					// some error
@@ -30954,6 +30959,14 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            if (this.props.isFetching) {
+	                return _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Loading...'
+	                );
+	            }
+	
 	            var personalRecipesMarkup = "";
 	            var publicRecipesMarkup = "";
 	
@@ -31855,7 +31868,7 @@
 	function loadRecipeDetailsSuccess(recipeDetails) {
 		return {
 			type: actionTypes.LOAD_RECIPE_DETAILS_SUCCESS,
-			recipes: recipeDetails
+			recipe: recipeDetails
 		};
 	}
 	
@@ -32860,12 +32873,12 @@
 	    switch (action.type) {
 	        case actionTypes.LOAD_RECIPE_DETAILS_SUCCESS:
 	            return Object.assign({}, state, {
-	                id: action.id,
-	                title: action.title,
-	                isPublic: action.isPublic,
-	                ingredients: action.ingredients,
-	                image: action.image,
-	                rating: action.rating
+	                id: action.recipe._id,
+	                title: action.recipe.title,
+	                isPublic: action.recipe.isPublic,
+	                ingredients: action.recipe.ingredients,
+	                image: action.recipe.image,
+	                rating: action.recipe.rating
 	            });
 	
 	        case actionTypes.LOAD_RECIPE_DETAILS_FAILED:
@@ -33435,14 +33448,17 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
-			recipeDetails: state.recipeDetails
+			recipeDetails: state.recipeDetails,
+			isFetching: state.isFetching
 		};
 	};
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		return {
 			loadRecipeDetails: function loadRecipeDetails(recipeId, recipeType) {
+				dispatch(action.fetchStarted());
 				api.loadRecipeDetails(recipeId, recipeType).then(function (recipeDetails) {
+					dispatch(action.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
 				}).catch(function () {
 					// some error
@@ -33498,6 +33514,25 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            if (this.props.isFetching) {
+	                return _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Loading...'
+	                );
+	            }
+	
+	            var imgMarkup = _react2.default.createElement('img', { src: 'http://placehold.it/100x100',
+	                width: '100px',
+	                height: '100px' });
+	
+	            if (this.props.recipeDetails.image) {
+	                var imageSrc = "data:image/png;base64," + this.props.recipeDetails.image;
+	                var imgMarkup = _react2.default.createElement('img', { src: imageSrc,
+	                    width: '100px',
+	                    height: '100px' });
+	            }
+	
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -33510,6 +33545,31 @@
 	                    'h2',
 	                    null,
 	                    this.props.params.recipeType
+	                ),
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    this.props.recipeDetails.id
+	                ),
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    this.props.recipeDetails.title
+	                ),
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    this.props.recipeDetails.isPublic
+	                ),
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    imgMarkup
+	                ),
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    this.props.recipeDetails.rating
 	                )
 	            );
 	        }

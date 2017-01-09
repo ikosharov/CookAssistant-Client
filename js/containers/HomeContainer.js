@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 	return {
 		username: state.auth.username,
 		publicRecipes: state.publicRecipes,
-		personalRecipes: state.personalRecipes
+		personalRecipes: state.personalRecipes,
+		isFetching: state.isFetching
 	}
 }
 
@@ -20,14 +21,18 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(push('/SignIn'));
 		},
 		loadRecipes: () => {
+			dispatch(actions.fetchStarted());
 			api.loadRecipes(constants.recipeTypes.PERSONAL)
 				.then((recipes) => {
+					dispatch(actions.fetchFinished());
 					dispatch(actions.loadPersonalRecipesSuccess(recipes));
 				}).catch(() => {
 					// some error
 				});
+			dispatch(actions.fetchStarted());
 			api.loadRecipes(constants.recipeTypes.PUBLIC)
 				.then((recipes) => {
+					dispatch(actions.fetchFinished());
 					dispatch(actions.loadPublicRecipesSuccess(recipes));
 				}).catch(() => {
 					// some error

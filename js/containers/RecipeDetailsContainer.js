@@ -7,15 +7,18 @@ import * as constants from '../constants';
 
 const mapStateToProps = (state) => {
 	return {
-		recipeDetails: state.recipeDetails
+		recipeDetails: state.recipeDetails,
+		isFetching: state.isFetching
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		loadRecipeDetails: (recipeId, recipeType) => {
+			dispatch(action.fetchStarted());
 			api.loadRecipeDetails(recipeId, recipeType)
 				.then((recipeDetails) => {
+					dispatch(action.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
 				}).catch(() => {
 					// some error
