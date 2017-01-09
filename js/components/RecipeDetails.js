@@ -8,11 +8,15 @@ class RecipeDetails extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.loadRecipeDetails(this.props.params.recipeId, this.props.params.recipeType);
+    }
 
     render() {
         return (
             <div>
                 <h1>{this.props.params.recipeId}</h1>
+                <h2>{this.props.params.recipeType}</h2>
             </div>
         );
     }

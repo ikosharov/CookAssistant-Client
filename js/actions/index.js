@@ -61,3 +61,16 @@ export function loadPublicRecipesSuccess(recipes) {
 		recipes: recipes
 	}
 }
+
+export function loadRecipeDetailsSuccess(recipeDetails) {
+	return {
+		type: actionTypes.LOAD_RECIPE_DETAILS_SUCCESS,
+		recipes: recipeDetails
+	}
+}
+
+export function loadRecipeDetailsFailed() {
+	return {
+		type: actionTypes.LOAD_RECIPE_DETAILS_FAILED
+	}
+}

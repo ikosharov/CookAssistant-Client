@@ -33,8 +33,8 @@ const mapDispatchToProps = (dispatch) => {
 					// some error
 				});
 		},
-		cookRecipe: (recipeId) => {
-			dispatch(push('Recipes/' + recipeId));
+		cookRecipe: (recipeId, recipeType) => {
+			dispatch(push(`Recipes/${recipeType}/${recipeId}`));
 		}
 	};
 }

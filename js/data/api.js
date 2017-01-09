@@ -112,3 +112,35 @@ export function loadRecipes(recipeType) {
 
     return promise;
 }
+
+export function loadRecipeDetails(recipeId, recipeType) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeType}/${recipeId}`;
+
+    let options = {
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "Authorization": "JWT " + auth.token
+        }
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 200) {
+                reject();
+            } else {
+                response.json().then((json) => {
+                    resolve(json);
+                });
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}

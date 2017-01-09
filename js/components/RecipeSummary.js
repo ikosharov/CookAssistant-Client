@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Rating from 'react-rating';
 import styles from '../styles';
+import * as constants from '../constants';
 
 class RecipeSummary extends Component {
     constructor(props) {
@@ -12,7 +13,11 @@ class RecipeSummary extends Component {
     }
 
     cook() {
-        this.props.cookRecipe(this.props.id);
+        if (this.props.isPublic) {
+            this.props.cookRecipe(this.props.id, constants.recipeTypes.PUBLIC);
+        } else {
+            this.props.cookRecipe(this.props.id, constants.recipeTypes.PERSONAL);
+        }
     }
 
     render() {

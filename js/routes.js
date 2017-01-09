@@ -7,7 +7,7 @@ import Root from './components/Root';
 import HomeContainer from './containers/HomeContainer';
 import SignInContainer from './containers/SignInContainer';
 import SignUpContainer from './containers/SignUpContainer';
-import RecipeDetails from './components/RecipeDetails';
+import RecipeDetailsContainer from './containers/RecipeDetailsContainer';
 
 let configureRoutes = function (store) {
     let authRequired = function (nextState, replace) {
@@ -23,10 +23,10 @@ let configureRoutes = function (store) {
     let routes = (
         <Route path="/" component={Root}>
             <Route path="Home" component={HomeContainer} onEnter={authRequired} />
-            <Route path="Recipes/:recipeId" component={RecipeDetails} onEnter={authRequired} />
+            <Route path="Recipes/:recipeType/:recipeId" component={RecipeDetailsContainer} onEnter={authRequired} />
             <Route path="SignIn" component={SignInContainer} />
             <Route path="SignUp" component={SignUpContainer} />
-            <Redirect from="*" to="Home" />
+            <Redirect from="*" to="/" />
         </Route>
     );
 
