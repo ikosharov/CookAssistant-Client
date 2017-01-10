@@ -15,10 +15,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		loadRecipeDetails: (recipeId, recipeType) => {
-			dispatch(action.fetchStarted());
+			dispatch(actions.fetchStarted());
 			api.loadRecipeDetails(recipeId, recipeType)
 				.then((recipeDetails) => {
-					dispatch(action.fetchFinished());
+					dispatch(actions.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
 				}).catch(() => {
 					// some error

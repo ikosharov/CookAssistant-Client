@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Rating from 'react-rating';
 import styles from '../styles';
 import * as constants from '../constants';
+import Base64Image from './Base64Image';
 
 class RecipeSummary extends Component {
     constructor(props) {
@@ -21,21 +22,6 @@ class RecipeSummary extends Component {
     }
 
     render() {
-        var imgMarkup = (
-            <img src='http://placehold.it/100x100'
-                width='100px'
-                height='100px' />
-        );
-
-        if (this.props.image) {
-            var imageSrc = "data:image/png;base64," + this.props.image;
-            var imgMarkup = (
-                <img src={imageSrc}
-                    width='100px'
-                    height='100px' />
-            );
-        }
-
         var isPublicMarkup = (<span className="label label-success">public</span>);
         if (!this.props.isPublic) {
             isPublicMarkup = (<span className="label label-warning">private</span>);
@@ -45,7 +31,7 @@ class RecipeSummary extends Component {
             <tr>
                 <td style={styles.recipeSummaryTd}>{this.props.title}</td>
                 <td style={styles.recipeSummaryTd}>{isPublicMarkup}</td>
-                <td style={styles.recipeSummaryTd}>{imgMarkup}</td>
+                <td style={styles.recipeSummaryTd}><Base64Image data={this.props.image} /></td>
                 <td style={styles.recipeSummaryTd} className="ratingTD">
                     <Rating initialRate={this.props.rating}
                         empty={'glyphicon glyphicon-star-empty'}
