@@ -38,8 +38,15 @@ const mapDispatchToProps = (dispatch) => {
 					// some error
 				});
 		},
-		cookRecipe: (recipeId, recipeType) => {
-			dispatch(push(`Recipes/${recipeType}/${recipeId}`));
+		cookRecipe: (recipe) => {
+			let recipeType = (recipe.isPublic) ? "public" : "personal";
+			let recipeId = recipe._id;
+			dispatch(push(`Recipes/Cook/${recipeType}/${recipeId}`));
+		},
+		editRecipe: (recipe) => {
+			let recipeType = (recipe.isPublic) ? "public" : "personal";
+			let recipeId = recipe._id;
+			dispatch(push(`Recipes/Edit/${recipeType}/${recipeId}`));
 		}
 	};
 }

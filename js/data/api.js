@@ -79,13 +79,7 @@ export function signUp(username, password) {
 export function loadRecipes(recipeType) {
     let auth = store.getState().auth;
 
-    let url = `${API_URL}/recipes`;
-
-    if (recipeType == constants.recipeTypes.PERSONAL) {
-        url += '/personal';
-    } else {
-        url += '/public';
-    }
+    let url = `${API_URL}/recipes/${recipeType}`;
 
     let options = {
         "method": "GET",

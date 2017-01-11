@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import CookRecipe from '../components/CookRecipe';
+import EditRecipe from '../components/EditRecipe';
 import * as actions from '../actions';
 import * as api from '../data/api';
 import * as constants from '../constants';
@@ -23,8 +23,16 @@ const mapDispatchToProps = (dispatch) => {
 				}).catch(() => {
 					// some error
 				});
+		},
+		editRecipeDetails: (recipe) => {
+			api.editRecipeDetails(recipe)
+				.then(() => {
+					// success
+				}).catch(() => {
+					// some error
+				});
 		}
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CookRecipe);
+export default connect(mapStateToProps, mapDispatchToProps)(EditRecipe);

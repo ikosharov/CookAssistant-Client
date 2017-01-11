@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import styles from '../styles';
 import Base64Image from './Base64Image';
 
-class CookRecipe extends Component {
+class EditRecipe extends Component {
     constructor(props) {
         super(props);
     }
@@ -20,7 +20,7 @@ class CookRecipe extends Component {
 
         return (
             <div>
-                <h1>Cook Recipe</h1>
+                <h1>Edit Recipe</h1>
                 <h2>{this.props.params.recipeId}</h2>
                 <h2>{this.props.params.recipeType}</h2>
                 <h3>{this.props.recipeDetails.id}</h3>
@@ -33,4 +33,4 @@ class CookRecipe extends Component {
     }
 }
 
-export default CookRecipe;
+export default EditRecipe;
