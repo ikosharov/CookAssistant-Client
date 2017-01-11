@@ -1,6 +1,7 @@
 'use strict';
 
 import fetch from 'isomorphic-fetch';
+import FormData from 'form-data';
 import { API_URL } from './../../web.config';
 import { store } from '../store';
 import * as constants from '../constants';
@@ -124,6 +125,43 @@ export function loadRecipeDetails(recipeId, recipeType) {
             "content-type": "application/json",
             "Authorization": "JWT " + auth.token
         }
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 200) {
+                reject();
+            } else {
+                response.json().then((json) => {
+                    resolve(json);
+                });
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+export function editRecipeDetails(recipeDetails, recipeId, recipeType) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeType}/${recipeId}`;
+
+    var form = new FormData();
+    form.append('client_id', config.APP_KEY);
+    form.append('image', recipeDetails.ima)
+
+    let options = {
+        "method": "PUT",
+        "headers": {
+            "content-type": "application/json",
+            "Authorization": "JWT " + auth.token
+        },
+        body: form
     };
 
     let promise = new Promise((resolve, reject) => {

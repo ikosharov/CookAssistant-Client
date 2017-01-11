@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import styles from '../styles';
 import Base64Image from './Base64Image';
 
-class RecipeDetails extends Component {
+class CookRecipe extends Component {
     constructor(props) {
         super(props);
     }
@@ -32,4 +32,4 @@ class RecipeDetails extends Component {
     }
 }
 
-export default RecipeDetails;
+export default CookRecipe;
