@@ -140,33 +140,34 @@ export function loadRecipeDetails(recipeId, recipeType) {
     return promise;
 }
 
-export function editRecipeDetails(recipeDetails, recipeId, recipeType) {
+export function editRecipeDetails(recipeId, recipeType, recipe) {
     let auth = store.getState().auth;
 
     let url = `${API_URL}/recipes/${recipeType}/${recipeId}`;
 
-    var form = new FormData();
-    form.append('client_id', config.APP_KEY);
-    form.append('image', recipeDetails.ima)
+    let form = new FormData();
+    form.append("title", recipe.title);
+    form.append("isPublic", recipe.isPublic);
+    form.append("rating", recipe.rating);
+    if (recipe.image) {
+        form.append("image", recipe.image);
+    }
 
     let options = {
         "method": "PUT",
         "headers": {
-            "content-type": "application/json",
             "Authorization": "JWT " + auth.token
         },
-        body: form
+        "body": form
     };
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
-            if (response.status != 200) {
+            if (response.status != 204) {
                 reject();
             } else {
-                response.json().then((json) => {
-                    resolve(json);
-                });
+                resolve();
             }
         }).catch(() => {
             // network failure

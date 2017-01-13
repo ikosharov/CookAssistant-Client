@@ -24,8 +24,8 @@ const mapDispatchToProps = (dispatch) => {
 					// some error
 				});
 		},
-		editRecipeDetails: (recipe) => {
-			api.editRecipeDetails(recipe)
+		editRecipeDetails: (recipeId, recipeType, recipe) => {
+			api.editRecipeDetails(recipeId, recipeType, recipe)
 				.then(() => {
 					// success
 				}).catch(() => {
