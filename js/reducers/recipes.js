@@ -11,9 +11,9 @@ function recipe(state, action) {
 	}
 }
 
-export function personalRecipes(state = [], action) {
+export function currentUserRecipes(state = [], action) {
 	switch (action.type) {
-		case actionTypes.LOAD_PERSONAL_RECIPES_SUCCESS:
+		case actionTypes.LOAD_CURRENT_USER_RECIPES_SUCCESS:
 			return action.recipes;
 		case actionTypes.ADD_RECIPE:
 			return [...state, recipe(undefined, action)];
@@ -32,9 +32,9 @@ export function personalRecipes(state = [], action) {
 	}
 }
 
-export function publicRecipes(state = [], action) {
+export function anyUserRecipes(state = [], action) {
 	switch (action.type) {
-		case actionTypes.LOAD_PUBLIC_RECIPES_SUCCESS:
+		case actionTypes.LOAD_ANY_USER_RECIPES_SUCCESS:
 			return action.recipes;
 		default:
 			return state;

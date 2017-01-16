@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import Rating from 'react-rating';
 import styles from '../styles';
-import * as constants from '../constants';
 import Base64Image from './Base64Image';
 
 class RecipeSummary extends Component {

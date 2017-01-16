@@ -18,18 +18,18 @@ class Home extends React.Component {
             return (<h1>Loading...</h1>)
         }
 
-        let personalRecipesMarkup = (
+        let currentUserRecipesMarkup = (
             <RecipeSummaryTable
                 userId={this.props.userId}
-                recipes={this.props.personalRecipes}
+                recipes={this.props.currentUserRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
                 />);
 
-        let publicRecipesMarkup = (
+        let anyUserRecipesMarkup = (
             <RecipeSummaryTable
                 userId={this.props.userId}
-                recipes={this.props.publicRecipes}
+                recipes={this.props.anyUserRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
                 />);
@@ -42,9 +42,9 @@ class Home extends React.Component {
                         <h2>{this.props.userId}</h2>
                     </div>
                     <h2>Your recipes:</h2>
-                    {personalRecipesMarkup}
-                    <h2>Public recipes:</h2>
-                    {publicRecipesMarkup}
+                    {currentUserRecipesMarkup}
+                    <h2>All recipes:</h2>
+                    {anyUserRecipesMarkup}
                 </div>
                 <div className="col-sm-3 align='center'">
                     <Avatar

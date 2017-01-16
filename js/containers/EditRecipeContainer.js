@@ -3,7 +3,6 @@ import { push } from 'react-router-redux';
 import EditRecipe from '../components/EditRecipe';
 import * as actions from '../actions';
 import * as api from '../data/api';
-import * as constants from '../constants';
 
 const mapStateToProps = (state) => {
 	return {
@@ -14,9 +13,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadRecipeDetails: (recipeId, recipeType) => {
+		loadRecipeDetails: (recipeId) => {
 			dispatch(actions.fetchStarted());
-			api.loadRecipeDetails(recipeId, recipeType)
+			api.loadRecipeDetails(recipeId)
 				.then((recipeDetails) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
@@ -24,8 +23,8 @@ const mapDispatchToProps = (dispatch) => {
 					// some error
 				});
 		},
-		editRecipeDetails: (recipeId, recipeType, recipe) => {
-			api.editRecipeDetails(recipeId, recipeType, recipe)
+		editRecipeDetails: (recipeId, recipe) => {
+			api.editRecipeDetails(recipeId, recipe)
 				.then(() => {
 					// success
 				}).catch(() => {

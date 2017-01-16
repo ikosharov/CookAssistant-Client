@@ -4,7 +4,6 @@ import fetch from 'isomorphic-fetch';
 import FormData from 'form-data';
 import { API_URL } from './../../web.config';
 import { store } from '../store';
-import * as constants from '../constants';
 
 export function signIn(username, password) {
     let credentials = {
@@ -76,10 +75,10 @@ export function signUp(username, password) {
     return promise;
 }
 
-export function loadRecipes(recipeType) {
+export function loadCurrentUserRecipes() {
     let auth = store.getState().auth;
 
-    let url = `${API_URL}/recipes/${recipeType}`;
+    let url = `${API_URL}/recipes?user=current`;
 
     let options = {
         "method": "GET",
@@ -108,10 +107,10 @@ export function loadRecipes(recipeType) {
     return promise;
 }
 
-export function loadRecipeDetails(recipeId, recipeType) {
+export function loadAnyUserRecipes() {
     let auth = store.getState().auth;
 
-    let url = `${API_URL}/recipes/${recipeType}/${recipeId}`;
+    let url = `${API_URL}/recipes`;
 
     let options = {
         "method": "GET",
@@ -140,10 +139,42 @@ export function loadRecipeDetails(recipeId, recipeType) {
     return promise;
 }
 
-export function editRecipeDetails(recipeId, recipeType, recipe) {
+export function loadRecipeDetails(recipeId) {
     let auth = store.getState().auth;
 
-    let url = `${API_URL}/recipes/${recipeType}/${recipeId}`;
+    let url = `${API_URL}/recipes/${recipeId}`;
+
+    let options = {
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "Authorization": "JWT " + auth.token
+        }
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 200) {
+                reject();
+            } else {
+                response.json().then((json) => {
+                    resolve(json);
+                });
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+export function editRecipeDetails(recipeId, recipe) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}`;
 
     let form = new FormData();
     form.append("title", recipe.title);

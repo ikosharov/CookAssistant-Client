@@ -3,14 +3,13 @@ import { push } from 'react-router-redux';
 import Home from '../components/Home';
 import * as actions from '../actions';
 import * as api from '../data/api';
-import * as constants from '../constants';
 
 const mapStateToProps = (state) => {
 	return {
 		username: state.auth.username,
 		userId: state.auth.id,
-		publicRecipes: state.publicRecipes,
-		personalRecipes: state.personalRecipes,
+		currentUserRecipes: state.currentUserRecipes,
+		anyUserRecipes: state.anyUserRecipes,
 		isFetching: state.isFetching
 	}
 }
@@ -23,31 +22,27 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		loadRecipes: () => {
 			dispatch(actions.fetchStarted());
-			api.loadRecipes(constants.recipeTypes.PERSONAL)
+			api.loadCurrentUserRecipes()
 				.then((recipes) => {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.loadPersonalRecipesSuccess(recipes));
+					dispatch(actions.loadCurrentUserRecipesSuccess(recipes));
 				}).catch(() => {
 					// some error
 				});
 			dispatch(actions.fetchStarted());
-			api.loadRecipes(constants.recipeTypes.PUBLIC)
+			api.loadAnyUserRecipes()
 				.then((recipes) => {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.loadPublicRecipesSuccess(recipes));
+					dispatch(actions.loadAnyUserRecipesSuccess(recipes));
 				}).catch(() => {
 					// some error
 				});
 		},
 		cookRecipe: (recipe) => {
-			let recipeType = (recipe.isPublic) ? "public" : "personal";
-			let recipeId = recipe._id;
-			dispatch(push(`Recipes/Cook/${recipeType}/${recipeId}`));
+			dispatch(push(`Recipes/Cook/${recipe._id}`));
 		},
 		editRecipe: (recipe) => {
-			let recipeType = (recipe.isPublic) ? "public" : "personal";
-			let recipeId = recipe._id;
-			dispatch(push(`Recipes/Edit/${recipeType}/${recipeId}`));
+			dispatch(push(`Recipes/Edit/${recipe._id}`));
 		}
 	};
 }

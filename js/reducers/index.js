@@ -8,8 +8,8 @@ import recipeDetails from './recipeDetails';
 const rootReducer = combineReducers({
   auth: auth,
   isFetching: isFetching,
-  publicRecipes: recipes.publicRecipes,
-  personalRecipes: recipes.personalRecipes,
+  currentUserRecipes: recipes.currentUserRecipes,
+  anyUserRecipes: recipes.anyUserRecipes,
   recipeDetails: recipeDetails,
   routing: routerReducer
 });

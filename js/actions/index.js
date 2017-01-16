@@ -50,16 +50,16 @@ export function fetchFinished() {
 	}
 }
 
-export function loadPersonalRecipesSuccess(recipes) {
+export function loadCurrentUserRecipesSuccess(recipes) {
 	return {
-		type: actionTypes.LOAD_PERSONAL_RECIPES_SUCCESS,
+		type: actionTypes.LOAD_CURRENT_USER_RECIPES_SUCCESS,
 		recipes: recipes
 	}
 }
 
-export function loadPublicRecipesSuccess(recipes) {
+export function loadAnyUserRecipesSuccess(recipes) {
 	return {
-		type: actionTypes.LOAD_PUBLIC_RECIPES_SUCCESS,
+		type: actionTypes.LOAD_ANY_USER_RECIPES_SUCCESS,
 		recipes: recipes
 	}
 }

@@ -73,7 +73,7 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(305);
+	var _store = __webpack_require__(304);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -30744,19 +30744,19 @@
 	
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 	
-	var _SignInContainer = __webpack_require__(312);
+	var _SignInContainer = __webpack_require__(311);
 	
 	var _SignInContainer2 = _interopRequireDefault(_SignInContainer);
 	
-	var _SignUpContainer = __webpack_require__(315);
+	var _SignUpContainer = __webpack_require__(314);
 	
 	var _SignUpContainer2 = _interopRequireDefault(_SignUpContainer);
 	
-	var _CookRecipeContainer = __webpack_require__(317);
+	var _CookRecipeContainer = __webpack_require__(316);
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(319);
+	var _EditRecipeContainer = __webpack_require__(318);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
@@ -30777,8 +30777,8 @@
 	        _reactRouter.Route,
 	        { path: '/', component: _Root2.default },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default, onEnter: authRequired }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/Cook/:recipeType/:recipeId', component: _CookRecipeContainer2.default, onEnter: authRequired }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/Edit/:recipeType/:recipeId', component: _EditRecipeContainer2.default, onEnter: authRequired }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/Cook/:recipeId', component: _CookRecipeContainer2.default, onEnter: authRequired }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/Edit/:recipeId', component: _EditRecipeContainer2.default, onEnter: authRequired }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'SignIn', component: _SignInContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'SignUp', component: _SignUpContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Redirect, { from: '*', to: '/' })
@@ -30856,17 +30856,13 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _actions = __webpack_require__(298);
+	var _actions = __webpack_require__(297);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(300);
+	var _api = __webpack_require__(299);
 	
 	var api = _interopRequireWildcard(_api);
-	
-	var _constants = __webpack_require__(296);
-	
-	var constants = _interopRequireWildcard(_constants);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -30876,8 +30872,8 @@
 		return {
 			username: state.auth.username,
 			userId: state.auth.id,
-			publicRecipes: state.publicRecipes,
-			personalRecipes: state.personalRecipes,
+			currentUserRecipes: state.currentUserRecipes,
+			anyUserRecipes: state.anyUserRecipes,
 			isFetching: state.isFetching
 		};
 	};
@@ -30890,29 +30886,25 @@
 			},
 			loadRecipes: function loadRecipes() {
 				dispatch(actions.fetchStarted());
-				api.loadRecipes(constants.recipeTypes.PERSONAL).then(function (recipes) {
+				api.loadCurrentUserRecipes().then(function (recipes) {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.loadPersonalRecipesSuccess(recipes));
+					dispatch(actions.loadCurrentUserRecipesSuccess(recipes));
 				}).catch(function () {
 					// some error
 				});
 				dispatch(actions.fetchStarted());
-				api.loadRecipes(constants.recipeTypes.PUBLIC).then(function (recipes) {
+				api.loadAnyUserRecipes().then(function (recipes) {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.loadPublicRecipesSuccess(recipes));
+					dispatch(actions.loadAnyUserRecipesSuccess(recipes));
 				}).catch(function () {
 					// some error
 				});
 			},
 			cookRecipe: function cookRecipe(recipe) {
-				var recipeType = recipe.isPublic ? "public" : "personal";
-				var recipeId = recipe._id;
-				dispatch((0, _reactRouterRedux.push)('Recipes/Cook/' + recipeType + '/' + recipeId));
+				dispatch((0, _reactRouterRedux.push)('Recipes/Cook/' + recipe._id));
 			},
 			editRecipe: function editRecipe(recipe) {
-				var recipeType = recipe.isPublic ? "public" : "personal";
-				var recipeId = recipe._id;
-				dispatch((0, _reactRouterRedux.push)('Recipes/Edit/' + recipeType + '/' + recipeId));
+				dispatch((0, _reactRouterRedux.push)('Recipes/Edit/' + recipe._id));
 			}
 		};
 	};
@@ -30980,16 +30972,16 @@
 	                );
 	            }
 	
-	            var personalRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
+	            var currentUserRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
 	                userId: this.props.userId,
-	                recipes: this.props.personalRecipes,
+	                recipes: this.props.currentUserRecipes,
 	                cookRecipe: this.props.cookRecipe,
 	                editRecipe: this.props.editRecipe
 	            });
 	
-	            var publicRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
+	            var anyUserRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
 	                userId: this.props.userId,
-	                recipes: this.props.publicRecipes,
+	                recipes: this.props.anyUserRecipes,
 	                cookRecipe: this.props.cookRecipe,
 	                editRecipe: this.props.editRecipe
 	            });
@@ -31019,13 +31011,13 @@
 	                        null,
 	                        'Your recipes:'
 	                    ),
-	                    personalRecipesMarkup,
+	                    currentUserRecipesMarkup,
 	                    _react2.default.createElement(
 	                        'h2',
 	                        null,
-	                        'Public recipes:'
+	                        'All recipes:'
 	                    ),
-	                    publicRecipesMarkup
+	                    anyUserRecipesMarkup
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -31304,15 +31296,9 @@
 	
 	var _styles2 = _interopRequireDefault(_styles);
 	
-	var _constants = __webpack_require__(296);
-	
-	var constants = _interopRequireWildcard(_constants);
-	
-	var _Base64Image = __webpack_require__(297);
+	var _Base64Image = __webpack_require__(296);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -31833,20 +31819,6 @@
 
 /***/ },
 /* 296 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var recipeTypes = exports.recipeTypes = {
-	    PUBLIC: 'PUBLIC',
-	    PERSONAL: 'PERSONAL'
-	};
-
-/***/ },
-/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31882,7 +31854,7 @@
 	exports.default = Base64Image;
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31897,12 +31869,12 @@
 	exports.signOut = signOut;
 	exports.fetchStarted = fetchStarted;
 	exports.fetchFinished = fetchFinished;
-	exports.loadPersonalRecipesSuccess = loadPersonalRecipesSuccess;
-	exports.loadPublicRecipesSuccess = loadPublicRecipesSuccess;
+	exports.loadCurrentUserRecipesSuccess = loadCurrentUserRecipesSuccess;
+	exports.loadAnyUserRecipesSuccess = loadAnyUserRecipesSuccess;
 	exports.loadRecipeDetailsSuccess = loadRecipeDetailsSuccess;
 	exports.loadRecipeDetailsFailed = loadRecipeDetailsFailed;
 	
-	var _types = __webpack_require__(299);
+	var _types = __webpack_require__(298);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -31958,16 +31930,16 @@
 		};
 	}
 	
-	function loadPersonalRecipesSuccess(recipes) {
+	function loadCurrentUserRecipesSuccess(recipes) {
 		return {
-			type: actionTypes.LOAD_PERSONAL_RECIPES_SUCCESS,
+			type: actionTypes.LOAD_CURRENT_USER_RECIPES_SUCCESS,
 			recipes: recipes
 		};
 	}
 	
-	function loadPublicRecipesSuccess(recipes) {
+	function loadAnyUserRecipesSuccess(recipes) {
 		return {
-			type: actionTypes.LOAD_PUBLIC_RECIPES_SUCCESS,
+			type: actionTypes.LOAD_ANY_USER_RECIPES_SUCCESS,
 			recipes: recipes
 		};
 	}
@@ -31986,7 +31958,7 @@
 	}
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32004,13 +31976,13 @@
 	var ADD_RECIPE = exports.ADD_RECIPE = "ADD_TODO";
 	var UPDATE_RECIPE = exports.UPDATE_RECIPE = "UPDATE_TODO";
 	var DELETE_RECIPE = exports.DELETE_RECIPE = "DELETE_TODO";
-	var LOAD_PUBLIC_RECIPES_SUCCESS = exports.LOAD_PUBLIC_RECIPES_SUCCESS = "LOAD_PUBLIC_RECIPES_SUCCESS";
-	var LOAD_PERSONAL_RECIPES_SUCCESS = exports.LOAD_PERSONAL_RECIPES_SUCCESS = "LOAD_PERSONAL_RECIPES_SUCCESS";
+	var LOAD_CURRENT_USER_RECIPES_SUCCESS = exports.LOAD_CURRENT_USER_RECIPES_SUCCESS = "LOAD_CURRENT_USER_RECIPES_SUCCESS";
+	var LOAD_ANY_USER_RECIPES_SUCCESS = exports.LOAD_ANY_USER_RECIPES_SUCCESS = "LOAD_ANY_USER_RECIPES_SUCCESS";
 	var LOAD_RECIPE_DETAILS_SUCCESS = exports.LOAD_RECIPE_DETAILS_SUCCESS = "LOAD_RECIPE_DETAILS_SUCCESS";
 	var LOAD_RECIPE_DETAILS_FAILED = exports.LOAD_RECIPE_DETAILS_FAILED = "LOAD_RECIPE_DETAILS_FAILED";
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32020,27 +31992,22 @@
 	});
 	exports.signIn = signIn;
 	exports.signUp = signUp;
-	exports.loadRecipes = loadRecipes;
+	exports.loadCurrentUserRecipes = loadCurrentUserRecipes;
+	exports.loadAnyUserRecipes = loadAnyUserRecipes;
 	exports.loadRecipeDetails = loadRecipeDetails;
 	exports.editRecipeDetails = editRecipeDetails;
 	
-	var _isomorphicFetch = __webpack_require__(301);
+	var _isomorphicFetch = __webpack_require__(300);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _formData = __webpack_require__(303);
+	var _formData = __webpack_require__(302);
 	
 	var _formData2 = _interopRequireDefault(_formData);
 	
-	var _web = __webpack_require__(304);
+	var _web = __webpack_require__(303);
 	
-	var _store = __webpack_require__(305);
-	
-	var _constants = __webpack_require__(296);
-	
-	var constants = _interopRequireWildcard(_constants);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	var _store = __webpack_require__(304);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -32114,10 +32081,10 @@
 	    return promise;
 	}
 	
-	function loadRecipes(recipeType) {
+	function loadCurrentUserRecipes() {
 	    var auth = _store.store.getState().auth;
 	
-	    var url = _web.API_URL + '/recipes/' + recipeType;
+	    var url = _web.API_URL + '/recipes?user=current';
 	
 	    var options = {
 	        "method": "GET",
@@ -32146,10 +32113,10 @@
 	    return promise;
 	}
 	
-	function loadRecipeDetails(recipeId, recipeType) {
+	function loadAnyUserRecipes() {
 	    var auth = _store.store.getState().auth;
 	
-	    var url = _web.API_URL + '/recipes/' + recipeType + '/' + recipeId;
+	    var url = _web.API_URL + '/recipes';
 	
 	    var options = {
 	        "method": "GET",
@@ -32178,10 +32145,42 @@
 	    return promise;
 	}
 	
-	function editRecipeDetails(recipeId, recipeType, recipe) {
+	function loadRecipeDetails(recipeId) {
 	    var auth = _store.store.getState().auth;
 	
-	    var url = _web.API_URL + '/recipes/' + recipeType + '/' + recipeId;
+	    var url = _web.API_URL + '/recipes/' + recipeId;
+	
+	    var options = {
+	        "method": "GET",
+	        "headers": {
+	            "content-type": "application/json",
+	            "Authorization": "JWT " + auth.token
+	        }
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 200) {
+	                reject();
+	            } else {
+	                response.json().then(function (json) {
+	                    resolve(json);
+	                });
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function editRecipeDetails(recipeId, recipe) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId;
 	
 	    var form = new _formData2.default();
 	    form.append("title", recipe.title);
@@ -32217,7 +32216,7 @@
 	}
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32226,11 +32225,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(302);
+	__webpack_require__(301);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32690,7 +32689,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32701,7 +32700,7 @@
 	module.exports = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' ? self.FormData : window.FormData;
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32713,7 +32712,7 @@
 	//export const API_URL = "http://localhost:3000";
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32728,9 +32727,9 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _localStorage = __webpack_require__(306);
+	var _localStorage = __webpack_require__(305);
 	
-	var _reducers = __webpack_require__(307);
+	var _reducers = __webpack_require__(306);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -32754,7 +32753,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 305 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32784,7 +32783,7 @@
 	};
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32797,19 +32796,19 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _auth = __webpack_require__(308);
+	var _auth = __webpack_require__(307);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
-	var _isFetching = __webpack_require__(309);
+	var _isFetching = __webpack_require__(308);
 	
 	var _isFetching2 = _interopRequireDefault(_isFetching);
 	
-	var _recipes = __webpack_require__(310);
+	var _recipes = __webpack_require__(309);
 	
 	var recipes = _interopRequireWildcard(_recipes);
 	
-	var _recipeDetails = __webpack_require__(311);
+	var _recipeDetails = __webpack_require__(310);
 	
 	var _recipeDetails2 = _interopRequireDefault(_recipeDetails);
 	
@@ -32820,8 +32819,8 @@
 	var rootReducer = (0, _redux.combineReducers)({
 	  auth: _auth2.default,
 	  isFetching: _isFetching2.default,
-	  publicRecipes: recipes.publicRecipes,
-	  personalRecipes: recipes.personalRecipes,
+	  currentUserRecipes: recipes.currentUserRecipes,
+	  anyUserRecipes: recipes.anyUserRecipes,
 	  recipeDetails: _recipeDetails2.default,
 	  routing: _reactRouterRedux.routerReducer
 	});
@@ -32829,7 +32828,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 308 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32839,7 +32838,7 @@
 	});
 	exports.default = auth;
 	
-	var _types = __webpack_require__(299);
+	var _types = __webpack_require__(298);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -32903,7 +32902,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32913,7 +32912,7 @@
 	});
 	exports.default = isFetching;
 	
-	var _types = __webpack_require__(299);
+	var _types = __webpack_require__(298);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -32935,7 +32934,7 @@
 	}
 
 /***/ },
-/* 310 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32943,10 +32942,10 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.personalRecipes = personalRecipes;
-	exports.publicRecipes = publicRecipes;
+	exports.currentUserRecipes = currentUserRecipes;
+	exports.anyUserRecipes = anyUserRecipes;
 	
-	var _types = __webpack_require__(299);
+	var _types = __webpack_require__(298);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -32965,12 +32964,12 @@
 		}
 	}
 	
-	function personalRecipes() {
+	function currentUserRecipes() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 	
 		switch (action.type) {
-			case actionTypes.LOAD_PERSONAL_RECIPES_SUCCESS:
+			case actionTypes.LOAD_CURRENT_USER_RECIPES_SUCCESS:
 				return action.recipes;
 			case actionTypes.ADD_RECIPE:
 				return [].concat(_toConsumableArray(state), [recipe(undefined, action)]);
@@ -32991,12 +32990,12 @@
 		}
 	}
 	
-	function publicRecipes() {
+	function anyUserRecipes() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 	
 		switch (action.type) {
-			case actionTypes.LOAD_PUBLIC_RECIPES_SUCCESS:
+			case actionTypes.LOAD_ANY_USER_RECIPES_SUCCESS:
 				return action.recipes;
 			default:
 				return state;
@@ -33004,7 +33003,7 @@
 	}
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33014,7 +33013,7 @@
 	});
 	exports.default = recipeDetails;
 	
-	var _types = __webpack_require__(299);
+	var _types = __webpack_require__(298);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -33058,7 +33057,7 @@
 	}
 
 /***/ },
-/* 312 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33071,15 +33070,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _SignIn = __webpack_require__(313);
+	var _SignIn = __webpack_require__(312);
 	
 	var _SignIn2 = _interopRequireDefault(_SignIn);
 	
-	var _actions = __webpack_require__(298);
+	var _actions = __webpack_require__(297);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(300);
+	var _api = __webpack_require__(299);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -33114,7 +33113,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SignIn2.default);
 
 /***/ },
-/* 313 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33131,7 +33130,7 @@
 	
 	var _reactRouter = __webpack_require__(184);
 	
-	var _reactGoogleLogin = __webpack_require__(314);
+	var _reactGoogleLogin = __webpack_require__(313);
 	
 	var _reactGoogleLogin2 = _interopRequireDefault(_reactGoogleLogin);
 	
@@ -33268,7 +33267,7 @@
 	exports.default = (0, _reactRouter.withRouter)(SignIn);
 
 /***/ },
-/* 314 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -33375,7 +33374,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(261)(module)))
 
 /***/ },
-/* 315 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33388,15 +33387,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _SignUp = __webpack_require__(316);
+	var _SignUp = __webpack_require__(315);
 	
 	var _SignUp2 = _interopRequireDefault(_SignUp);
 	
-	var _actions = __webpack_require__(298);
+	var _actions = __webpack_require__(297);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(300);
+	var _api = __webpack_require__(299);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -33431,7 +33430,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SignUp2.default);
 
 /***/ },
-/* 316 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33575,7 +33574,7 @@
 	exports.default = (0, _reactRouter.withRouter)(SignUp);
 
 /***/ },
-/* 317 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33588,21 +33587,17 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _CookRecipe = __webpack_require__(318);
+	var _CookRecipe = __webpack_require__(317);
 	
 	var _CookRecipe2 = _interopRequireDefault(_CookRecipe);
 	
-	var _actions = __webpack_require__(298);
+	var _actions = __webpack_require__(297);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(300);
+	var _api = __webpack_require__(299);
 	
 	var api = _interopRequireWildcard(_api);
-	
-	var _constants = __webpack_require__(296);
-	
-	var constants = _interopRequireWildcard(_constants);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -33617,9 +33612,9 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		return {
-			loadRecipeDetails: function loadRecipeDetails(recipeId, recipeType) {
+			loadRecipeDetails: function loadRecipeDetails(recipeId) {
 				dispatch(actions.fetchStarted());
-				api.loadRecipeDetails(recipeId, recipeType).then(function (recipeDetails) {
+				api.loadRecipeDetails(recipeId).then(function (recipeDetails) {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
 				}).catch(function () {
@@ -33632,7 +33627,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_CookRecipe2.default);
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33651,7 +33646,7 @@
 	
 	var _styles2 = _interopRequireDefault(_styles);
 	
-	var _Base64Image = __webpack_require__(297);
+	var _Base64Image = __webpack_require__(296);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -33675,7 +33670,7 @@
 	    _createClass(CookRecipe, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            this.props.loadRecipeDetails(this.props.params.recipeId, this.props.params.recipeType);
+	            this.props.loadRecipeDetails(this.props.params.recipeId);
 	        }
 	    }, {
 	        key: 'render',
@@ -33700,11 +33695,6 @@
 	                    'h2',
 	                    null,
 	                    this.props.params.recipeId
-	                ),
-	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    this.props.params.recipeType
 	                ),
 	                _react2.default.createElement(
 	                    'h3',
@@ -33741,7 +33731,7 @@
 	exports.default = CookRecipe;
 
 /***/ },
-/* 319 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33754,21 +33744,17 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(320);
+	var _EditRecipe = __webpack_require__(319);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
-	var _actions = __webpack_require__(298);
+	var _actions = __webpack_require__(297);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(300);
+	var _api = __webpack_require__(299);
 	
 	var api = _interopRequireWildcard(_api);
-	
-	var _constants = __webpack_require__(296);
-	
-	var constants = _interopRequireWildcard(_constants);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -33783,17 +33769,17 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		return {
-			loadRecipeDetails: function loadRecipeDetails(recipeId, recipeType) {
+			loadRecipeDetails: function loadRecipeDetails(recipeId) {
 				dispatch(actions.fetchStarted());
-				api.loadRecipeDetails(recipeId, recipeType).then(function (recipeDetails) {
+				api.loadRecipeDetails(recipeId).then(function (recipeDetails) {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
 				}).catch(function () {
 					// some error
 				});
 			},
-			editRecipeDetails: function editRecipeDetails(recipeId, recipeType, recipe) {
-				api.editRecipeDetails(recipeId, recipeType, recipe).then(function () {
+			editRecipeDetails: function editRecipeDetails(recipeId, recipe) {
+				api.editRecipeDetails(recipeId, recipe).then(function () {
 					// success
 				}).catch(function () {
 					// some error
@@ -33805,7 +33791,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 320 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33824,7 +33810,7 @@
 	
 	var _styles2 = _interopRequireDefault(_styles);
 	
-	var _Base64Image = __webpack_require__(297);
+	var _Base64Image = __webpack_require__(296);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -33861,12 +33847,12 @@
 	            if (this.fileInput.files && this.fileInput.files[0]) {
 	                recipe.image = this.fileInput.files[0];
 	            }
-	            this.props.editRecipeDetails(this.props.params.recipeId, this.props.params.recipeType, recipe);
+	            this.props.editRecipeDetails(this.props.params.recipeId, recipe);
 	        }
 	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            this.props.loadRecipeDetails(this.props.params.recipeId, this.props.params.recipeType);
+	            this.props.loadRecipeDetails(this.props.params.recipeId);
 	        }
 	    }, {
 	        key: 'componentWillReceiveProps',
@@ -33908,11 +33894,6 @@
 	                    'h2',
 	                    null,
 	                    this.props.params.recipeId
-	                ),
-	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    this.props.params.recipeType
 	                ),
 	                _react2.default.createElement(
 	                    'h3',

@@ -22,11 +22,11 @@ class EditRecipe extends Component {
         if(this.fileInput.files && this.fileInput.files[0]) {
             recipe.image = this.fileInput.files[0];
         }
-        this.props.editRecipeDetails(this.props.params.recipeId, this.props.params.recipeType, recipe);
+        this.props.editRecipeDetails(this.props.params.recipeId, recipe);
     }
 
     componentDidMount() {
-        this.props.loadRecipeDetails(this.props.params.recipeId, this.props.params.recipeType);
+        this.props.loadRecipeDetails(this.props.params.recipeId);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -50,7 +50,6 @@ class EditRecipe extends Component {
             <div>
                 <h1>Edit Recipe</h1>
                 <h2>{this.props.params.recipeId}</h2>
-                <h2>{this.props.params.recipeType}</h2>
                 <h3>{this.props.recipeDetails.id}</h3>
                 <h3>{this.props.recipeDetails.title}</h3>
                 <h3>{this.props.recipeDetails.isPublic}</h3>
