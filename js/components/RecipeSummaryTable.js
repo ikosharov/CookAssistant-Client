@@ -21,11 +21,13 @@ class RecipeSummaryTable extends React.Component {
         if (this.props.recipes.length) {
             let cookRecipe = this.props.cookRecipe;
             let editRecipe = this.props.editRecipe;
+            let userId = this.props.userId;
 
             recipesMarkup = this.props.recipes.map(function (recipe) {
                 return (
                     <RecipeSummary
                         key={recipe._id}
+                        userId={userId}
                         recipe={recipe}
                         cookRecipe={cookRecipe}
                         editRecipe={editRecipe}

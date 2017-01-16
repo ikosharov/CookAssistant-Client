@@ -30875,6 +30875,7 @@
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
 			username: state.auth.username,
+			userId: state.auth.id,
 			publicRecipes: state.publicRecipes,
 			personalRecipes: state.personalRecipes,
 			isFetching: state.isFetching
@@ -30980,12 +30981,14 @@
 	            }
 	
 	            var personalRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
+	                userId: this.props.userId,
 	                recipes: this.props.personalRecipes,
 	                cookRecipe: this.props.cookRecipe,
 	                editRecipe: this.props.editRecipe
 	            });
 	
 	            var publicRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
+	                userId: this.props.userId,
 	                recipes: this.props.publicRecipes,
 	                cookRecipe: this.props.cookRecipe,
 	                editRecipe: this.props.editRecipe
@@ -31004,6 +31007,11 @@
 	                            'h1',
 	                            null,
 	                            'Cook Assistant'
+	                        ),
+	                        _react2.default.createElement(
+	                            'h2',
+	                            null,
+	                            this.props.userId
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -31213,10 +31221,12 @@
 	                (function () {
 	                    var cookRecipe = _this2.props.cookRecipe;
 	                    var editRecipe = _this2.props.editRecipe;
+	                    var userId = _this2.props.userId;
 	
 	                    recipesMarkup = _this2.props.recipes.map(function (recipe) {
 	                        return _react2.default.createElement(_RecipeSummary2.default, {
 	                            key: recipe._id,
+	                            userId: userId,
 	                            recipe: recipe,
 	                            cookRecipe: cookRecipe,
 	                            editRecipe: editRecipe
@@ -31385,8 +31395,12 @@
 	                        { type: 'button', className: 'btn btn-default', onClick: this.cook },
 	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-play-circle' }),
 	                        'Cook'
-	                    ),
-	                    _react2.default.createElement(
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    { style: _styles2.default.recipeSummaryTd },
+	                    this.props.recipe.userId == this.props.userId && _react2.default.createElement(
 	                        'button',
 	                        { type: 'button', className: 'btn btn-default', onClick: this.edit },
 	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-pencil' }),
@@ -31894,19 +31908,21 @@
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
-	function signInSucceeded(username, token) {
+	function signInSucceeded(username, token, id) {
 		return {
 			type: actionTypes.SIGN_IN_SUCCEEDED,
 			username: username,
-			token: token
+			token: token,
+			id: id
 		};
 	}
 	
-	function signUpSucceeded(username, token) {
+	function signUpSucceeded(username, token, id) {
 		return {
 			type: actionTypes.SIGN_UP_SUCCEEDED,
 			username: username,
-			token: token
+			token: token,
+			id: id
 		};
 	}
 	
@@ -32051,7 +32067,7 @@
 	                reject();
 	            } else {
 	                response.json().then(function (json) {
-	                    resolve(json.token);
+	                    resolve(json);
 	                });
 	            }
 	        }).catch(function () {
@@ -32086,7 +32102,7 @@
 	                reject();
 	            } else {
 	                response.json().then(function (json) {
-	                    resolve(json.token);
+	                    resolve(json);
 	                });
 	            }
 	        }).catch(function () {
@@ -32832,6 +32848,7 @@
 	function auth(state, action) {
 	    if (state === undefined) {
 	        return {
+	            id: null,
 	            username: null,
 	            token: null,
 	            signInFailed: false,
@@ -32842,6 +32859,7 @@
 	    switch (action.type) {
 	        case actionTypes.SIGN_IN_SUCCEEDED:
 	            return Object.assign({}, state, {
+	                id: action.id,
 	                username: action.username,
 	                token: action.token,
 	                signInFailed: false,
@@ -32850,6 +32868,7 @@
 	
 	        case actionTypes.SIGN_UP_SUCCEEDED:
 	            return Object.assign({}, state, {
+	                id: action.id,
 	                username: action.username,
 	                token: action.token,
 	                signInFailed: false,
@@ -32857,6 +32876,7 @@
 	            });
 	        case actionTypes.SIGN_IN_FAILED:
 	            return Object.assign({}, state, {
+	                id: null,
 	                username: action.username,
 	                token: null,
 	                signInFailed: true
@@ -32864,12 +32884,14 @@
 	
 	        case actionTypes.SIGN_UP_FAILED:
 	            return Object.assign({}, state, {
+	                id: null,
 	                username: action.username,
 	                token: null,
 	                signUpFailed: true
 	            });
 	        case actionTypes.SIGN_OUT:
 	            return Object.assign({}, state, {
+	                id: null,
 	                username: null,
 	                token: null,
 	                signInFailed: false,
@@ -33077,9 +33099,9 @@
 			signIn: function signIn(username, password) {
 				dispatch(actions.fetchStarted());
 	
-				api.signIn(username, password).then(function (token) {
+				api.signIn(username, password).then(function (json) {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signInSucceeded(username, token));
+					dispatch(actions.signInSucceeded(username, json.token, json.id));
 					dispatch((0, _reactRouterRedux.push)('/'));
 				}).catch(function () {
 					dispatch(actions.fetchFinished());
@@ -33394,9 +33416,9 @@
 			signUp: function signUp(username, password) {
 				dispatch(actions.fetchStarted());
 	
-				api.signUp(username, password).then(function (token) {
+				api.signUp(username, password).then(function (json) {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signUpSucceeded(username, token));
+					dispatch(actions.signUpSucceeded(username, json.token, json.id));
 					dispatch((0, _reactRouterRedux.push)('/'));
 				}).catch(function () {
 					dispatch(actions.fetchFinished());

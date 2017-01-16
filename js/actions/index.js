@@ -1,18 +1,20 @@
 import * as actionTypes from './types';
 
-export function signInSucceeded(username, token) {
+export function signInSucceeded(username, token, id) {
 	return {
 		type: actionTypes.SIGN_IN_SUCCEEDED,
 		username: username,
-		token: token
+		token: token,
+		id: id
 	}
 }
 
-export function signUpSucceeded(username, token) {
+export function signUpSucceeded(username, token, id) {
 	return {
 		type: actionTypes.SIGN_UP_SUCCEEDED,
 		username: username,
-		token: token
+		token: token,
+		id: id
 	}
 }
 

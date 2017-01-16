@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(actions.fetchStarted());
 
 			api.signUp(username, password).
-				then((token) => {
+				then((json) => {
 					dispatch(actions.fetchFinished());
-					dispatch(actions.signUpSucceeded(username, token));
+					dispatch(actions.signUpSucceeded(username, json.token, json.id));
 					dispatch(push('/'));
 				}).
 				catch(() => {

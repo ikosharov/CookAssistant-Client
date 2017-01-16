@@ -20,6 +20,7 @@ class Home extends React.Component {
 
         let personalRecipesMarkup = (
             <RecipeSummaryTable
+                userId={this.props.userId}
                 recipes={this.props.personalRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
@@ -27,6 +28,7 @@ class Home extends React.Component {
 
         let publicRecipesMarkup = (
             <RecipeSummaryTable
+                userId={this.props.userId}
                 recipes={this.props.publicRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
@@ -37,6 +39,7 @@ class Home extends React.Component {
                 <div className="col-sm-9">
                     <div className="page-header">
                         <h1>Cook Assistant</h1>
+                        <h2>{this.props.userId}</h2>
                     </div>
                     <h2>Your recipes:</h2>
                     {personalRecipesMarkup}

@@ -29,7 +29,7 @@ export function signIn(username, password) {
                 reject();
             } else {
                 response.json().then((json) => {
-                    resolve(json.token);
+                    resolve(json);
                 });
             }
         }).catch(() => {
@@ -64,7 +64,7 @@ export function signUp(username, password) {
                 reject();
             } else {
                 response.json().then((json) => {
-                    resolve(json.token);
+                    resolve(json);
                 });
             }
         }).catch(() => {

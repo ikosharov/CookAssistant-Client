@@ -43,9 +43,14 @@ class RecipeSummary extends Component {
                     <button type="button" className="btn btn-default" onClick={this.cook}>
                         <span className="glyphicon glyphicon-play-circle"></span>Cook
                     </button>
-                    <button type="button" className="btn btn-default" onClick={this.edit}>
-                        <span className="glyphicon glyphicon-pencil"></span>Edit
-                    </button>
+                </td>
+                <td style={styles.recipeSummaryTd}>
+                    {
+                        (this.props.recipe.userId == this.props.userId) &&
+                        <button type="button" className="btn btn-default" onClick={this.edit}>
+                            <span className="glyphicon glyphicon-pencil"></span>Edit
+                        </button>
+                    }
                 </td>
             </tr>
         );

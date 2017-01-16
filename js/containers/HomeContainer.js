@@ -8,6 +8,7 @@ import * as constants from '../constants';
 const mapStateToProps = (state) => {
 	return {
 		username: state.auth.username,
+		userId: state.auth.id,
 		publicRecipes: state.publicRecipes,
 		personalRecipes: state.personalRecipes,
 		isFetching: state.isFetching
