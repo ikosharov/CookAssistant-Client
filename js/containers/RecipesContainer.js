@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import Home from '../components/Home';
+import Recipes from '../components/Recipes';
 import * as actions from '../actions';
 import * as api from '../data/api';
 
 const mapStateToProps = (state) => {
 	return {
-		username: state.auth.username,
 		userId: state.auth.id,
 		currentUserRecipes: state.currentUserRecipes,
 		anyUserRecipes: state.anyUserRecipes,
@@ -16,10 +15,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signOut: () => {
-			dispatch(actions.signOut());
-			dispatch(push('/SignIn'));
-		},
 		loadRecipes: () => {
 			dispatch(actions.fetchStarted());
 			api.loadCurrentUserRecipes()
@@ -39,12 +34,12 @@ const mapDispatchToProps = (dispatch) => {
 				});
 		},
 		cookRecipe: (recipe) => {
-			dispatch(push(`Recipes/${recipe._id}/Cook`));
+			dispatch(push(`/App/Recipes/${recipe._id}/Cook`));
 		},
 		editRecipe: (recipe) => {
-			dispatch(push(`Recipes/${recipe._id}/Edit`));
+			dispatch(push(`/App/Recipes/${recipe._id}/Edit`));
 		}
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

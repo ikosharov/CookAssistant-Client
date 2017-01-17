@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 				then((json) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.signUpSucceeded(username, json.token, json.id));
-					dispatch(push('/'));
+					dispatch(push('/App/Recipes'));
 				}).
 				catch(() => {
 					dispatch(actions.fetchFinished());

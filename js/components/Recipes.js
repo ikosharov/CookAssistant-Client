@@ -1,15 +1,13 @@
 import React from 'react';
 
-import Avatar from './Avatar';
 import RecipeSummaryTable from './RecipeSummaryTable';
-import styles from '../styles';
 
-class Home extends React.Component {
+class Recipes extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.loadRecipes();
     }
 
@@ -36,25 +34,13 @@ class Home extends React.Component {
 
         return (
             <div>
-                <div className="col-sm-9">
-                    <div className="page-header">
-                        <h1>Cook Assistant</h1>
-                        <h2>{this.props.userId}</h2>
-                    </div>
-                    <h2>Your recipes:</h2>
-                    {currentUserRecipesMarkup}
-                    <h2>All recipes:</h2>
-                    {anyUserRecipesMarkup}
-                </div>
-                <div className="col-sm-3 align='center'">
-                    <Avatar
-                        username={this.props.username}
-                        signOut={this.props.signOut}
-                        />
-                </div>
+                <h2>Your recipes:</h2>
+                {currentUserRecipesMarkup}
+                <h2>All recipes:</h2>
+                {anyUserRecipesMarkup}
             </div>
         );
     }
 }
 
-export default Home;
+export default Recipes;
