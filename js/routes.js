@@ -24,8 +24,8 @@ let configureRoutes = function (store) {
     let routes = (
         <Route path="/" component={Root}>
             <IndexRoute component={HomeContainer} onEnter={authRequired} />
-            <Route path="Recipes/Cook/:recipeId" component={CookRecipeContainer} onEnter={authRequired} />
-            <Route path="Recipes/Edit/:recipeId" component={EditRecipeContainer} onEnter={authRequired} />
+            <Route path="Recipes/:recipeId/Cook" component={CookRecipeContainer} onEnter={authRequired} />
+            <Route path="Recipes/:recipeId/Edit" component={EditRecipeContainer} onEnter={authRequired} />
             <Route path="SignIn" component={SignInContainer} />
             <Route path="SignUp" component={SignUpContainer} />
             <Redirect from="*" to="/" />

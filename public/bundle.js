@@ -30777,8 +30777,8 @@
 	        _reactRouter.Route,
 	        { path: '/', component: _Root2.default },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomeContainer2.default, onEnter: authRequired }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/Cook/:recipeId', component: _CookRecipeContainer2.default, onEnter: authRequired }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/Edit/:recipeId', component: _EditRecipeContainer2.default, onEnter: authRequired }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/:recipeId/Cook', component: _CookRecipeContainer2.default, onEnter: authRequired }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Recipes/:recipeId/Edit', component: _EditRecipeContainer2.default, onEnter: authRequired }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'SignIn', component: _SignInContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'SignUp', component: _SignUpContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Redirect, { from: '*', to: '/' })
@@ -30901,10 +30901,10 @@
 				});
 			},
 			cookRecipe: function cookRecipe(recipe) {
-				dispatch((0, _reactRouterRedux.push)('Recipes/Cook/' + recipe._id));
+				dispatch((0, _reactRouterRedux.push)('Recipes/' + recipe._id + '/Cook'));
 			},
 			editRecipe: function editRecipe(recipe) {
-				dispatch((0, _reactRouterRedux.push)('Recipes/Edit/' + recipe._id));
+				dispatch((0, _reactRouterRedux.push)('Recipes/' + recipe._id + '/Edit'));
 			}
 		};
 	};
