@@ -28,9 +28,11 @@ let configureRoutes = function (store) {
                 <Route path="Recipes" component={RecipesContainer} />
                 <Route path="Recipes/:recipeId/Cook" component={CookRecipeContainer} />
                 <Route path="Recipes/:recipeId/Edit" component={EditRecipeContainer} />
+                <Redirect from="*" to="Recipes" />
             </Route>
             <Route path="SignIn" component={SignInContainer} />
             <Route path="SignUp" component={SignUpContainer} />
+            <Redirect from="*" to="App" />
         </Route>
     );
 
