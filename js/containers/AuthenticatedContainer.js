@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		signOut: () => {
 			dispatch(actions.signOut());
-			dispatch(push('/SignIn'));
+			dispatch(push('/Auth'));
 		}
 	};
 }
