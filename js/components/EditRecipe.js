@@ -1,7 +1,6 @@
 'use strict';
 
 import React, { Component } from 'react';
-import styles from '../styles';
 import Base64Image from './Base64Image';
 
 class EditRecipe extends Component {

@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid burlywood;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipes-section {
+    order: 2;
+}
+
+.avatar-section {
+    order: 1;
+}
+
+@media screen and (min-width: 800px) {
+    .wrapper {
+        width: 80%;
+        margin: 0 auto 0 auto;
+    }
+
+    .content {
+        flex-direction: row;
+    }
+
+    .recipes-section {
+        order: 1;
+        flex: 4;
+    }
+
+    .avatar-section {
+        order: 2;
+        flex: 1;
+    }
+}

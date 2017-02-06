@@ -2,7 +2,7 @@ import React from 'react';
 
 import RecipeSummary from './RecipeSummary';
 import Avatar from './Avatar';
-import styles from '../styles';
+import styles from '../styles/recipeSummaryTable.css';
 
 class RecipeSummaryTable extends React.Component {
     constructor(props) {
@@ -31,25 +31,27 @@ class RecipeSummaryTable extends React.Component {
                         recipe={recipe}
                         cookRecipe={cookRecipe}
                         editRecipe={editRecipe}
-                        />
+                    />
                 );
             });
-        } 
+        }
 
         return (
-            <table className="table table-striped table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th>title</th>
-                        <th>visibility</th>
-                        <th>image</th>
-                        <th>rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {recipesMarkup}
-                </tbody>
-            </table>
+            <div className={styles['recipe-summary-table']}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>title</th>
+                            <th>visibility</th>
+                            <th>image</th>
+                            <th>rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {recipesMarkup}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }

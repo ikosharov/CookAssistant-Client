@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import Rating from 'react-rating';
-import styles from '../styles';
 import Base64Image from './Base64Image';
 
 class RecipeSummary extends Component {
@@ -29,21 +28,21 @@ class RecipeSummary extends Component {
 
         return (
             <tr>
-                <td style={styles.recipeSummaryTd}>{this.props.recipe.title}</td>
-                <td style={styles.recipeSummaryTd}>{isPublicMarkup}</td>
-                <td style={styles.recipeSummaryTd}><Base64Image data={this.props.recipe.image} /></td>
-                <td style={styles.recipeSummaryTd} className="ratingTD">
+                <td>{this.props.recipe.title}</td>
+                <td>{isPublicMarkup}</td>
+                <td><Base64Image data={this.props.recipe.image} /></td>
+                <td className="ratingTD">
                     <Rating initialRate={this.props.recipe.rating}
                         empty={'glyphicon glyphicon-star-empty'}
                         full={'glyphicon glyphicon-star'}
                         />
                 </td>
-                <td style={styles.recipeSummaryTd}>
+                <td>
                     <button type="button" className="btn btn-default" onClick={this.cook}>
                         <span className="glyphicon glyphicon-play-circle"></span>Cook
                     </button>
                 </td>
-                <td style={styles.recipeSummaryTd}>
+                <td>
                     {
                         (this.props.recipe.userId == this.props.userId) &&
                         <button type="button" className="btn btn-default" onClick={this.edit}>

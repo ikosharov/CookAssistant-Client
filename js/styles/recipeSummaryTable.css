@@ -1,0 +1,14 @@
+.recipe-summary-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.recipe-summary-table td, recipe-summary-table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.recipe-summary-table tr:nth-child(even) {
+    background-color: #f2f7ff;
+}
