@@ -3,7 +3,7 @@ import React from 'react';
 class Root extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div>
                 {this.props.children}
             </div>
         );

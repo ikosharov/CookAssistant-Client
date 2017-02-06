@@ -1,33 +1,17 @@
 import * as actionTypes from './types';
 
-export function signInSucceeded(username, token, id) {
+export function authenticateSucceeded(username, token, id) {
 	return {
-		type: actionTypes.SIGN_IN_SUCCEEDED,
+		type: actionTypes.AUTHENTICATE_SUCCEEDED,
 		username: username,
 		token: token,
 		id: id
 	}
 }
 
-export function signUpSucceeded(username, token, id) {
+export function authenticateFailed(username) {
 	return {
-		type: actionTypes.SIGN_UP_SUCCEEDED,
-		username: username,
-		token: token,
-		id: id
-	}
-}
-
-export function signInFailed(username) {
-	return {
-		type: actionTypes.SIGN_IN_FAILED,
-		username: username
-	}
-}
-
-export function signUpFailed(username) {
-	return {
-		type: actionTypes.SIGN_UP_FAILED,
+		type: actionTypes.AUTHENTICATE_FAILED,
 		username: username
 	}
 }

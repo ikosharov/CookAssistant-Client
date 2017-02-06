@@ -6,8 +6,7 @@ import { Route, IndexRoute, Redirect } from 'react-router';
 import Root from './components/Root';
 import RecipesContainer from './containers/RecipesContainer';
 import AuthenticatedContainer from './containers/AuthenticatedContainer';
-import SignInContainer from './containers/SignInContainer';
-import SignUpContainer from './containers/SignUpContainer';
+import AuthContainer from './containers/AuthContainer';
 import CookRecipeContainer from './containers/CookRecipeContainer';
 import EditRecipeContainer from './containers/EditRecipeContainer';
 
@@ -16,7 +15,7 @@ let configureRoutes = function (store) {
         if (!store.getState().auth.token) {
             // not signed in. redirect to sign in
             replace({
-                pathname: 'SignIn',
+                pathname: 'Auth',
                 state: { nextPathname: nextState.location.pathname }
             });
         }
@@ -30,8 +29,7 @@ let configureRoutes = function (store) {
                 <Route path="Recipes/:recipeId/Edit" component={EditRecipeContainer} />
                 <Redirect from="*" to="Recipes" />
             </Route>
-            <Route path="SignIn" component={SignInContainer} />
-            <Route path="SignUp" component={SignUpContainer} />
+            <Route path="Auth" component={AuthContainer} />
             <Redirect from="*" to="App" />
         </Route>
     );

@@ -6,51 +6,33 @@ export default function auth(state, action) {
             id: null,
             username: null,
             token: null,
-            signInFailed: false,
-            signUpFailed: false
+            authenticateFailed: false,
         }
     }
 
     switch (action.type) {
-        case actionTypes.SIGN_IN_SUCCEEDED:
+        case actionTypes.AUTHENTICATE_SUCCEEDED:
             return Object.assign({}, state, {
                 id: action.id,
                 username: action.username,
                 token: action.token,
-                signInFailed: false,
-                signUpFailed: false
+                authenticateFailed: false
             });
 
-        case actionTypes.SIGN_UP_SUCCEEDED:
-            return Object.assign({}, state, {
-                id: action.id,
-                username: action.username,
-                token: action.token,
-                signInFailed: false,
-                signUpFailed: false
-            });
-        case actionTypes.SIGN_IN_FAILED:
+        case actionTypes.AUTHENTICATE_FAILED:
             return Object.assign({}, state, {
                 id: null, 
                 username: action.username,
                 token: null,
-                signInFailed: true
+                authenticateFailed: true
             });
 
-        case actionTypes.SIGN_UP_FAILED:
-            return Object.assign({}, state, {
-                id: null,
-                username: action.username,
-                token: null,
-                signUpFailed: true
-            });
         case actionTypes.SIGN_OUT:
             return Object.assign({}, state, {
                 id: null,
                 username: null,
                 token: null,
-                signInFailed: false,
-                signUpFailed: false
+                authenticateFailed: false
             });
         default:
             return state;
