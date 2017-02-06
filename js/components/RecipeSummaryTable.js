@@ -1,4 +1,5 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 import RecipeSummary from './RecipeSummary';
 import Avatar from './Avatar';
@@ -37,7 +38,7 @@ class RecipeSummaryTable extends React.Component {
         }
 
         return (
-            <div className={styles['recipe-summary-table']}>
+            <div styleName='recipe-summary-table'>
                 <table>
                     <thead>
                         <tr>
@@ -56,4 +57,4 @@ class RecipeSummaryTable extends React.Component {
     }
 }
 
-export default RecipeSummaryTable;
+export default CSSModules(RecipeSummaryTable, styles);

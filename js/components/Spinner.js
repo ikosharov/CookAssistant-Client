@@ -1,13 +1,14 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 import styles from '../styles/spinner.css';
 
 class Spinner extends React.Component {
     render() {
         return (
-            <div className={styles.loader}></div>
+            <div styleName='loader'></div>
         );
     }
 }
 
-export default Spinner;
+export default CSSModules(Spinner, styles);

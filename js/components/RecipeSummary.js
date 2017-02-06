@@ -21,9 +21,9 @@ class RecipeSummary extends Component {
     }
 
     render() {
-        var isPublicMarkup = (<span className="label label-success">public</span>);
+        var isPublicMarkup = (<span>public</span>);
         if (!this.props.recipe.isPublic) {
-            isPublicMarkup = (<span className="label label-warning">private</span>);
+            isPublicMarkup = (<span>private</span>);
         }
 
         return (
@@ -31,22 +31,22 @@ class RecipeSummary extends Component {
                 <td>{this.props.recipe.title}</td>
                 <td>{isPublicMarkup}</td>
                 <td><Base64Image data={this.props.recipe.image} /></td>
-                <td className="ratingTD">
+                <td>
                     <Rating initialRate={this.props.recipe.rating}
                         empty={'glyphicon glyphicon-star-empty'}
                         full={'glyphicon glyphicon-star'}
                         />
                 </td>
                 <td>
-                    <button type="button" className="btn btn-default" onClick={this.cook}>
-                        <span className="glyphicon glyphicon-play-circle"></span>Cook
+                    <button type="button" onClick={this.cook}>
+                        <span>Cook</span>
                     </button>
                 </td>
                 <td>
                     {
                         (this.props.recipe.userId == this.props.userId) &&
-                        <button type="button" className="btn btn-default" onClick={this.edit}>
-                            <span className="glyphicon glyphicon-pencil"></span>Edit
+                        <button type="button" onClick={this.edit}>
+                            <span>Edit</span>
                         </button>
                     }
                 </td>

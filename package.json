@@ -25,6 +25,7 @@
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.1",
     "react-addons-css-transition-group": "^15.4.1",
+    "react-css-modules": "^4.1.0",
     "react-dom": "^15.4.1",
     "react-rating": "^0.6.3",
     "react-redux": "^4.4.6",
