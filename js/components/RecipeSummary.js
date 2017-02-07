@@ -1,8 +1,11 @@
 'use strict';
 
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import Rating from 'react-rating';
+
 import Base64Image from './Base64Image';
+import styles from '../styles/recipeSummary.css';
 
 class RecipeSummary extends Component {
     constructor(props) {
@@ -21,38 +24,36 @@ class RecipeSummary extends Component {
     }
 
     render() {
-        var isPublicMarkup = (<span>public</span>);
+        var isPublicMarkup = (<span className="label label-success">public</span>);
         if (!this.props.recipe.isPublic) {
-            isPublicMarkup = (<span>private</span>);
+            isPublicMarkup = (<span className="label label-warning">private</span>);
         }
+
+        let showEdit = (this.props.recipe.userId == this.props.userId);
 
         return (
             <tr>
-                <td>{this.props.recipe.title}</td>
-                <td>{isPublicMarkup}</td>
-                <td><Base64Image data={this.props.recipe.image} /></td>
                 <td>
+                    {this.props.recipe.title}
+                    <br />
+                    {isPublicMarkup}
+                </td>
+                <td styleName='image-cell'><Base64Image data={this.props.recipe.image} /></td>
+                <td styleName='rating-cell'>
                     <Rating initialRate={this.props.recipe.rating}
                         empty={'glyphicon glyphicon-star-empty'}
                         full={'glyphicon glyphicon-star'}
                         />
                 </td>
                 <td>
-                    <button type="button" onClick={this.cook}>
-                        <span>Cook</span>
-                    </button>
-                </td>
-                <td>
-                    {
-                        (this.props.recipe.userId == this.props.userId) &&
-                        <button type="button" onClick={this.edit}>
-                            <span>Edit</span>
-                        </button>
-                    }
+                    <div className="btn-group">
+                        <button type="button" className="btn btn-primary" onClick={this.cook}>Cook</button>
+                        {showEdit && <button type="button" className="btn btn-warning" onClick={this.edit}>Edit</button>}
+                    </div>
                 </td>
             </tr>
         );
     }
 }
 
-export default RecipeSummary;
+export default CSSModules(RecipeSummary, styles);

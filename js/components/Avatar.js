@@ -1,6 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
+import styles from '../styles/avatar.css';
 
 class Avatar extends Component {
     constructor(props) {
@@ -11,10 +13,7 @@ class Avatar extends Component {
         return (
             <div>
                 <h3>{this.props.username}</h3>
-                <img src="http://placehold.it/100x100"
-                    className="img-circle"
-                    alt="User image"
-                    width="100" height="100" />
+                <img src="http://placehold.it/100x100" styleName='avatar-image' alt="User image" />
                 <br />
                 <button onClick={this.props.signOut} className="btn btn-primary">Sign Out</button>
             </div>
@@ -22,4 +21,4 @@ class Avatar extends Component {
     }
 }
 
-export default Avatar;
+export default CSSModules(Avatar, styles);

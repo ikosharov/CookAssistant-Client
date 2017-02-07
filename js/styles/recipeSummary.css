@@ -1,0 +1,13 @@
+.rating-cell {
+    font-size: 2em;
+    color: orange;
+    text-align: center;
+}
+
+.image-cell {
+    text-align: center;
+}
+
+.image-cell img {
+    border-radius: 10%;
+}
