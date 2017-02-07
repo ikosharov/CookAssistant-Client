@@ -31627,7 +31627,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'th',
-	                                null,
+	                                { styleName: 'rating-header' },
 	                                'rating'
 	                            ),
 	                            _react2.default.createElement(
@@ -38103,7 +38103,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummary__rating-cell___2I-sk {\r\n    font-size: 2em;\r\n    color: orange;\r\n    text-align: center;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 {\r\n    text-align: center;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 img {\r\n    border-radius: 10%;\r\n}", ""]);
+	exports.push([module.id, ".recipeSummary__rating-cell___2I-sk {\r\n    font-size: 2em;\r\n    color: orange;\r\n    text-align: center;\r\n    display: none;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 {\r\n    text-align: center;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 img {\r\n    border-radius: 10%;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__rating-cell___2I-sk {\r\n        display: table-cell;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -38256,11 +38256,12 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummaryTable__recipe-summary-table___3mP5Z table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\n.recipeSummaryTable__recipe-summary-table___3mP5Z td, recipe-summary-table th {\r\n    border: 1px solid #dddddd;\r\n    padding: 8px;\r\n}\r\n\r\n.recipeSummaryTable__recipe-summary-table___3mP5Z tr:nth-child(even) {\r\n    background-color: #f2f7ff;\r\n}", ""]);
+	exports.push([module.id, ".recipeSummaryTable__recipe-summary-table___3mP5Z table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\n.recipeSummaryTable__recipe-summary-table___3mP5Z td, recipe-summary-table th {\r\n    border: 1px solid #dddddd;\r\n    padding: 8px;\r\n}\r\n\r\n.recipeSummaryTable__recipe-summary-table___3mP5Z tr:nth-child(even) {\r\n    background-color: #f2f7ff;\r\n}\r\n\r\n.recipeSummaryTable__rating-header___3LDvI {\r\n    display: none;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummaryTable__rating-header___3LDvI {\r\n        display: table-cell;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"recipe-summary-table": "recipeSummaryTable__recipe-summary-table___3mP5Z"
+		"recipe-summary-table": "recipeSummaryTable__recipe-summary-table___3mP5Z",
+		"rating-header": "recipeSummaryTable__rating-header___3LDvI"
 	};
 
 /***/ },
@@ -39590,7 +39591,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".authenticated__wrapper___1OnLB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid burlywood;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.authenticated__content___2R1FU {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.authenticated__recipes-section___22L4B {\r\n    order: 2;\r\n}\r\n\r\n.authenticated__avatar-section___1L861 {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .authenticated__wrapper___1OnLB {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n    }\r\n\r\n    .authenticated__content___2R1FU {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .authenticated__recipes-section___22L4B {\r\n        order: 1;\r\n        flex: 4;\r\n    }\r\n\r\n    .authenticated__avatar-section___1L861 {\r\n        order: 2;\r\n        flex: 1;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".authenticated__wrapper___1OnLB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid burlywood;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.authenticated__content___2R1FU {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.authenticated__recipes-section___22L4B {\r\n    order: 2;\r\n}\r\n\r\n.authenticated__avatar-section___1L861 {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .authenticated__wrapper___1OnLB {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .authenticated__content___2R1FU {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .authenticated__recipes-section___22L4B {\r\n        order: 1;\r\n        flex: 4;\r\n    }\r\n\r\n    .authenticated__avatar-section___1L861 {\r\n        order: 2;\r\n        flex: 1;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {

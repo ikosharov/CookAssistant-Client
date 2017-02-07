@@ -24,6 +24,7 @@
     .wrapper {
         width: 80%;
         margin: 0 auto 0 auto;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
 
     .content {

@@ -11,3 +11,13 @@
 .recipe-summary-table tr:nth-child(even) {
     background-color: #f2f7ff;
 }
+
+.rating-header {
+    display: none;
+}
+
+@media (min-width: 800px) {
+    .rating-header {
+        display: table-cell;
+    }
+}

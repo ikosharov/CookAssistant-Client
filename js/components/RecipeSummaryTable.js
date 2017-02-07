@@ -44,7 +44,7 @@ class RecipeSummaryTable extends React.Component {
                         <tr>
                             <th>title</th>
                             <th>image</th>
-                            <th>rating</th>
+                            <th styleName="rating-header">rating</th>
                             <th>actions</th>
                         </tr>
                     </thead>

@@ -2,6 +2,7 @@
     font-size: 2em;
     color: orange;
     text-align: center;
+    display: none;
 }
 
 .image-cell {
@@ -10,4 +11,10 @@
 
 .image-cell img {
     border-radius: 10%;
+}
+
+@media (min-width: 800px) {
+    .rating-cell {
+        display: table-cell;
+    }
 }
