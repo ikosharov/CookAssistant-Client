@@ -12,6 +12,7 @@
 .title > span {
     line-height: 3em;
     font-size: 3rem;
+    color: orange;
 }
 
 .title h1 {
@@ -31,6 +32,11 @@
     background-color: lightgray;
     font-size: 1.8em;
     padding: 0.5em;
+    max-height: 6em;
+}
+
+.image img {
+    max-width: 100%;
 }
 
 .controls > div:hover {
@@ -68,5 +74,10 @@
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .image {
+        max-width: 50%;
+        margin-right: 2em;
     }
 }

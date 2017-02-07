@@ -30911,7 +30911,7 @@
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(498);
+	var _EditRecipeContainer = __webpack_require__(500);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
@@ -38053,15 +38053,16 @@
 	        width = _ref.width,
 	        height = _ref.height;
 	
-	    var w = width || '100px';
-	    var h = height || '100px';
+	    // let w = width || '100px';
+	    // let h = height || '100px';
 	    var imageSrc = 'http://placehold.it/100x100';
 	
 	    if (data) {
 	        imageSrc = "data:image/png;base64," + data;
 	    }
 	
-	    var markup = _react2.default.createElement('img', { src: imageSrc, width: w, height: h });
+	    // let markup = (<img src={imageSrc} width={w} height={h} />);
+	    var markup = _react2.default.createElement('img', { src: imageSrc });
 	
 	    return markup;
 	};
@@ -38103,7 +38104,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummary__rating-cell___2I-sk {\r\n    font-size: 2em;\r\n    color: orange;\r\n    text-align: center;\r\n    display: none;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 {\r\n    text-align: center;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 img {\r\n    border-radius: 10%;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__rating-cell___2I-sk {\r\n        display: table-cell;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipeSummary__rating-cell___2I-sk {\r\n    font-size: 2em;\r\n    color: orange;\r\n    text-align: center;\r\n    display: none;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 {\r\n    text-align: center;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 img {\r\n    border-radius: 10%;\r\n    max-width: 250px;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__rating-cell___2I-sk {\r\n        display: table-cell;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -39591,7 +39592,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".authenticated__wrapper___1OnLB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid burlywood;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.authenticated__content___2R1FU {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.authenticated__recipes-section___22L4B {\r\n    order: 2;\r\n}\r\n\r\n.authenticated__avatar-section___1L861 {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .authenticated__wrapper___1OnLB {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .authenticated__content___2R1FU {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .authenticated__recipes-section___22L4B {\r\n        order: 1;\r\n        flex: 4;\r\n    }\r\n\r\n    .authenticated__avatar-section___1L861 {\r\n        order: 2;\r\n        flex: 1;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".authenticated__wrapper___1OnLB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid burlywood;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.authenticated__content___2R1FU {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.authenticated__recipes-section___22L4B {\r\n    order: 2;\r\n}\r\n\r\n.authenticated__avatar-section___1L861 {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .authenticated__wrapper___1OnLB {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .authenticated__content___2R1FU {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .authenticated__recipes-section___22L4B {\r\n        order: 1;\r\n        flex: 4;\r\n        padding-right: 1em;\r\n    }\r\n\r\n    .authenticated__avatar-section___1L861 {\r\n        order: 2;\r\n        flex: 1;\r\n        border-left: 1px solid lightblue;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -40047,6 +40048,18 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
+	var _reactCssModules = __webpack_require__(296);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _reactRating = __webpack_require__(462);
+	
+	var _reactRating2 = _interopRequireDefault(_reactRating);
+	
+	var _cookRecipe = __webpack_require__(498);
+	
+	var _cookRecipe2 = _interopRequireDefault(_cookRecipe);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40061,13 +40074,33 @@
 	    function CookRecipe(props) {
 	        _classCallCheck(this, CookRecipe);
 	
-	        return _possibleConstructorReturn(this, (CookRecipe.__proto__ || Object.getPrototypeOf(CookRecipe)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (CookRecipe.__proto__ || Object.getPrototypeOf(CookRecipe)).call(this, props));
+	
+	        _this.edit = _this.edit.bind(_this);
+	        _this.share = _this.share.bind(_this);
+	        _this.star = _this.star.bind(_this);
+	        return _this;
 	    }
 	
 	    _createClass(CookRecipe, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this.props.loadRecipeDetails(this.props.params.recipeId);
+	        }
+	    }, {
+	        key: 'edit',
+	        value: function edit() {
+	            alert('edit');
+	        }
+	    }, {
+	        key: 'share',
+	        value: function share() {
+	            alert('share');
+	        }
+	    }, {
+	        key: 'star',
+	        value: function star() {
+	            alert('star');
 	        }
 	    }, {
 	        key: 'render',
@@ -40082,41 +40115,157 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Cook Recipe'
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'h1',
+	                        null,
+	                        this.props.recipeDetails.title
+	                    ),
+	                    _react2.default.createElement(_reactRating2.default, { initialRate: this.props.recipeDetails.rating,
+	                        empty: 'glyphicon glyphicon-star-empty',
+	                        full: 'glyphicon glyphicon-star'
+	                    })
 	                ),
 	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    this.props.params.recipeId
+	                    'div',
+	                    { styleName: 'image-and-controls' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { styleName: 'image' },
+	                        _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { styleName: 'controls' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-pencil', onClick: this.edit },
+	                                    ' Edit'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-share', onClick: this.share },
+	                                    ' Share'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-star', onClick: this.star },
+	                                    ' Star'
+	                                )
+	                            )
+	                        )
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.id
+	                    'div',
+	                    { styleName: 'ingredients' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        'Ingredients'
+	                    ),
+	                    _react2.default.createElement(
+	                        'ul',
+	                        null,
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 1'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 2'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 3'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 4'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 5'
+	                        )
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.title
-	                ),
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.isPublic
-	                ),
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image })
-	                ),
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.rating
+	                    'div',
+	                    { styleName: 'steps' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        'Steps'
+	                    ),
+	                    _react2.default.createElement(
+	                        'ol',
+	                        null,
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Heat the oven to 220\xB0C (or gas mark 7). Tip the flour into a large bowl along with the salt and baking powder, then mix it all up. Add the butter in, then rub the butter in with your fingers until the mix looks like fine crumbs. When that is done, stir in the sugar.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Put the milk into a jug and heat in the microwave for about 20-30 seconds. It should be warm but not hot. Add the vanilla and lemon juice to the milk and then put that to one side and but a baking tray in the oven to warm.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Make a well in the dry mix, then add the liquid and combine it quickly with a cutlery knife \u2013 it will seem pretty wet at first. Spread some flour onto the work surface and tip the dough out. Dredge the dough and your hands with a little more flour, then fold the dough over 2-3 times until it\'s smoother. Now pat it into a round shape about 4cm deep.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Take a 5cm cutter (Pro-tip \u2013 smooth-edged cutters tend to cut more cleanly, giving a better rise) and dip it into some flour. Plunge into the dough, then repeat until you have four scones. By this point you\u2019ll probably need to press what\'s left of the dough back into a round to cut out another four.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Brush the tops with beaten egg, then place onto the hot baking tray.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Bake for 10 minutes until risen and golden on the top. Eat just warm or cold on the day of baking, generously (and I do mean generously) topped with jam and clotted cream. '
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'If freezing, freeze once cool. Defrost, then put in a low oven (about 160\xB0C) for a few minutes to refresh.'
+	                        )
+	                    )
 	                )
 	            );
 	        }
@@ -40125,10 +40274,58 @@
 	    return CookRecipe;
 	}(_react.Component);
 	
-	exports.default = CookRecipe;
+	exports.default = (0, _reactCssModules2.default)(CookRecipe, _cookRecipe2.default);
 
 /***/ },
 /* 498 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(499);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(292)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(291)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    background-color: lightgray;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "cookRecipe__wrapper___12bkX",
+		"title": "cookRecipe__title___125Fx",
+		"image-and-controls": "cookRecipe__image-and-controls___32Zc3",
+		"controls": "cookRecipe__controls___SiwIG",
+		"image": "cookRecipe__image___1hH-o",
+		"ingredients": "cookRecipe__ingredients___1uz6A",
+		"steps": "cookRecipe__steps___1z4wL"
+	};
+
+/***/ },
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40141,7 +40338,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(499);
+	var _EditRecipe = __webpack_require__(501);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
@@ -40188,7 +40385,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 499 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

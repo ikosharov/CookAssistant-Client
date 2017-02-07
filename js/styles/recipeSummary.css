@@ -11,6 +11,7 @@
 
 .image-cell img {
     border-radius: 10%;
+    max-width: 250px;
 }
 
 @media (min-width: 800px) {

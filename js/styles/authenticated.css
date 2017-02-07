@@ -34,10 +34,12 @@
     .recipes-section {
         order: 1;
         flex: 4;
+        padding-right: 1em;
     }
 
     .avatar-section {
         order: 2;
         flex: 1;
+        border-left: 1px solid lightblue;
     }
 }
