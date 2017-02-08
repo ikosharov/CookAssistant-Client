@@ -6,7 +6,9 @@ import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Promise } from 'es6-promise';
+import assign from 'es6-object-assign';
 
+assign.polyfill();
 Promise.polyfill();
 
 import configureRoutes from './routes';
