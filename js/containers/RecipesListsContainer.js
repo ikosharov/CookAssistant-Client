@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import Recipes from '../components/Recipes';
+import RecipesLists from '../components/RecipesLists';
 import * as actions from '../actions';
 import * as api from '../data/api';
 
@@ -34,12 +34,12 @@ const mapDispatchToProps = (dispatch) => {
 				});
 		},
 		cookRecipe: (recipe) => {
-			dispatch(push(`/App/Recipes/${recipe._id}/Cook`));
+			dispatch(push(`/Recipes/${recipe._id}/Cook`));
 		},
 		editRecipe: (recipe) => {
-			dispatch(push(`/App/Recipes/${recipe._id}/Edit`));
+			dispatch(push(`/Recipes/${recipe._id}/Edit`));
 		}
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesLists);

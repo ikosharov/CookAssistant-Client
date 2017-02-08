@@ -1,10 +1,10 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 import Avatar from './Avatar';
-import CSSModules from 'react-css-modules';
-import styles from '../styles/authenticated.css';
+import styles from '../styles/recipesShell.css';
 
-class Authenticated extends React.Component {
+class RecipesShell extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -29,4 +29,4 @@ class Authenticated extends React.Component {
     }
 }
 
-export default CSSModules(Authenticated, styles);
+export default CSSModules(RecipesShell, styles);

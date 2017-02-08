@@ -1,8 +1,10 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 import RecipeSummaryTable from './RecipeSummaryTable';
+import styles from '../styles/recipesLists.css';
 
-class Recipes extends React.Component {
+class RecipesLists extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -22,7 +24,7 @@ class Recipes extends React.Component {
                 recipes={this.props.currentUserRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
-                />);
+            />);
 
         let anyUserRecipesMarkup = (
             <RecipeSummaryTable
@@ -30,7 +32,7 @@ class Recipes extends React.Component {
                 recipes={this.props.anyUserRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
-                />);
+            />);
 
         return (
             <div>
@@ -39,8 +41,9 @@ class Recipes extends React.Component {
                 <h2>All recipes:</h2>
                 {anyUserRecipesMarkup}
             </div>
+
         );
     }
 }
 
-export default Recipes;
+export default CSSModules(RecipesLists, styles);

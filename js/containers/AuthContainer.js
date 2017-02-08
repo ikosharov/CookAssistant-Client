@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 				then((json) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.authenticateSucceeded(username, json.token, json.id));
-					dispatch(push('/App/Recipes'));
+					dispatch(push('/Recipes'));
 				}).
 				catch(() => {
 					dispatch(actions.fetchFinished());
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
 				then((json) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.authenticateSucceeded(username, json.token, json.id));
-					dispatch(push('/App/Recipes'));
+					dispatch(push('/Recipes'));
 				}).
 				catch(() => {
 					dispatch(actions.fetchFinished());

@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import Authenticated from '../components/Authenticated';
+import RecipesShell from '../components/RecipesShell';
 import * as actions from '../actions';
 
 const mapStateToProps = (state) => {
 	return {
 		username: state.auth.username,
-		userId: state.auth.id,
-		isFetching: state.isFetching
 	}
 }
 
@@ -20,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Authenticated);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesShell);
