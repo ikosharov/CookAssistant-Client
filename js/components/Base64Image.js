@@ -5,7 +5,7 @@ import React from 'react';
 const Base64Image = ({data, width, height}) => {
     // let w = width || '100px';
     // let h = height || '100px';
-    let imageSrc = 'http://placehold.it/100x100';
+    let imageSrc = 'http://placehold.it/200x200';
 
     if(data) {
         imageSrc = "data:image/png;base64," + data;

@@ -37657,9 +37657,9 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipeSummaryTable = __webpack_require__(469);
+	var _RecipesList = __webpack_require__(469);
 	
-	var _RecipeSummaryTable2 = _interopRequireDefault(_RecipeSummaryTable);
+	var _RecipesList2 = _interopRequireDefault(_RecipesList);
 	
 	var _recipesLists = __webpack_require__(477);
 	
@@ -37698,14 +37698,14 @@
 	                );
 	            }
 	
-	            var currentUserRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
+	            var currentUserRecipesMarkup = _react2.default.createElement(_RecipesList2.default, {
 	                userId: this.props.userId,
 	                recipes: this.props.currentUserRecipes,
 	                cookRecipe: this.props.cookRecipe,
 	                editRecipe: this.props.editRecipe
 	            });
 	
-	            var anyUserRecipesMarkup = _react2.default.createElement(_RecipeSummaryTable2.default, {
+	            var anyUserRecipesMarkup = _react2.default.createElement(_RecipesList2.default, {
 	                userId: this.props.userId,
 	                recipes: this.props.anyUserRecipes,
 	                cookRecipe: this.props.cookRecipe,
@@ -37714,7 +37714,7 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
 	                    'h2',
 	                    null,
@@ -37764,9 +37764,9 @@
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
-	var _recipeSummaryTable = __webpack_require__(475);
+	var _recipesList = __webpack_require__(475);
 	
-	var _recipeSummaryTable2 = _interopRequireDefault(_recipeSummaryTable);
+	var _recipesList2 = _interopRequireDefault(_recipesList);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -37776,44 +37776,22 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var RecipeSummaryTable = function (_React$Component) {
-	    _inherits(RecipeSummaryTable, _React$Component);
+	var RecipesList = function (_React$Component) {
+	    _inherits(RecipesList, _React$Component);
 	
-	    function RecipeSummaryTable(props) {
-	        _classCallCheck(this, RecipeSummaryTable);
+	    function RecipesList(props) {
+	        _classCallCheck(this, RecipesList);
 	
-	        return _possibleConstructorReturn(this, (RecipeSummaryTable.__proto__ || Object.getPrototypeOf(RecipeSummaryTable)).call(this, props));
+	        return _possibleConstructorReturn(this, (RecipesList.__proto__ || Object.getPrototypeOf(RecipesList)).call(this, props));
 	    }
 	
-	    _createClass(RecipeSummaryTable, [{
+	    _createClass(RecipesList, [{
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
 	
-	            var recipesMarkup = _react2.default.createElement(
-	                'tr',
-	                null,
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    'no data'
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    'no data'
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    'no data'
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    'no data'
-	                )
-	            );
+	            var recipesMarkup = void 0;
+	
 	            if (this.props.recipes.length) {
 	                (function () {
 	                    var cookRecipe = _this2.props.cookRecipe;
@@ -37830,56 +37808,26 @@
 	                        });
 	                    });
 	                })();
+	            } else {
+	                recipesMarkup = _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    'No data'
+	                );
 	            }
 	
 	            return _react2.default.createElement(
 	                'div',
-	                { styleName: 'recipe-summary-table' },
-	                _react2.default.createElement(
-	                    'table',
-	                    null,
-	                    _react2.default.createElement(
-	                        'thead',
-	                        null,
-	                        _react2.default.createElement(
-	                            'tr',
-	                            null,
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'title'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'image'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                { styleName: 'rating-header' },
-	                                'rating'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'actions'
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'tbody',
-	                        null,
-	                        recipesMarkup
-	                    )
-	                )
+	                { styleName: 'wrapper' },
+	                recipesMarkup
 	            );
 	        }
 	    }]);
 	
-	    return RecipeSummaryTable;
+	    return RecipesList;
 	}(_react2.default.Component);
 	
-	exports.default = (0, _reactCssModules2.default)(RecipeSummaryTable, _recipeSummaryTable2.default);
+	exports.default = (0, _reactCssModules2.default)(RecipesList, _recipesList2.default);
 
 /***/ },
 /* 470 */
@@ -37947,47 +37895,50 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var isPublicMarkup = _react2.default.createElement(
-	                'span',
-	                { className: 'label label-success' },
-	                'public'
-	            );
-	            if (!this.props.recipe.isPublic) {
-	                isPublicMarkup = _react2.default.createElement(
-	                    'span',
-	                    { className: 'label label-warning' },
-	                    'private'
-	                );
-	            }
-	
 	            var showEdit = this.props.recipe.userId == this.props.userId;
 	
 	            return _react2.default.createElement(
-	                'tr',
-	                null,
+	                'div',
+	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    this.props.recipe.title,
-	                    _react2.default.createElement('br', null),
-	                    isPublicMarkup
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            this.props.recipe.title
+	                        ),
+	                        this.props.recipe.isPublic && _react2.default.createElement(
+	                            'span',
+	                            { className: 'label label-success' },
+	                            'public'
+	                        ),
+	                        !this.props.recipe.isPublic && _react2.default.createElement(
+	                            'span',
+	                            { className: 'label label-warning' },
+	                            'private'
+	                        )
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'td',
-	                    { styleName: 'image-cell' },
-	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.recipe.image })
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    { styleName: 'rating-cell' },
+	                    'div',
+	                    { styleName: 'rating' },
 	                    _react2.default.createElement(_reactRating2.default, { initialRate: this.props.recipe.rating,
 	                        empty: 'glyphicon glyphicon-star-empty',
 	                        full: 'glyphicon glyphicon-star'
 	                    })
 	                ),
 	                _react2.default.createElement(
-	                    'td',
-	                    null,
+	                    'div',
+	                    { styleName: 'image' },
+	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.recipe.image })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'actions' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'btn-group' },
@@ -38450,7 +38401,7 @@
 	
 	    // let w = width || '100px';
 	    // let h = height || '100px';
-	    var imageSrc = 'http://placehold.it/100x100';
+	    var imageSrc = 'http://placehold.it/200x200';
 	
 	    if (data) {
 	        imageSrc = "data:image/png;base64," + data;
@@ -38499,12 +38450,15 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummary__rating-cell___2I-sk {\r\n    font-size: 2em;\r\n    color: orange;\r\n    text-align: center;\r\n    display: none;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 {\r\n    text-align: center;\r\n}\r\n\r\n.recipeSummary__image-cell___1Oep7 img {\r\n    border-radius: 10%;\r\n    max-width: 250px;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__rating-cell___2I-sk {\r\n        display: table-cell;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipeSummary__wrapper___hZpX_ {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___1mIDN {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__rating___3llDm {\r\n    order: 2;\r\n    font-size: 2em;\r\n}\r\n\r\n.recipeSummary__image___oRvVu {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___oRvVu img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___1TdHI {\r\n    order: 4;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___hZpX_ {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__image___oRvVu {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___3llDm {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___1TdHI {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n}\r\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"rating-cell": "recipeSummary__rating-cell___2I-sk",
-		"image-cell": "recipeSummary__image-cell___1Oep7"
+		"wrapper": "recipeSummary__wrapper___hZpX_",
+		"title": "recipeSummary__title___1mIDN",
+		"rating": "recipeSummary__rating___3llDm",
+		"image": "recipeSummary__image___oRvVu",
+		"actions": "recipeSummary__actions___1TdHI"
 	};
 
 /***/ },
@@ -38523,8 +38477,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummaryTable.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummaryTable.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -38542,12 +38496,11 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummaryTable__recipe-summary-table___3mP5Z table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\n.recipeSummaryTable__recipe-summary-table___3mP5Z td, recipe-summary-table th {\r\n    border: 1px solid #dddddd;\r\n    padding: 8px;\r\n}\r\n\r\n.recipeSummaryTable__recipe-summary-table___3mP5Z tr:nth-child(even) {\r\n    background-color: #f2f7ff;\r\n}\r\n\r\n.recipeSummaryTable__rating-header___3LDvI {\r\n    display: none;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummaryTable__rating-header___3LDvI {\r\n        display: table-cell;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipesList__wrapper___1owmK {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"recipe-summary-table": "recipeSummaryTable__recipe-summary-table___3mP5Z",
-		"rating-header": "recipeSummaryTable__rating-header___3LDvI"
+		"wrapper": "recipesList__wrapper___1owmK"
 	};
 
 /***/ },
@@ -38585,10 +38538,12 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".recipesLists__wrapper___tTrPL > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___tTrPL h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
 	
 	// exports
-
+	exports.locals = {
+		"wrapper": "recipesLists__wrapper___tTrPL"
+	};
 
 /***/ },
 /* 479 */

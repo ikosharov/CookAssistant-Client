@@ -3,22 +3,16 @@ import CSSModules from 'react-css-modules';
 
 import RecipeSummary from './RecipeSummary';
 import Avatar from './Avatar';
-import styles from '../styles/recipeSummaryTable.css';
+import styles from '../styles/recipesList.css';
 
-class RecipeSummaryTable extends React.Component {
+class RecipesList extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        let recipesMarkup = (
-            <tr>
-                <td>no data</td>
-                <td>no data</td>
-                <td>no data</td>
-                <td>no data</td>
-            </tr>
-        )
+        let recipesMarkup;
+
         if (this.props.recipes.length) {
             let cookRecipe = this.props.cookRecipe;
             let editRecipe = this.props.editRecipe;
@@ -35,26 +29,16 @@ class RecipeSummaryTable extends React.Component {
                     />
                 );
             });
+        } else {
+            recipesMarkup = (<h2>No data</h2>);
         }
 
         return (
-            <div styleName='recipe-summary-table'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>title</th>
-                            <th>image</th>
-                            <th styleName="rating-header">rating</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {recipesMarkup}
-                    </tbody>
-                </table>
+            <div styleName='wrapper'>
+                {recipesMarkup}
             </div>
         );
     }
 }
 
-export default CSSModules(RecipeSummaryTable, styles);
+export default CSSModules(RecipesList, styles);

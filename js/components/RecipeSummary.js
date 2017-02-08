@@ -24,34 +24,33 @@ class RecipeSummary extends Component {
     }
 
     render() {
-        var isPublicMarkup = (<span className="label label-success">public</span>);
-        if (!this.props.recipe.isPublic) {
-            isPublicMarkup = (<span className="label label-warning">private</span>);
-        }
-
         let showEdit = (this.props.recipe.userId == this.props.userId);
 
         return (
-            <tr>
-                <td>
-                    {this.props.recipe.title}
-                    <br />
-                    {isPublicMarkup}
-                </td>
-                <td styleName='image-cell'><Base64Image data={this.props.recipe.image} /></td>
-                <td styleName='rating-cell'>
+            <div styleName="wrapper">
+                <div styleName="title">
+                    <div>
+                        <h3>{this.props.recipe.title}</h3>
+                        {this.props.recipe.isPublic && <span className="label label-success">public</span>}
+                        {!this.props.recipe.isPublic && <span className="label label-warning">private</span>}
+                    </div>
+                </div>
+                <div styleName="rating">
                     <Rating initialRate={this.props.recipe.rating}
                         empty={'glyphicon glyphicon-star-empty'}
                         full={'glyphicon glyphicon-star'}
-                        />
-                </td>
-                <td>
+                    />
+                </div>
+                <div styleName="image">
+                    <Base64Image data={this.props.recipe.image} />
+                </div>
+                <div styleName="actions">
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary" onClick={this.cook}>Cook</button>
                         {showEdit && <button type="button" className="btn btn-warning" onClick={this.edit}>Edit</button>}
                     </div>
-                </td>
-            </tr>
+                </div>
+            </div>
         );
     }
 }
