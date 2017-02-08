@@ -38538,7 +38538,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipesLists__wrapper___tTrPL > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___tTrPL h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipesLists__wrapper___tTrPL > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n    padding-left: 0.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___tTrPL h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
