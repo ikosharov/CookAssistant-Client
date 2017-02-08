@@ -22,7 +22,7 @@ let configureRoutes = function (store) {
     }
 
     let routes = (
-        <Route path="/" component={Root}>
+        <Route path="" component={Root}>
             <Route path="App" component={AuthenticatedContainer} onEnter={authRequired}>
                 <Route path="Recipes" component={RecipesContainer} />
                 <Route path="Recipes/:recipeId/Cook" component={CookRecipeContainer} />
@@ -30,7 +30,7 @@ let configureRoutes = function (store) {
                 <Redirect from="*" to="Recipes" />
             </Route>
             <Route path="Auth" component={AuthContainer} />
-            <Redirect from="*" to="App" />
+            <Redirect from="*" to="App/Recipes" />
         </Route>
     );
 

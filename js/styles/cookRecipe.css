@@ -29,7 +29,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: lightgray;
     font-size: 1.8em;
     padding: 0.5em;
     max-height: 6em;
