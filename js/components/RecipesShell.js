@@ -2,6 +2,7 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 
 import Avatar from './Avatar';
+import Breadcrumb from './Breadcrumb';
 import styles from '../styles/recipesShell.css';
 
 class RecipesShell extends React.Component {
@@ -13,6 +14,7 @@ class RecipesShell extends React.Component {
         return (
             <div styleName='wrapper'>
                 <h1>Cook Assistant</h1>
+                <Breadcrumb />
                 <div styleName='content'>
                     <div styleName='recipes-section'>
                         {this.props.children}

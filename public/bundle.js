@@ -77,7 +77,7 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(485);
+	var _store = __webpack_require__(491);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -30955,19 +30955,19 @@
 	
 	var _RecipesShellContainer2 = _interopRequireDefault(_RecipesShellContainer);
 	
-	var _RecipesListsContainer = __webpack_require__(468);
+	var _RecipesListsContainer = __webpack_require__(474);
 	
 	var _RecipesListsContainer2 = _interopRequireDefault(_RecipesListsContainer);
 	
-	var _AuthContainer = __webpack_require__(492);
+	var _AuthContainer = __webpack_require__(498);
 	
 	var _AuthContainer2 = _interopRequireDefault(_AuthContainer);
 	
-	var _CookRecipeContainer = __webpack_require__(499);
+	var _CookRecipeContainer = __webpack_require__(505);
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(503);
+	var _EditRecipeContainer = __webpack_require__(509);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
@@ -30986,15 +30986,15 @@
 	
 	    var routes = _react2.default.createElement(
 	        _reactRouter.Route,
-	        { path: '', component: _Root2.default },
+	        { path: '', name: 'root', component: _Root2.default },
 	        _react2.default.createElement(
 	            _reactRouter.Route,
-	            { path: 'Recipes', component: _RecipesShellContainer2.default, onEnter: authRequired },
-	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _RecipesListsContainer2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Cook', component: _CookRecipeContainer2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Edit', component: _EditRecipeContainer2.default })
+	            { path: 'Recipes', name: 'recipes', component: _RecipesShellContainer2.default, onEnter: authRequired },
+	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _RecipesListsContainer2.default, name: 'home' }),
+	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Cook', name: 'cook', component: _CookRecipeContainer2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Edit', name: 'edit', component: _EditRecipeContainer2.default })
 	        ),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Auth', component: _AuthContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Auth', name: 'auth', component: _AuthContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Redirect, { from: '*', to: 'Recipes' })
 	    );
 	
@@ -31421,7 +31421,7 @@
 	
 	var _RecipesShell2 = _interopRequireDefault(_RecipesShell);
 	
-	var _actions = __webpack_require__(466);
+	var _actions = __webpack_require__(472);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
@@ -31470,7 +31470,11 @@
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
-	var _recipesShell = __webpack_require__(464);
+	var _Breadcrumb = __webpack_require__(464);
+	
+	var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
+	
+	var _recipesShell = __webpack_require__(470);
 	
 	var _recipesShell2 = _interopRequireDefault(_recipesShell);
 	
@@ -31502,6 +31506,7 @@
 	                    null,
 	                    'Cook Assistant'
 	                ),
+	                _react2.default.createElement(_Breadcrumb2.default, null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { styleName: 'content' },
@@ -37476,10 +37481,267 @@
 /* 464 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(296);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _reactRouter = __webpack_require__(184);
+	
+	var _reactBreadcrumbs = __webpack_require__(465);
+	
+	var _reactBreadcrumbs2 = _interopRequireDefault(_reactBreadcrumbs);
+	
+	var _breadcrumb = __webpack_require__(468);
+	
+	var _breadcrumb2 = _interopRequireDefault(_breadcrumb);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Breadcrumb = function (_Component) {
+	    _inherits(Breadcrumb, _Component);
+	
+	    function Breadcrumb(props) {
+	        _classCallCheck(this, Breadcrumb);
+	
+	        return _possibleConstructorReturn(this, (Breadcrumb.__proto__ || Object.getPrototypeOf(Breadcrumb)).call(this, props));
+	    }
+	
+	    _createClass(Breadcrumb, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(_reactBreadcrumbs2.default, {
+	                    routes: this.props.routes,
+	                    params: this.props.params
+	                })
+	            );
+	        }
+	    }]);
+	
+	    return Breadcrumb;
+	}(_react.Component);
+	
+	exports.default = (0, _reactRouter.withRouter)((0, _reactCssModules2.default)(Breadcrumb, _breadcrumb2.default));
+
+/***/ },
+/* 465 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	function _interopRequireDefault(e) {
+	  return e && e.__esModule ? e : { "default": e };
+	}function _classCallCheck(e, t) {
+	  if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+	}function _possibleConstructorReturn(e, t) {
+	  if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return !t || "object" != (typeof t === "undefined" ? "undefined" : _typeof(t)) && "function" != typeof t ? e : t;
+	}function _inherits(e, t) {
+	  if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + (typeof t === "undefined" ? "undefined" : _typeof(t)));e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+	}var _createClass = function () {
+	  function e(e, t) {
+	    for (var r = 0; r < t.length; r++) {
+	      var a = t[r];a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), Object.defineProperty(e, a.key, a);
+	    }
+	  }return function (t, r, a) {
+	    return r && e(t.prototype, r), a && e(t, a), t;
+	  };
+	}(),
+	    _react = __webpack_require__(2),
+	    _react2 = _interopRequireDefault(_react),
+	    _reactRouter = __webpack_require__(184),
+	    _exenv = __webpack_require__(466),
+	    _exenv2 = _interopRequireDefault(_exenv),
+	    Breadcrumbs = function (e) {
+	  function t(e) {
+	    _classCallCheck(this, t);var r = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));return r.displayName = "Breadcrumbs", r;
+	  }return _inherits(t, e), _createClass(t, [{ key: "_getDisplayName", value: function value(e) {
+	      var t = null;return "function" == typeof e.getDisplayName && (t = e.getDisplayName()), t = e.indexRoute ? t || e.indexRoute.displayName || null : t || e.displayName || null, !t && e.name && (t = e.name), !t && this.props.displayMissing && (t = this.props.displayMissingText), t;
+	    } }, { key: "_addKeyToElement", value: function value(e) {
+	      return e && !e.key && e.type ? Object.assign({}, e, { key: 100 * Math.random() }) : e;
+	    } }, { key: "_addKeyToArrayElements", value: function value(e) {
+	      var t = this;return e.map(function (e) {
+	        return t._addKeyToElement(e);
+	      });
+	    } }, { key: "_processCustomElements", value: function value(e) {
+	      var t = this;return e.map(function (e) {
+	        return e ? Array.isArray(e) ? t._addKeyToArrayElements(e) : t._addKeyToElement(e) : null;
+	      });
+	    } }, { key: "_appendAndPrependElements", value: function value(e) {
+	      var t = [],
+	          r = this._processCustomElements([e.shift(), e.pop()]);return r[0] && t.unshift(r[0]), t.push(e[0]), r[1] && t.push(r[1]), t.reduce(function (e, t) {
+	        return e.concat(t);
+	      }, []).filter(function (e) {
+	        return e;
+	      });
+	    } }, { key: "_resolveRouteName", value: function value(e) {
+	      var t = this._getDisplayName(e);return !t && e.breadcrumbName && (t = e.breadcrumbName), !t && e.name && (t = e.name), t;
+	    } }, { key: "_processRoute", value: function value(e, t, r, a, p) {
+	      var s = this;if (!e.path && this.props.hideNoPath) return null;var n = "",
+	          o = "",
+	          i = "",
+	          u = this._resolveRouteName(e);if (u && "excludes" in this.props && this.props.excludes.some(function (e) {
+	        return e === u;
+	      })) return null;var l = !0;l && (l = e.childRoutes ? !0 : !1, l = t !== r + 1), n = t !== r + 1 ? this.props.separator : "", l || (n = ""), e.hasOwnProperty("breadcrumblink") && (l = e.breadcrumblink), this.props.params && (o = Object.keys(this.props.params).map(function (e) {
+	        return i = e, s.props.params[e];
+	      }));var c = e.path.split("/")[e.path.split("/").length - 1],
+	          f = void 0;if (e.path.split("/").map(function (t) {
+	        if (":" == t.substring(0, 1) && s.props.params) {
+	          f = Object.keys(s.props.params).map(function (e) {
+	            return s.props.params[e];
+	          });var r = e.path.split("/").map(function (e) {
+	            return ":" == e.substring(0, 1) ? f.shift() : e;
+	          });e.path = r.reduce(function (e, t) {
+	            return e + "/" + t;
+	          }), e.staticName || ":" != c.substring(0, 1) || (u = r.reduce(function (e, t) {
+	            return t;
+	          })), "function" == typeof e.prettifyParam && (u = e.prettifyParam(u));
+	        }
+	      }), u) {
+	        this.props.prettify && (u = u.replace(/-/g, " "), u = u.replace(/\w\S*/g, function (e) {
+	          return e.charAt(0).toUpperCase() + e.substr(1).toLowerCase();
+	        }));var d = this.props.itemClass;if (l) var h = p ? _react2["default"].createElement(this.props.Link || _reactRouter.Link, { to: e.path }, u) : u;else h = u, d += " " + this.props.activeItemClass;return p ? _react2["default"].createElement(this.props.itemElement, { className: d, key: 100 * Math.random() }, h, n) : h;
+	      }return null;
+	    } }, { key: "_buildRoutes", value: function value(e, t, r, a) {
+	      var p = this,
+	          s = [],
+	          n = e[1] && e[1].hasOwnProperty("path"),
+	          o = "/",
+	          i = [];return e.forEach(function (e, t) {
+	        var r = Object.assign({}, e);"function" == typeof e.prettifyParam && (r.prettifyParam = e.prettifyParam), "props" in r && "path" in r.props && (r.path = r.props.path, r.children = r.props.children, r.name = r.props.name, r.prettifyParam = r.props.prettifyParam), r.path && ("/" === r.path.charAt(0) ? o = r.path : ("/" !== o.charAt(o.length - 1) && (o += "/"), o += r.path)), t > 0 && r.path && "/" !== r.path.charAt(0) && (r.path = o);var a = p._resolveRouteName(r);!p.props.displayMissing && !a || !r.path || "excludes" in p.props && p.props.excludes.some(function (e) {
+	          return e === a;
+	        }) || i.push(r);
+	      }), e = i, e.map(function (r, a) {
+	        if (!r) return null;"props" in r && "path" in r.props && (r.path = r.props.path, r.children = r.props.children, r.name = r.props.name), r.path && ("/" === r.path.charAt(0) ? o = r.path : ("/" !== o.charAt(o.length - 1) && (o += "/"), o += r.path)), a > 0 && r.path && "/" !== r.path.charAt(0) && (r.path = o);var i = p._processRoute(r, e.length, s.length, n, t);i && s.push(i);
+	      }), _exenv2["default"].canUseDOM && window && window.document && "setDocumentTitle" in this.props && this.props.setDocumentTitle && s.length > 0 && (window.document.title = s[s.length - 1].props.children[0]), (r || a) && (s = this._appendAndPrependElements([r, s, a])), t ? _react2["default"].createElement(this.props.wrapperElement, { className: this.props.customClass || this.props.wrapperClass }, s) : s;
+	    } }, { key: "render", value: function value() {
+	      return this._buildRoutes(this.props.routes, this.props.createElement, this.props.prepend, this.props.append);
+	    } }]), t;
+	}(_react2["default"].Component);Breadcrumbs.propTypes = { prepend: _react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.node, _react2["default"].PropTypes.bool]), append: _react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.node, _react2["default"].PropTypes.bool]), separator: _react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.element, _react2["default"].PropTypes.string]), createElement: _react2["default"].PropTypes.bool, displayMissing: _react2["default"].PropTypes.bool, prettify: _react2["default"].PropTypes.bool, displayMissingText: _react2["default"].PropTypes.string, displayName: _react2["default"].PropTypes.string, breadcrumbName: _react2["default"].PropTypes.string, wrapperElement: _react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.element, _react2["default"].PropTypes.string]), wrapperClass: _react2["default"].PropTypes.string, itemElement: _react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.element, _react2["default"].PropTypes.string]), itemClass: _react2["default"].PropTypes.string, customClass: _react2["default"].PropTypes.string, activeItemClass: _react2["default"].PropTypes.string, excludes: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string), hideNoPath: _react2["default"].PropTypes.bool, routes: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.object).isRequired, setDocumentTitle: _react2["default"].PropTypes.bool }, Breadcrumbs.defaultProps = { prepend: !1, append: !1, separator: " > ", createElement: !0, displayMissing: !0, displayMissingText: "Missing name prop from Route", wrapperElement: "div", wrapperClass: "breadcrumbs", itemElement: "span", itemClass: "", activeItemClass: "", excludes: [""], prettify: !1, hideNoPath: !0, setDocumentTitle: !1 }, module.exports = Breadcrumbs;
+	//# sourceMappingURL=dist/react-breadcrumbs.min.js.map
+
+/***/ },
+/* 466 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Based on code that is Copyright 2013-2015, Facebook, Inc.
+	  All rights reserved.
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+	
+		var ExecutionEnvironment = {
+	
+			canUseDOM: canUseDOM,
+	
+			canUseWorkers: typeof Worker !== 'undefined',
+	
+			canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+	
+			canUseViewport: canUseDOM && !!window.screen
+	
+		};
+	
+		if ("function" === 'function' && _typeof(__webpack_require__(467)) === 'object' && __webpack_require__(467)) {
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return ExecutionEnvironment;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if (typeof module !== 'undefined' && module.exports) {
+			module.exports = ExecutionEnvironment;
+		} else {
+			window.ExecutionEnvironment = ExecutionEnvironment;
+		}
+	})();
+
+/***/ },
+/* 467 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ },
+/* 468 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(465);
+	var content = __webpack_require__(469);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 469 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".breadcrumb__wrapper___2syIA {\r\n    padding-left: 0.3em;\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "breadcrumb__wrapper___2syIA"
+	};
+
+/***/ },
+/* 470 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(471);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -37499,7 +37761,7 @@
 	}
 
 /***/ },
-/* 465 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -37518,7 +37780,7 @@
 	};
 
 /***/ },
-/* 466 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37536,7 +37798,7 @@
 	exports.loadRecipeDetailsSuccess = loadRecipeDetailsSuccess;
 	exports.loadRecipeDetailsFailed = loadRecipeDetailsFailed;
 	
-	var _types = __webpack_require__(467);
+	var _types = __webpack_require__(473);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -37604,7 +37866,7 @@
 	}
 
 /***/ },
-/* 467 */
+/* 473 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37626,7 +37888,7 @@
 	var LOAD_RECIPE_DETAILS_FAILED = exports.LOAD_RECIPE_DETAILS_FAILED = "LOAD_RECIPE_DETAILS_FAILED";
 
 /***/ },
-/* 468 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37639,15 +37901,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _RecipesLists = __webpack_require__(469);
+	var _RecipesLists = __webpack_require__(475);
 	
 	var _RecipesLists2 = _interopRequireDefault(_RecipesLists);
 	
-	var _actions = __webpack_require__(466);
+	var _actions = __webpack_require__(472);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(480);
+	var _api = __webpack_require__(486);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -37694,7 +37956,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RecipesLists2.default);
 
 /***/ },
-/* 469 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37713,11 +37975,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipesList = __webpack_require__(470);
+	var _RecipesList = __webpack_require__(476);
 	
 	var _RecipesList2 = _interopRequireDefault(_RecipesList);
 	
-	var _recipesLists = __webpack_require__(478);
+	var _recipesLists = __webpack_require__(484);
 	
 	var _recipesLists2 = _interopRequireDefault(_recipesLists);
 	
@@ -37793,7 +38055,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipesLists, _recipesLists2.default);
 
 /***/ },
-/* 470 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37812,7 +38074,7 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipeSummary = __webpack_require__(471);
+	var _RecipeSummary = __webpack_require__(477);
 	
 	var _RecipeSummary2 = _interopRequireDefault(_RecipeSummary);
 	
@@ -37820,7 +38082,7 @@
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
-	var _recipesList = __webpack_require__(476);
+	var _recipesList = __webpack_require__(482);
 	
 	var _recipesList2 = _interopRequireDefault(_recipesList);
 	
@@ -37886,7 +38148,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipesList, _recipesList2.default);
 
 /***/ },
-/* 471 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37905,15 +38167,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(472);
+	var _reactRating = __webpack_require__(478);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _Base64Image = __webpack_require__(473);
+	var _Base64Image = __webpack_require__(479);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _recipeSummary = __webpack_require__(474);
+	var _recipeSummary = __webpack_require__(480);
 	
 	var _recipeSummary2 = _interopRequireDefault(_recipeSummary);
 	
@@ -38021,7 +38283,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipeSummary, _recipeSummary2.default);
 
 /***/ },
-/* 472 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -38436,7 +38698,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(261)(module)))
 
 /***/ },
-/* 473 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38473,13 +38735,13 @@
 	exports.default = Base64Image;
 
 /***/ },
-/* 474 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(475);
+	var content = __webpack_require__(481);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -38499,7 +38761,7 @@
 	}
 
 /***/ },
-/* 475 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -38519,13 +38781,13 @@
 	};
 
 /***/ },
-/* 476 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(477);
+	var content = __webpack_require__(483);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -38545,7 +38807,7 @@
 	}
 
 /***/ },
-/* 477 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -38561,13 +38823,13 @@
 	};
 
 /***/ },
-/* 478 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(479);
+	var content = __webpack_require__(485);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -38587,7 +38849,7 @@
 	}
 
 /***/ },
-/* 479 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -38603,7 +38865,7 @@
 	};
 
 /***/ },
-/* 480 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38618,17 +38880,17 @@
 	exports.loadRecipeDetails = loadRecipeDetails;
 	exports.editRecipeDetails = editRecipeDetails;
 	
-	var _isomorphicFetch = __webpack_require__(481);
+	var _isomorphicFetch = __webpack_require__(487);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _formData = __webpack_require__(483);
+	var _formData = __webpack_require__(489);
 	
 	var _formData2 = _interopRequireDefault(_formData);
 	
-	var _web = __webpack_require__(484);
+	var _web = __webpack_require__(490);
 	
-	var _store = __webpack_require__(485);
+	var _store = __webpack_require__(491);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -38837,7 +39099,7 @@
 	}
 
 /***/ },
-/* 481 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38846,11 +39108,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(482);
+	__webpack_require__(488);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 482 */
+/* 488 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39310,7 +39572,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 483 */
+/* 489 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39321,7 +39583,7 @@
 	module.exports = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' ? self.FormData : window.FormData;
 
 /***/ },
-/* 484 */
+/* 490 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39333,7 +39595,7 @@
 	//export const API_URL = "http://localhost:3000";
 
 /***/ },
-/* 485 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39348,9 +39610,9 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _localStorage = __webpack_require__(486);
+	var _localStorage = __webpack_require__(492);
 	
-	var _reducers = __webpack_require__(487);
+	var _reducers = __webpack_require__(493);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -39374,7 +39636,7 @@
 	}
 
 /***/ },
-/* 486 */
+/* 492 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39404,7 +39666,7 @@
 	};
 
 /***/ },
-/* 487 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39417,19 +39679,19 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _auth = __webpack_require__(488);
+	var _auth = __webpack_require__(494);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
-	var _isFetching = __webpack_require__(489);
+	var _isFetching = __webpack_require__(495);
 	
 	var _isFetching2 = _interopRequireDefault(_isFetching);
 	
-	var _recipes = __webpack_require__(490);
+	var _recipes = __webpack_require__(496);
 	
 	var recipes = _interopRequireWildcard(_recipes);
 	
-	var _recipeDetails = __webpack_require__(491);
+	var _recipeDetails = __webpack_require__(497);
 	
 	var _recipeDetails2 = _interopRequireDefault(_recipeDetails);
 	
@@ -39449,7 +39711,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 488 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39459,7 +39721,7 @@
 	});
 	exports.default = auth;
 	
-	var _types = __webpack_require__(467);
+	var _types = __webpack_require__(473);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -39505,7 +39767,7 @@
 	}
 
 /***/ },
-/* 489 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39515,7 +39777,7 @@
 	});
 	exports.default = isFetching;
 	
-	var _types = __webpack_require__(467);
+	var _types = __webpack_require__(473);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -39537,7 +39799,7 @@
 	}
 
 /***/ },
-/* 490 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39548,7 +39810,7 @@
 	exports.currentUserRecipes = currentUserRecipes;
 	exports.anyUserRecipes = anyUserRecipes;
 	
-	var _types = __webpack_require__(467);
+	var _types = __webpack_require__(473);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -39606,7 +39868,7 @@
 	}
 
 /***/ },
-/* 491 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39616,7 +39878,7 @@
 	});
 	exports.default = recipeDetails;
 	
-	var _types = __webpack_require__(467);
+	var _types = __webpack_require__(473);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -39660,7 +39922,7 @@
 	}
 
 /***/ },
-/* 492 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39673,15 +39935,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _Auth = __webpack_require__(493);
+	var _Auth = __webpack_require__(499);
 	
 	var _Auth2 = _interopRequireDefault(_Auth);
 	
-	var _actions = __webpack_require__(466);
+	var _actions = __webpack_require__(472);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(480);
+	var _api = __webpack_require__(486);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -39728,7 +39990,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Auth2.default);
 
 /***/ },
-/* 493 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39747,11 +40009,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Spinner = __webpack_require__(494);
+	var _Spinner = __webpack_require__(500);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _auth = __webpack_require__(497);
+	var _auth = __webpack_require__(503);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
@@ -39892,7 +40154,7 @@
 	exports.default = (0, _reactCssModules2.default)(Auth, _auth2.default);
 
 /***/ },
-/* 494 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39911,7 +40173,7 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _spinner = __webpack_require__(495);
+	var _spinner = __webpack_require__(501);
 	
 	var _spinner2 = _interopRequireDefault(_spinner);
 	
@@ -39945,13 +40207,13 @@
 	exports.default = (0, _reactCssModules2.default)(Spinner, _spinner2.default);
 
 /***/ },
-/* 495 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(496);
+	var content = __webpack_require__(502);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -39971,7 +40233,7 @@
 	}
 
 /***/ },
-/* 496 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -39988,13 +40250,13 @@
 	};
 
 /***/ },
-/* 497 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(498);
+	var content = __webpack_require__(504);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40014,7 +40276,7 @@
 	}
 
 /***/ },
-/* 498 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40033,7 +40295,7 @@
 	};
 
 /***/ },
-/* 499 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40046,15 +40308,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _CookRecipe = __webpack_require__(500);
+	var _CookRecipe = __webpack_require__(506);
 	
 	var _CookRecipe2 = _interopRequireDefault(_CookRecipe);
 	
-	var _actions = __webpack_require__(466);
+	var _actions = __webpack_require__(472);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(480);
+	var _api = __webpack_require__(486);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40086,7 +40348,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_CookRecipe2.default);
 
 /***/ },
-/* 500 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40101,7 +40363,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Base64Image = __webpack_require__(473);
+	var _Base64Image = __webpack_require__(479);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -40109,11 +40371,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(472);
+	var _reactRating = __webpack_require__(478);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _cookRecipe = __webpack_require__(501);
+	var _cookRecipe = __webpack_require__(507);
 	
 	var _cookRecipe2 = _interopRequireDefault(_cookRecipe);
 	
@@ -40334,13 +40596,13 @@
 	exports.default = (0, _reactCssModules2.default)(CookRecipe, _cookRecipe2.default);
 
 /***/ },
-/* 501 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(502);
+	var content = __webpack_require__(508);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40360,7 +40622,7 @@
 	}
 
 /***/ },
-/* 502 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40382,7 +40644,7 @@
 	};
 
 /***/ },
-/* 503 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40395,15 +40657,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(504);
+	var _EditRecipe = __webpack_require__(510);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
-	var _actions = __webpack_require__(466);
+	var _actions = __webpack_require__(472);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(480);
+	var _api = __webpack_require__(486);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40442,7 +40704,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 504 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40461,15 +40723,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(472);
+	var _reactRating = __webpack_require__(478);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _editRecipe = __webpack_require__(505);
+	var _editRecipe = __webpack_require__(511);
 	
 	var _editRecipe2 = _interopRequireDefault(_editRecipe);
 	
-	var _Base64Image = __webpack_require__(473);
+	var _Base64Image = __webpack_require__(479);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -40706,13 +40968,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
 
 /***/ },
-/* 505 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(506);
+	var content = __webpack_require__(512);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40732,7 +40994,7 @@
 	}
 
 /***/ },
-/* 506 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();

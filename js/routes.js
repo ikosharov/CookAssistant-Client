@@ -22,13 +22,13 @@ let configureRoutes = function (store) {
     }
 
     let routes = (
-        <Route path="" component={Root}>
-            <Route path="Recipes" component={RecipesShellContainer} onEnter={authRequired}>
-                <IndexRoute component={RecipesListsContainer} />
-                <Route path=":recipeId/Cook" component={CookRecipeContainer} />
-                <Route path=":recipeId/Edit" component={EditRecipeContainer} />
+        <Route path="" name="root" component={Root}>
+            <Route path="Recipes" name="recipes" component={RecipesShellContainer} onEnter={authRequired}>
+                <IndexRoute component={RecipesListsContainer} name="home" />
+                <Route path=":recipeId/Cook" name="cook" component={CookRecipeContainer} />
+                <Route path=":recipeId/Edit" name="edit" component={EditRecipeContainer} />
             </Route>
-            <Route path="Auth" component={AuthContainer} />
+            <Route path="Auth" name="auth" component={AuthContainer} />
             <Redirect from="*" to="Recipes" />
         </Route>
     );
