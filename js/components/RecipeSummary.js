@@ -39,6 +39,7 @@ class RecipeSummary extends Component {
                     <Rating initialRate={this.props.recipe.rating}
                         empty={'glyphicon glyphicon-star-empty'}
                         full={'glyphicon glyphicon-star'}
+                        readonly={true}
                     />
                 </div>
                 <div styleName="image">

@@ -37984,7 +37984,8 @@
 	                    { styleName: 'rating' },
 	                    _react2.default.createElement(_reactRating2.default, { initialRate: this.props.recipe.rating,
 	                        empty: 'glyphicon glyphicon-star-empty',
-	                        full: 'glyphicon glyphicon-star'
+	                        full: 'glyphicon glyphicon-star',
+	                        readonly: true
 	                    })
 	                ),
 	                _react2.default.createElement(
@@ -40456,6 +40457,18 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactCssModules = __webpack_require__(296);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _reactRating = __webpack_require__(472);
+	
+	var _reactRating2 = _interopRequireDefault(_reactRating);
+	
+	var _editRecipe = __webpack_require__(505);
+	
+	var _editRecipe2 = _interopRequireDefault(_editRecipe);
+	
 	var _Base64Image = __webpack_require__(473);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
@@ -40481,6 +40494,7 @@
 	
 	        // bind handlers to this
 	        _this.save = _this.save.bind(_this);
+	        _this.delete = _this.delete.bind(_this);
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleIsPublicChange = _this.handleIsPublicChange.bind(_this);
 	        return _this;
@@ -40488,12 +40502,19 @@
 	
 	    _createClass(EditRecipe, [{
 	        key: 'save',
-	        value: function save() {
+	        value: function save(e) {
+	            e.preventDefault();
 	            var recipe = this.state;
 	            if (this.fileInput.files && this.fileInput.files[0]) {
 	                recipe.image = this.fileInput.files[0];
 	            }
 	            this.props.editRecipeDetails(this.props.params.recipeId, recipe);
+	        }
+	    }, {
+	        key: 'delete',
+	        value: function _delete(e) {
+	            e.preventDefault();
+	            alert('delete');
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -40530,66 +40551,150 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Edit Recipe'
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Title'
+	                    ),
+	                    _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange }),
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'IsPublic'
+	                    ),
+	                    _react2.default.createElement('input', { type: 'checkbox', name: 'isPublic', checked: this.state.isPublic, onChange: this.handleIsPublicChange })
 	                ),
 	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    this.props.params.recipeId
+	                    'div',
+	                    { styleName: 'image-and-controls' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { styleName: 'image' },
+	                        _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image }),
+	                        _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
+	                                _this2.fileInput = fileInput;
+	                            } })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { styleName: 'controls' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-floppy-disk', onClick: this.save },
+	                                    ' Save'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-remove', onClick: this.delete },
+	                                    ' Delete'
+	                                )
+	                            )
+	                        )
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.id
+	                    'div',
+	                    { styleName: 'ingredients' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        'Ingredients'
+	                    ),
+	                    _react2.default.createElement(
+	                        'ul',
+	                        null,
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 1'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 2'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 3'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 4'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'ingredient 5'
+	                        )
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.title
-	                ),
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.isPublic
-	                ),
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image })
-	                ),
-	                _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    this.props.recipeDetails.rating
-	                ),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'Title'
-	                ),
-	                _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange }),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'IsPublic'
-	                ),
-	                _react2.default.createElement('input', { type: 'checkbox', name: 'isPublic', checked: this.state.isPublic, onChange: this.handleIsPublicChange }),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'Image'
-	                ),
-	                _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
-	                        _this2.fileInput = fileInput;
-	                    } }),
-	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.save },
-	                    'Save'
+	                    'div',
+	                    { styleName: 'steps' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        'Steps'
+	                    ),
+	                    _react2.default.createElement(
+	                        'ol',
+	                        null,
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Heat the oven to 220\xB0C (or gas mark 7). Tip the flour into a large bowl along with the salt and baking powder, then mix it all up. Add the butter in, then rub the butter in with your fingers until the mix looks like fine crumbs. When that is done, stir in the sugar.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Put the milk into a jug and heat in the microwave for about 20-30 seconds. It should be warm but not hot. Add the vanilla and lemon juice to the milk and then put that to one side and but a baking tray in the oven to warm.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Make a well in the dry mix, then add the liquid and combine it quickly with a cutlery knife \u2013 it will seem pretty wet at first. Spread some flour onto the work surface and tip the dough out. Dredge the dough and your hands with a little more flour, then fold the dough over 2-3 times until it\'s smoother. Now pat it into a round shape about 4cm deep.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Take a 5cm cutter (Pro-tip \u2013 smooth-edged cutters tend to cut more cleanly, giving a better rise) and dip it into some flour. Plunge into the dough, then repeat until you have four scones. By this point you\u2019ll probably need to press what\'s left of the dough back into a round to cut out another four.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Brush the tops with beaten egg, then place onto the hot baking tray.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'Bake for 10 minutes until risen and golden on the top. Eat just warm or cold on the day of baking, generously (and I do mean generously) topped with jam and clotted cream. '
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            'If freezing, freeze once cool. Defrost, then put in a low oven (about 160\xB0C) for a few minutes to refresh.'
+	                        )
+	                    )
 	                )
 	            );
 	        }
@@ -40598,7 +40703,55 @@
 	    return EditRecipe;
 	}(_react.Component);
 	
-	exports.default = EditRecipe;
+	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
+
+/***/ },
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(506);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 506 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "editRecipe__wrapper___3rMaP",
+		"title": "editRecipe__title___F-Zul",
+		"image-and-controls": "editRecipe__image-and-controls___10BMq",
+		"controls": "editRecipe__controls___5S1it",
+		"image": "editRecipe__image___4rttv",
+		"ingredients": "editRecipe__ingredients___3zrCn",
+		"steps": "editRecipe__steps___2W7IW"
+	};
 
 /***/ }
 /******/ ]);
