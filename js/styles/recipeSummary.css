@@ -31,7 +31,9 @@
 }
 
 .actions {
+    display: flex;
     order: 4;
+    justify-content: center;
     margin-top: 0.8em;
 }
 
@@ -68,9 +70,7 @@
 
     .actions {
         flex: 1;
-        display: flex;
         align-items: center;
-        justify-content: center;
         margin-top: 0px;
     }
 }

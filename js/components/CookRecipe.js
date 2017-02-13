@@ -19,15 +19,18 @@ class CookRecipe extends Component {
         this.props.loadRecipeDetails(this.props.params.recipeId);
     }
 
-    edit() {
-        alert('edit');
+    edit(e) {
+        e.preventDefault();
+        this.props.editRecipe(this.props.recipeDetails);
     }
 
-    share() {
+    share(e) {
+        e.preventDefault();
         alert('share');
     }
 
-    star() {
+    star(e) {
+        e.preventDefault();
         alert('star');
     }
 

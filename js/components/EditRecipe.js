@@ -16,6 +16,7 @@ class EditRecipe extends Component {
         // bind handlers to this
         this.save = this.save.bind(this);
         this.delete = this.delete.bind(this);
+        this.cook = this.cook.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
     }
@@ -35,7 +36,17 @@ class EditRecipe extends Component {
 
     delete(e) {
         e.preventDefault();
-        alert('delete');
+        this.props.deleteRecipe(this.props.recipeDetails).then(() => {
+            alert("recipe deleted");
+            this.props.backToRecipes();
+        }).catch(() => {
+            alert("failed to delete");
+        });
+    }
+
+    cook(e) {
+        e.preventDefault();
+        this.props.cookRecipe(this.props.recipeDetails);
     }
 
     componentDidMount() {
@@ -77,6 +88,7 @@ class EditRecipe extends Component {
                         <input type="file" name="image" ref={(fileInput) => { this.fileInput = fileInput }} />
                     </div>
                     <div styleName='controls'>
+                        <div><a href="#"><span className="glyphicon glyphicon-play-circle" onClick={this.cook}> Cook</span></a></div>
                         <div><a href="#"><span className="glyphicon glyphicon-floppy-disk" onClick={this.save}> Save</span></a></div>
                         <div><a href="#"><span className="glyphicon glyphicon-remove" onClick={this.delete}> Delete</span></a></div>
                     </div>

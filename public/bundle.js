@@ -38769,7 +38769,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummary__wrapper___hZpX_ {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___1mIDN {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__title___1mIDN h3 {\r\n    display: inline-block;\r\n    margin-right: 0.5em;\r\n}\r\n\r\n.recipeSummary__rating___3llDm {\r\n    order: 2;\r\n    font-size: 2em;\r\n    color: orange;\r\n}\r\n\r\n.recipeSummary__image___oRvVu {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___oRvVu img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___1TdHI {\r\n    order: 4;\r\n    margin-top: 0.8em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___hZpX_ {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN h3 {\r\n        display: block;\r\n    }\r\n\r\n    .recipeSummary__image___oRvVu {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___3llDm {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___1TdHI {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n        margin-top: 0px;\r\n    }\r\n}\r\n", ""]);
+	exports.push([module.id, ".recipeSummary__wrapper___hZpX_ {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___1mIDN {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__title___1mIDN h3 {\r\n    display: inline-block;\r\n    margin-right: 0.5em;\r\n}\r\n\r\n.recipeSummary__rating___3llDm {\r\n    order: 2;\r\n    font-size: 2em;\r\n    color: orange;\r\n}\r\n\r\n.recipeSummary__image___oRvVu {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___oRvVu img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___1TdHI {\r\n    display: flex;\r\n    order: 4;\r\n    justify-content: center;\r\n    margin-top: 0.8em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___hZpX_ {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN h3 {\r\n        display: block;\r\n    }\r\n\r\n    .recipeSummary__image___oRvVu {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___3llDm {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___1TdHI {\r\n        flex: 1;\r\n        align-items: center;\r\n        margin-top: 0px;\r\n    }\r\n}\r\n", ""]);
 	
 	// exports
 	exports.locals = {
@@ -38879,6 +38879,7 @@
 	exports.loadAnyUserRecipes = loadAnyUserRecipes;
 	exports.loadRecipeDetails = loadRecipeDetails;
 	exports.editRecipeDetails = editRecipeDetails;
+	exports.deleteRecipe = deleteRecipe;
 	
 	var _isomorphicFetch = __webpack_require__(487);
 	
@@ -39079,6 +39080,35 @@
 	            "Authorization": "JWT " + auth.token
 	        },
 	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function deleteRecipe(recipeId) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId;
+	
+	    var options = {
+	        "method": "DELETE",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        }
 	    };
 	
 	    var promise = new Promise(function (resolve, reject) {
@@ -40341,6 +40371,9 @@
 				}).catch(function () {
 					// some error
 				});
+			},
+			editRecipe: function editRecipe(recipe) {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe.id + '/Edit'));
 			}
 		};
 	};
@@ -40408,17 +40441,20 @@
 	        }
 	    }, {
 	        key: 'edit',
-	        value: function edit() {
-	            alert('edit');
+	        value: function edit(e) {
+	            e.preventDefault();
+	            this.props.editRecipe(this.props.recipeDetails);
 	        }
 	    }, {
 	        key: 'share',
-	        value: function share() {
+	        value: function share(e) {
+	            e.preventDefault();
 	            alert('share');
 	        }
 	    }, {
 	        key: 'star',
-	        value: function star() {
+	        value: function star(e) {
+	            e.preventDefault();
 	            alert('star');
 	        }
 	    }, {
@@ -40702,7 +40738,26 @@
 					});
 				});
 				return promise;
+			},
+			cookRecipe: function cookRecipe(recipe) {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe.id + '/Cook'));
+			},
+			backToRecipes: function backToRecipes() {
+				dispatch((0, _reactRouterRedux.push)('/Recipes'));
+			},
+			deleteRecipe: function deleteRecipe(recipe) {
+				var promise = new Promise(function (resolve, reject) {
+					api.deleteRecipe(recipe.id).then(function () {
+						// success
+						resolve();
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
 			}
+	
 		};
 	};
 	
@@ -40762,6 +40817,7 @@
 	        // bind handlers to this
 	        _this.save = _this.save.bind(_this);
 	        _this.delete = _this.delete.bind(_this);
+	        _this.cook = _this.cook.bind(_this);
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleIsPublicChange = _this.handleIsPublicChange.bind(_this);
 	        return _this;
@@ -40786,8 +40842,21 @@
 	    }, {
 	        key: 'delete',
 	        value: function _delete(e) {
+	            var _this3 = this;
+	
 	            e.preventDefault();
-	            alert('delete');
+	            this.props.deleteRecipe(this.props.recipeDetails).then(function () {
+	                alert("recipe deleted");
+	                _this3.props.backToRecipes();
+	            }).catch(function () {
+	                alert("failed to delete");
+	            });
+	        }
+	    }, {
+	        key: 'cook',
+	        value: function cook(e) {
+	            e.preventDefault();
+	            this.props.cookRecipe(this.props.recipeDetails);
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -40812,7 +40881,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this3 = this;
+	            var _this4 = this;
 	
 	            if (this.props.isFetching) {
 	                return _react2.default.createElement(
@@ -40849,12 +40918,25 @@
 	                        { styleName: 'image' },
 	                        _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image }),
 	                        _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
-	                                _this3.fileInput = fileInput;
+	                                _this4.fileInput = fileInput;
 	                            } })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { styleName: 'controls' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-play-circle', onClick: this.cook },
+	                                    ' Cook'
+	                                )
+	                            )
+	                        ),
 	                        _react2.default.createElement(
 	                            'div',
 	                            null,

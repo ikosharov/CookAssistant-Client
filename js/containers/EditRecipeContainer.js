@@ -35,7 +35,27 @@ const mapDispatchToProps = (dispatch) => {
 				});
 			});
 			return promise;
+		},
+		cookRecipe: (recipe) => {
+			dispatch(push(`/Recipes/${recipe.id}/Cook`));
+		},
+		backToRecipes: () => {
+			dispatch(push(`/Recipes`));
+		},
+		deleteRecipe: (recipe) => {
+			let promise = new Promise((resolve, reject) => {
+			api.deleteRecipe(recipe.id)
+				.then(() => {
+					// success
+					resolve();
+				}).catch(() => {
+					// some error
+					reject();
+				});
+			});
+			return promise;
 		}
+
 	};
 }
 

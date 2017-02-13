@@ -208,3 +208,32 @@ export function editRecipeDetails(recipeId, recipe) {
 
     return promise;
 }
+
+export function deleteRecipe(recipeId) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}`;
+
+    let options = {
+        "method": "DELETE",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        }
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 204) {
+                reject();
+            } else {
+                resolve();
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
