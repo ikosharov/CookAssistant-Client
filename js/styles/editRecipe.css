@@ -1,6 +1,7 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    margin-top: 1em;
 }
 
 .title {
@@ -51,7 +52,9 @@
 
 @media (min-width: 800px) {
     .title {
-        flex-flow: row wrap;
+        width: 40%;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     .image-and-controls {

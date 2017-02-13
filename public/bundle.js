@@ -38769,7 +38769,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummary__wrapper___hZpX_ {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___1mIDN {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__title___1mIDN h3 {\r\n    display: inline-block;\r\n    margin-right: 0.5em;\r\n}\r\n\r\n.recipeSummary__rating___3llDm {\r\n    order: 2;\r\n    font-size: 2em;\r\n    color: orange;\r\n}\r\n\r\n.recipeSummary__image___oRvVu {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___oRvVu img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___1TdHI {\r\n    order: 4;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___hZpX_ {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN h3 {\r\n        display: block;\r\n    }\r\n\r\n    .recipeSummary__image___oRvVu {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___3llDm {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___1TdHI {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n    }\r\n}\r\n", ""]);
+	exports.push([module.id, ".recipeSummary__wrapper___hZpX_ {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___1mIDN {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__title___1mIDN h3 {\r\n    display: inline-block;\r\n    margin-right: 0.5em;\r\n}\r\n\r\n.recipeSummary__rating___3llDm {\r\n    order: 2;\r\n    font-size: 2em;\r\n    color: orange;\r\n}\r\n\r\n.recipeSummary__image___oRvVu {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___oRvVu img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___1TdHI {\r\n    order: 4;\r\n    margin-top: 0.8em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___hZpX_ {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN h3 {\r\n        display: block;\r\n    }\r\n\r\n    .recipeSummary__image___oRvVu {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___3llDm {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___1TdHI {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n        margin-top: 0px;\r\n    }\r\n}\r\n", ""]);
 	
 	// exports
 	exports.locals = {
@@ -40692,11 +40692,16 @@
 				});
 			},
 			editRecipeDetails: function editRecipeDetails(recipeId, recipe) {
-				api.editRecipeDetails(recipeId, recipe).then(function () {
-					// success
-				}).catch(function () {
-					// some error
+				var promise = new Promise(function (resolve, reject) {
+					api.editRecipeDetails(recipeId, recipe).then(function () {
+						// success
+						resolve();
+					}).catch(function () {
+						// some error
+						reject();
+					});
 				});
+				return promise;
 			}
 		};
 	};
@@ -40765,12 +40770,18 @@
 	    _createClass(EditRecipe, [{
 	        key: 'save',
 	        value: function save(e) {
+	            var _this2 = this;
+	
 	            e.preventDefault();
 	            var recipe = this.state;
 	            if (this.fileInput.files && this.fileInput.files[0]) {
 	                recipe.image = this.fileInput.files[0];
 	            }
-	            this.props.editRecipeDetails(this.props.params.recipeId, recipe);
+	            this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(function () {
+	                _this2.props.loadRecipeDetails(_this2.props.params.recipeId);
+	            }).catch(function () {
+	                alert('failed');
+	            });
 	        }
 	    }, {
 	        key: 'delete',
@@ -40801,7 +40812,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _this3 = this;
 	
 	            if (this.props.isFetching) {
 	                return _react2.default.createElement(
@@ -40820,15 +40831,15 @@
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'Title'
+	                        'Title',
+	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
 	                    ),
-	                    _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange }),
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'IsPublic'
-	                    ),
-	                    _react2.default.createElement('input', { type: 'checkbox', name: 'isPublic', checked: this.state.isPublic, onChange: this.handleIsPublicChange })
+	                        'IsPublic',
+	                        _react2.default.createElement('input', { type: 'checkbox', name: 'isPublic ', checked: this.state.isPublic, onChange: this.handleIsPublicChange })
+	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -40838,7 +40849,7 @@
 	                        { styleName: 'image' },
 	                        _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image }),
 	                        _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
-	                                _this2.fileInput = fileInput;
+	                                _this3.fileInput = fileInput;
 	                            } })
 	                    ),
 	                    _react2.default.createElement(
@@ -41002,7 +41013,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {

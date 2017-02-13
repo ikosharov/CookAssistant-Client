@@ -26,7 +26,11 @@ class EditRecipe extends Component {
         if (this.fileInput.files && this.fileInput.files[0]) {
             recipe.image = this.fileInput.files[0];
         }
-        this.props.editRecipeDetails(this.props.params.recipeId, recipe);
+        this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(() => {
+            this.props.loadRecipeDetails(this.props.params.recipeId);
+        }).catch(() => {
+            alert('failed');
+        });
     }
 
     delete(e) {
@@ -58,10 +62,14 @@ class EditRecipe extends Component {
         return (
             <div styleName="wrapper">
                 <div styleName="title">
-                    <label>Title</label>
-                    <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
-                    <label>IsPublic</label>
-                    <input type="checkbox" name="isPublic" checked={this.state.isPublic} onChange={this.handleIsPublicChange} />
+                    <label>
+                        Title
+                        <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
+                    </label>
+
+                    <label>IsPublic
+                    <input type="checkbox" name="isPublic " checked={this.state.isPublic} onChange={this.handleIsPublicChange} />
+                    </label>
                 </div>
                 <div styleName='image-and-controls'>
                     <div styleName="image">
@@ -73,7 +81,7 @@ class EditRecipe extends Component {
                         <div><a href="#"><span className="glyphicon glyphicon-remove" onClick={this.delete}> Delete</span></a></div>
                     </div>
                 </div>
-                 <div styleName="ingredients">
+                <div styleName="ingredients">
                     <h2>Ingredients</h2>
                     <ul>
                         <li>ingredient 1</li>

@@ -24,12 +24,17 @@ const mapDispatchToProps = (dispatch) => {
 				});
 		},
 		editRecipeDetails: (recipeId, recipe) => {
+			let promise = new Promise((resolve, reject) => {
 			api.editRecipeDetails(recipeId, recipe)
 				.then(() => {
 					// success
+					resolve();
 				}).catch(() => {
 					// some error
+					reject();
 				});
+			});
+			return promise;
 		}
 	};
 }
