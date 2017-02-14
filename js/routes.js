@@ -9,6 +9,7 @@ import RecipesListsContainer from './containers/RecipesListsContainer';
 import AuthContainer from './containers/AuthContainer';
 import CookRecipeContainer from './containers/CookRecipeContainer';
 import EditRecipeContainer from './containers/EditRecipeContainer';
+import NewRecipeContainer from './containers/NewRecipeContainer';
 
 let configureRoutes = function (store) {
     let authRequired = function (nextState, replace) {
@@ -27,6 +28,7 @@ let configureRoutes = function (store) {
                 <IndexRoute component={RecipesListsContainer} name="home" />
                 <Route path=":recipeId/Cook" name="cook" component={CookRecipeContainer} />
                 <Route path=":recipeId/Edit" name="edit" component={EditRecipeContainer} />
+                <Route path="new" name="new" component={NewRecipeContainer} />
             </Route>
             <Route path="Auth" name="auth" component={AuthContainer} />
             <Redirect from="*" to="Recipes" />

@@ -24,6 +24,8 @@ class RecipesLists extends React.Component {
                 recipes={this.props.currentUserRecipes}
                 cookRecipe={this.props.cookRecipe}
                 editRecipe={this.props.editRecipe}
+                addRecipe={this.props.addRecipe}
+                enableAddButton={true}
             />);
 
         let anyUserRecipesMarkup = (

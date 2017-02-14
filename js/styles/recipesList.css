@@ -3,3 +3,10 @@
     flex-flow: column nowrap;
     max-width: 100%;
 }
+
+.addNew {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 2em;
+}

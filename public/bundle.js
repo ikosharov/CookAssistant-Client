@@ -30971,6 +30971,10 @@
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
+	var _NewRecipeContainer = __webpack_require__(513);
+	
+	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var configureRoutes = function configureRoutes(store) {
@@ -30992,7 +30996,8 @@
 	            { path: 'Recipes', name: 'recipes', component: _RecipesShellContainer2.default, onEnter: authRequired },
 	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _RecipesListsContainer2.default, name: 'home' }),
 	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Cook', name: 'cook', component: _CookRecipeContainer2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Edit', name: 'edit', component: _EditRecipeContainer2.default })
+	            _react2.default.createElement(_reactRouter.Route, { path: ':recipeId/Edit', name: 'edit', component: _EditRecipeContainer2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: 'new', name: 'new', component: _NewRecipeContainer2.default })
 	        ),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'Auth', name: 'auth', component: _AuthContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Redirect, { from: '*', to: 'Recipes' })
@@ -37949,6 +37954,9 @@
 			},
 			editRecipe: function editRecipe(recipe) {
 				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe._id + '/Edit'));
+			},
+			addRecipe: function addRecipe() {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/new'));
 			}
 		};
 	};
@@ -38020,7 +38028,9 @@
 	                userId: this.props.userId,
 	                recipes: this.props.currentUserRecipes,
 	                cookRecipe: this.props.cookRecipe,
-	                editRecipe: this.props.editRecipe
+	                editRecipe: this.props.editRecipe,
+	                addRecipe: this.props.addRecipe,
+	                enableAddButton: true
 	            });
 	
 	            var anyUserRecipesMarkup = _react2.default.createElement(_RecipesList2.default, {
@@ -38100,10 +38110,19 @@
 	    function RecipesList(props) {
 	        _classCallCheck(this, RecipesList);
 	
-	        return _possibleConstructorReturn(this, (RecipesList.__proto__ || Object.getPrototypeOf(RecipesList)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (RecipesList.__proto__ || Object.getPrototypeOf(RecipesList)).call(this, props));
+	
+	        _this.addRecipe = _this.addRecipe.bind(_this);
+	        return _this;
 	    }
 	
 	    _createClass(RecipesList, [{
+	        key: 'addRecipe',
+	        value: function addRecipe(e) {
+	            e.preventDefault();
+	            this.props.addRecipe();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -38134,10 +38153,26 @@
 	                );
 	            }
 	
+	            var addButton = _react2.default.createElement(
+	                'div',
+	                { styleName: 'addNew' },
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.props.addRecipe },
+	                    'Add ',
+	                    _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus' })
+	                )
+	            );
+	
 	            return _react2.default.createElement(
 	                'div',
 	                { styleName: 'wrapper' },
-	                recipesMarkup
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    recipesMarkup
+	                ),
+	                this.props.enableAddButton && addButton
 	            );
 	        }
 	    }]);
@@ -38815,11 +38850,12 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipesList__wrapper___1owmK {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}", ""]);
+	exports.push([module.id, ".recipesList__wrapper___1owmK {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}\r\n\r\n.recipesList__addNew___3b8vV {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 2em;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "recipesList__wrapper___1owmK"
+		"wrapper": "recipesList__wrapper___1owmK",
+		"addNew": "recipesList__addNew___3b8vV"
 	};
 
 /***/ },
@@ -38880,6 +38916,7 @@
 	exports.loadRecipeDetails = loadRecipeDetails;
 	exports.editRecipeDetails = editRecipeDetails;
 	exports.deleteRecipe = deleteRecipe;
+	exports.addRecipe = addRecipe;
 	
 	var _isomorphicFetch = __webpack_require__(487);
 	
@@ -39109,6 +39146,44 @@
 	        "headers": {
 	            "Authorization": "JWT " + auth.token
 	        }
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function addRecipe(recipe) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes';
+	
+	    var form = new _formData2.default();
+	    form.append("title", recipe.title);
+	    form.append("isPublic", recipe.isPublic);
+	    form.append("rating", recipe.rating);
+	    if (recipe.image) {
+	        form.append("image", recipe.image);
+	    }
+	
+	    var options = {
+	        "method": "POST",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        },
+	        "body": form
 	    };
 	
 	    var promise = new Promise(function (resolve, reject) {
@@ -40666,7 +40741,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -41095,7 +41170,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -41106,6 +41181,221 @@
 		"image": "editRecipe__image___4rttv",
 		"ingredients": "editRecipe__ingredients___3zrCn",
 		"steps": "editRecipe__steps___2W7IW"
+	};
+
+/***/ },
+/* 513 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _reactRouterRedux = __webpack_require__(280);
+	
+	var _NewRecipe = __webpack_require__(514);
+	
+	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
+	
+	var _actions = __webpack_require__(472);
+	
+	var actions = _interopRequireWildcard(_actions);
+	
+	var _api = __webpack_require__(486);
+	
+	var api = _interopRequireWildcard(_api);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {
+			isFetching: state.isFetching
+		};
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			create: function create(recipe) {
+				var promise = new Promise(function (resolve, reject) {
+					api.addRecipe(recipe).then(function () {
+						// success
+						resolve();
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
+			}
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
+
+/***/ },
+/* 514 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(296);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _reactRating = __webpack_require__(478);
+	
+	var _reactRating2 = _interopRequireDefault(_reactRating);
+	
+	var _newRecipe = __webpack_require__(515);
+	
+	var _newRecipe2 = _interopRequireDefault(_newRecipe);
+	
+	var _Base64Image = __webpack_require__(479);
+	
+	var _Base64Image2 = _interopRequireDefault(_Base64Image);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NewRecipe = function (_Component) {
+	    _inherits(NewRecipe, _Component);
+	
+	    function NewRecipe(props) {
+	        _classCallCheck(this, NewRecipe);
+	
+	        // initialize state
+	        var _this = _possibleConstructorReturn(this, (NewRecipe.__proto__ || Object.getPrototypeOf(NewRecipe)).call(this, props));
+	
+	        _this.state = {};
+	
+	        // bind handlers to this
+	        _this.create = _this.create.bind(_this);
+	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
+	        _this.handleIsPublicChange = _this.handleIsPublicChange.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(NewRecipe, [{
+	        key: 'create',
+	        value: function create(e) {
+	            var _this2 = this;
+	
+	            e.preventDefault();
+	            var recipe = this.state;
+	            if (this.fileInput.files && this.fileInput.files[0]) {
+	                recipe.image = this.fileInput.files[0];
+	            }
+	            this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(function () {
+	                _this2.props.loadRecipeDetails(_this2.props.params.recipeId);
+	            }).catch(function () {
+	                alert('failed');
+	            });
+	        }
+	    }, {
+	        key: 'handleTitleChange',
+	        value: function handleTitleChange(e) {
+	            this.setState({ 'title': e.target.value });
+	        }
+	    }, {
+	        key: 'handleIsPublicChange',
+	        value: function handleIsPublicChange(e) {
+	            this.setState({ 'isPublic': e.target.checked });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            if (this.props.isFetching) {
+	                return _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Loading...'
+	                );
+	            }
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'new recipe'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return NewRecipe;
+	}(_react.Component);
+	
+	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
+
+/***/ },
+/* 515 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(516);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 516 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".newRecipe__wrapper___3BPt5 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.newRecipe__title___1kj6C {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__image-and-controls___2akPB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2yRz9 img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.newRecipe__ingredients___7LV5T {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__steps___2XuxM li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.newRecipe__steps___2XuxM li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .newRecipe__title___1kj6C {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .newRecipe__image-and-controls___2akPB {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .newRecipe__controls___1aWqN {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .newRecipe__image___2yRz9 {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "newRecipe__wrapper___3BPt5",
+		"title": "newRecipe__title___1kj6C",
+		"image-and-controls": "newRecipe__image-and-controls___2akPB",
+		"controls": "newRecipe__controls___1aWqN",
+		"image": "newRecipe__image___2yRz9",
+		"ingredients": "newRecipe__ingredients___7LV5T",
+		"steps": "newRecipe__steps___2XuxM"
 	};
 
 /***/ }

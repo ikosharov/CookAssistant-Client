@@ -8,6 +8,13 @@ import styles from '../styles/recipesList.css';
 class RecipesList extends React.Component {
     constructor(props) {
         super(props);
+
+        this.addRecipe = this.addRecipe.bind(this);
+    }
+
+    addRecipe(e) {
+        e.preventDefault();
+        this.props.addRecipe();
     }
 
     render() {
@@ -33,9 +40,18 @@ class RecipesList extends React.Component {
             recipesMarkup = (<h2>No data</h2>);
         }
 
+        let addButton = (
+            <div styleName="addNew">
+                <button onClick={this.props.addRecipe}>Add <span className="glyphicon glyphicon-plus"></span></button>
+            </div>
+        );
+
         return (
             <div styleName='wrapper'>
-                {recipesMarkup}
+                <div>
+                    {recipesMarkup}
+                </div>
+                {this.props.enableAddButton && addButton}
             </div>
         );
     }
