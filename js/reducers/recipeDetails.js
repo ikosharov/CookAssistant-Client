@@ -4,6 +4,7 @@ export default function recipeDetails(state, action) {
     if (state === undefined) {
         return {
             id: '',
+            userId: '',
             title: '',
             isPublic: false,
             ingredients: [],
@@ -16,6 +17,7 @@ export default function recipeDetails(state, action) {
         case actionTypes.LOAD_RECIPE_DETAILS_SUCCESS:
             return Object.assign({}, state, {
                 id: action.recipe._id,
+                userId: action.recipe.userId,
                 title: action.recipe.title,
                 isPublic: action.recipe.isPublic,
                 ingredients: action.recipe.ingredients,
@@ -26,6 +28,7 @@ export default function recipeDetails(state, action) {
         case actionTypes.LOAD_RECIPE_DETAILS_FAILED:
             return Object.assign({}, state, {
                 id: '',
+                userId: '',
                 title: '',
                 isPublic: false,
                 ingredients: [],

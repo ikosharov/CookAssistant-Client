@@ -39,6 +39,8 @@ class CookRecipe extends Component {
             return (<h1>Loading...</h1>)
         }
 
+        let showEdit = (this.props.recipeDetails.userId == this.props.userId);
+
         return (
             <div styleName="wrapper">
                 <div styleName="title">
@@ -53,7 +55,7 @@ class CookRecipe extends Component {
                         <Base64Image data={this.props.recipeDetails.image} />
                     </div>
                     <div styleName='controls'>
-                        <div><a href="#"><span className="glyphicon glyphicon-pencil" onClick={this.edit}> Edit</span></a></div>
+                        {showEdit && <div><a href="#"><span className="glyphicon glyphicon-pencil" onClick={this.edit}> Edit</span></a></div>}
                         <div><a href="#"><span className="glyphicon glyphicon-share" onClick={this.share}> Share</span></a></div>
                         <div><a href="#"><span className="glyphicon glyphicon-star" onClick={this.star}> Star</span></a></div>
                     </div>

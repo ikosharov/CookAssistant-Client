@@ -31,6 +31,7 @@ class NewRecipe extends Component {
         }
         this.props.createRecipe(recipe).then(() => {
             alert('recipe created');
+            this.props.navigateToRecipes();
         }).catch(() => {
             alert('failed');
         });

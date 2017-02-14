@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
 				});
 			});
 			return promise;
+		},
+		navigateToRecipes: () => {
+			dispatch(push(`/Recipes`));
 		}
 	};
 }

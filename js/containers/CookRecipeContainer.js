@@ -6,6 +6,7 @@ import * as api from '../data/api';
 
 const mapStateToProps = (state) => {
 	return {
+		userId: state.auth.id,
 		recipeDetails: state.recipeDetails,
 		isFetching: state.isFetching
 	}
