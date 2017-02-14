@@ -13,9 +13,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadRecipeDetails: (recipeId) => {
+		loadRecipeDetails: (id) => {
 			dispatch(actions.fetchStarted());
-			api.loadRecipeDetails(recipeId)
+			api.loadRecipeDetails(id)
 				.then((recipeDetails) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
@@ -36,15 +36,15 @@ const mapDispatchToProps = (dispatch) => {
 			});
 			return promise;
 		},
-		cookRecipe: (recipe) => {
-			dispatch(push(`/Recipes/${recipe.id}/Cook`));
+		navigateToCook: (id) => {
+			dispatch(push(`/Recipes/${id}/Cook`));
 		},
-		backToRecipes: () => {
+		navigateToRecipes: () => {
 			dispatch(push(`/Recipes`));
 		},
-		deleteRecipe: (recipe) => {
+		deleteRecipe: (id) => {
 			let promise = new Promise((resolve, reject) => {
-			api.deleteRecipe(recipe.id)
+			api.deleteRecipe(id)
 				.then(() => {
 					// success
 					resolve();

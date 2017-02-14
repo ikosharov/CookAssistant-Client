@@ -13,11 +13,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		cookRecipe: (recipe) => {
-			dispatch(push(`/Recipes/${recipe._id}/Cook`));
+		navigateToCook: (id) => {
+			dispatch(push(`/Recipes/${id}/Cook`));
 		},
-		editRecipe: (recipe) => {
-			dispatch(push(`/Recipes/${recipe._id}/Edit`));
+		navigateToEdit: (id) => {
+			dispatch(push(`/Recipes/${id}/Edit`));
 		}
 	};
 }

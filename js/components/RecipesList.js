@@ -14,7 +14,7 @@ class RecipesList extends React.Component {
 
     addRecipe(e) {
         e.preventDefault();
-        this.props.addRecipe();
+        this.props.navigateToAddRecipe();
     }
 
     render() {

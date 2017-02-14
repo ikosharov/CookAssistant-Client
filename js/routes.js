@@ -4,7 +4,7 @@ import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
 import Root from './components/Root';
-import RecipesShellContainer from './containers/RecipesShellContainer';
+import RecipesShell from './components/RecipesShell';
 import RecipesListsContainer from './containers/RecipesListsContainer';
 import AuthContainer from './containers/AuthContainer';
 import CookRecipeContainer from './containers/CookRecipeContainer';
@@ -24,7 +24,7 @@ let configureRoutes = function (store) {
 
     let routes = (
         <Route path="" name="root" component={Root}>
-            <Route path="Recipes" name="recipes" component={RecipesShellContainer} onEnter={authRequired}>
+            <Route path="Recipes" name="recipes" component={RecipesShell} onEnter={authRequired}>
                 <IndexRoute component={RecipesListsContainer} name="home" />
                 <Route path=":recipeId/Cook" name="cook" component={CookRecipeContainer} />
                 <Route path=":recipeId/Edit" name="edit" component={EditRecipeContainer} />

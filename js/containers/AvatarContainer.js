@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import RecipesShell from '../components/RecipesShell';
+import Avatar from '../components/Avatar';
 import * as actions from '../actions';
 
 const mapStateToProps = (state) => {
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesShell);
+export default connect(mapStateToProps, mapDispatchToProps)(Avatar);

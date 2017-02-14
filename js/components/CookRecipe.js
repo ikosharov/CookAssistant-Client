@@ -21,7 +21,7 @@ class CookRecipe extends Component {
 
     edit(e) {
         e.preventDefault();
-        this.props.editRecipe(this.props.recipeDetails);
+        this.props.navigateToEdit(this.props.recipeDetails.id);
     }
 
     share(e) {

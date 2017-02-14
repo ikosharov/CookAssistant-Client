@@ -16,11 +16,11 @@ class RecipeSummary extends Component {
     }
 
     cook() {
-        this.props.cookRecipe(this.props.recipe);
+        this.props.navigateToCook(this.props.recipe._id);
     }
 
     edit() {
-        this.props.editRecipe(this.props.recipe);
+        this.props.navigateToEdit(this.props.recipe._id);
     }
 
     render() {

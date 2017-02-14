@@ -36,9 +36,9 @@ class EditRecipe extends Component {
 
     delete(e) {
         e.preventDefault();
-        this.props.deleteRecipe(this.props.recipeDetails).then(() => {
+        this.props.deleteRecipe(this.props.recipeDetails.id).then(() => {
             alert("recipe deleted");
-            this.props.backToRecipes();
+            this.props.navigateToRecipes();
         }).catch(() => {
             alert("failed to delete");
         });
@@ -46,7 +46,7 @@ class EditRecipe extends Component {
 
     cook(e) {
         e.preventDefault();
-        this.props.cookRecipe(this.props.recipeDetails);
+        this.props.navigateToCook(this.props.recipeDetails.id);
     }
 
     componentDidMount() {

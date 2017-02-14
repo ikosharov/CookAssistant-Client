@@ -13,9 +13,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadRecipeDetails: (recipeId) => {
+		loadRecipeDetails: (id) => {
 			dispatch(actions.fetchStarted());
-			api.loadRecipeDetails(recipeId)
+			api.loadRecipeDetails(id)
 				.then((recipeDetails) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.loadRecipeDetailsSuccess(recipeDetails));
@@ -23,8 +23,8 @@ const mapDispatchToProps = (dispatch) => {
 					// some error
 				});
 		},
-		editRecipe: (recipe) => {
-			dispatch(push(`/Recipes/${recipe.id}/Edit`));
+		navigateToEdit: (id) => {
+			dispatch(push(`/Recipes/${id}/Edit`));
 		}
 	};
 }
