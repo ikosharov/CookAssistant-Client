@@ -246,7 +246,7 @@ export function addRecipe(recipe) {
     let form = new FormData();
     form.append("title", recipe.title);
     form.append("isPublic", recipe.isPublic);
-    form.append("rating", recipe.rating);
+    form.append("rating", 0);
     if (recipe.image) {
         form.append("image", recipe.image);
     }
@@ -262,7 +262,7 @@ export function addRecipe(recipe) {
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
-            if (response.status != 204) {
+            if (response.status != 200) {
                 reject();
             } else {
                 resolve();

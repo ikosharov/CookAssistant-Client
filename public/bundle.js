@@ -39173,7 +39173,7 @@
 	    var form = new _formData2.default();
 	    form.append("title", recipe.title);
 	    form.append("isPublic", recipe.isPublic);
-	    form.append("rating", recipe.rating);
+	    form.append("rating", 0);
 	    if (recipe.image) {
 	        form.append("image", recipe.image);
 	    }
@@ -39189,7 +39189,7 @@
 	    var promise = new Promise(function (resolve, reject) {
 	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
 	            // this will not reject on error. only on network failure
-	            if (response.status != 204) {
+	            if (response.status != 200) {
 	                reject();
 	            } else {
 	                resolve();
@@ -41221,7 +41221,7 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		return {
-			create: function create(recipe) {
+			createRecipe: function createRecipe(recipe) {
 				var promise = new Promise(function (resolve, reject) {
 					api.addRecipe(recipe).then(function () {
 						// success
@@ -41287,7 +41287,11 @@
 	        // initialize state
 	        var _this = _possibleConstructorReturn(this, (NewRecipe.__proto__ || Object.getPrototypeOf(NewRecipe)).call(this, props));
 	
-	        _this.state = {};
+	        _this.state = {
+	            title: '',
+	            isPublic: false,
+	            image: null
+	        };
 	
 	        // bind handlers to this
 	        _this.create = _this.create.bind(_this);
@@ -41299,15 +41303,13 @@
 	    _createClass(NewRecipe, [{
 	        key: 'create',
 	        value: function create(e) {
-	            var _this2 = this;
-	
 	            e.preventDefault();
 	            var recipe = this.state;
 	            if (this.fileInput.files && this.fileInput.files[0]) {
 	                recipe.image = this.fileInput.files[0];
 	            }
-	            this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(function () {
-	                _this2.props.loadRecipeDetails(_this2.props.params.recipeId);
+	            this.props.createRecipe(recipe).then(function () {
+	                alert('recipe created');
 	            }).catch(function () {
 	                alert('failed');
 	            });
@@ -41325,6 +41327,8 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+	
 	            if (this.props.isFetching) {
 	                return _react2.default.createElement(
 	                    'h1',
@@ -41337,9 +41341,49 @@
 	                'div',
 	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'new recipe'
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Title',
+	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'IsPublic',
+	                        _react2.default.createElement('input', { type: 'checkbox', name: 'isPublic ', checked: this.state.isPublic, onChange: this.handleIsPublicChange })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'image-and-controls' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { styleName: 'image' },
+	                        _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
+	                        _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
+	                                _this2.fileInput = fileInput;
+	                            } })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { styleName: 'controls' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'glyphicon glyphicon-floppy-disk', onClick: this.create },
+	                                    ' Create'
+	                                )
+	                            )
+	                        )
+	                    )
 	                )
 	            );
 	        }

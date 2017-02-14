@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		create: (recipe) => {
+		createRecipe: (recipe) => {
 			let promise = new Promise((resolve, reject) => {
 			api.addRecipe(recipe)
 				.then(() => {

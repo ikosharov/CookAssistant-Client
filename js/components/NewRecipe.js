@@ -11,7 +11,11 @@ class NewRecipe extends Component {
         super(props);
 
         // initialize state
-        this.state = {};
+        this.state = {
+            title: '',
+            isPublic: false,
+            image: null
+        };
 
         // bind handlers to this
         this.create = this.create.bind(this);
@@ -25,8 +29,8 @@ class NewRecipe extends Component {
         if (this.fileInput.files && this.fileInput.files[0]) {
             recipe.image = this.fileInput.files[0];
         }
-        this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(() => {
-            this.props.loadRecipeDetails(this.props.params.recipeId);
+        this.props.createRecipe(recipe).then(() => {
+            alert('recipe created');
         }).catch(() => {
             alert('failed');
         });
@@ -47,7 +51,25 @@ class NewRecipe extends Component {
 
         return (
             <div styleName="wrapper">
-                <h1>new recipe</h1>
+                <div styleName="title">
+                    <label>
+                        Title
+                        <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
+                    </label>
+
+                    <label>IsPublic
+                    <input type="checkbox" name="isPublic " checked={this.state.isPublic} onChange={this.handleIsPublicChange} />
+                    </label>
+                </div>
+                <div styleName='image-and-controls'>
+                    <div styleName="image">
+                        <Base64Image data={this.state.image} />
+                        <input type="file" name="image" ref={(fileInput) => { this.fileInput = fileInput }} />
+                    </div>
+                    <div styleName='controls'>
+                        <div><a href="#"><span className="glyphicon glyphicon-floppy-disk" onClick={this.create}> Create</span></a></div>
+                    </div>
+                </div>
             </div>
         );
     }
