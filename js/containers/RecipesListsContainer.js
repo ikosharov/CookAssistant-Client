@@ -6,7 +6,6 @@ import * as api from '../data/api';
 
 const mapStateToProps = (state) => {
 	return {
-		userId: state.auth.id,
 		currentUserRecipes: state.currentUserRecipes,
 		anyUserRecipes: state.anyUserRecipes,
 		isFetching: state.isFetching
@@ -32,15 +31,6 @@ const mapDispatchToProps = (dispatch) => {
 				}).catch(() => {
 					// some error
 				});
-		},
-		cookRecipe: (recipe) => {
-			dispatch(push(`/Recipes/${recipe._id}/Cook`));
-		},
-		editRecipe: (recipe) => {
-			dispatch(push(`/Recipes/${recipe._id}/Edit`));
-		},
-		addRecipe: () => {
-			dispatch(push(`/Recipes/new`));
 		}
 	};
 }

@@ -77,7 +77,7 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(491);
+	var _store = __webpack_require__(489);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -30959,19 +30959,19 @@
 	
 	var _RecipesListsContainer2 = _interopRequireDefault(_RecipesListsContainer);
 	
-	var _AuthContainer = __webpack_require__(498);
+	var _AuthContainer = __webpack_require__(500);
 	
 	var _AuthContainer2 = _interopRequireDefault(_AuthContainer);
 	
-	var _CookRecipeContainer = __webpack_require__(505);
+	var _CookRecipeContainer = __webpack_require__(507);
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(509);
+	var _EditRecipeContainer = __webpack_require__(511);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
-	var _NewRecipeContainer = __webpack_require__(513);
+	var _NewRecipeContainer = __webpack_require__(515);
 	
 	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
 	
@@ -37914,7 +37914,7 @@
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(486);
+	var _api = __webpack_require__(484);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -37924,7 +37924,6 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
-			userId: state.auth.id,
 			currentUserRecipes: state.currentUserRecipes,
 			anyUserRecipes: state.anyUserRecipes,
 			isFetching: state.isFetching
@@ -37948,15 +37947,6 @@
 				}).catch(function () {
 					// some error
 				});
-			},
-			cookRecipe: function cookRecipe(recipe) {
-				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe._id + '/Cook'));
-			},
-			editRecipe: function editRecipe(recipe) {
-				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe._id + '/Edit'));
-			},
-			addRecipe: function addRecipe() {
-				dispatch((0, _reactRouterRedux.push)('/Recipes/new'));
 			}
 		};
 	};
@@ -37983,11 +37973,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipesList = __webpack_require__(476);
+	var _RecipesListContainer = __webpack_require__(476);
 	
-	var _RecipesList2 = _interopRequireDefault(_RecipesList);
+	var _RecipesListContainer2 = _interopRequireDefault(_RecipesListContainer);
 	
-	var _recipesLists = __webpack_require__(484);
+	var _recipesLists = __webpack_require__(498);
 	
 	var _recipesLists2 = _interopRequireDefault(_recipesLists);
 	
@@ -38024,20 +38014,13 @@
 	                );
 	            }
 	
-	            var currentUserRecipesMarkup = _react2.default.createElement(_RecipesList2.default, {
-	                userId: this.props.userId,
+	            var currentUserRecipesMarkup = _react2.default.createElement(_RecipesListContainer2.default, {
 	                recipes: this.props.currentUserRecipes,
-	                cookRecipe: this.props.cookRecipe,
-	                editRecipe: this.props.editRecipe,
-	                addRecipe: this.props.addRecipe,
 	                enableAddButton: true
 	            });
 	
-	            var anyUserRecipesMarkup = _react2.default.createElement(_RecipesList2.default, {
-	                userId: this.props.userId,
-	                recipes: this.props.anyUserRecipes,
-	                cookRecipe: this.props.cookRecipe,
-	                editRecipe: this.props.editRecipe
+	            var anyUserRecipesMarkup = _react2.default.createElement(_RecipesListContainer2.default, {
+	                recipes: this.props.anyUserRecipes
 	            });
 	
 	            return _react2.default.createElement(
@@ -38071,6 +38054,52 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _reactRouterRedux = __webpack_require__(280);
+	
+	var _RecipesList = __webpack_require__(477);
+	
+	var _RecipesList2 = _interopRequireDefault(_RecipesList);
+	
+	var _actions = __webpack_require__(472);
+	
+	var actions = _interopRequireWildcard(_actions);
+	
+	var _api = __webpack_require__(484);
+	
+	var api = _interopRequireWildcard(_api);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {
+			isFetching: state.isFetching
+		};
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			addRecipe: function addRecipe() {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/new'));
+			}
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RecipesList2.default);
+
+/***/ },
+/* 477 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
@@ -38084,15 +38113,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipeSummary = __webpack_require__(477);
+	var _RecipeSummaryContainer = __webpack_require__(478);
 	
-	var _RecipeSummary2 = _interopRequireDefault(_RecipeSummary);
+	var _RecipeSummaryContainer2 = _interopRequireDefault(_RecipeSummaryContainer);
 	
 	var _Avatar = __webpack_require__(461);
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
-	var _recipesList = __webpack_require__(482);
+	var _recipesList = __webpack_require__(496);
 	
 	var _recipesList2 = _interopRequireDefault(_recipesList);
 	
@@ -38125,26 +38154,15 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
-	
 	            var recipesMarkup = void 0;
 	
 	            if (this.props.recipes.length) {
-	                (function () {
-	                    var cookRecipe = _this2.props.cookRecipe;
-	                    var editRecipe = _this2.props.editRecipe;
-	                    var userId = _this2.props.userId;
-	
-	                    recipesMarkup = _this2.props.recipes.map(function (recipe) {
-	                        return _react2.default.createElement(_RecipeSummary2.default, {
-	                            key: recipe._id,
-	                            userId: userId,
-	                            recipe: recipe,
-	                            cookRecipe: cookRecipe,
-	                            editRecipe: editRecipe
-	                        });
+	                recipesMarkup = this.props.recipes.map(function (recipe) {
+	                    return _react2.default.createElement(_RecipeSummaryContainer2.default, {
+	                        key: recipe._id,
+	                        recipe: recipe
 	                    });
-	                })();
+	                });
 	            } else {
 	                recipesMarkup = _react2.default.createElement(
 	                    'h2',
@@ -38158,7 +38176,7 @@
 	                { styleName: 'addNew' },
 	                _react2.default.createElement(
 	                    'button',
-	                    { onClick: this.props.addRecipe },
+	                    { onClick: this.addRecipe },
 	                    'Add ',
 	                    _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus' })
 	                )
@@ -38183,7 +38201,57 @@
 	exports.default = (0, _reactCssModules2.default)(RecipesList, _recipesList2.default);
 
 /***/ },
-/* 477 */
+/* 478 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _reactRouterRedux = __webpack_require__(280);
+	
+	var _RecipeSummary = __webpack_require__(479);
+	
+	var _RecipeSummary2 = _interopRequireDefault(_RecipeSummary);
+	
+	var _actions = __webpack_require__(472);
+	
+	var actions = _interopRequireWildcard(_actions);
+	
+	var _api = __webpack_require__(484);
+	
+	var api = _interopRequireWildcard(_api);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {
+			userId: state.auth.id,
+			isFetching: state.isFetching
+		};
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			cookRecipe: function cookRecipe(recipe) {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe._id + '/Cook'));
+			},
+			editRecipe: function editRecipe(recipe) {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipe._id + '/Edit'));
+			}
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RecipeSummary2.default);
+
+/***/ },
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38202,15 +38270,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(478);
+	var _reactRating = __webpack_require__(480);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _Base64Image = __webpack_require__(479);
+	var _Base64Image = __webpack_require__(481);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _recipeSummary = __webpack_require__(480);
+	var _recipeSummary = __webpack_require__(482);
 	
 	var _recipeSummary2 = _interopRequireDefault(_recipeSummary);
 	
@@ -38318,7 +38386,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipeSummary, _recipeSummary2.default);
 
 /***/ },
-/* 478 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -38733,7 +38801,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(261)(module)))
 
 /***/ },
-/* 479 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38770,13 +38838,13 @@
 	exports.default = Base64Image;
 
 /***/ },
-/* 480 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(481);
+	var content = __webpack_require__(483);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -38796,7 +38864,7 @@
 	}
 
 /***/ },
-/* 481 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -38816,92 +38884,7 @@
 	};
 
 /***/ },
-/* 482 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(483);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(293)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 483 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(292)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".recipesList__wrapper___1owmK {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}\r\n\r\n.recipesList__addNew___3b8vV {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 2em;\r\n}", ""]);
-	
-	// exports
-	exports.locals = {
-		"wrapper": "recipesList__wrapper___1owmK",
-		"addNew": "recipesList__addNew___3b8vV"
-	};
-
-/***/ },
 /* 484 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(485);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(293)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 485 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(292)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".recipesLists__wrapper___tTrPL > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n    padding-left: 0.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___tTrPL h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
-	
-	// exports
-	exports.locals = {
-		"wrapper": "recipesLists__wrapper___tTrPL"
-	};
-
-/***/ },
-/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38918,17 +38901,17 @@
 	exports.deleteRecipe = deleteRecipe;
 	exports.addRecipe = addRecipe;
 	
-	var _isomorphicFetch = __webpack_require__(487);
+	var _isomorphicFetch = __webpack_require__(485);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _formData = __webpack_require__(489);
+	var _formData = __webpack_require__(487);
 	
 	var _formData2 = _interopRequireDefault(_formData);
 	
-	var _web = __webpack_require__(490);
+	var _web = __webpack_require__(488);
 	
-	var _store = __webpack_require__(491);
+	var _store = __webpack_require__(489);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39204,7 +39187,7 @@
 	}
 
 /***/ },
-/* 487 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39213,11 +39196,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(488);
+	__webpack_require__(486);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 488 */
+/* 486 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39677,7 +39660,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 489 */
+/* 487 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39688,7 +39671,7 @@
 	module.exports = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' ? self.FormData : window.FormData;
 
 /***/ },
-/* 490 */
+/* 488 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39700,7 +39683,7 @@
 	//export const API_URL = "http://localhost:3000";
 
 /***/ },
-/* 491 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39715,9 +39698,9 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _localStorage = __webpack_require__(492);
+	var _localStorage = __webpack_require__(490);
 	
-	var _reducers = __webpack_require__(493);
+	var _reducers = __webpack_require__(491);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -39741,7 +39724,7 @@
 	}
 
 /***/ },
-/* 492 */
+/* 490 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39771,7 +39754,7 @@
 	};
 
 /***/ },
-/* 493 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39784,19 +39767,19 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _auth = __webpack_require__(494);
+	var _auth = __webpack_require__(492);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
-	var _isFetching = __webpack_require__(495);
+	var _isFetching = __webpack_require__(493);
 	
 	var _isFetching2 = _interopRequireDefault(_isFetching);
 	
-	var _recipes = __webpack_require__(496);
+	var _recipes = __webpack_require__(494);
 	
 	var recipes = _interopRequireWildcard(_recipes);
 	
-	var _recipeDetails = __webpack_require__(497);
+	var _recipeDetails = __webpack_require__(495);
 	
 	var _recipeDetails2 = _interopRequireDefault(_recipeDetails);
 	
@@ -39816,7 +39799,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 494 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39872,7 +39855,7 @@
 	}
 
 /***/ },
-/* 495 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39904,7 +39887,7 @@
 	}
 
 /***/ },
-/* 496 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39973,7 +39956,7 @@
 	}
 
 /***/ },
-/* 497 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40027,7 +40010,92 @@
 	}
 
 /***/ },
+/* 496 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(497);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 497 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".recipesList__wrapper___1owmK {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}\r\n\r\n.recipesList__addNew___3b8vV {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 2em;\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "recipesList__wrapper___1owmK",
+		"addNew": "recipesList__addNew___3b8vV"
+	};
+
+/***/ },
 /* 498 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(499);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".recipesLists__wrapper___tTrPL > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n    padding-left: 0.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___tTrPL h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "recipesLists__wrapper___tTrPL"
+	};
+
+/***/ },
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40040,7 +40108,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _Auth = __webpack_require__(499);
+	var _Auth = __webpack_require__(501);
 	
 	var _Auth2 = _interopRequireDefault(_Auth);
 	
@@ -40048,7 +40116,7 @@
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(486);
+	var _api = __webpack_require__(484);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40095,7 +40163,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Auth2.default);
 
 /***/ },
-/* 499 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40114,11 +40182,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Spinner = __webpack_require__(500);
+	var _Spinner = __webpack_require__(502);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _auth = __webpack_require__(503);
+	var _auth = __webpack_require__(505);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
@@ -40259,7 +40327,7 @@
 	exports.default = (0, _reactCssModules2.default)(Auth, _auth2.default);
 
 /***/ },
-/* 500 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40278,7 +40346,7 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _spinner = __webpack_require__(501);
+	var _spinner = __webpack_require__(503);
 	
 	var _spinner2 = _interopRequireDefault(_spinner);
 	
@@ -40312,13 +40380,13 @@
 	exports.default = (0, _reactCssModules2.default)(Spinner, _spinner2.default);
 
 /***/ },
-/* 501 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(502);
+	var content = __webpack_require__(504);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40338,7 +40406,7 @@
 	}
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40355,13 +40423,13 @@
 	};
 
 /***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(504);
+	var content = __webpack_require__(506);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40381,7 +40449,7 @@
 	}
 
 /***/ },
-/* 504 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40400,7 +40468,7 @@
 	};
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40413,7 +40481,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _CookRecipe = __webpack_require__(506);
+	var _CookRecipe = __webpack_require__(508);
 	
 	var _CookRecipe2 = _interopRequireDefault(_CookRecipe);
 	
@@ -40421,7 +40489,7 @@
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(486);
+	var _api = __webpack_require__(484);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40456,7 +40524,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_CookRecipe2.default);
 
 /***/ },
-/* 506 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40471,7 +40539,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Base64Image = __webpack_require__(479);
+	var _Base64Image = __webpack_require__(481);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -40479,11 +40547,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(478);
+	var _reactRating = __webpack_require__(480);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _cookRecipe = __webpack_require__(507);
+	var _cookRecipe = __webpack_require__(509);
 	
 	var _cookRecipe2 = _interopRequireDefault(_cookRecipe);
 	
@@ -40707,13 +40775,13 @@
 	exports.default = (0, _reactCssModules2.default)(CookRecipe, _cookRecipe2.default);
 
 /***/ },
-/* 507 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(508);
+	var content = __webpack_require__(510);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40733,7 +40801,7 @@
 	}
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40755,7 +40823,7 @@
 	};
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40768,7 +40836,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(510);
+	var _EditRecipe = __webpack_require__(512);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
@@ -40776,7 +40844,7 @@
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(486);
+	var _api = __webpack_require__(484);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40839,7 +40907,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40858,15 +40926,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(478);
+	var _reactRating = __webpack_require__(480);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _editRecipe = __webpack_require__(511);
+	var _editRecipe = __webpack_require__(513);
 	
 	var _editRecipe2 = _interopRequireDefault(_editRecipe);
 	
-	var _Base64Image = __webpack_require__(479);
+	var _Base64Image = __webpack_require__(481);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -41136,13 +41204,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(512);
+	var content = __webpack_require__(514);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41162,7 +41230,7 @@
 	}
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41184,7 +41252,7 @@
 	};
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41197,7 +41265,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _NewRecipe = __webpack_require__(514);
+	var _NewRecipe = __webpack_require__(516);
 	
 	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
 	
@@ -41205,7 +41273,7 @@
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(486);
+	var _api = __webpack_require__(484);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -41239,7 +41307,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
 
 /***/ },
-/* 514 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41258,15 +41326,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(478);
+	var _reactRating = __webpack_require__(480);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _newRecipe = __webpack_require__(515);
+	var _newRecipe = __webpack_require__(517);
 	
 	var _newRecipe2 = _interopRequireDefault(_newRecipe);
 	
-	var _Base64Image = __webpack_require__(479);
+	var _Base64Image = __webpack_require__(481);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -41395,13 +41463,13 @@
 	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
 
 /***/ },
-/* 515 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(516);
+	var content = __webpack_require__(518);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41421,7 +41489,7 @@
 	}
 
 /***/ },
-/* 516 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();

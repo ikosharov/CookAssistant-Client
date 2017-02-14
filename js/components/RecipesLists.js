@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 
-import RecipesList from './RecipesList';
+import RecipesListContainer from '../containers/RecipesListContainer';
 import styles from '../styles/recipesLists.css';
 
 class RecipesLists extends React.Component {
@@ -19,21 +19,14 @@ class RecipesLists extends React.Component {
         }
 
         let currentUserRecipesMarkup = (
-            <RecipesList
-                userId={this.props.userId}
+            <RecipesListContainer
                 recipes={this.props.currentUserRecipes}
-                cookRecipe={this.props.cookRecipe}
-                editRecipe={this.props.editRecipe}
-                addRecipe={this.props.addRecipe}
                 enableAddButton={true}
             />);
 
         let anyUserRecipesMarkup = (
-            <RecipesList
-                userId={this.props.userId}
+            <RecipesListContainer
                 recipes={this.props.anyUserRecipes}
-                cookRecipe={this.props.cookRecipe}
-                editRecipe={this.props.editRecipe}
             />);
 
         return (
