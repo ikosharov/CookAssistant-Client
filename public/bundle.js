@@ -38894,8 +38894,8 @@
 	exports.loadCurrentUserRecipes = loadCurrentUserRecipes;
 	exports.loadAnyUserRecipes = loadAnyUserRecipes;
 	exports.loadRecipeDetails = loadRecipeDetails;
-	exports.editRecipeDetails = editRecipeDetails;
 	exports.deleteRecipe = deleteRecipe;
+	exports.editRecipeDetails = editRecipeDetails;
 	exports.addRecipe = addRecipe;
 	
 	var _isomorphicFetch = __webpack_require__(485);
@@ -39078,44 +39078,6 @@
 	    return promise;
 	}
 	
-	function editRecipeDetails(recipeId, recipe) {
-	    var auth = _store.store.getState().auth;
-	
-	    var url = _web.API_URL + '/recipes/' + recipeId;
-	
-	    var form = new _formData2.default();
-	    form.append("title", recipe.title);
-	    form.append("isPublic", recipe.isPublic);
-	    form.append("rating", recipe.rating);
-	    if (recipe.image) {
-	        form.append("image", recipe.image);
-	    }
-	
-	    var options = {
-	        "method": "PUT",
-	        "headers": {
-	            "Authorization": "JWT " + auth.token
-	        },
-	        "body": form
-	    };
-	
-	    var promise = new Promise(function (resolve, reject) {
-	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
-	            // this will not reject on error. only on network failure
-	            if (response.status != 204) {
-	                reject();
-	            } else {
-	                resolve();
-	            }
-	        }).catch(function () {
-	            // network failure
-	            reject();
-	        });
-	    });
-	
-	    return promise;
-	}
-	
 	function deleteRecipe(recipeId) {
 	    var auth = _store.store.getState().auth;
 	
@@ -39145,15 +39107,49 @@
 	    return promise;
 	}
 	
+	function editRecipeDetails(recipeId, recipe) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId;
+	
+	    var form = new _formData2.default();
+	    form.append("recipe", JSON.stringify(recipe));
+	    if (recipe.image) {
+	        form.append("image", recipe.image);
+	    }
+	
+	    var options = {
+	        "method": "PUT",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        },
+	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
 	function addRecipe(recipe) {
 	    var auth = _store.store.getState().auth;
 	
 	    var url = _web.API_URL + '/recipes';
 	
 	    var form = new _formData2.default();
-	    form.append("title", recipe.title);
-	    form.append("isPublic", recipe.isPublic);
-	    form.append("rating", 0);
+	    form.append("recipe", JSON.stringify(ecipe));
 	    if (recipe.image) {
 	        form.append("image", recipe.image);
 	    }

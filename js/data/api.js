@@ -171,44 +171,6 @@ export function loadRecipeDetails(recipeId) {
     return promise;
 }
 
-export function editRecipeDetails(recipeId, recipe) {
-    let auth = store.getState().auth;
-
-    let url = `${API_URL}/recipes/${recipeId}`;
-
-    let form = new FormData();
-    form.append("title", recipe.title);
-    form.append("isPublic", recipe.isPublic);
-    form.append("rating", recipe.rating);
-    if (recipe.image) {
-        form.append("image", recipe.image);
-    }
-
-    let options = {
-        "method": "PUT",
-        "headers": {
-            "Authorization": "JWT " + auth.token
-        },
-        "body": form
-    };
-
-    let promise = new Promise((resolve, reject) => {
-        fetch(url, options).then((response) => {
-            // this will not reject on error. only on network failure
-            if (response.status != 204) {
-                reject();
-            } else {
-                resolve();
-            }
-        }).catch(() => {
-            // network failure
-            reject();
-        });
-    });
-
-    return promise;
-}
-
 export function deleteRecipe(recipeId) {
     let auth = store.getState().auth;
 
@@ -238,15 +200,49 @@ export function deleteRecipe(recipeId) {
     return promise;
 }
 
+export function editRecipeDetails(recipeId, recipe) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}`;
+
+    let form = new FormData();
+    form.append("recipe", JSON.stringify(recipe));
+    if (recipe.image) {
+        form.append("image", recipe.image);
+    }
+
+    let options = {
+        "method": "PUT",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        },
+        "body": form
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 204) {
+                reject();
+            } else {
+                resolve();
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
 export function addRecipe(recipe) {
     let auth = store.getState().auth;
 
     let url = `${API_URL}/recipes`;
 
     let form = new FormData();
-    form.append("title", recipe.title);
-    form.append("isPublic", recipe.isPublic);
-    form.append("rating", 0);
+    form.append("recipe", JSON.stringify(ecipe));
     if (recipe.image) {
         form.append("image", recipe.image);
     }
