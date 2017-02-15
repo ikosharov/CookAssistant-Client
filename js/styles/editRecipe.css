@@ -38,8 +38,24 @@
     margin-bottom: 2em;
 }
 
+.ingredients > h2 {
+    background-color: blue;
+    color: white;
+    border-radius: 0.2em;
+    line-height: 1.5em;
+    padding-left: 1em;
+}
+
 .steps li {
 	padding: .4rem 0;
+}
+
+.steps > h2 {
+    background-color: blue;
+    color: white;
+    border-radius: 0.2em;
+    line-height: 1.5em;
+    padding-left: 1em;
 }
 
 .steps li:after {
