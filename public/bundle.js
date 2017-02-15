@@ -39017,7 +39017,7 @@
 	function loadAnyUserRecipes() {
 	    var auth = _store.store.getState().auth;
 	
-	    var url = _web.API_URL + '/recipes';
+	    var url = _web.API_URL + '/recipes?visibility=public';
 	
 	    var options = {
 	        "method": "GET",

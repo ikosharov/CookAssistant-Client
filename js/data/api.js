@@ -110,7 +110,7 @@ export function loadCurrentUserRecipes() {
 export function loadAnyUserRecipes() {
     let auth = store.getState().auth;
 
-    let url = `${API_URL}/recipes`;
+    let url = `${API_URL}/recipes?visibility=public`;
 
     let options = {
         "method": "GET",
