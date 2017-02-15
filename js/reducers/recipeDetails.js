@@ -8,6 +8,7 @@ export default function recipeDetails(state, action) {
             title: '',
             isPublic: false,
             ingredients: [],
+            steps: [],
             image: '',
             rating: 0
         }
@@ -21,6 +22,7 @@ export default function recipeDetails(state, action) {
                 title: action.recipe.title,
                 isPublic: action.recipe.isPublic,
                 ingredients: action.recipe.ingredients,
+                steps: action.recipe.steps,
                 image: action.recipe.image,
                 rating: action.recipe.rating
             });
@@ -32,6 +34,7 @@ export default function recipeDetails(state, action) {
                 title: '',
                 isPublic: false,
                 ingredients: [],
+                steps: [],
                 image: '',
                 rating: 0
             });

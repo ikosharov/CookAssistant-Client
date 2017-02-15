@@ -30967,11 +30967,11 @@
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(511);
+	var _EditRecipeContainer = __webpack_require__(512);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
-	var _NewRecipeContainer = __webpack_require__(515);
+	var _NewRecipeContainer = __webpack_require__(516);
 	
 	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
 	
@@ -39977,6 +39977,7 @@
 	            title: '',
 	            isPublic: false,
 	            ingredients: [],
+	            steps: [],
 	            image: '',
 	            rating: 0
 	        };
@@ -39990,6 +39991,7 @@
 	                title: action.recipe.title,
 	                isPublic: action.recipe.isPublic,
 	                ingredients: action.recipe.ingredients,
+	                steps: action.recipe.steps,
 	                image: action.recipe.image,
 	                rating: action.recipe.rating
 	            });
@@ -40001,6 +40003,7 @@
 	                title: '',
 	                isPublic: false,
 	                ingredients: [],
+	                steps: [],
 	                image: '',
 	                rating: 0
 	            });
@@ -40540,19 +40543,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Base64Image = __webpack_require__(481);
-	
-	var _Base64Image2 = _interopRequireDefault(_Base64Image);
-	
 	var _reactCssModules = __webpack_require__(295);
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _guid = __webpack_require__(509);
+	
+	var _guid2 = _interopRequireDefault(_guid);
+	
+	var _Base64Image = __webpack_require__(481);
+	
+	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
 	var _reactRating = __webpack_require__(480);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _cookRecipe = __webpack_require__(509);
+	var _cookRecipe = __webpack_require__(510);
 	
 	var _cookRecipe2 = _interopRequireDefault(_cookRecipe);
 	
@@ -40613,6 +40620,22 @@
 	            }
 	
 	            var showEdit = this.props.recipeDetails.userId == this.props.userId;
+	            var ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
+	                var guid = _guid2.default.create();
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: guid.value },
+	                    ingredient
+	                );
+	            });
+	            var stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
+	                var guid = _guid2.default.create();
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: guid.value },
+	                    step
+	                );
+	            });
 	
 	            return _react2.default.createElement(
 	                'div',
@@ -40684,7 +40707,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { styleName: 'ingredients' },
+	                    null,
 	                    _react2.default.createElement(
 	                        'h2',
 	                        null,
@@ -40693,31 +40716,7 @@
 	                    _react2.default.createElement(
 	                        'ul',
 	                        null,
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 1'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 2'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 3'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 4'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 5'
-	                        )
+	                        ingredientsMarkup
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -40731,41 +40730,7 @@
 	                    _react2.default.createElement(
 	                        'ol',
 	                        null,
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Heat the oven to 220\xB0C (or gas mark 7). Tip the flour into a large bowl along with the salt and baking powder, then mix it all up. Add the butter in, then rub the butter in with your fingers until the mix looks like fine crumbs. When that is done, stir in the sugar.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Put the milk into a jug and heat in the microwave for about 20-30 seconds. It should be warm but not hot. Add the vanilla and lemon juice to the milk and then put that to one side and but a baking tray in the oven to warm.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Make a well in the dry mix, then add the liquid and combine it quickly with a cutlery knife \u2013 it will seem pretty wet at first. Spread some flour onto the work surface and tip the dough out. Dredge the dough and your hands with a little more flour, then fold the dough over 2-3 times until it\'s smoother. Now pat it into a round shape about 4cm deep.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Take a 5cm cutter (Pro-tip \u2013 smooth-edged cutters tend to cut more cleanly, giving a better rise) and dip it into some flour. Plunge into the dough, then repeat until you have four scones. By this point you\u2019ll probably need to press what\'s left of the dough back into a round to cut out another four.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Brush the tops with beaten egg, then place onto the hot baking tray.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Bake for 10 minutes until risen and golden on the top. Eat just warm or cold on the day of baking, generously (and I do mean generously) topped with jam and clotted cream. '
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'If freezing, freeze once cool. Defrost, then put in a low oven (about 160\xB0C) for a few minutes to refresh.'
-	                        )
+	                        stepsMarkup
 	                    )
 	                )
 	            );
@@ -40779,12 +40744,80 @@
 
 /***/ },
 /* 509 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	(function () {
+	  var validator = new RegExp("^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$", "i");
+	
+	  function gen(count) {
+	    var out = "";
+	    for (var i = 0; i < count; i++) {
+	      out += ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+	    }
+	    return out;
+	  }
+	
+	  function Guid(guid) {
+	    if (!guid) throw new TypeError("Invalid argument; `value` has no value.");
+	
+	    this.value = Guid.EMPTY;
+	
+	    if (guid && guid instanceof Guid) {
+	      this.value = guid.toString();
+	    } else if (guid && Object.prototype.toString.call(guid) === "[object String]" && Guid.isGuid(guid)) {
+	      this.value = guid;
+	    }
+	
+	    this.equals = function (other) {
+	      // Comparing string `value` against provided `guid` will auto-call
+	      // toString on `guid` for comparison
+	      return Guid.isGuid(other) && this.value == other;
+	    };
+	
+	    this.isEmpty = function () {
+	      return this.value === Guid.EMPTY;
+	    };
+	
+	    this.toString = function () {
+	      return this.value;
+	    };
+	
+	    this.toJSON = function () {
+	      return this.value;
+	    };
+	  };
+	
+	  Guid.EMPTY = "00000000-0000-0000-0000-000000000000";
+	
+	  Guid.isGuid = function (value) {
+	    return value && (value instanceof Guid || validator.test(value.toString()));
+	  };
+	
+	  Guid.create = function () {
+	    return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join("-"));
+	  };
+	
+	  Guid.raw = function () {
+	    return [gen(2), gen(1), gen(1), gen(1), gen(3)].join("-");
+	  };
+	
+	  if (typeof module != 'undefined' && module.exports) {
+	    module.exports = Guid;
+	  } else if (typeof window != 'undefined') {
+	    window.Guid = Guid;
+	  }
+	})();
+
+/***/ },
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(510);
+	var content = __webpack_require__(511);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40804,7 +40837,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40812,7 +40845,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -40821,12 +40854,11 @@
 		"image-and-controls": "cookRecipe__image-and-controls___32Zc3",
 		"controls": "cookRecipe__controls___SiwIG",
 		"image": "cookRecipe__image___1hH-o",
-		"ingredients": "cookRecipe__ingredients___1uz6A",
 		"steps": "cookRecipe__steps___1z4wL"
 	};
 
 /***/ },
-/* 511 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40839,7 +40871,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(512);
+	var _EditRecipe = __webpack_require__(513);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
@@ -40910,7 +40942,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 512 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40929,11 +40961,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
+	var _guid = __webpack_require__(509);
+	
+	var _guid2 = _interopRequireDefault(_guid);
+	
 	var _reactRating = __webpack_require__(480);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _editRecipe = __webpack_require__(513);
+	var _editRecipe = __webpack_require__(514);
 	
 	var _editRecipe2 = _interopRequireDefault(_editRecipe);
 	
@@ -41037,6 +41073,23 @@
 	                );
 	            }
 	
+	            var ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
+	                var guid = _guid2.default.create();
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: guid.value },
+	                    ingredient
+	                );
+	            });
+	            var stepsMarkup = this.state.steps.map(function (step) {
+	                var guid = _guid2.default.create();
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: guid.value },
+	                    step
+	                );
+	            });
+	
 	            return _react2.default.createElement(
 	                'div',
 	                { styleName: 'wrapper' },
@@ -41122,31 +41175,7 @@
 	                    _react2.default.createElement(
 	                        'ul',
 	                        null,
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 1'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 2'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 3'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 4'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'ingredient 5'
-	                        )
+	                        ingredientsMarkup
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -41160,41 +41189,7 @@
 	                    _react2.default.createElement(
 	                        'ol',
 	                        null,
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Heat the oven to 220\xB0C (or gas mark 7). Tip the flour into a large bowl along with the salt and baking powder, then mix it all up. Add the butter in, then rub the butter in with your fingers until the mix looks like fine crumbs. When that is done, stir in the sugar.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Put the milk into a jug and heat in the microwave for about 20-30 seconds. It should be warm but not hot. Add the vanilla and lemon juice to the milk and then put that to one side and but a baking tray in the oven to warm.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Make a well in the dry mix, then add the liquid and combine it quickly with a cutlery knife \u2013 it will seem pretty wet at first. Spread some flour onto the work surface and tip the dough out. Dredge the dough and your hands with a little more flour, then fold the dough over 2-3 times until it\'s smoother. Now pat it into a round shape about 4cm deep.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Take a 5cm cutter (Pro-tip \u2013 smooth-edged cutters tend to cut more cleanly, giving a better rise) and dip it into some flour. Plunge into the dough, then repeat until you have four scones. By this point you\u2019ll probably need to press what\'s left of the dough back into a round to cut out another four.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Brush the tops with beaten egg, then place onto the hot baking tray.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'Bake for 10 minutes until risen and golden on the top. Eat just warm or cold on the day of baking, generously (and I do mean generously) topped with jam and clotted cream. '
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'If freezing, freeze once cool. Defrost, then put in a low oven (about 160\xB0C) for a few minutes to refresh.'
-	                        )
+	                        stepsMarkup
 	                    )
 	                )
 	            );
@@ -41207,13 +41202,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
 
 /***/ },
-/* 513 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(514);
+	var content = __webpack_require__(515);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41233,7 +41228,7 @@
 	}
 
 /***/ },
-/* 514 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41255,7 +41250,7 @@
 	};
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41268,7 +41263,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _NewRecipe = __webpack_require__(516);
+	var _NewRecipe = __webpack_require__(517);
 	
 	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
 	
@@ -41313,7 +41308,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
 
 /***/ },
-/* 516 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41336,7 +41331,7 @@
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _newRecipe = __webpack_require__(517);
+	var _newRecipe = __webpack_require__(518);
 	
 	var _newRecipe2 = _interopRequireDefault(_newRecipe);
 	
@@ -41472,13 +41467,13 @@
 	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
 
 /***/ },
-/* 517 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(518);
+	var content = __webpack_require__(519);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41498,7 +41493,7 @@
 	}
 
 /***/ },
-/* 518 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
