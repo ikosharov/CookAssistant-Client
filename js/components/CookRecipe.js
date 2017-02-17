@@ -44,17 +44,24 @@ class CookRecipe extends Component {
         let ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
             var guid = Guid.create();
             return (
-                <li key={guid.value}>
-                    {ingredient}
-                    <Base64Image />
-                </li>
+                <div styleName='ingredient' key={guid.value}>
+                    <div>
+                        <Base64Image />
+                    </div>
+                    <div>
+                        {ingredient.title}
+                    </div>
+                    <div>
+                        <span className='glyphicon glyphicon-ok'></span>
+                    </div>
+                </div>
             );
         });
         let stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
             var guid = Guid.create();
             return (
                 <li key={guid.value}>
-                    {step}
+                    {step.title}
                     <Base64Image />
                 </li>
             );
@@ -81,9 +88,9 @@ class CookRecipe extends Component {
                 </div>
                 <div styleName='ingredients'>
                     <h2>Ingredients</h2>
-                    <ul>
+                    <div>
                         {ingredientsMarkup}
-                    </ul>
+                    </div>
                 </div>
                 <div styleName="steps">
                     <h2>Steps</h2>

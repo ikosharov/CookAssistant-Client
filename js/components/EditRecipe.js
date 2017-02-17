@@ -18,8 +18,20 @@ class EditRecipe extends Component {
         this.save = this.save.bind(this);
         this.delete = this.delete.bind(this);
         this.cook = this.cook.bind(this);
+        this.addIngredient = this.addIngredient.bind(this);
+        this.addStep = this.addStep.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
+    }
+
+    addIngredient(e) {
+        e.preventDefault();
+        alert('add ingredient');
+    }
+
+    addStep(e) {
+        e.preventDefault();
+        alert('add step');
     }
 
     save(e) {
@@ -74,13 +86,13 @@ class EditRecipe extends Component {
         let ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
             var guid = Guid.create();
             return (
-                <li key={guid.value}>{ingredient}</li>
+                <div key={guid.value}>{ingredient}</div>
             );
         });
         let stepsMarkup = this.state.steps.map(function (step) {
             var guid = Guid.create();
             return (
-                <li key={guid.value}>{step}</li>
+                <div key={guid.value}>{step}</div>
             );
         });
 
@@ -109,15 +121,21 @@ class EditRecipe extends Component {
                 </div>
                 <div styleName="ingredients">
                     <h2>Ingredients</h2>
-                    <ul>
+                    <div>
                         {ingredientsMarkup}
-                    </ul>
+                    </div>
+                    <div>
+                        <button onClick={this.addIngredient}>Add <span className="glyphicon glyphicon-plus"></span></button>
+                    </div>
                 </div>
                 <div styleName="steps">
                     <h2>Steps</h2>
-                    <ol>
+                    <div>
                         {stepsMarkup}
-                    </ol>
+                    </div>
+                    <div>
+                        <button onClick={this.addStep}>Add <span className="glyphicon glyphicon-plus"></span></button>
+                    </div>
                 </div>
             </div>
         );

@@ -39113,7 +39113,7 @@
 	    var url = _web.API_URL + '/recipes/' + recipeId;
 	
 	    var form = new _formData2.default();
-	    form.append("recipe", JSON.stringify(recipe));
+	    form.append("data", JSON.stringify(recipe));
 	    if (recipe.image) {
 	        form.append("image", recipe.image);
 	    }
@@ -39149,7 +39149,7 @@
 	    var url = _web.API_URL + '/recipes';
 	
 	    var form = new _formData2.default();
-	    form.append("recipe", JSON.stringify(ecipe));
+	    form.append("data", JSON.stringify(ecipe));
 	    if (recipe.image) {
 	        form.append("image", recipe.image);
 	    }
@@ -40619,9 +40619,23 @@
 	            var ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
 	                var guid = _guid2.default.create();
 	                return _react2.default.createElement(
-	                    'li',
-	                    { key: guid.value },
-	                    ingredient
+	                    'div',
+	                    { styleName: 'ingredient', key: guid.value },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(_Base64Image2.default, null)
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        ingredient.title
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-ok' })
+	                    )
 	                );
 	            });
 	            var stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
@@ -40629,7 +40643,8 @@
 	                return _react2.default.createElement(
 	                    'li',
 	                    { key: guid.value },
-	                    step
+	                    step.title,
+	                    _react2.default.createElement(_Base64Image2.default, null)
 	                );
 	            });
 	
@@ -40703,14 +40718,14 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    null,
+	                    { styleName: 'ingredients' },
 	                    _react2.default.createElement(
 	                        'h2',
 	                        null,
 	                        'Ingredients'
 	                    ),
 	                    _react2.default.createElement(
-	                        'ul',
+	                        'div',
 	                        null,
 	                        ingredientsMarkup
 	                    )
@@ -40841,7 +40856,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -40850,6 +40865,8 @@
 		"image-and-controls": "cookRecipe__image-and-controls___32Zc3",
 		"controls": "cookRecipe__controls___SiwIG",
 		"image": "cookRecipe__image___1hH-o",
+		"ingredients": "cookRecipe__ingredients___1uz6A",
+		"ingredient": "cookRecipe__ingredient___3x8Qw",
 		"steps": "cookRecipe__steps___1z4wL"
 	};
 
@@ -40996,12 +41013,26 @@
 	        _this.save = _this.save.bind(_this);
 	        _this.delete = _this.delete.bind(_this);
 	        _this.cook = _this.cook.bind(_this);
+	        _this.addIngredient = _this.addIngredient.bind(_this);
+	        _this.addStep = _this.addStep.bind(_this);
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleIsPublicChange = _this.handleIsPublicChange.bind(_this);
 	        return _this;
 	    }
 	
 	    _createClass(EditRecipe, [{
+	        key: 'addIngredient',
+	        value: function addIngredient(e) {
+	            e.preventDefault();
+	            alert('add ingredient');
+	        }
+	    }, {
+	        key: 'addStep',
+	        value: function addStep(e) {
+	            e.preventDefault();
+	            alert('add step');
+	        }
+	    }, {
 	        key: 'save',
 	        value: function save(e) {
 	            var _this2 = this;
@@ -41072,7 +41103,7 @@
 	            var ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
 	                var guid = _guid2.default.create();
 	                return _react2.default.createElement(
-	                    'li',
+	                    'div',
 	                    { key: guid.value },
 	                    ingredient
 	                );
@@ -41080,7 +41111,7 @@
 	            var stepsMarkup = this.state.steps.map(function (step) {
 	                var guid = _guid2.default.create();
 	                return _react2.default.createElement(
-	                    'li',
+	                    'div',
 	                    { key: guid.value },
 	                    step
 	                );
@@ -41169,9 +41200,19 @@
 	                        'Ingredients'
 	                    ),
 	                    _react2.default.createElement(
-	                        'ul',
+	                        'div',
 	                        null,
 	                        ingredientsMarkup
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: this.addIngredient },
+	                            'Add ',
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus' })
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -41183,9 +41224,19 @@
 	                        'Steps'
 	                    ),
 	                    _react2.default.createElement(
-	                        'ol',
+	                        'div',
 	                        null,
 	                        stepsMarkup
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: this.addStep },
+	                            'Add ',
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus' })
+	                        )
 	                    )
 	                )
 	            );
@@ -41232,7 +41283,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {

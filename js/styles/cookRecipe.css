@@ -43,8 +43,9 @@
     background-color: lightgreen;
 }
 
-.ingredients li {
-    margin-bottom: 0.5em;
+.ingredients > div {
+    display: flex;
+    flex-direction: column;
 }
 
 .ingredients > h2 {
@@ -53,6 +54,18 @@
     border-radius: 0.2em;
     line-height: 1.5em;
     padding-left: 1em;
+}
+
+.ingredient {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.ingredient > div {
+    display: flex;
+    align-content: center;
 }
 
 .steps li {

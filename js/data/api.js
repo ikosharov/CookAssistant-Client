@@ -206,7 +206,7 @@ export function editRecipeDetails(recipeId, recipe) {
     let url = `${API_URL}/recipes/${recipeId}`;
 
     let form = new FormData();
-    form.append("recipe", JSON.stringify(recipe));
+    form.append("data", JSON.stringify(recipe));
     if (recipe.image) {
         form.append("image", recipe.image);
     }
@@ -242,7 +242,7 @@ export function addRecipe(recipe) {
     let url = `${API_URL}/recipes`;
 
     let form = new FormData();
-    form.append("recipe", JSON.stringify(ecipe));
+    form.append("data", JSON.stringify(ecipe));
     if (recipe.image) {
         form.append("image", recipe.image);
     }
