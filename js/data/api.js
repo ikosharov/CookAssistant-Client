@@ -271,3 +271,151 @@ export function addRecipe(recipe) {
 
     return promise;
 }
+
+export function createIngredient(recipeId, ingredient) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}/ingredients`;
+
+    let form = new FormData();
+    form.append("data", JSON.stringify(ingredient));
+    if (ingredient.image) {
+        form.append("image", ingredient.image);
+    }
+
+    let options = {
+        "method": "POST",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        },
+        "body": form
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 200) {
+                reject();
+            } else {
+                response.json().then((json) => {
+                    resolve(json);
+                });
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+export function editIngredient(recipeId, ingredient) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredient._id}`;
+
+    let form = new FormData();
+    form.append("data", JSON.stringify(ingredient));
+    if (ingredient.image) {
+        form.append("image", ingredient.image);
+    }
+
+    let options = {
+        "method": "PUT",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        },
+        "body": form
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 204) {
+                reject();
+            } else {
+                resolve();
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+export function createStep(recipeId, step) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}/steps`;
+
+    let form = new FormData();
+    form.append("data", JSON.stringify(step));
+    if (step.image) {
+        form.append("image", step.image);
+    }
+
+    let options = {
+        "method": "POST",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        },
+        "body": form
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 200) {
+                reject();
+            } else {
+                response.json().then((json) => {
+                    resolve(json);
+                });
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+export function editStep(recipeId, step) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}/steps/${step._id}`;
+
+    let form = new FormData();
+    form.append("data", JSON.stringify(step));
+    if (step.image) {
+        form.append("image", step.image);
+    }
+
+    let options = {
+        "method": "PUT",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        },
+        "body": form
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 204) {
+                reject();
+            } else {
+                resolve();
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}

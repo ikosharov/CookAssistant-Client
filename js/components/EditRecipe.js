@@ -6,6 +6,8 @@ import Guid from 'guid';
 import Rating from 'react-rating';
 import styles from '../styles/editRecipe.css';
 import Base64Image from './Base64Image';
+import EditIngredientContainer from '../containers/EditIngredientContainer';
+import EditStepContainer from '../containers/EditStepContainer';
 
 class EditRecipe extends Component {
     constructor(props) {
@@ -20,6 +22,8 @@ class EditRecipe extends Component {
         this.cook = this.cook.bind(this);
         this.addIngredient = this.addIngredient.bind(this);
         this.addStep = this.addStep.bind(this);
+        this.receiveIngredientState = this.receiveIngredientState.bind(this);
+        this.receiveStepState = this.receiveStepState.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
         this.handleImageChange = this.handleImageChange.bind(this);
@@ -27,12 +31,14 @@ class EditRecipe extends Component {
 
     addIngredient(e) {
         e.preventDefault();
-        alert('add ingredient');
+        this.state.ingredients.push(null);
+        this.setState({ 'ingredients': this.state.ingredients });
     }
 
     addStep(e) {
         e.preventDefault();
-        alert('add step');
+        this.state.steps.push(null);
+        this.setState({ 'steps': this.state.steps });
     }
 
     save(e) {
@@ -80,21 +86,36 @@ class EditRecipe extends Component {
         this.setState({ 'image': image });
     }
 
+    receiveIngredientState(ingredientState) {
+        alert('received ingredient state:' + JSON.stringify(ingredientState));
+    }
+
+    receiveStepState(stepState) {
+        alert('received step state:' + JSON.stringify(stepState));
+    }
+
     render() {
         if (this.props.isFetching) {
             return (<h1>Loading...</h1>)
         }
 
+        let receiveIngredientState = this.receiveIngredientState;
+        let receiveStepState = this.receiveStepState;
+
         let ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
             var guid = Guid.create();
             return (
-                <div key={guid.value}>{ingredient}</div>
+                <EditIngredientContainer key={guid.value}
+                    initialState={ingredient}
+                    sendStateToParent={receiveIngredientState} />
             );
         });
         let stepsMarkup = this.state.steps.map(function (step) {
             var guid = Guid.create();
             return (
-                <div key={guid.value}>{step}</div>
+                <EditStepContainer key={guid.value}
+                    initialState={step}
+                    sendStateToParent={receiveStepState} />
             );
         });
 
@@ -113,7 +134,7 @@ class EditRecipe extends Component {
                 <div styleName='image-and-controls'>
                     <div styleName="image">
                         <Base64Image data={this.props.recipeDetails.image} />
-                        <input type="file" name="image" onChange={this.handleImageChange} ref={(fileInput) => { this.fileInput = fileInput }} />
+                        <input type="file" name="image" onChange={this.handleImageChange} />
                     </div>
                     <div styleName='controls'>
                         <div><a href="#"><span className="glyphicon glyphicon-play-circle" onClick={this.cook}> Cook</span></a></div>
