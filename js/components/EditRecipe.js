@@ -22,6 +22,7 @@ class EditRecipe extends Component {
         this.addStep = this.addStep.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
     }
 
     addIngredient(e) {
@@ -36,11 +37,7 @@ class EditRecipe extends Component {
 
     save(e) {
         e.preventDefault();
-        let recipe = this.state;
-        if (this.fileInput.files && this.fileInput.files[0]) {
-            recipe.image = this.fileInput.files[0];
-        }
-        this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(() => {
+        this.props.editRecipeDetails(this.props.params.recipeId, this.state).then(() => {
             this.props.loadRecipeDetails(this.props.params.recipeId);
         }).catch(() => {
             alert('failed');
@@ -49,7 +46,7 @@ class EditRecipe extends Component {
 
     delete(e) {
         e.preventDefault();
-        this.props.deleteRecipe(this.props.recipeDetails.id).then(() => {
+        this.props.deleteRecipe(this.props.params.recipeId).then(() => {
             alert("recipe deleted");
             this.props.navigateToRecipes();
         }).catch(() => {
@@ -59,7 +56,7 @@ class EditRecipe extends Component {
 
     cook(e) {
         e.preventDefault();
-        this.props.navigateToCook(this.props.recipeDetails.id);
+        this.props.navigateToCook(this.props.params.recipeId);
     }
 
     componentDidMount() {
@@ -76,6 +73,11 @@ class EditRecipe extends Component {
 
     handleIsPublicChange(e) {
         this.setState({ 'isPublic': e.target.checked });
+    }
+
+    handleImageChange(e) {
+        var image = e.currentTarget.files[0];
+        this.setState({ 'image': image });
     }
 
     render() {
@@ -111,7 +113,7 @@ class EditRecipe extends Component {
                 <div styleName='image-and-controls'>
                     <div styleName="image">
                         <Base64Image data={this.props.recipeDetails.image} />
-                        <input type="file" name="image" ref={(fileInput) => { this.fileInput = fileInput }} />
+                        <input type="file" name="image" onChange={this.handleImageChange} ref={(fileInput) => { this.fileInput = fileInput }} />
                     </div>
                     <div styleName='controls'>
                         <div><a href="#"><span className="glyphicon glyphicon-play-circle" onClick={this.cook}> Cook</span></a></div>
