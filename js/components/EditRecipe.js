@@ -87,11 +87,11 @@ class EditRecipe extends Component {
     }
 
     receiveIngredientState(ingredientState) {
-        alert('received ingredient state:' + JSON.stringify(ingredientState));
+        this.props.loadRecipeDetails(this.props.params.recipeId);
     }
 
     receiveStepState(stepState) {
-        alert('received step state:' + JSON.stringify(stepState));
+        this.props.loadRecipeDetails(this.props.params.recipeId);
     }
 
     render() {

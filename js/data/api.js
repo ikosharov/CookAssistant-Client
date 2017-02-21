@@ -242,7 +242,7 @@ export function addRecipe(recipe) {
     let url = `${API_URL}/recipes`;
 
     let form = new FormData();
-    form.append("data", JSON.stringify(ecipe));
+    form.append("data", JSON.stringify(recipe));
     if (recipe.image) {
         form.append("image", recipe.image);
     }

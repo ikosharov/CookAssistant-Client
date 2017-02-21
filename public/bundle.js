@@ -30971,7 +30971,7 @@
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
-	var _NewRecipeContainer = __webpack_require__(516);
+	var _NewRecipeContainer = __webpack_require__(524);
 	
 	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
 	
@@ -38897,6 +38897,10 @@
 	exports.deleteRecipe = deleteRecipe;
 	exports.editRecipeDetails = editRecipeDetails;
 	exports.addRecipe = addRecipe;
+	exports.createIngredient = createIngredient;
+	exports.editIngredient = editIngredient;
+	exports.createStep = createStep;
+	exports.editStep = editStep;
 	
 	var _isomorphicFetch = __webpack_require__(485);
 	
@@ -39149,7 +39153,7 @@
 	    var url = _web.API_URL + '/recipes';
 	
 	    var form = new _formData2.default();
-	    form.append("data", JSON.stringify(ecipe));
+	    form.append("data", JSON.stringify(recipe));
 	    if (recipe.image) {
 	        form.append("image", recipe.image);
 	    }
@@ -39166,6 +39170,154 @@
 	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
 	            // this will not reject on error. only on network failure
 	            if (response.status != 200) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function createIngredient(recipeId, ingredient) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId + '/ingredients';
+	
+	    var form = new _formData2.default();
+	    form.append("data", JSON.stringify(ingredient));
+	    if (ingredient.image) {
+	        form.append("image", ingredient.image);
+	    }
+	
+	    var options = {
+	        "method": "POST",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        },
+	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 200) {
+	                reject();
+	            } else {
+	                response.json().then(function (json) {
+	                    resolve(json);
+	                });
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function editIngredient(recipeId, ingredient) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId + '/ingredients/' + ingredient._id;
+	
+	    var form = new _formData2.default();
+	    form.append("data", JSON.stringify(ingredient));
+	    if (ingredient.image) {
+	        form.append("image", ingredient.image);
+	    }
+	
+	    var options = {
+	        "method": "PUT",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        },
+	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function createStep(recipeId, step) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId + '/steps';
+	
+	    var form = new _formData2.default();
+	    form.append("data", JSON.stringify(step));
+	    if (step.image) {
+	        form.append("image", step.image);
+	    }
+	
+	    var options = {
+	        "method": "POST",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        },
+	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 200) {
+	                reject();
+	            } else {
+	                response.json().then(function (json) {
+	                    resolve(json);
+	                });
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function editStep(recipeId, step) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId + '/steps/' + step._id;
+	
+	    var form = new _formData2.default();
+	    form.append("data", JSON.stringify(step));
+	    if (step.image) {
+	        form.append("image", step.image);
+	    }
+	
+	    var options = {
+	        "method": "PUT",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        },
+	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
 	                reject();
 	            } else {
 	                resolve();
@@ -40990,6 +41142,14 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
+	var _EditIngredientContainer = __webpack_require__(516);
+	
+	var _EditIngredientContainer2 = _interopRequireDefault(_EditIngredientContainer);
+	
+	var _EditStepContainer = __webpack_require__(520);
+	
+	var _EditStepContainer2 = _interopRequireDefault(_EditStepContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -41015,8 +41175,11 @@
 	        _this.cook = _this.cook.bind(_this);
 	        _this.addIngredient = _this.addIngredient.bind(_this);
 	        _this.addStep = _this.addStep.bind(_this);
+	        _this.receiveIngredientState = _this.receiveIngredientState.bind(_this);
+	        _this.receiveStepState = _this.receiveStepState.bind(_this);
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleIsPublicChange = _this.handleIsPublicChange.bind(_this);
+	        _this.handleImageChange = _this.handleImageChange.bind(_this);
 	        return _this;
 	    }
 	
@@ -41024,13 +41187,15 @@
 	        key: 'addIngredient',
 	        value: function addIngredient(e) {
 	            e.preventDefault();
-	            alert('add ingredient');
+	            this.state.ingredients.push(null);
+	            this.setState({ 'ingredients': this.state.ingredients });
 	        }
 	    }, {
 	        key: 'addStep',
 	        value: function addStep(e) {
 	            e.preventDefault();
-	            alert('add step');
+	            this.state.steps.push(null);
+	            this.setState({ 'steps': this.state.steps });
 	        }
 	    }, {
 	        key: 'save',
@@ -41038,11 +41203,7 @@
 	            var _this2 = this;
 	
 	            e.preventDefault();
-	            var recipe = this.state;
-	            if (this.fileInput.files && this.fileInput.files[0]) {
-	                recipe.image = this.fileInput.files[0];
-	            }
-	            this.props.editRecipeDetails(this.props.params.recipeId, recipe).then(function () {
+	            this.props.editRecipeDetails(this.props.params.recipeId, this.state).then(function () {
 	                _this2.props.loadRecipeDetails(_this2.props.params.recipeId);
 	            }).catch(function () {
 	                alert('failed');
@@ -41054,7 +41215,7 @@
 	            var _this3 = this;
 	
 	            e.preventDefault();
-	            this.props.deleteRecipe(this.props.recipeDetails.id).then(function () {
+	            this.props.deleteRecipe(this.props.params.recipeId).then(function () {
 	                alert("recipe deleted");
 	                _this3.props.navigateToRecipes();
 	            }).catch(function () {
@@ -41065,7 +41226,7 @@
 	        key: 'cook',
 	        value: function cook(e) {
 	            e.preventDefault();
-	            this.props.navigateToCook(this.props.recipeDetails.id);
+	            this.props.navigateToCook(this.props.params.recipeId);
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -41088,10 +41249,24 @@
 	            this.setState({ 'isPublic': e.target.checked });
 	        }
 	    }, {
+	        key: 'handleImageChange',
+	        value: function handleImageChange(e) {
+	            var image = e.currentTarget.files[0];
+	            this.setState({ 'image': image });
+	        }
+	    }, {
+	        key: 'receiveIngredientState',
+	        value: function receiveIngredientState(ingredientState) {
+	            this.props.loadRecipeDetails(this.props.params.recipeId);
+	        }
+	    }, {
+	        key: 'receiveStepState',
+	        value: function receiveStepState(stepState) {
+	            this.props.loadRecipeDetails(this.props.params.recipeId);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this4 = this;
-	
 	            if (this.props.isFetching) {
 	                return _react2.default.createElement(
 	                    'h1',
@@ -41100,21 +41275,20 @@
 	                );
 	            }
 	
+	            var receiveIngredientState = this.receiveIngredientState;
+	            var receiveStepState = this.receiveStepState;
+	
 	            var ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
 	                var guid = _guid2.default.create();
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: guid.value },
-	                    ingredient
-	                );
+	                return _react2.default.createElement(_EditIngredientContainer2.default, { key: guid.value,
+	                    initialState: ingredient,
+	                    sendStateToParent: receiveIngredientState });
 	            });
 	            var stepsMarkup = this.state.steps.map(function (step) {
 	                var guid = _guid2.default.create();
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: guid.value },
-	                    step
-	                );
+	                return _react2.default.createElement(_EditStepContainer2.default, { key: guid.value,
+	                    initialState: step,
+	                    sendStateToParent: receiveStepState });
 	            });
 	
 	            return _react2.default.createElement(
@@ -41143,9 +41317,7 @@
 	                        'div',
 	                        { styleName: 'image' },
 	                        _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image }),
-	                        _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
-	                                _this4.fileInput = fileInput;
-	                            } })
+	                        _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -41310,7 +41482,451 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _NewRecipe = __webpack_require__(517);
+	var _EditIngredient = __webpack_require__(517);
+	
+	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
+	
+	var _actions = __webpack_require__(470);
+	
+	var actions = _interopRequireWildcard(_actions);
+	
+	var _api = __webpack_require__(484);
+	
+	var api = _interopRequireWildcard(_api);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {
+			recipeDetails: state.recipeDetails,
+			isFetching: state.isFetching
+		};
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			edit: function edit(recipeId, ingredient) {
+				var promise = new Promise(function (resolve, reject) {
+					api.editIngredient(recipeId, ingredient).then(function (ingredient) {
+						// success
+						resolve(ingredient);
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
+			},
+			create: function create(recipeId, ingredient) {
+				var promise = new Promise(function (resolve, reject) {
+					api.createIngredient(recipeId, ingredient).then(function (ingredient) {
+						// success
+						resolve(ingredient);
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
+			}
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditIngredient2.default);
+
+/***/ },
+/* 517 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(295);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _Base64Image = __webpack_require__(481);
+	
+	var _Base64Image2 = _interopRequireDefault(_Base64Image);
+	
+	var _EditIngredient = __webpack_require__(518);
+	
+	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EditIngredient = function (_Component) {
+	    _inherits(EditIngredient, _Component);
+	
+	    function EditIngredient(props) {
+	        _classCallCheck(this, EditIngredient);
+	
+	        var _this = _possibleConstructorReturn(this, (EditIngredient.__proto__ || Object.getPrototypeOf(EditIngredient)).call(this, props));
+	
+	        var emptyState = {
+	            title: '',
+	            image: null
+	        };
+	
+	        _this.state = _this.props.initialState ? _this.props.initialState : emptyState;
+	
+	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
+	        _this.handleImageChange = _this.handleImageChange.bind(_this);
+	        _this.handleSave = _this.handleSave.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(EditIngredient, [{
+	        key: 'handleTitleChange',
+	        value: function handleTitleChange(e) {
+	            this.setState({ 'title': e.target.value });
+	        }
+	    }, {
+	        key: 'handleImageChange',
+	        value: function handleImageChange(e) {
+	            var image = e.currentTarget.files[0];
+	            this.setState({ 'image': image });
+	        }
+	    }, {
+	        key: 'handleSave',
+	        value: function handleSave(e) {
+	            var _this2 = this;
+	
+	            e.preventDefault();
+	            if (this.props.initialState) {
+	                this.props.edit(this.props.recipeDetails.id, this.state).then(function () {
+	                    _this2.props.sendStateToParent(_this2.state);
+	                });
+	            } else {
+	                this.props.create(this.props.recipeDetails.id, this.state).then(function (ingredient) {
+	                    _this2.props.sendStateToParent(ingredient);
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    'title:',
+	                    _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                ),
+	                _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
+	                _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.handleSave },
+	                    'Save'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return EditIngredient;
+	}(_react.Component);
+	
+	exports.default = (0, _reactCssModules2.default)(EditIngredient, _EditIngredient2.default);
+
+/***/ },
+/* 518 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(519);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditIngredient.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditIngredient.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 519 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".EditIngredient__wrapper___2Wont {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .EditIngredient__wrapper___2Wont {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "EditIngredient__wrapper___2Wont"
+	};
+
+/***/ },
+/* 520 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _reactRouterRedux = __webpack_require__(280);
+	
+	var _EditStep = __webpack_require__(521);
+	
+	var _EditStep2 = _interopRequireDefault(_EditStep);
+	
+	var _actions = __webpack_require__(470);
+	
+	var actions = _interopRequireWildcard(_actions);
+	
+	var _api = __webpack_require__(484);
+	
+	var api = _interopRequireWildcard(_api);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {
+			recipeDetails: state.recipeDetails,
+			isFetching: state.isFetching
+		};
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			edit: function edit(recipeId, step) {
+				var promise = new Promise(function (resolve, reject) {
+					api.editStep(recipeId, step).then(function (step) {
+						// success
+						resolve(step);
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
+			},
+			create: function create(recipeId, step) {
+				var promise = new Promise(function (resolve, reject) {
+					api.createStep(recipeId, step).then(function (step) {
+						// success
+						resolve(step);
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
+			}
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditStep2.default);
+
+/***/ },
+/* 521 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(295);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _Base64Image = __webpack_require__(481);
+	
+	var _Base64Image2 = _interopRequireDefault(_Base64Image);
+	
+	var _EditStep = __webpack_require__(522);
+	
+	var _EditStep2 = _interopRequireDefault(_EditStep);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EditStep = function (_Component) {
+	    _inherits(EditStep, _Component);
+	
+	    function EditStep(props) {
+	        _classCallCheck(this, EditStep);
+	
+	        var _this = _possibleConstructorReturn(this, (EditStep.__proto__ || Object.getPrototypeOf(EditStep)).call(this, props));
+	
+	        var emptyState = {
+	            title: '',
+	            image: null
+	        };
+	
+	        _this.state = _this.props.initialState ? _this.props.initialState : emptyState;
+	
+	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
+	        _this.handleImageChange = _this.handleImageChange.bind(_this);
+	        _this.handleSave = _this.handleSave.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(EditStep, [{
+	        key: 'handleTitleChange',
+	        value: function handleTitleChange(e) {
+	            this.setState({ 'title': e.target.value });
+	        }
+	    }, {
+	        key: 'handleImageChange',
+	        value: function handleImageChange(e) {
+	            var image = e.currentTarget.files[0];
+	            this.setState({ 'image': image });
+	        }
+	    }, {
+	        key: 'handleSave',
+	        value: function handleSave(e) {
+	            var _this2 = this;
+	
+	            e.preventDefault();
+	            if (this.props.initialState) {
+	                this.props.edit(this.props.recipeDetails.id, this.state).then(function () {
+	                    _this2.props.sendStateToParent(_this2.state);
+	                });
+	            } else {
+	                this.props.create(this.props.recipeDetails.id, this.state).then(function (step) {
+	                    _this2.props.sendStateToParent(step);
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    'title:',
+	                    _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                ),
+	                _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
+	                _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.handleSave },
+	                    'Save'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return EditStep;
+	}(_react.Component);
+	
+	exports.default = (0, _reactCssModules2.default)(EditStep, _EditStep2.default);
+
+/***/ },
+/* 522 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(523);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 523 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".EditStep__wrapper___1nR8z {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .EditStep__wrapper___1nR8z {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "EditStep__wrapper___1nR8z"
+	};
+
+/***/ },
+/* 524 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _reactRouterRedux = __webpack_require__(280);
+	
+	var _NewRecipe = __webpack_require__(525);
 	
 	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
 	
@@ -41355,7 +41971,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
 
 /***/ },
-/* 517 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41378,7 +41994,7 @@
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _newRecipe = __webpack_require__(518);
+	var _newRecipe = __webpack_require__(526);
 	
 	var _newRecipe2 = _interopRequireDefault(_newRecipe);
 	
@@ -41514,13 +42130,13 @@
 	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
 
 /***/ },
-/* 518 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(519);
+	var content = __webpack_require__(527);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41540,7 +42156,7 @@
 	}
 
 /***/ },
-/* 519 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
