@@ -6,6 +6,8 @@ import Guid from 'guid';
 import Base64Image from './Base64Image';
 import Rating from 'react-rating';
 import styles from '../styles/cookRecipe.css';
+import ShowIngredient from './ShowIngredient';
+import ShowStep from './ShowStep';
 
 class CookRecipe extends Component {
     constructor(props) {
@@ -44,26 +46,13 @@ class CookRecipe extends Component {
         let ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
             var guid = Guid.create();
             return (
-                <div styleName='ingredient' key={guid.value}>
-                    <div>
-                        <Base64Image />
-                    </div>
-                    <div>
-                        {ingredient.title}
-                    </div>
-                    <div>
-                        <span className='glyphicon glyphicon-ok'></span>
-                    </div>
-                </div>
+                <ShowIngredient key={guid.value} ingredient={ingredient} />
             );
         });
         let stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
             var guid = Guid.create();
             return (
-                <li key={guid.value}>
-                    {step.title}
-                    <Base64Image />
-                </li>
+                <ShowStep key={guid.value} step={step} />
             );
         });
 

@@ -30967,11 +30967,11 @@
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(512);
+	var _EditRecipeContainer = __webpack_require__(518);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
-	var _NewRecipeContainer = __webpack_require__(524);
+	var _NewRecipeContainer = __webpack_require__(530);
 	
 	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
 	
@@ -40711,6 +40711,14 @@
 	
 	var _cookRecipe2 = _interopRequireDefault(_cookRecipe);
 	
+	var _ShowIngredient = __webpack_require__(512);
+	
+	var _ShowIngredient2 = _interopRequireDefault(_ShowIngredient);
+	
+	var _ShowStep = __webpack_require__(515);
+	
+	var _ShowStep2 = _interopRequireDefault(_ShowStep);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40770,34 +40778,11 @@
 	            var showEdit = this.props.recipeDetails.userId == this.props.userId;
 	            var ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
 	                var guid = _guid2.default.create();
-	                return _react2.default.createElement(
-	                    'div',
-	                    { styleName: 'ingredient', key: guid.value },
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement(_Base64Image2.default, null)
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        ingredient.title
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-ok' })
-	                    )
-	                );
+	                return _react2.default.createElement(_ShowIngredient2.default, { key: guid.value, ingredient: ingredient });
 	            });
 	            var stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
 	                var guid = _guid2.default.create();
-	                return _react2.default.createElement(
-	                    'li',
-	                    { key: guid.value },
-	                    step.title,
-	                    _react2.default.createElement(_Base64Image2.default, null)
-	                );
+	                return _react2.default.createElement(_ShowStep2.default, { key: guid.value, step: step });
 	            });
 	
 	            return _react2.default.createElement(
@@ -41029,6 +41014,222 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(295);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _Base64Image = __webpack_require__(481);
+	
+	var _Base64Image2 = _interopRequireDefault(_Base64Image);
+	
+	var _ShowIngredient = __webpack_require__(513);
+	
+	var _ShowIngredient2 = _interopRequireDefault(_ShowIngredient);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ShowIngredient = function (_Component) {
+	    _inherits(ShowIngredient, _Component);
+	
+	    function ShowIngredient(props) {
+	        _classCallCheck(this, ShowIngredient);
+	
+	        return _possibleConstructorReturn(this, (ShowIngredient.__proto__ || Object.getPrototypeOf(ShowIngredient)).call(this, props));
+	    }
+	
+	    _createClass(ShowIngredient, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    this.props.ingredient.title
+	                ),
+	                _react2.default.createElement(_Base64Image2.default, { data: this.props.ingredient.image })
+	            );
+	        }
+	    }]);
+	
+	    return ShowIngredient;
+	}(_react.Component);
+	
+	exports.default = (0, _reactCssModules2.default)(ShowIngredient, _ShowIngredient2.default);
+
+/***/ },
+/* 513 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(514);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 514 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".ShowIngredient__wrapper___nAXrI {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .ShowIngredient__wrapper___nAXrI {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "ShowIngredient__wrapper___nAXrI"
+	};
+
+/***/ },
+/* 515 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(295);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _Base64Image = __webpack_require__(481);
+	
+	var _Base64Image2 = _interopRequireDefault(_Base64Image);
+	
+	var _ShowStep = __webpack_require__(516);
+	
+	var _ShowStep2 = _interopRequireDefault(_ShowStep);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ShowStep = function (_Component) {
+	    _inherits(ShowStep, _Component);
+	
+	    function ShowStep(props) {
+	        _classCallCheck(this, ShowStep);
+	
+	        return _possibleConstructorReturn(this, (ShowStep.__proto__ || Object.getPrototypeOf(ShowStep)).call(this, props));
+	    }
+	
+	    _createClass(ShowStep, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    this.props.step.title
+	                ),
+	                _react2.default.createElement(_Base64Image2.default, { data: this.props.step.image })
+	            );
+	        }
+	    }]);
+	
+	    return ShowStep;
+	}(_react.Component);
+	
+	exports.default = (0, _reactCssModules2.default)(ShowStep, _ShowStep2.default);
+
+/***/ },
+/* 516 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(517);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 517 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".ShowStep__wrapper___1Lg_G {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .ShowStep__wrapper___1Lg_G {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "ShowStep__wrapper___1Lg_G"
+	};
+
+/***/ },
+/* 518 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	
@@ -41036,7 +41237,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(513);
+	var _EditRecipe = __webpack_require__(519);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
@@ -41107,7 +41308,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 513 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41134,7 +41335,7 @@
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _editRecipe = __webpack_require__(514);
+	var _editRecipe = __webpack_require__(520);
 	
 	var _editRecipe2 = _interopRequireDefault(_editRecipe);
 	
@@ -41142,11 +41343,11 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _EditIngredientContainer = __webpack_require__(516);
+	var _EditIngredientContainer = __webpack_require__(522);
 	
 	var _EditIngredientContainer2 = _interopRequireDefault(_EditIngredientContainer);
 	
-	var _EditStepContainer = __webpack_require__(520);
+	var _EditStepContainer = __webpack_require__(526);
 	
 	var _EditStepContainer2 = _interopRequireDefault(_EditStepContainer);
 	
@@ -41421,13 +41622,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
 
 /***/ },
-/* 514 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(515);
+	var content = __webpack_require__(521);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41447,7 +41648,7 @@
 	}
 
 /***/ },
-/* 515 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41469,7 +41670,7 @@
 	};
 
 /***/ },
-/* 516 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41482,7 +41683,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditIngredient = __webpack_require__(517);
+	var _EditIngredient = __webpack_require__(523);
 	
 	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
 	
@@ -41537,7 +41738,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditIngredient2.default);
 
 /***/ },
-/* 517 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41560,7 +41761,7 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _EditIngredient = __webpack_require__(518);
+	var _EditIngredient = __webpack_require__(524);
 	
 	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
 	
@@ -41649,13 +41850,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditIngredient, _EditIngredient2.default);
 
 /***/ },
-/* 518 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(519);
+	var content = __webpack_require__(525);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41675,7 +41876,7 @@
 	}
 
 /***/ },
-/* 519 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41691,7 +41892,7 @@
 	};
 
 /***/ },
-/* 520 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41704,7 +41905,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditStep = __webpack_require__(521);
+	var _EditStep = __webpack_require__(527);
 	
 	var _EditStep2 = _interopRequireDefault(_EditStep);
 	
@@ -41759,7 +41960,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditStep2.default);
 
 /***/ },
-/* 521 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41782,7 +41983,7 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _EditStep = __webpack_require__(522);
+	var _EditStep = __webpack_require__(528);
 	
 	var _EditStep2 = _interopRequireDefault(_EditStep);
 	
@@ -41871,13 +42072,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditStep, _EditStep2.default);
 
 /***/ },
-/* 522 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(523);
+	var content = __webpack_require__(529);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41897,7 +42098,7 @@
 	}
 
 /***/ },
-/* 523 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41913,7 +42114,7 @@
 	};
 
 /***/ },
-/* 524 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41926,7 +42127,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _NewRecipe = __webpack_require__(525);
+	var _NewRecipe = __webpack_require__(531);
 	
 	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
 	
@@ -41971,7 +42172,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
 
 /***/ },
-/* 525 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41994,7 +42195,7 @@
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _newRecipe = __webpack_require__(526);
+	var _newRecipe = __webpack_require__(532);
 	
 	var _newRecipe2 = _interopRequireDefault(_newRecipe);
 	
@@ -42130,13 +42331,13 @@
 	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
 
 /***/ },
-/* 526 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(527);
+	var content = __webpack_require__(533);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -42156,7 +42357,7 @@
 	}
 
 /***/ },
-/* 527 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
