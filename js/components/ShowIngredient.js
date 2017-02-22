@@ -13,8 +13,19 @@ class ShowIngredient extends Component {
     render() {
         return (
             <div styleName="wrapper">
-                <label>{this.props.ingredient.title}</label>
-                <Base64Image data={this.props.ingredient.image} />
+                <div styleName="title">
+                    <div>
+                        <h3>{this.props.ingredient.title}</h3>
+                    </div>
+                </div>
+                <div styleName="image">
+                    <Base64Image data={this.props.ingredient.image} />
+                </div>
+                <div styleName="checks">
+                    <div>
+                        <span className="glyphicon glyphicon-ok"></span>
+                    </div>
+                </div>
             </div>
         );
     }

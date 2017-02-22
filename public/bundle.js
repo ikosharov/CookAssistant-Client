@@ -41119,11 +41119,32 @@
 	                'div',
 	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    this.props.ingredient.title
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            this.props.ingredient.title
+	                        )
+	                    )
 	                ),
-	                _react2.default.createElement(_Base64Image2.default, { data: this.props.ingredient.image })
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'image' },
+	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.ingredient.image })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'checks' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-ok' })
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -41168,11 +41189,14 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowIngredient__wrapper___nAXrI {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .ShowIngredient__wrapper___nAXrI {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowIngredient__wrapper___nAXrI {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowIngredient__wrapper___nAXrI > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowIngredient__title___4c6zN {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowIngredient__checks___3rGJT {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 2em;\r\n    color: green;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowIngredient__wrapper___nAXrI {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowIngredient__wrapper___nAXrI > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowIngredient__title___4c6zN {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__image___1-L1h {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__checks___3rGJT {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "ShowIngredient__wrapper___nAXrI"
+		"wrapper": "ShowIngredient__wrapper___nAXrI",
+		"title": "ShowIngredient__title___4c6zN",
+		"image": "ShowIngredient__image___1-L1h",
+		"checks": "ShowIngredient__checks___3rGJT"
 	};
 
 /***/ },
@@ -41227,11 +41251,32 @@
 	                'div',
 	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    this.props.step.title
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            this.props.step.title
+	                        )
+	                    )
 	                ),
-	                _react2.default.createElement(_Base64Image2.default, { data: this.props.step.image })
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'image' },
+	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.step.image })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'checks' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-ok' })
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -41276,11 +41321,14 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowStep__wrapper___1Lg_G {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .ShowStep__wrapper___1Lg_G {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowStep__wrapper___1Lg_G {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___1Lg_G > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___axUQb {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__checks___3zEGZ {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 2em;\r\n    color: green;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___1Lg_G {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___1Lg_G > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___axUQb {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___2wmlk {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__checks___3zEGZ {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "ShowStep__wrapper___1Lg_G"
+		"wrapper": "ShowStep__wrapper___1Lg_G",
+		"title": "ShowStep__title___axUQb",
+		"image": "ShowStep__image___2wmlk",
+		"checks": "ShowStep__checks___3zEGZ"
 	};
 
 /***/ },
@@ -41997,7 +42045,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editIngredient__wrapper___YzuA8 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___YzuA8 > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___3TAWu {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj img {\r\n    max-width: 100%;\r\n}\r\n\r\n.editIngredient__actions___n9J3i {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__actions___n9J3i button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___YzuA8 {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___YzuA8 > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___3TAWu {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___1pGsj {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___n9J3i {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editIngredient__wrapper___YzuA8 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___YzuA8 > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___3TAWu {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editIngredient__actions___n9J3i {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__actions___n9J3i button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___YzuA8 {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___YzuA8 > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___3TAWu {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___1pGsj {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___n9J3i {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -42275,7 +42323,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".EditStep__wrapper___1nR8z {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___1nR8z > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2pqHQ {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1khm9 {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1khm9 img {\r\n    max-width: 100%;\r\n}\r\n\r\n.EditStep__actions___1ua4p {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__actions___1ua4p button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___1nR8z {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___1nR8z > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2pqHQ {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1khm9 {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1ua4p {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".EditStep__wrapper___1nR8z {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___1nR8z > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2pqHQ {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1khm9 {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1khm9 img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.EditStep__actions___1ua4p {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__actions___1ua4p button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___1nR8z {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___1nR8z > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2pqHQ {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1khm9 {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1ua4p {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
