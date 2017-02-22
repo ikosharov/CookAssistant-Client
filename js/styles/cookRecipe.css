@@ -1,6 +1,7 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
 }
 
 .title {
@@ -68,10 +69,6 @@
     align-content: center;
 }
 
-.steps li {
-	padding: .4rem 0;
-}
-
 .steps > h2 {
     background-color: blue;
     color: white;
@@ -79,15 +76,6 @@
     line-height: 1.5em;
     padding-left: 1em;
 }
-
-.steps li:after {
-	content: "✼";
-	display: block;
-	text-align: center;
-	margin: 1rem 0 .5rem 0;
-	color: #eee;
-}
-
 
 @media (min-width: 800px) {
     .title {

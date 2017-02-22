@@ -41053,7 +41053,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -41559,9 +41559,8 @@
 	                    'div',
 	                    { styleName: 'title' },
 	                    _react2.default.createElement(
-	                        'label',
+	                        'h3',
 	                        null,
-	                        'Title',
 	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
 	                    ),
 	                    _react2.default.createElement(
@@ -41639,7 +41638,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        null,
+	                        { styleName: 'addNew' },
 	                        _react2.default.createElement(
 	                            'button',
 	                            { onClick: this.addIngredient },
@@ -41663,7 +41662,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        null,
+	                        { styleName: 'addNew' },
 	                        _react2.default.createElement(
 	                            'button',
 	                            { onClick: this.addStep },
@@ -41716,7 +41715,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.editRecipe__steps___2W7IW > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___F-Zul label {\r\n    line-height: 5em;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__controls___5S1it > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2RR15 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -41726,7 +41725,8 @@
 		"controls": "editRecipe__controls___5S1it",
 		"image": "editRecipe__image___4rttv",
 		"ingredients": "editRecipe__ingredients___3zrCn",
-		"steps": "editRecipe__steps___2W7IW"
+		"steps": "editRecipe__steps___2W7IW",
+		"addNew": "editRecipe__addNew___2RR15"
 	};
 
 /***/ },
@@ -41833,9 +41833,9 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _EditIngredient = __webpack_require__(524);
+	var _editIngredient = __webpack_require__(524);
 	
-	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
+	var _editIngredient2 = _interopRequireDefault(_editIngredient);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -41911,22 +41911,47 @@
 	                'div',
 	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'title:',
-	                    _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                        )
+	                    )
 	                ),
-	                _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
-	                _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange }),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.handleSave },
-	                    'Save'
+	                    'div',
+	                    { styleName: 'image' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
+	                        _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange })
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.handleDelete },
-	                    'Delete'
+	                    'div',
+	                    { styleName: 'actions' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: this.handleSave },
+	                            'Save ',
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-floppy-disk' })
+	                        ),
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: this.handleDelete },
+	                            'Delete ',
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove' })
+	                        )
+	                    )
 	                )
 	            );
 	        }
@@ -41935,7 +41960,7 @@
 	    return EditIngredient;
 	}(_react.Component);
 	
-	exports.default = (0, _reactCssModules2.default)(EditIngredient, _EditIngredient2.default);
+	exports.default = (0, _reactCssModules2.default)(EditIngredient, _editIngredient2.default);
 
 /***/ },
 /* 524 */
@@ -41953,8 +41978,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditIngredient.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditIngredient.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -41972,11 +41997,14 @@
 	
 	
 	// module
-	exports.push([module.id, ".EditIngredient__wrapper___2Wont {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .EditIngredient__wrapper___2Wont {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editIngredient__wrapper___YzuA8 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___YzuA8 > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___3TAWu {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj img {\r\n    max-width: 100%;\r\n}\r\n\r\n.editIngredient__actions___n9J3i {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__actions___n9J3i button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___YzuA8 {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___YzuA8 > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___3TAWu {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___1pGsj {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___n9J3i {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "EditIngredient__wrapper___2Wont"
+		"wrapper": "editIngredient__wrapper___YzuA8",
+		"title": "editIngredient__title___3TAWu",
+		"image": "editIngredient__image___1pGsj",
+		"actions": "editIngredient__actions___n9J3i"
 	};
 
 /***/ },
@@ -42161,22 +42189,47 @@
 	                'div',
 	                { styleName: 'wrapper' },
 	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'title:',
-	                    _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                    'div',
+	                    { styleName: 'title' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'h3',
+	                            null,
+	                            _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                        )
+	                    )
 	                ),
-	                _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
-	                _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange }),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.handleSave },
-	                    'Save'
+	                    'div',
+	                    { styleName: 'image' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
+	                        _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange })
+	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.handleDelete },
-	                    'Delete'
+	                    'div',
+	                    { styleName: 'actions' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: this.handleSave },
+	                            'Save ',
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-floppy-disk' })
+	                        ),
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: this.handleDelete },
+	                            'Delete ',
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove' })
+	                        )
+	                    )
 	                )
 	            );
 	        }
@@ -42222,11 +42275,14 @@
 	
 	
 	// module
-	exports.push([module.id, ".EditStep__wrapper___1nR8z {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n@media (max-width:800px) {\r\n    .EditStep__wrapper___1nR8z {\r\n        flex-direction: column;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".EditStep__wrapper___1nR8z {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___1nR8z > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2pqHQ {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1khm9 {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1khm9 img {\r\n    max-width: 100%;\r\n}\r\n\r\n.EditStep__actions___1ua4p {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__actions___1ua4p button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___1nR8z {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___1nR8z > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2pqHQ {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1khm9 {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1ua4p {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "EditStep__wrapper___1nR8z"
+		"wrapper": "EditStep__wrapper___1nR8z",
+		"title": "EditStep__title___2pqHQ",
+		"image": "EditStep__image___1khm9",
+		"actions": "EditStep__actions___1ua4p"
 	};
 
 /***/ },

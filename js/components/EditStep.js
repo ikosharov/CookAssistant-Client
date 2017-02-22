@@ -54,14 +54,25 @@ class EditStep extends Component {
     render() {
         return (
             <div styleName="wrapper">
-                <label>
-                    title:
-                    <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
-                </label>
-                <Base64Image data={this.state.image} />
-                <input type="file" name="image" onChange={this.handleImageChange} />
-                <button onClick={this.handleSave}>Save</button>
-                <button onClick={this.handleDelete}>Delete</button>
+                <div styleName="title">
+                    <div>
+                        <h3>
+                            <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
+                        </h3>
+                    </div>
+                </div>
+                <div styleName="image">
+                    <div>
+                        <Base64Image data={this.state.image} />
+                        <input type="file" name="image" onChange={this.handleImageChange} />
+                    </div>
+                </div>
+                <div styleName="actions">
+                    <div>
+                        <button onClick={this.handleSave}>Save <span className="glyphicon glyphicon-floppy-disk"></span></button>
+                        <button onClick={this.handleDelete}>Delete <span className="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                </div>
             </div>
         );
     }

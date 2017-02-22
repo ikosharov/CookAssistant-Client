@@ -2,12 +2,17 @@
     display: flex;
     flex-direction: column;
     margin-top: 1em;
+    max-width: 100%;
 }
 
 .title {
     display: flex;
     flex-direction: column;
     align-content: center;
+}
+
+.title label {
+    line-height: 5em;
 }
 
 .image-and-controls {
@@ -46,10 +51,6 @@
     padding-left: 1em;
 }
 
-.steps li {
-	padding: .4rem 0;
-}
-
 .steps > h2 {
     background-color: blue;
     color: white;
@@ -58,14 +59,13 @@
     padding-left: 1em;
 }
 
-.steps li:after {
-	content: "✼";
-	display: block;
-	text-align: center;
-	margin: 1rem 0 .5rem 0;
-	color: #eee;
+.addNew {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 1.5em;
+    margin-top: 0.6em;
 }
-
 
 @media (min-width: 800px) {
     .title {

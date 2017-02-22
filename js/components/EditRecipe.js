@@ -122,10 +122,9 @@ class EditRecipe extends Component {
         return (
             <div styleName="wrapper">
                 <div styleName="title">
-                    <label>
-                        Title
+                    <h3>
                         <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
-                    </label>
+                    </h3>
 
                     <label>IsPublic
                     <input type="checkbox" name="isPublic " checked={this.state.isPublic} onChange={this.handleIsPublicChange} />
@@ -147,7 +146,7 @@ class EditRecipe extends Component {
                     <div>
                         {ingredientsMarkup}
                     </div>
-                    <div>
+                    <div styleName="addNew">
                         <button onClick={this.addIngredient}>Add <span className="glyphicon glyphicon-plus"></span></button>
                     </div>
                 </div>
@@ -156,7 +155,7 @@ class EditRecipe extends Component {
                     <div>
                         {stepsMarkup}
                     </div>
-                    <div>
+                    <div styleName="addNew">
                         <button onClick={this.addStep}>Add <span className="glyphicon glyphicon-plus"></span></button>
                     </div>
                 </div>
