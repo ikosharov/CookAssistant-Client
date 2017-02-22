@@ -12,8 +12,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		signOut: () => {
+			dispatch(actions.fetchStarted());
 			dispatch(actions.signOut());
 			dispatch(push('/Auth'));
+			dispatch(actions.fetchFinished());
 		}
 	};
 }
