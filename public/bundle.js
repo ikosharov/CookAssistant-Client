@@ -38899,8 +38899,10 @@
 	exports.addRecipe = addRecipe;
 	exports.createIngredient = createIngredient;
 	exports.editIngredient = editIngredient;
+	exports.deleteIngredient = deleteIngredient;
 	exports.createStep = createStep;
 	exports.editStep = editStep;
+	exports.deleteStep = deleteStep;
 	
 	var _isomorphicFetch = __webpack_require__(485);
 	
@@ -39257,6 +39259,35 @@
 	    return promise;
 	}
 	
+	function deleteIngredient(recipeId, ingredientId) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId + '/ingredients/' + ingredientId;
+	
+	    var options = {
+	        "method": "DELETE",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        }
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
 	function createStep(recipeId, step) {
 	    var auth = _store.store.getState().auth;
 	
@@ -39312,6 +39343,35 @@
 	            "Authorization": "JWT " + auth.token
 	        },
 	        "body": form
+	    };
+	
+	    var promise = new Promise(function (resolve, reject) {
+	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
+	            // this will not reject on error. only on network failure
+	            if (response.status != 204) {
+	                reject();
+	            } else {
+	                resolve();
+	            }
+	        }).catch(function () {
+	            // network failure
+	            reject();
+	        });
+	    });
+	
+	    return promise;
+	}
+	
+	function deleteStep(recipeId, stepId) {
+	    var auth = _store.store.getState().auth;
+	
+	    var url = _web.API_URL + '/recipes/' + recipeId + '/steps/' + stepId;
+	
+	    var options = {
+	        "method": "DELETE",
+	        "headers": {
+	            "Authorization": "JWT " + auth.token
+	        }
 	    };
 	
 	    var promise = new Promise(function (resolve, reject) {
@@ -41731,6 +41791,18 @@
 					});
 				});
 				return promise;
+			},
+			delete: function _delete(recipeId, ingredientId) {
+				var promise = new Promise(function (resolve, reject) {
+					api.deleteIngredient(recipeId, ingredientId).then(function () {
+						// success
+						resolve();
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
 			}
 		};
 	};
@@ -41791,6 +41863,7 @@
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleImageChange = _this.handleImageChange.bind(_this);
 	        _this.handleSave = _this.handleSave.bind(_this);
+	        _this.handleDelete = _this.handleDelete.bind(_this);
 	        return _this;
 	    }
 	
@@ -41822,6 +41895,16 @@
 	            }
 	        }
 	    }, {
+	        key: 'handleDelete',
+	        value: function handleDelete(e) {
+	            var _this3 = this;
+	
+	            e.preventDefault();
+	            this.props.delete(this.props.recipeDetails.id, this.state._id).then(function () {
+	                _this3.props.sendStateToParent(_this3.state);
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -41839,6 +41922,11 @@
 	                    'button',
 	                    { onClick: this.handleSave },
 	                    'Save'
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.handleDelete },
+	                    'Delete'
 	                )
 	            );
 	        }
@@ -41953,6 +42041,18 @@
 					});
 				});
 				return promise;
+			},
+			delete: function _delete(recipeId, stepId) {
+				var promise = new Promise(function (resolve, reject) {
+					api.deleteStep(recipeId, stepId).then(function () {
+						// success
+						resolve();
+					}).catch(function () {
+						// some error
+						reject();
+					});
+				});
+				return promise;
 			}
 		};
 	};
@@ -42013,6 +42113,7 @@
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleImageChange = _this.handleImageChange.bind(_this);
 	        _this.handleSave = _this.handleSave.bind(_this);
+	        _this.handleDelete = _this.handleDelete.bind(_this);
 	        return _this;
 	    }
 	
@@ -42044,6 +42145,16 @@
 	            }
 	        }
 	    }, {
+	        key: 'handleDelete',
+	        value: function handleDelete(e) {
+	            var _this3 = this;
+	
+	            e.preventDefault();
+	            this.props.delete(this.props.recipeDetails.id, this.state._id).then(function () {
+	                _this3.props.sendStateToParent(_this3.state);
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -42061,6 +42172,11 @@
 	                    'button',
 	                    { onClick: this.handleSave },
 	                    'Save'
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.handleDelete },
+	                    'Delete'
 	                )
 	            );
 	        }

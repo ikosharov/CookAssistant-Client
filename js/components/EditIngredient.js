@@ -19,6 +19,7 @@ class EditIngredient extends Component {
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSave = this.handleSave.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleTitleChange(e) {
@@ -43,6 +44,13 @@ class EditIngredient extends Component {
         }
     }
 
+    handleDelete(e) {
+        e.preventDefault();
+        this.props.delete(this.props.recipeDetails.id, this.state._id).then(() => {
+            this.props.sendStateToParent(this.state);
+        });
+    }
+
     render() {
         return (
             <div styleName="wrapper">
@@ -53,6 +61,7 @@ class EditIngredient extends Component {
                 <Base64Image data={this.state.image} />
                 <input type="file" name="image" onChange={this.handleImageChange} />
                 <button onClick={this.handleSave}>Save</button>
+                <button onClick={this.handleDelete}>Delete</button>
             </div>
         );
     }

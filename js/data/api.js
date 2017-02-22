@@ -346,6 +346,35 @@ export function editIngredient(recipeId, ingredient) {
     return promise;
 }
 
+export function deleteIngredient(recipeId, ingredientId) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredientId}`;
+
+    let options = {
+        "method": "DELETE",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        }
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 204) {
+                reject();
+            } else {
+                resolve();
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
 export function createStep(recipeId, step) {
     let auth = store.getState().auth;
 
@@ -401,6 +430,35 @@ export function editStep(recipeId, step) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
+    };
+
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, options).then((response) => {
+            // this will not reject on error. only on network failure
+            if (response.status != 204) {
+                reject();
+            } else {
+                resolve();
+            }
+        }).catch(() => {
+            // network failure
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+export function deleteStep(recipeId, stepId) {
+    let auth = store.getState().auth;
+
+    let url = `${API_URL}/recipes/${recipeId}/steps/${stepId}`;
+
+    let options = {
+        "method": "DELETE",
+        "headers": {
+            "Authorization": "JWT " + auth.token
+        }
     };
 
     let promise = new Promise((resolve, reject) => {

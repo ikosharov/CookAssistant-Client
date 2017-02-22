@@ -38,6 +38,19 @@ const mapDispatchToProps = (dispatch) => {
 				});
 			});
 			return promise; 
+		},
+		delete: (recipeId, ingredientId) => {
+			let promise = new Promise((resolve, reject) => {
+			api.deleteIngredient(recipeId, ingredientId)
+				.then(() => {
+					// success
+					resolve();
+				}).catch(() => {
+					// some error
+					reject();
+				});
+			});
+			return promise; 
 		}
 	};
 }
