@@ -35,6 +35,10 @@
     max-height: 6em;
 }
 
+controls a {
+    text-decoration: none;
+}
+
 .image img {
     max-width: 350px;
     border-radius: 1.5em;

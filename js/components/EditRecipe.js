@@ -132,8 +132,8 @@ class EditRecipe extends Component {
                 <div styleName="title">
                     <h3>
                         <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
+                        {visibilityMarkup}
                     </h3>
-                    {visibilityMarkup}
                 </div>
                 <div styleName='image-and-controls'>
                     <div styleName="image">
@@ -141,9 +141,9 @@ class EditRecipe extends Component {
                         <input type="file" name="image" onChange={this.handleImageChange} />
                     </div>
                     <div styleName='controls'>
-                        <div><a href="#"><span className="glyphicon glyphicon-play-circle" onClick={this.cook}> Cook</span></a></div>
-                        <div><a href="#"><span className="glyphicon glyphicon-floppy-disk" onClick={this.save}> Save</span></a></div>
-                        <div><a href="#"><span className="glyphicon glyphicon-remove" onClick={this.delete}> Delete</span></a></div>
+                        <div><a href="#" onClick={this.cook}><span className="glyphicon glyphicon-play-circle"></span> Cook</a></div>
+                        <div><a href="#" onClick={this.save}><span className="glyphicon glyphicon-floppy-disk"></span> Save</a></div>
+                        <div><a href="#" onClick={this.delete}><span className="glyphicon glyphicon-remove"></span> Delete</a></div>
                     </div>
                 </div>
                 <div styleName="ingredients">

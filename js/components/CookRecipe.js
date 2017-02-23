@@ -70,9 +70,9 @@ class CookRecipe extends Component {
                         <Base64Image data={this.props.recipeDetails.image} />
                     </div>
                     <div styleName='controls'>
-                        {showEdit && <div><a href="#"><span className="glyphicon glyphicon-pencil" onClick={this.edit}> Edit</span></a></div>}
-                        <div><a href="#"><span className="glyphicon glyphicon-share" onClick={this.share}> Share</span></a></div>
-                        <div><a href="#"><span className="glyphicon glyphicon-star" onClick={this.star}> Star</span></a></div>
+                        {showEdit && <div><a href="#" onClick={this.edit}><span className="glyphicon glyphicon-pencil"></span> Edit</a></div>}
+                        <div><a href="#" onClick={this.share}><span className="glyphicon glyphicon-share"></span> Share</a></div>
+                        <div><a href="#" onClick={this.star}><span className="glyphicon glyphicon-star"></span> Star</a></div>
                     </div>
                 </div>
                 <div styleName='ingredients'>

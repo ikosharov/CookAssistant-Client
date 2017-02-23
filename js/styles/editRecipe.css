@@ -11,8 +11,11 @@
     align-content: center;
 }
 
-.title label {
-    line-height: 5em;
+.title a {
+    text-decoration: none;
+    position: relative;
+    left: 10px;
+    top: -3px;
 }
 
 .image-and-controls {
@@ -28,6 +31,10 @@
     font-size: 1.8em;
     padding: 0.5em;
     max-height: 6em;
+}
+
+controls a {
+    text-decoration: none;
 }
 
 .image img {
