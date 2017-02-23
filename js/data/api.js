@@ -205,6 +205,15 @@ export function editRecipeDetails(recipeId, recipe) {
 
     let url = `${API_URL}/recipes/${recipeId}`;
 
+    // strip ingredients and steps to exceeding max field size (2mb)
+    delete recipe.ingredients;
+    delete recipe.steps;
+
+    // make sure you're not sending image as base64 string
+    if (typeof recipe.image == 'string') {
+        delete recipe.image;
+    }
+
     let form = new FormData();
     form.append("data", JSON.stringify(recipe));
     if (recipe.image) {
@@ -317,6 +326,10 @@ export function editIngredient(recipeId, ingredient) {
 
     let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredient._id}`;
 
+    if(typeof ingredient.image == 'string') {
+        delete ingredient.image;
+    }
+
     let form = new FormData();
     form.append("data", JSON.stringify(ingredient));
     if (ingredient.image) {
@@ -419,6 +432,10 @@ export function editStep(recipeId, step) {
     let auth = store.getState().auth;
 
     let url = `${API_URL}/recipes/${recipeId}/steps/${step._id}`;
+
+    if(typeof step.image == 'string') {
+        delete step.image;
+    }
 
     let form = new FormData();
     form.append("data", JSON.stringify(step));

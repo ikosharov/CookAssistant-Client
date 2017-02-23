@@ -39120,6 +39120,15 @@
 	
 	    var url = _web.API_URL + '/recipes/' + recipeId;
 	
+	    // strip ingredients and steps to exceeding max field size (2mb)
+	    delete recipe.ingredients;
+	    delete recipe.steps;
+	
+	    // make sure you're not sending image as base64 string
+	    if (typeof recipe.image == 'string') {
+	        delete recipe.image;
+	    }
+	
 	    var form = new _formData2.default();
 	    form.append("data", JSON.stringify(recipe));
 	    if (recipe.image) {
@@ -39232,6 +39241,10 @@
 	
 	    var url = _web.API_URL + '/recipes/' + recipeId + '/ingredients/' + ingredient._id;
 	
+	    if (typeof ingredient.image == 'string') {
+	        delete ingredient.image;
+	    }
+	
 	    var form = new _formData2.default();
 	    form.append("data", JSON.stringify(ingredient));
 	    if (ingredient.image) {
@@ -39334,6 +39347,10 @@
 	    var auth = _store.store.getState().auth;
 	
 	    var url = _web.API_URL + '/recipes/' + recipeId + '/steps/' + step._id;
+	
+	    if (typeof step.image == 'string') {
+	        delete step.image;
+	    }
 	
 	    var form = new _formData2.default();
 	    form.append("data", JSON.stringify(step));
