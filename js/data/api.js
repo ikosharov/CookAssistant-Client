@@ -261,7 +261,9 @@ export function addRecipe(recipe) {
             if (response.status != 200) {
                 reject();
             } else {
-                resolve();
+                response.json().then((json) => {
+                    resolve(json);
+                });
             }
         }).catch(() => {
             // network failure

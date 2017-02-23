@@ -2,12 +2,20 @@
     display: flex;
     flex-direction: column;
     margin-top: 1em;
+    max-width: 100%;
 }
 
 .title {
     display: flex;
     flex-direction: column;
     align-content: center;
+}
+
+.title a {
+    text-decoration: none;
+    position: relative;
+    left: 10px;
+    top: -3px;
 }
 
 .image-and-controls {
@@ -37,19 +45,6 @@
 .ingredients {
     margin-bottom: 2em;
 }
-
-.steps li {
-	padding: .4rem 0;
-}
-
-.steps li:after {
-	content: "✼";
-	display: block;
-	text-align: center;
-	margin: 1rem 0 .5rem 0;
-	color: #eee;
-}
-
 
 @media (min-width: 800px) {
     .title {

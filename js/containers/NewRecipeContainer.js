@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => {
 		createRecipe: (recipe) => {
 			let promise = new Promise((resolve, reject) => {
 			api.addRecipe(recipe)
-				.then(() => {
+				.then((json) => {
 					// success
-					resolve();
+					resolve(json);
 				}).catch(() => {
 					// some error
 					reject();
@@ -25,8 +25,8 @@ const mapDispatchToProps = (dispatch) => {
 			});
 			return promise;
 		},
-		navigateToRecipes: () => {
-			dispatch(push(`/Recipes`));
+		navigateToEdit: (recipeId) => {
+			dispatch(push(`/Recipes/${recipeId}/Edit`));
 		}
 	};
 }

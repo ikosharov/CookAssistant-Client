@@ -21,17 +21,14 @@ class NewRecipe extends Component {
         this.create = this.create.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
     }
 
     create(e) {
         e.preventDefault();
-        let recipe = this.state;
-        if (this.fileInput.files && this.fileInput.files[0]) {
-            recipe.image = this.fileInput.files[0];
-        }
-        this.props.createRecipe(recipe).then(() => {
+        this.props.createRecipe(this.state).then((recipe) => {
             alert('recipe created');
-            this.props.navigateToRecipes();
+            this.props.navigateToEdit(recipe._id);
         }).catch(() => {
             alert('failed');
         });
@@ -42,7 +39,13 @@ class NewRecipe extends Component {
     }
 
     handleIsPublicChange(e) {
-        this.setState({ 'isPublic': e.target.checked });
+        e.preventDefault();
+        this.setState({ 'isPublic': !this.state.isPublic });
+    }
+
+    handleImageChange(e) {
+        var image = e.currentTarget.files[0];
+        this.setState({ 'image': image });
     }
 
     render() {
@@ -50,22 +53,25 @@ class NewRecipe extends Component {
             return (<h1>Loading...</h1>)
         }
 
+        let visibilityMarkup = '';
+        if(this.state.isPublic) {
+            visibilityMarkup = (<a href="#"><span className="label label-success" onClick={this.handleIsPublicChange}>public</span></a>);
+        } else {
+            visibilityMarkup = (<a href="#"><span className="label label-warning" onClick={this.handleIsPublicChange}>private</span></a>);
+        }
+
         return (
             <div styleName="wrapper">
                 <div styleName="title">
-                    <label>
-                        Title
+                    <h3>
                         <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
-                    </label>
-
-                    <label>IsPublic
-                    <input type="checkbox" name="isPublic " checked={this.state.isPublic} onChange={this.handleIsPublicChange} />
-                    </label>
+                        {visibilityMarkup}
+                    </h3>
                 </div>
                 <div styleName='image-and-controls'>
                     <div styleName="image">
                         <Base64Image data={this.state.image} />
-                        <input type="file" name="image" ref={(fileInput) => { this.fileInput = fileInput }} />
+                        <input type="file" name="image" onChange={this.handleImageChange} />
                     </div>
                     <div styleName='controls'>
                         <div><a href="#"><span className="glyphicon glyphicon-floppy-disk" onClick={this.create}> Create</span></a></div>

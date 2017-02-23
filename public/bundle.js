@@ -39176,7 +39176,9 @@
 	            if (response.status != 200) {
 	                reject();
 	            } else {
-	                resolve();
+	                response.json().then(function (json) {
+	                    resolve(json);
+	                });
 	            }
 	        }).catch(function () {
 	            // network failure
@@ -42384,9 +42386,9 @@
 		return {
 			createRecipe: function createRecipe(recipe) {
 				var promise = new Promise(function (resolve, reject) {
-					api.addRecipe(recipe).then(function () {
+					api.addRecipe(recipe).then(function (json) {
 						// success
-						resolve();
+						resolve(json);
 					}).catch(function () {
 						// some error
 						reject();
@@ -42394,8 +42396,8 @@
 				});
 				return promise;
 			},
-			navigateToRecipes: function navigateToRecipes() {
-				dispatch((0, _reactRouterRedux.push)('/Recipes'));
+			navigateToEdit: function navigateToEdit(recipeId) {
+				dispatch((0, _reactRouterRedux.push)('/Recipes/' + recipeId + '/Edit'));
 			}
 		};
 	};
@@ -42461,6 +42463,7 @@
 	        _this.create = _this.create.bind(_this);
 	        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	        _this.handleIsPublicChange = _this.handleIsPublicChange.bind(_this);
+	        _this.handleImageChange = _this.handleImageChange.bind(_this);
 	        return _this;
 	    }
 	
@@ -42470,13 +42473,9 @@
 	            var _this2 = this;
 	
 	            e.preventDefault();
-	            var recipe = this.state;
-	            if (this.fileInput.files && this.fileInput.files[0]) {
-	                recipe.image = this.fileInput.files[0];
-	            }
-	            this.props.createRecipe(recipe).then(function () {
+	            this.props.createRecipe(this.state).then(function (recipe) {
 	                alert('recipe created');
-	                _this2.props.navigateToRecipes();
+	                _this2.props.navigateToEdit(recipe._id);
 	            }).catch(function () {
 	                alert('failed');
 	            });
@@ -42489,18 +42488,46 @@
 	    }, {
 	        key: 'handleIsPublicChange',
 	        value: function handleIsPublicChange(e) {
-	            this.setState({ 'isPublic': e.target.checked });
+	            e.preventDefault();
+	            this.setState({ 'isPublic': !this.state.isPublic });
+	        }
+	    }, {
+	        key: 'handleImageChange',
+	        value: function handleImageChange(e) {
+	            var image = e.currentTarget.files[0];
+	            this.setState({ 'image': image });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this3 = this;
-	
 	            if (this.props.isFetching) {
 	                return _react2.default.createElement(
 	                    'h1',
 	                    null,
 	                    'Loading...'
+	                );
+	            }
+	
+	            var visibilityMarkup = '';
+	            if (this.state.isPublic) {
+	                visibilityMarkup = _react2.default.createElement(
+	                    'a',
+	                    { href: '#' },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: 'label label-success', onClick: this.handleIsPublicChange },
+	                        'public'
+	                    )
+	                );
+	            } else {
+	                visibilityMarkup = _react2.default.createElement(
+	                    'a',
+	                    { href: '#' },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: 'label label-warning', onClick: this.handleIsPublicChange },
+	                        'private'
+	                    )
 	                );
 	            }
 	
@@ -42511,16 +42538,10 @@
 	                    'div',
 	                    { styleName: 'title' },
 	                    _react2.default.createElement(
-	                        'label',
+	                        'h3',
 	                        null,
-	                        'Title',
-	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
-	                    ),
-	                    _react2.default.createElement(
-	                        'label',
-	                        null,
-	                        'IsPublic',
-	                        _react2.default.createElement('input', { type: 'checkbox', name: 'isPublic ', checked: this.state.isPublic, onChange: this.handleIsPublicChange })
+	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange }),
+	                        visibilityMarkup
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -42530,9 +42551,7 @@
 	                        'div',
 	                        { styleName: 'image' },
 	                        _react2.default.createElement(_Base64Image2.default, { data: this.state.image }),
-	                        _react2.default.createElement('input', { type: 'file', name: 'image', ref: function ref(fileInput) {
-	                                _this3.fileInput = fileInput;
-	                            } })
+	                        _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.handleImageChange })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -42596,7 +42615,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".newRecipe__wrapper___3BPt5 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n}\r\n\r\n.newRecipe__title___1kj6C {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__image-and-controls___2akPB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2yRz9 img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.newRecipe__ingredients___7LV5T {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__steps___2XuxM li {\r\n\tpadding: .4rem 0;\r\n}\r\n\r\n.newRecipe__steps___2XuxM li:after {\r\n\tcontent: \"\\273C\";\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\tmargin: 1rem 0 .5rem 0;\r\n\tcolor: #eee;\r\n}\r\n\r\n\r\n@media (min-width: 800px) {\r\n    .newRecipe__title___1kj6C {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .newRecipe__image-and-controls___2akPB {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .newRecipe__controls___1aWqN {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .newRecipe__image___2yRz9 {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".newRecipe__wrapper___3BPt5 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.newRecipe__title___1kj6C {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__title___1kj6C a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.newRecipe__image-and-controls___2akPB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2yRz9 img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.newRecipe__ingredients___7LV5T {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .newRecipe__title___1kj6C {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .newRecipe__image-and-controls___2akPB {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .newRecipe__controls___1aWqN {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .newRecipe__image___2yRz9 {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -42605,8 +42624,7 @@
 		"image-and-controls": "newRecipe__image-and-controls___2akPB",
 		"controls": "newRecipe__controls___1aWqN",
 		"image": "newRecipe__image___2yRz9",
-		"ingredients": "newRecipe__ingredients___7LV5T",
-		"steps": "newRecipe__steps___2XuxM"
+		"ingredients": "newRecipe__ingredients___7LV5T"
 	};
 
 /***/ }
