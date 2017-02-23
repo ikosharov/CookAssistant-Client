@@ -27,11 +27,15 @@
     border-radius: 1.5em;
 }
 
-.checks {
+.arrow {
     display: flex;
     justify-content: center;
-    font-size: 2em;
-    color: green;
+    font-size: 3em;
+    color: cadetblue;
+}
+
+.arrow-right {
+    display: none;
 }
 
 @media (min-width:800px) {
@@ -55,8 +59,16 @@
         align-items: center;
     }
 
-    .checks {
+    .arrow {
         flex: 1;
         align-items: center;
+    }
+
+    .arrow-right {
+        display: inline;
+    }
+
+    .arrow-down {
+        display: none;
     }
 }

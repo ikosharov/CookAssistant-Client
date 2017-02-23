@@ -80,7 +80,9 @@ class CookRecipe extends Component {
                     <div>
                         {ingredientsMarkup}
                     </div>
+                    <button>Begin</button>
                 </div>
+                    
                 <div styleName="steps">
                     <h2>Steps</h2>
                     <ol>

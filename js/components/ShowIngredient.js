@@ -23,7 +23,7 @@ class ShowIngredient extends Component {
                 </div>
                 <div styleName="checks">
                     <div>
-                        <span className="glyphicon glyphicon-ok"></span>
+                        <input type="checkbox" />
                     </div>
                 </div>
             </div>

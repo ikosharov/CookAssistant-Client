@@ -18,13 +18,14 @@ class ShowStep extends Component {
                         <h3>{this.props.step.title}</h3>
                     </div>
                 </div>
+                <div styleName="arrow">
+                    <div>
+                        <span className="glyphicon glyphicon-arrow-right" styleName="arrow-right"></span>
+                        <span className="glyphicon glyphicon-arrow-down" styleName="arrow-down"></span>
+                    </div>
+                </div>
                 <div styleName="image">
                     <Base64Image data={this.props.step.image} />
-                </div>
-                <div styleName="checks">
-                    <div>
-                        <span className="glyphicon glyphicon-ok"></span>
-                    </div>
                 </div>
             </div>
         );

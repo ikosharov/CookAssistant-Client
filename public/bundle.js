@@ -37576,7 +37576,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".breadcrumb__wrapper___2syIA {\r\n    padding-left: 0.3em;\r\n}", ""]);
+	exports.push([module.id, ".breadcrumb__wrapper___2syIA {\r\n    padding-left: 0.3em;\r\n    font-size: 1.5em;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -40918,6 +40918,11 @@
 	                        'div',
 	                        null,
 	                        ingredientsMarkup
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        null,
+	                        'Begin'
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -41135,7 +41140,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-ok' })
+	                        _react2.default.createElement('input', { type: 'checkbox' })
 	                    )
 	                )
 	            );
@@ -41182,7 +41187,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowIngredient__wrapper___nAXrI {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowIngredient__wrapper___nAXrI > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowIngredient__title___4c6zN {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowIngredient__checks___3rGJT {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 2em;\r\n    color: green;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowIngredient__wrapper___nAXrI {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowIngredient__wrapper___nAXrI > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowIngredient__title___4c6zN {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__image___1-L1h {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__checks___3rGJT {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowIngredient__wrapper___nAXrI {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowIngredient__wrapper___nAXrI > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowIngredient__title___4c6zN {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowIngredient__checks___3rGJT {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__checks___3rGJT input {\r\n    width: 2rem;\r\n    height: 2rem;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowIngredient__wrapper___nAXrI {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowIngredient__wrapper___nAXrI > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowIngredient__title___4c6zN {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__image___1-L1h {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__checks___3rGJT {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -41258,17 +41263,18 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { styleName: 'image' },
-	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.step.image })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { styleName: 'checks' },
+	                    { styleName: 'arrow' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-ok' })
+	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-arrow-right', styleName: 'arrow-right' }),
+	                        _react2.default.createElement('span', { className: 'glyphicon glyphicon-arrow-down', styleName: 'arrow-down' })
 	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'image' },
+	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.step.image })
 	                )
 	            );
 	        }
@@ -41314,14 +41320,16 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowStep__wrapper___1Lg_G {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___1Lg_G > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___axUQb {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__checks___3zEGZ {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 2em;\r\n    color: green;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___1Lg_G {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___1Lg_G > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___axUQb {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___2wmlk {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__checks___3zEGZ {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowStep__wrapper___1Lg_G {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___1Lg_G > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___axUQb {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__arrow___3tp2_ {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 3em;\r\n    color: cadetblue;\r\n}\r\n\r\n.ShowStep__arrow-right___2WOUj {\r\n    display: none;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___1Lg_G {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___1Lg_G > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___axUQb {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___2wmlk {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow___3tp2_ {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow-right___2WOUj {\r\n        display: inline;\r\n    }\r\n\r\n    .ShowStep__arrow-down___3XKCN {\r\n        display: none;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
 		"wrapper": "ShowStep__wrapper___1Lg_G",
 		"title": "ShowStep__title___axUQb",
 		"image": "ShowStep__image___2wmlk",
-		"checks": "ShowStep__checks___3zEGZ"
+		"arrow": "ShowStep__arrow___3tp2_",
+		"arrow-right": "ShowStep__arrow-right___2WOUj",
+		"arrow-down": "ShowStep__arrow-down___3XKCN"
 	};
 
 /***/ },

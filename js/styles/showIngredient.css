@@ -30,8 +30,11 @@
 .checks {
     display: flex;
     justify-content: center;
-    font-size: 2em;
-    color: green;
+}
+
+.checks input {
+    width: 2rem;
+    height: 2rem;
 }
 
 @media (min-width:800px) {
