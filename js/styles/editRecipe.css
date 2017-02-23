@@ -35,10 +35,6 @@
     border-radius: 1.5em;
 }
 
-.controls > div:hover {
-    background-color: lightgreen;
-}
-
 .ingredients {
     margin-bottom: 2em;
 }

@@ -78,7 +78,8 @@ class EditRecipe extends Component {
     }
 
     handleIsPublicChange(e) {
-        this.setState({ 'isPublic': e.target.checked });
+        e.preventDefault();
+        this.setState({ 'isPublic': !this.state.isPublic });
     }
 
     handleImageChange(e) {
@@ -119,16 +120,20 @@ class EditRecipe extends Component {
             );
         });
 
+        let visibilityMarkup = '';
+        if(this.state.isPublic) {
+            visibilityMarkup = (<a href="#"><span className="label label-success" onClick={this.handleIsPublicChange}>public</span></a>);
+        } else {
+            visibilityMarkup = (<a href="#"><span className="label label-warning" onClick={this.handleIsPublicChange}>private</span></a>);
+        }
+
         return (
             <div styleName="wrapper">
                 <div styleName="title">
                     <h3>
                         <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
                     </h3>
-
-                    <label>IsPublic
-                    <input type="checkbox" name="isPublic " checked={this.state.isPublic} onChange={this.handleIsPublicChange} />
-                    </label>
+                    {visibilityMarkup}
                 </div>
                 <div styleName='image-and-controls'>
                     <div styleName="image">
@@ -147,7 +152,7 @@ class EditRecipe extends Component {
                         {ingredientsMarkup}
                     </div>
                     <div styleName="addNew">
-                        <button onClick={this.addIngredient}>Add <span className="glyphicon glyphicon-plus"></span></button>
+                        <button className="btn btn-primary" onClick={this.addIngredient}>Add <span className="glyphicon glyphicon-plus"></span></button>
                     </div>
                 </div>
                 <div styleName="steps">
@@ -156,7 +161,7 @@ class EditRecipe extends Component {
                         {stepsMarkup}
                     </div>
                     <div styleName="addNew">
-                        <button onClick={this.addStep}>Add <span className="glyphicon glyphicon-plus"></span></button>
+                        <button className="btn btn-primary" onClick={this.addStep}>Add <span className="glyphicon glyphicon-plus"></span></button>
                     </div>
                 </div>
             </div>

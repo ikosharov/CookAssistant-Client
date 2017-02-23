@@ -69,8 +69,8 @@ class EditIngredient extends Component {
                 </div>
                 <div styleName="actions">
                     <div>
-                        <button onClick={this.handleSave}>Save <span className="glyphicon glyphicon-floppy-disk"></span></button>
-                        <button onClick={this.handleDelete}>Delete <span className="glyphicon glyphicon-remove"></span></button>
+                        <button className="btn btn-success" onClick={this.handleSave}>Save <span className="glyphicon glyphicon-floppy-disk"></span></button>
+                        <button className="btn btn-danger" onClick={this.handleDelete}>Delete <span className="glyphicon glyphicon-remove"></span></button>
                     </div>
                 </div>
             </div>

@@ -40,10 +40,6 @@
     border-radius: 1.5em;
 }
 
-.controls > div:hover {
-    background-color: lightgreen;
-}
-
 .ingredients > div {
     display: flex;
     flex-direction: column;
