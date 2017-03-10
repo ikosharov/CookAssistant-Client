@@ -2,10 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  context: path.resolve('js'),
+  context: path.resolve(),
   devtool: 'source-map',
   entry: [
-    './index'
+    './js/index'
   ],
   plugins: [
     new webpack.NoErrorsPlugin()
@@ -44,6 +44,10 @@ module.exports = {
       {
         test: /\.coffee$/,
         loader: 'coffee'
+      },
+      {
+        test: /\.png$/,
+        loader: 'file-loader'
       }
     ]
   }

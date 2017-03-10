@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import { withRouter } from 'react-router';
 import Breadcrumbs from 'react-breadcrumbs';
-import styles from '../styles/breadcrumb.css';
+import styles from '../../css/breadcrumb.css';
 
 class Breadcrumb extends Component {
     constructor(props) {

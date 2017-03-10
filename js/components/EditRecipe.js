@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Guid from 'guid';
 import Rating from 'react-rating';
-import styles from '../styles/editRecipe.css';
+import styles from '../../css/editRecipe.css';
 import Base64Image from './Base64Image';
 import EditIngredientContainer from '../containers/EditIngredientContainer';
 import EditStepContainer from '../containers/EditStepContainer';

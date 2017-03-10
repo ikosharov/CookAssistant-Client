@@ -2,7 +2,7 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 
 import RecipesListContainer from '../containers/RecipesListContainer';
-import styles from '../styles/recipesLists.css';
+import styles from '../../css/recipesLists.css';
 
 class RecipesLists extends React.Component {
     constructor(props) {

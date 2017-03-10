@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Rating from 'react-rating';
-import styles from '../styles/newRecipe.css';
+import styles from '../../css/newRecipe.css';
 import Base64Image from './Base64Image';
 
 class NewRecipe extends Component {

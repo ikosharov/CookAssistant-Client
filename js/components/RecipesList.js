@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 
 import RecipeSummaryContainer from '../containers/RecipeSummaryContainer';
 import Avatar from './Avatar';
-import styles from '../styles/recipesList.css';
+import styles from '../../css/recipesList.css';
 
 class RecipesList extends React.Component {
     constructor(props) {

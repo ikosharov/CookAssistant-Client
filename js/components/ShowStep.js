@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Base64Image from './Base64Image';
-import styles from '../styles/ShowStep.css';
+import styles from '../../css/ShowStep.css';
 
 class ShowStep extends Component {
     constructor(props) {

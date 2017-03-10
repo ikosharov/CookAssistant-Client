@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 
 import Breadcrumb from './Breadcrumb';
 import AvatarContainer from '../containers/AvatarContainer';
-import styles from '../styles/recipesShell.css';
+import styles from '../../css/recipesShell.css';
 
 class RecipesShell extends React.Component {
     constructor(props) {

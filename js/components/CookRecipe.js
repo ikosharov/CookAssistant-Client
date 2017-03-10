@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import Guid from 'guid';
 import Base64Image from './Base64Image';
 import Rating from 'react-rating';
-import styles from '../styles/cookRecipe.css';
+import styles from '../../css/cookRecipe.css';
 import ShowIngredient from './ShowIngredient';
 import ShowStep from './ShowStep';
 

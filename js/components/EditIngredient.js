@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Base64Image from './Base64Image';
-import styles from '../styles/editIngredient.css';
+import styles from '../../css/editIngredient.css';
 
 class EditIngredient extends Component {
     constructor(props) {

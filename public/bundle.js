@@ -77,7 +77,7 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(489);
+	var _store = __webpack_require__(490);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -30955,23 +30955,23 @@
 	
 	var _RecipesShell2 = _interopRequireDefault(_RecipesShell);
 	
-	var _RecipesListsContainer = __webpack_require__(474);
+	var _RecipesListsContainer = __webpack_require__(475);
 	
 	var _RecipesListsContainer2 = _interopRequireDefault(_RecipesListsContainer);
 	
-	var _AuthContainer = __webpack_require__(500);
+	var _AuthContainer = __webpack_require__(501);
 	
 	var _AuthContainer2 = _interopRequireDefault(_AuthContainer);
 	
-	var _CookRecipeContainer = __webpack_require__(507);
+	var _CookRecipeContainer = __webpack_require__(508);
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(518);
+	var _EditRecipeContainer = __webpack_require__(519);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
-	var _NewRecipeContainer = __webpack_require__(530);
+	var _NewRecipeContainer = __webpack_require__(531);
 	
 	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
 	
@@ -31077,8 +31077,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31436,7 +31436,7 @@
 	
 	var _AvatarContainer2 = _interopRequireDefault(_AvatarContainer);
 	
-	var _recipesShell = __webpack_require__(472);
+	var _recipesShell = __webpack_require__(473);
 	
 	var _recipesShell2 = _interopRequireDefault(_recipesShell);
 	
@@ -37557,8 +37557,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37576,11 +37576,11 @@
 	
 	
 	// module
-	exports.push([module.id, ".breadcrumb__wrapper___2syIA {\r\n    padding-left: 0.3em;\r\n    font-size: 1.5em;\r\n}", ""]);
+	exports.push([module.id, ".breadcrumb__wrapper___2BfPh {\r\n    padding-left: 0.3em;\r\n    font-size: 1.5em;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "breadcrumb__wrapper___2syIA"
+		"wrapper": "breadcrumb__wrapper___2BfPh"
 	};
 
 /***/ },
@@ -37601,7 +37601,7 @@
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
@@ -37652,6 +37652,10 @@
 	
 	var _avatar2 = _interopRequireDefault(_avatar);
 	
+	var _chef = __webpack_require__(470);
+	
+	var _chef2 = _interopRequireDefault(_chef);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37680,7 +37684,7 @@
 	                    null,
 	                    this.props.username
 	                ),
-	                _react2.default.createElement('img', { src: 'http://placehold.it/100x100', styleName: 'avatar-image', alt: 'User image' }),
+	                _react2.default.createElement('img', { src: _chef2.default, styleName: 'avatar-image', alt: 'User image' }),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'button',
@@ -37712,8 +37716,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37731,15 +37735,21 @@
 	
 	
 	// module
-	exports.push([module.id, ".avatar__avatar-image___OkACe {\r\n    border-radius: 0px 10px 0px 10px;\r\n    width: 100px;\r\n    height: 100px;\r\n    margin-bottom: .5em;\r\n}", ""]);
+	exports.push([module.id, ".avatar__avatar-image___3xupv {\r\n    border-radius: 0px 10px 0px 10px;\r\n    width: 100px;\r\n    height: 100px;\r\n    margin-bottom: .5em;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"avatar-image": "avatar__avatar-image___OkACe"
+		"avatar-image": "avatar__avatar-image___3xupv"
 	};
 
 /***/ },
 /* 470 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "71c314caeb101d09970a6ac354a5df22.png";
+
+/***/ },
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37757,7 +37767,7 @@
 	exports.loadRecipeDetailsSuccess = loadRecipeDetailsSuccess;
 	exports.loadRecipeDetailsFailed = loadRecipeDetailsFailed;
 	
-	var _types = __webpack_require__(471);
+	var _types = __webpack_require__(472);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -37825,7 +37835,7 @@
 	}
 
 /***/ },
-/* 471 */
+/* 472 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37847,13 +37857,13 @@
 	var LOAD_RECIPE_DETAILS_FAILED = exports.LOAD_RECIPE_DETAILS_FAILED = "LOAD_RECIPE_DETAILS_FAILED";
 
 /***/ },
-/* 472 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(473);
+	var content = __webpack_require__(474);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -37862,8 +37872,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37873,7 +37883,7 @@
 	}
 
 /***/ },
-/* 473 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -37881,18 +37891,18 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipesShell__wrapper___2k7km {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid burlywood;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.recipesShell__content___2BRdX {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.recipesShell__recipes-section___3slug {\r\n    order: 2;\r\n}\r\n\r\n.recipesShell__avatar-section___38mqu {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .recipesShell__wrapper___2k7km {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .recipesShell__content___2BRdX {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .recipesShell__recipes-section___3slug {\r\n        order: 1;\r\n        flex: 4;\r\n        padding-right: 1em;\r\n    }\r\n\r\n    .recipesShell__avatar-section___38mqu {\r\n        order: 2;\r\n        flex: 1;\r\n        border-left: 1px solid lightblue;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipesShell__wrapper___gUE6J {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid burlywood;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.recipesShell__content___1TbVC {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.recipesShell__recipes-section___1YqXA {\r\n    order: 2;\r\n}\r\n\r\n.recipesShell__avatar-section___3DpDc {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .recipesShell__wrapper___gUE6J {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .recipesShell__content___1TbVC {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .recipesShell__recipes-section___1YqXA {\r\n        order: 1;\r\n        flex: 4;\r\n        padding-right: 1em;\r\n    }\r\n\r\n    .recipesShell__avatar-section___3DpDc {\r\n        order: 2;\r\n        flex: 1;\r\n        border-left: 1px solid lightblue;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "recipesShell__wrapper___2k7km",
-		"content": "recipesShell__content___2BRdX",
-		"recipes-section": "recipesShell__recipes-section___3slug",
-		"avatar-section": "recipesShell__avatar-section___38mqu"
+		"wrapper": "recipesShell__wrapper___gUE6J",
+		"content": "recipesShell__content___1TbVC",
+		"recipes-section": "recipesShell__recipes-section___1YqXA",
+		"avatar-section": "recipesShell__avatar-section___3DpDc"
 	};
 
 /***/ },
-/* 474 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37905,15 +37915,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _RecipesLists = __webpack_require__(475);
+	var _RecipesLists = __webpack_require__(476);
 	
 	var _RecipesLists2 = _interopRequireDefault(_RecipesLists);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -37953,7 +37963,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RecipesLists2.default);
 
 /***/ },
-/* 475 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37972,11 +37982,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipesListContainer = __webpack_require__(476);
+	var _RecipesListContainer = __webpack_require__(477);
 	
 	var _RecipesListContainer2 = _interopRequireDefault(_RecipesListContainer);
 	
-	var _recipesLists = __webpack_require__(498);
+	var _recipesLists = __webpack_require__(499);
 	
 	var _recipesLists2 = _interopRequireDefault(_recipesLists);
 	
@@ -38047,7 +38057,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipesLists, _recipesLists2.default);
 
 /***/ },
-/* 476 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38060,15 +38070,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _RecipesList = __webpack_require__(477);
+	var _RecipesList = __webpack_require__(478);
 	
 	var _RecipesList2 = _interopRequireDefault(_RecipesList);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -38093,7 +38103,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RecipesList2.default);
 
 /***/ },
-/* 477 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38112,7 +38122,7 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _RecipeSummaryContainer = __webpack_require__(478);
+	var _RecipeSummaryContainer = __webpack_require__(479);
 	
 	var _RecipeSummaryContainer2 = _interopRequireDefault(_RecipeSummaryContainer);
 	
@@ -38120,7 +38130,7 @@
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
-	var _recipesList = __webpack_require__(496);
+	var _recipesList = __webpack_require__(497);
 	
 	var _recipesList2 = _interopRequireDefault(_recipesList);
 	
@@ -38200,7 +38210,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipesList, _recipesList2.default);
 
 /***/ },
-/* 478 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38213,15 +38223,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _RecipeSummary = __webpack_require__(479);
+	var _RecipeSummary = __webpack_require__(480);
 	
 	var _RecipeSummary2 = _interopRequireDefault(_RecipeSummary);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -38250,7 +38260,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RecipeSummary2.default);
 
 /***/ },
-/* 479 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38269,15 +38279,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(480);
+	var _reactRating = __webpack_require__(481);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _recipeSummary = __webpack_require__(482);
+	var _recipeSummary = __webpack_require__(483);
 	
 	var _recipeSummary2 = _interopRequireDefault(_recipeSummary);
 	
@@ -38385,7 +38395,7 @@
 	exports.default = (0, _reactCssModules2.default)(RecipeSummary, _recipeSummary2.default);
 
 /***/ },
-/* 480 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -38800,7 +38810,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(261)(module)))
 
 /***/ },
-/* 481 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38837,13 +38847,13 @@
 	exports.default = Base64Image;
 
 /***/ },
-/* 482 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(483);
+	var content = __webpack_require__(484);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -38852,8 +38862,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -38863,7 +38873,7 @@
 	}
 
 /***/ },
-/* 483 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -38871,19 +38881,19 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipeSummary__wrapper___hZpX_ {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___1mIDN {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__title___1mIDN h3 {\r\n    display: inline-block;\r\n    margin-right: 0.5em;\r\n}\r\n\r\n.recipeSummary__rating___3llDm {\r\n    order: 2;\r\n    font-size: 2em;\r\n    color: orange;\r\n}\r\n\r\n.recipeSummary__image___oRvVu {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___oRvVu img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___1TdHI {\r\n    display: flex;\r\n    order: 4;\r\n    justify-content: center;\r\n    margin-top: 0.8em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___hZpX_ {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__title___1mIDN h3 {\r\n        display: block;\r\n    }\r\n\r\n    .recipeSummary__image___oRvVu {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___3llDm {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___1TdHI {\r\n        flex: 1;\r\n        align-items: center;\r\n        margin-top: 0px;\r\n    }\r\n}\r\n", ""]);
+	exports.push([module.id, ".recipeSummary__wrapper___3lPLe {\r\n    display: flex;\r\n    flex-flow: column;\r\n    margin-bottom: 1em;\r\n    border-bottom: 1px solid lightblue;\r\n    padding-bottom: 1em;\r\n}\r\n\r\n.recipeSummary__title___3e-f6 {\r\n    order: 1;\r\n}\r\n\r\n.recipeSummary__title___3e-f6 h3 {\r\n    display: inline-block;\r\n    margin-right: 0.5em;\r\n}\r\n\r\n.recipeSummary__rating___1IOmy {\r\n    order: 2;\r\n    font-size: 2em;\r\n    color: orange;\r\n}\r\n\r\n.recipeSummary__image___1dCWD {\r\n    order: 3;\r\n}\r\n\r\n.recipeSummary__image___1dCWD img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.recipeSummary__actions___3F6c2 {\r\n    display: flex;\r\n    order: 4;\r\n    justify-content: center;\r\n    margin-top: 0.8em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .recipeSummary__wrapper___3lPLe {\r\n        flex-flow: row nowrap;\r\n        padding: 1em;\r\n    }\r\n\r\n    .recipeSummary__title___3e-f6 {\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__title___3e-f6 h3 {\r\n        display: block;\r\n    }\r\n\r\n    .recipeSummary__image___1dCWD {\r\n        order: 2;\r\n        flex: 2;\r\n        display: flex;\r\n        align-items: center;\r\n        padding: 0 1em 0 1em;\r\n    }\r\n\r\n    .recipeSummary__rating___1IOmy {\r\n        order: 3;\r\n        flex: 1;\r\n        display: flex;\r\n        align-items: center;\r\n    }\r\n\r\n    .recipeSummary__actions___3F6c2 {\r\n        flex: 1;\r\n        align-items: center;\r\n        margin-top: 0px;\r\n    }\r\n}\r\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "recipeSummary__wrapper___hZpX_",
-		"title": "recipeSummary__title___1mIDN",
-		"rating": "recipeSummary__rating___3llDm",
-		"image": "recipeSummary__image___oRvVu",
-		"actions": "recipeSummary__actions___1TdHI"
+		"wrapper": "recipeSummary__wrapper___3lPLe",
+		"title": "recipeSummary__title___3e-f6",
+		"rating": "recipeSummary__rating___1IOmy",
+		"image": "recipeSummary__image___1dCWD",
+		"actions": "recipeSummary__actions___3F6c2"
 	};
 
 /***/ },
-/* 484 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38906,17 +38916,17 @@
 	exports.editStep = editStep;
 	exports.deleteStep = deleteStep;
 	
-	var _isomorphicFetch = __webpack_require__(485);
+	var _isomorphicFetch = __webpack_require__(486);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _formData = __webpack_require__(487);
+	var _formData = __webpack_require__(488);
 	
 	var _formData2 = _interopRequireDefault(_formData);
 	
-	var _web = __webpack_require__(488);
+	var _web = __webpack_require__(489);
 	
-	var _store = __webpack_require__(489);
+	var _store = __webpack_require__(490);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39413,7 +39423,7 @@
 	}
 
 /***/ },
-/* 485 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39422,11 +39432,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(486);
+	__webpack_require__(487);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 486 */
+/* 487 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39886,7 +39896,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 487 */
+/* 488 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39897,7 +39907,7 @@
 	module.exports = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' ? self.FormData : window.FormData;
 
 /***/ },
-/* 488 */
+/* 489 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39909,7 +39919,7 @@
 	//export const API_URL = "http://localhost:3000";
 
 /***/ },
-/* 489 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39924,9 +39934,9 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _localStorage = __webpack_require__(490);
+	var _localStorage = __webpack_require__(491);
 	
-	var _reducers = __webpack_require__(491);
+	var _reducers = __webpack_require__(492);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -39950,7 +39960,7 @@
 	}
 
 /***/ },
-/* 490 */
+/* 491 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39980,7 +39990,7 @@
 	};
 
 /***/ },
-/* 491 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39993,19 +40003,19 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _auth = __webpack_require__(492);
+	var _auth = __webpack_require__(493);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
-	var _isFetching = __webpack_require__(493);
+	var _isFetching = __webpack_require__(494);
 	
 	var _isFetching2 = _interopRequireDefault(_isFetching);
 	
-	var _recipes = __webpack_require__(494);
+	var _recipes = __webpack_require__(495);
 	
 	var recipes = _interopRequireWildcard(_recipes);
 	
-	var _recipeDetails = __webpack_require__(495);
+	var _recipeDetails = __webpack_require__(496);
 	
 	var _recipeDetails2 = _interopRequireDefault(_recipeDetails);
 	
@@ -40025,7 +40035,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 492 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40035,7 +40045,7 @@
 	});
 	exports.default = auth;
 	
-	var _types = __webpack_require__(471);
+	var _types = __webpack_require__(472);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -40081,7 +40091,7 @@
 	}
 
 /***/ },
-/* 493 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40091,7 +40101,7 @@
 	});
 	exports.default = isFetching;
 	
-	var _types = __webpack_require__(471);
+	var _types = __webpack_require__(472);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -40113,7 +40123,7 @@
 	}
 
 /***/ },
-/* 494 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40124,7 +40134,7 @@
 	exports.currentUserRecipes = currentUserRecipes;
 	exports.anyUserRecipes = anyUserRecipes;
 	
-	var _types = __webpack_require__(471);
+	var _types = __webpack_require__(472);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -40182,7 +40192,7 @@
 	}
 
 /***/ },
-/* 495 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40192,7 +40202,7 @@
 	});
 	exports.default = recipeDetails;
 	
-	var _types = __webpack_require__(471);
+	var _types = __webpack_require__(472);
 	
 	var actionTypes = _interopRequireWildcard(_types);
 	
@@ -40242,13 +40252,13 @@
 	}
 
 /***/ },
-/* 496 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(497);
+	var content = __webpack_require__(498);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40257,8 +40267,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40266,32 +40276,32 @@
 		// When the module is disposed, remove the <style> tags
 		module.hot.dispose(function() { update(); });
 	}
-
-/***/ },
-/* 497 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(292)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".recipesList__wrapper___1owmK {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}\r\n\r\n.recipesList__addNew___3b8vV {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 2em;\r\n}", ""]);
-	
-	// exports
-	exports.locals = {
-		"wrapper": "recipesList__wrapper___1owmK",
-		"addNew": "recipesList__addNew___3b8vV"
-	};
 
 /***/ },
 /* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".recipesList__wrapper___t1Qw7 {\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    max-width: 100%;\r\n}\r\n\r\n.recipesList__addNew___2b-Ti {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 2em;\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "recipesList__wrapper___t1Qw7",
+		"addNew": "recipesList__addNew___2b-Ti"
+	};
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(499);
+	var content = __webpack_require__(500);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40300,8 +40310,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40311,7 +40321,7 @@
 	}
 
 /***/ },
-/* 499 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40319,15 +40329,15 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipesLists__wrapper___tTrPL > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n    padding-left: 0.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___tTrPL h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipesLists__wrapper___2vkcN > h2 {\r\n    background-color: blue;\r\n    border-radius: 5px;\r\n    color: white;\r\n    line-height: 1.5em;\r\n    padding-left: 0.5em;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    .recipesLists__wrapper___2vkcN h2 {\r\n        margin-bottom: 0;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "recipesLists__wrapper___tTrPL"
+		"wrapper": "recipesLists__wrapper___2vkcN"
 	};
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40340,15 +40350,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _Auth = __webpack_require__(501);
+	var _Auth = __webpack_require__(502);
 	
 	var _Auth2 = _interopRequireDefault(_Auth);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40395,7 +40405,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Auth2.default);
 
 /***/ },
-/* 501 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40414,11 +40424,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Spinner = __webpack_require__(502);
+	var _Spinner = __webpack_require__(503);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _auth = __webpack_require__(505);
+	var _auth = __webpack_require__(506);
 	
 	var _auth2 = _interopRequireDefault(_auth);
 	
@@ -40559,7 +40569,7 @@
 	exports.default = (0, _reactCssModules2.default)(Auth, _auth2.default);
 
 /***/ },
-/* 502 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40578,7 +40588,7 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _spinner = __webpack_require__(503);
+	var _spinner = __webpack_require__(504);
 	
 	var _spinner2 = _interopRequireDefault(_spinner);
 	
@@ -40612,13 +40622,13 @@
 	exports.default = (0, _reactCssModules2.default)(Spinner, _spinner2.default);
 
 /***/ },
-/* 503 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(504);
+	var content = __webpack_require__(505);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40627,8 +40637,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40636,32 +40646,32 @@
 		// When the module is disposed, remove the <style> tags
 		module.hot.dispose(function() { update(); });
 	}
-
-/***/ },
-/* 504 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(292)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".spinner__loader___366Jf {\r\n    border: 16px solid #f3f3f3; /* Light grey */\r\n    border-top: 16px solid #3498db; /* Blue */\r\n    border-radius: 50%;\r\n    width: 120px;\r\n    height: 120px;\r\n    animation: spinner__spin___2Jxo3 2s linear infinite;\r\n}\r\n\r\n@keyframes spinner__spin___2Jxo3 {\r\n    0% { transform: rotate(0deg); }\r\n    100% { transform: rotate(360deg); }\r\n}", ""]);
-	
-	// exports
-	exports.locals = {
-		"loader": "spinner__loader___366Jf",
-		"spin": "spinner__spin___2Jxo3"
-	};
 
 /***/ },
 /* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".spinner__loader___3RM4Q {\r\n    border: 16px solid #f3f3f3; /* Light grey */\r\n    border-top: 16px solid #3498db; /* Blue */\r\n    border-radius: 50%;\r\n    width: 120px;\r\n    height: 120px;\r\n    animation: spinner__spin___2A-Vk 2s linear infinite;\r\n}\r\n\r\n@keyframes spinner__spin___2A-Vk {\r\n    0% { transform: rotate(0deg); }\r\n    100% { transform: rotate(360deg); }\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"loader": "spinner__loader___3RM4Q",
+		"spin": "spinner__spin___2A-Vk"
+	};
+
+/***/ },
+/* 506 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(506);
+	var content = __webpack_require__(507);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -40670,8 +40680,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40681,7 +40691,7 @@
 	}
 
 /***/ },
-/* 506 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -40689,18 +40699,18 @@
 	
 	
 	// module
-	exports.push([module.id, ".auth__login-page___2E7m6 {\r\n  width: 360px;\r\n  padding: 8% 0 0;\r\n  margin: auto;\r\n}\r\n\r\n.auth__form___1GOp7 {\r\n  position: relative;\r\n  z-index: 1;\r\n  background: #FFFFFF;\r\n  max-width: 360px;\r\n  margin: 0 auto 100px;\r\n  padding: 45px;\r\n  text-align: center;\r\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n}\r\n\r\n.auth__form___1GOp7 input {\r\n  font-family: \"Roboto\", sans-serif;\r\n  outline: 0;\r\n  background: #f2f2f2;\r\n  width: 100%;\r\n  border: 0;\r\n  margin: 0 0 15px;\r\n  padding: 15px;\r\n  box-sizing: border-box;\r\n  font-size: 14px;\r\n}\r\n\r\n.auth__form___1GOp7 button {\r\n  font-family: \"Roboto\", sans-serif;\r\n  text-transform: uppercase;\r\n  outline: 0;\r\n  background: #4CAF50;\r\n  width: 100%;\r\n  border: 0;\r\n  padding: 15px;\r\n  color: #FFFFFF;\r\n  font-size: 14px;\r\n  -webkit-transition: all 0.3 ease;\r\n  transition: all 0.3 ease;\r\n  cursor: pointer;\r\n}\r\n\r\n.auth__form___1GOp7 button:hover,.auth__form___1GOp7 button:active,.auth__form___1GOp7 button:focus {\r\n  background: #43A047;\r\n}\r\n\r\n.auth__form___1GOp7 .auth__message___MLam0 {\r\n  margin: 15px 0 0;\r\n  color: #b3b3b3;\r\n  font-size: 12px;\r\n}\r\n\r\n.auth__form___1GOp7 .auth__message___MLam0 a {\r\n  color: #4CAF50;\r\n  text-decoration: none;\r\n}\r\n\r\n.auth__form___1GOp7 .auth__register-form___MDJAc {\r\n  display: none;\r\n}\r\n\r\n.auth__form___1GOp7 {\r\n  font-family: \"Roboto\", sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;      \r\n}", ""]);
+	exports.push([module.id, ".auth__login-page___3oqGR {\r\n  width: 360px;\r\n  padding: 8% 0 0;\r\n  margin: auto;\r\n}\r\n\r\n.auth__form___28t9V {\r\n  position: relative;\r\n  z-index: 1;\r\n  background: #FFFFFF;\r\n  max-width: 360px;\r\n  margin: 0 auto 100px;\r\n  padding: 45px;\r\n  text-align: center;\r\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n}\r\n\r\n.auth__form___28t9V input {\r\n  font-family: \"Roboto\", sans-serif;\r\n  outline: 0;\r\n  background: #f2f2f2;\r\n  width: 100%;\r\n  border: 0;\r\n  margin: 0 0 15px;\r\n  padding: 15px;\r\n  box-sizing: border-box;\r\n  font-size: 14px;\r\n}\r\n\r\n.auth__form___28t9V button {\r\n  font-family: \"Roboto\", sans-serif;\r\n  text-transform: uppercase;\r\n  outline: 0;\r\n  background: #4CAF50;\r\n  width: 100%;\r\n  border: 0;\r\n  padding: 15px;\r\n  color: #FFFFFF;\r\n  font-size: 14px;\r\n  -webkit-transition: all 0.3 ease;\r\n  transition: all 0.3 ease;\r\n  cursor: pointer;\r\n}\r\n\r\n.auth__form___28t9V button:hover,.auth__form___28t9V button:active,.auth__form___28t9V button:focus {\r\n  background: #43A047;\r\n}\r\n\r\n.auth__form___28t9V .auth__message___2ggT- {\r\n  margin: 15px 0 0;\r\n  color: #b3b3b3;\r\n  font-size: 12px;\r\n}\r\n\r\n.auth__form___28t9V .auth__message___2ggT- a {\r\n  color: #4CAF50;\r\n  text-decoration: none;\r\n}\r\n\r\n.auth__form___28t9V .auth__register-form___AMCZL {\r\n  display: none;\r\n}\r\n\r\n.auth__form___28t9V {\r\n  font-family: \"Roboto\", sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;      \r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"login-page": "auth__login-page___2E7m6",
-		"form": "auth__form___1GOp7",
-		"message": "auth__message___MLam0",
-		"register-form": "auth__register-form___MDJAc"
+		"login-page": "auth__login-page___3oqGR",
+		"form": "auth__form___28t9V",
+		"message": "auth__message___2ggT-",
+		"register-form": "auth__register-form___AMCZL"
 	};
 
 /***/ },
-/* 507 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40713,15 +40723,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _CookRecipe = __webpack_require__(508);
+	var _CookRecipe = __webpack_require__(509);
 	
 	var _CookRecipe2 = _interopRequireDefault(_CookRecipe);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -40757,7 +40767,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_CookRecipe2.default);
 
 /***/ },
-/* 508 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40776,27 +40786,27 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _guid = __webpack_require__(509);
+	var _guid = __webpack_require__(510);
 	
 	var _guid2 = _interopRequireDefault(_guid);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _reactRating = __webpack_require__(480);
+	var _reactRating = __webpack_require__(481);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _cookRecipe = __webpack_require__(510);
+	var _cookRecipe = __webpack_require__(511);
 	
 	var _cookRecipe2 = _interopRequireDefault(_cookRecipe);
 	
-	var _ShowIngredient = __webpack_require__(512);
+	var _ShowIngredient = __webpack_require__(513);
 	
 	var _ShowIngredient2 = _interopRequireDefault(_ShowIngredient);
 	
-	var _ShowStep = __webpack_require__(515);
+	var _ShowStep = __webpack_require__(516);
 	
 	var _ShowStep2 = _interopRequireDefault(_ShowStep);
 	
@@ -40968,7 +40978,7 @@
 	exports.default = (0, _reactCssModules2.default)(CookRecipe, _cookRecipe2.default);
 
 /***/ },
-/* 509 */
+/* 510 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -41036,13 +41046,13 @@
 	})();
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(511);
+	var content = __webpack_require__(512);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41051,8 +41061,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -41062,7 +41072,7 @@
 	}
 
 /***/ },
-/* 511 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41070,22 +41080,22 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___12bkX {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___125Fx {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___125Fx > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___125Fx h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___32Zc3 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___SiwIG {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1hH-o img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1uz6A > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___3x8Qw > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___1z4wL > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___125Fx {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___32Zc3 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___SiwIG {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1hH-o {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___3Tfa_ {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1yGJd {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "cookRecipe__wrapper___12bkX",
-		"title": "cookRecipe__title___125Fx",
-		"image-and-controls": "cookRecipe__image-and-controls___32Zc3",
-		"controls": "cookRecipe__controls___SiwIG",
-		"image": "cookRecipe__image___1hH-o",
-		"ingredients": "cookRecipe__ingredients___1uz6A",
-		"ingredient": "cookRecipe__ingredient___3x8Qw",
-		"steps": "cookRecipe__steps___1z4wL"
+		"wrapper": "cookRecipe__wrapper___16x8R",
+		"title": "cookRecipe__title___LVqNy",
+		"image-and-controls": "cookRecipe__image-and-controls___3Tfa_",
+		"controls": "cookRecipe__controls___3eysw",
+		"image": "cookRecipe__image___1yGJd",
+		"ingredients": "cookRecipe__ingredients___1G69-",
+		"ingredient": "cookRecipe__ingredient___6Fhcc",
+		"steps": "cookRecipe__steps___7fbFK"
 	};
 
 /***/ },
-/* 512 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41104,11 +41114,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _ShowIngredient = __webpack_require__(513);
+	var _ShowIngredient = __webpack_require__(514);
 	
 	var _ShowIngredient2 = _interopRequireDefault(_ShowIngredient);
 	
@@ -41172,13 +41182,13 @@
 	exports.default = (0, _reactCssModules2.default)(ShowIngredient, _ShowIngredient2.default);
 
 /***/ },
-/* 513 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(514);
+	var content = __webpack_require__(515);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41187,8 +41197,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -41198,7 +41208,7 @@
 	}
 
 /***/ },
-/* 514 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41206,18 +41216,18 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowIngredient__wrapper___nAXrI {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowIngredient__wrapper___nAXrI > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowIngredient__title___4c6zN {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowIngredient__image___1-L1h img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowIngredient__checks___3rGJT {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__checks___3rGJT input {\r\n    width: 2rem;\r\n    height: 2rem;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowIngredient__wrapper___nAXrI {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowIngredient__wrapper___nAXrI > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowIngredient__title___4c6zN {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__image___1-L1h {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__checks___3rGJT {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowIngredient__wrapper___11D_F {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowIngredient__wrapper___11D_F > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowIngredient__title___3hNEN {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__image___2-QHy {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowIngredient__image___2-QHy img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowIngredient__checks___QZ0Eu {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowIngredient__checks___QZ0Eu input {\r\n    width: 2rem;\r\n    height: 2rem;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowIngredient__wrapper___11D_F {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowIngredient__wrapper___11D_F > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowIngredient__title___3hNEN {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__image___2-QHy {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowIngredient__checks___QZ0Eu {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "ShowIngredient__wrapper___nAXrI",
-		"title": "ShowIngredient__title___4c6zN",
-		"image": "ShowIngredient__image___1-L1h",
-		"checks": "ShowIngredient__checks___3rGJT"
+		"wrapper": "ShowIngredient__wrapper___11D_F",
+		"title": "ShowIngredient__title___3hNEN",
+		"image": "ShowIngredient__image___2-QHy",
+		"checks": "ShowIngredient__checks___QZ0Eu"
 	};
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41236,11 +41246,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _ShowStep = __webpack_require__(516);
+	var _ShowStep = __webpack_require__(517);
 	
 	var _ShowStep2 = _interopRequireDefault(_ShowStep);
 	
@@ -41305,13 +41315,13 @@
 	exports.default = (0, _reactCssModules2.default)(ShowStep, _ShowStep2.default);
 
 /***/ },
-/* 516 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(517);
+	var content = __webpack_require__(518);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41320,8 +41330,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -41331,7 +41341,7 @@
 	}
 
 /***/ },
-/* 517 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41339,20 +41349,20 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowStep__wrapper___1Lg_G {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___1Lg_G > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___axUQb {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___2wmlk img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__arrow___3tp2_ {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 3em;\r\n    color: cadetblue;\r\n}\r\n\r\n.ShowStep__arrow-right___2WOUj {\r\n    display: none;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___1Lg_G {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___1Lg_G > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___axUQb {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___2wmlk {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow___3tp2_ {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow-right___2WOUj {\r\n        display: inline;\r\n    }\r\n\r\n    .ShowStep__arrow-down___3XKCN {\r\n        display: none;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowStep__wrapper___3Uu-F {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___3Uu-F > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___1xFMT {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___3Z9Mw {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___3Z9Mw img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__arrow___2-nLS {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 3em;\r\n    color: cadetblue;\r\n}\r\n\r\n.ShowStep__arrow-right___3yV1l {\r\n    display: none;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___3Uu-F {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___3Uu-F > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___1xFMT {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___3Z9Mw {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow___2-nLS {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow-right___3yV1l {\r\n        display: inline;\r\n    }\r\n\r\n    .ShowStep__arrow-down___2h2fi {\r\n        display: none;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "ShowStep__wrapper___1Lg_G",
-		"title": "ShowStep__title___axUQb",
-		"image": "ShowStep__image___2wmlk",
-		"arrow": "ShowStep__arrow___3tp2_",
-		"arrow-right": "ShowStep__arrow-right___2WOUj",
-		"arrow-down": "ShowStep__arrow-down___3XKCN"
+		"wrapper": "ShowStep__wrapper___3Uu-F",
+		"title": "ShowStep__title___1xFMT",
+		"image": "ShowStep__image___3Z9Mw",
+		"arrow": "ShowStep__arrow___2-nLS",
+		"arrow-right": "ShowStep__arrow-right___3yV1l",
+		"arrow-down": "ShowStep__arrow-down___2h2fi"
 	};
 
 /***/ },
-/* 518 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41365,15 +41375,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(519);
+	var _EditRecipe = __webpack_require__(520);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -41436,7 +41446,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 519 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41455,27 +41465,27 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _guid = __webpack_require__(509);
+	var _guid = __webpack_require__(510);
 	
 	var _guid2 = _interopRequireDefault(_guid);
 	
-	var _reactRating = __webpack_require__(480);
+	var _reactRating = __webpack_require__(481);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _editRecipe = __webpack_require__(520);
+	var _editRecipe = __webpack_require__(521);
 	
 	var _editRecipe2 = _interopRequireDefault(_editRecipe);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _EditIngredientContainer = __webpack_require__(522);
+	var _EditIngredientContainer = __webpack_require__(523);
 	
 	var _EditIngredientContainer2 = _interopRequireDefault(_EditIngredientContainer);
 	
-	var _EditStepContainer = __webpack_require__(526);
+	var _EditStepContainer = __webpack_require__(527);
 	
 	var _EditStepContainer2 = _interopRequireDefault(_EditStepContainer);
 	
@@ -41759,13 +41769,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
 
 /***/ },
-/* 520 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(521);
+	var content = __webpack_require__(522);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -41774,8 +41784,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -41785,7 +41795,7 @@
 	}
 
 /***/ },
-/* 521 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -41793,22 +41803,22 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___3rMaP {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___F-Zul {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___F-Zul a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.editRecipe__image-and-controls___10BMq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___5S1it {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.editRecipe__image___4rttv img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3zrCn > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2W7IW > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2RR15 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___F-Zul {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___10BMq {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___5S1it {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___4rttv {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___2JRGe {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___3Rphi {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___3Rphi a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.editRecipe__image-and-controls___o7ziz {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.editRecipe__image___1yjLh img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2WNvH > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2f1sY {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___3Rphi {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .editRecipe__image-and-controls___o7ziz {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .editRecipe__controls___3HSQC {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .editRecipe__image___1yjLh {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "editRecipe__wrapper___3rMaP",
-		"title": "editRecipe__title___F-Zul",
-		"image-and-controls": "editRecipe__image-and-controls___10BMq",
-		"controls": "editRecipe__controls___5S1it",
-		"image": "editRecipe__image___4rttv",
-		"ingredients": "editRecipe__ingredients___3zrCn",
-		"steps": "editRecipe__steps___2W7IW",
-		"addNew": "editRecipe__addNew___2RR15"
+		"wrapper": "editRecipe__wrapper___2JRGe",
+		"title": "editRecipe__title___3Rphi",
+		"image-and-controls": "editRecipe__image-and-controls___o7ziz",
+		"controls": "editRecipe__controls___3HSQC",
+		"image": "editRecipe__image___1yjLh",
+		"ingredients": "editRecipe__ingredients___3olVh",
+		"steps": "editRecipe__steps___2WNvH",
+		"addNew": "editRecipe__addNew___2f1sY"
 	};
 
 /***/ },
-/* 522 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41821,15 +41831,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditIngredient = __webpack_require__(523);
+	var _EditIngredient = __webpack_require__(524);
 	
 	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -41888,7 +41898,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditIngredient2.default);
 
 /***/ },
-/* 523 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41907,11 +41917,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _editIngredient = __webpack_require__(524);
+	var _editIngredient = __webpack_require__(525);
 	
 	var _editIngredient2 = _interopRequireDefault(_editIngredient);
 	
@@ -42041,13 +42051,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditIngredient, _editIngredient2.default);
 
 /***/ },
-/* 524 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(525);
+	var content = __webpack_require__(526);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -42056,8 +42066,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -42067,7 +42077,7 @@
 	}
 
 /***/ },
-/* 525 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -42075,18 +42085,18 @@
 	
 	
 	// module
-	exports.push([module.id, ".editIngredient__wrapper___YzuA8 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___YzuA8 > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___3TAWu {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___1pGsj img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editIngredient__actions___n9J3i {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__actions___n9J3i button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___YzuA8 {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___YzuA8 > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___3TAWu {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___1pGsj {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___n9J3i {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editIngredient__wrapper___1z2IM {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___1z2IM > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___2Lu7H {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___VI5GW {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___VI5GW img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editIngredient__actions___2NJqO {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__actions___2NJqO button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___1z2IM {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___1z2IM > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___2Lu7H {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___VI5GW {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___2NJqO {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "editIngredient__wrapper___YzuA8",
-		"title": "editIngredient__title___3TAWu",
-		"image": "editIngredient__image___1pGsj",
-		"actions": "editIngredient__actions___n9J3i"
+		"wrapper": "editIngredient__wrapper___1z2IM",
+		"title": "editIngredient__title___2Lu7H",
+		"image": "editIngredient__image___VI5GW",
+		"actions": "editIngredient__actions___2NJqO"
 	};
 
 /***/ },
-/* 526 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42099,15 +42109,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditStep = __webpack_require__(527);
+	var _EditStep = __webpack_require__(528);
 	
 	var _EditStep2 = _interopRequireDefault(_EditStep);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -42166,7 +42176,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditStep2.default);
 
 /***/ },
-/* 527 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42185,11 +42195,11 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _EditStep = __webpack_require__(528);
+	var _EditStep = __webpack_require__(529);
 	
 	var _EditStep2 = _interopRequireDefault(_EditStep);
 	
@@ -42319,13 +42329,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditStep, _EditStep2.default);
 
 /***/ },
-/* 528 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(529);
+	var content = __webpack_require__(530);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -42334,8 +42344,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -42345,7 +42355,7 @@
 	}
 
 /***/ },
-/* 529 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -42353,18 +42363,18 @@
 	
 	
 	// module
-	exports.push([module.id, ".EditStep__wrapper___1nR8z {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___1nR8z > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2pqHQ {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1khm9 {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1khm9 img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.EditStep__actions___1ua4p {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__actions___1ua4p button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___1nR8z {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___1nR8z > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2pqHQ {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1khm9 {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1ua4p {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".EditStep__wrapper___2SjiF {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___2SjiF > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2Ypec {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1rGmf {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1rGmf img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.EditStep__actions___1qAiK {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__actions___1qAiK button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___2SjiF {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___2SjiF > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2Ypec {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1rGmf {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1qAiK {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "EditStep__wrapper___1nR8z",
-		"title": "EditStep__title___2pqHQ",
-		"image": "EditStep__image___1khm9",
-		"actions": "EditStep__actions___1ua4p"
+		"wrapper": "EditStep__wrapper___2SjiF",
+		"title": "EditStep__title___2Ypec",
+		"image": "EditStep__image___1rGmf",
+		"actions": "EditStep__actions___1qAiK"
 	};
 
 /***/ },
-/* 530 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42377,15 +42387,15 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _NewRecipe = __webpack_require__(531);
+	var _NewRecipe = __webpack_require__(532);
 	
 	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
 	
-	var _actions = __webpack_require__(470);
+	var _actions = __webpack_require__(471);
 	
 	var actions = _interopRequireWildcard(_actions);
 	
-	var _api = __webpack_require__(484);
+	var _api = __webpack_require__(485);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -42422,7 +42432,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
 
 /***/ },
-/* 531 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42441,15 +42451,15 @@
 	
 	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
 	
-	var _reactRating = __webpack_require__(480);
+	var _reactRating = __webpack_require__(481);
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _newRecipe = __webpack_require__(532);
+	var _newRecipe = __webpack_require__(533);
 	
 	var _newRecipe2 = _interopRequireDefault(_newRecipe);
 	
-	var _Base64Image = __webpack_require__(481);
+	var _Base64Image = __webpack_require__(482);
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
@@ -42598,13 +42608,13 @@
 	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
 
 /***/ },
-/* 532 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(533);
+	var content = __webpack_require__(534);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -42613,8 +42623,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -42624,7 +42634,7 @@
 	}
 
 /***/ },
-/* 533 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -42632,16 +42642,16 @@
 	
 	
 	// module
-	exports.push([module.id, ".newRecipe__wrapper___3BPt5 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.newRecipe__title___1kj6C {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__title___1kj6C a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.newRecipe__image-and-controls___2akPB {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2yRz9 img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.newRecipe__controls___1aWqN > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.newRecipe__ingredients___7LV5T {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .newRecipe__title___1kj6C {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .newRecipe__image-and-controls___2akPB {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .newRecipe__controls___1aWqN {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .newRecipe__image___2yRz9 {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".newRecipe__wrapper___2AJxl {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.newRecipe__title___2hWsJ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__title___2hWsJ a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.newRecipe__image-and-controls___1y810 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___2tXvK {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2DiXV img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.newRecipe__controls___2tXvK > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.newRecipe__ingredients___1qlKV {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .newRecipe__title___2hWsJ {\r\n        width: 40%;\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .newRecipe__image-and-controls___1y810 {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .newRecipe__controls___2tXvK {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .newRecipe__image___2DiXV {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
-		"wrapper": "newRecipe__wrapper___3BPt5",
-		"title": "newRecipe__title___1kj6C",
-		"image-and-controls": "newRecipe__image-and-controls___2akPB",
-		"controls": "newRecipe__controls___1aWqN",
-		"image": "newRecipe__image___2yRz9",
-		"ingredients": "newRecipe__ingredients___7LV5T"
+		"wrapper": "newRecipe__wrapper___2AJxl",
+		"title": "newRecipe__title___2hWsJ",
+		"image-and-controls": "newRecipe__image-and-controls___1y810",
+		"controls": "newRecipe__controls___2tXvK",
+		"image": "newRecipe__image___2DiXV",
+		"ingredients": "newRecipe__ingredients___1qlKV"
 	};
 
 /***/ }

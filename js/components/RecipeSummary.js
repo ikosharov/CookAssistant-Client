@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import Rating from 'react-rating';
 
 import Base64Image from './Base64Image';
-import styles from '../styles/recipeSummary.css';
+import styles from '../../css/recipeSummary.css';
 
 class RecipeSummary extends Component {
     constructor(props) {

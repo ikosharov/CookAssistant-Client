@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Spinner from './Spinner';
 
-import styles from '../styles/auth.css';
+import styles from '../../css/auth.css';
 
 class Auth extends Component {
     constructor(props) {
