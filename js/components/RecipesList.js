@@ -30,7 +30,7 @@ class RecipesList extends React.Component {
                 );
             });
         } else {
-            recipesMarkup = (<h2>No data</h2>);
+            recipesMarkup = (<h2>No recipes</h2>);
         }
 
         let addButton = (

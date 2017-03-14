@@ -76,7 +76,6 @@ controls a {
 
 @media (min-width: 800px) {
     .title {
-        width: 40%;
         flex-direction: row;
         justify-content: space-around;
     }

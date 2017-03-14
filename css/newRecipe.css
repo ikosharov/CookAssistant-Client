@@ -18,6 +18,10 @@
     top: -3px;
 }
 
+.image {
+    text-align: center;
+}
+
 .image-and-controls {
     display: flex;
     flex-direction: column;
@@ -48,24 +52,12 @@
 
 @media (min-width: 800px) {
     .title {
-        width: 40%;
         flex-direction: row;
         justify-content: space-around;
     }
 
-    .image-and-controls {
-        flex-direction: row;
-        padding-bottom: 1em;
-    }
-
-    .controls {
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .image {
-        max-width: 50%;
-        margin-right: 2em;
+    .image input {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
