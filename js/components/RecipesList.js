@@ -35,7 +35,7 @@ class RecipesList extends React.Component {
 
         let addButton = (
             <div styleName="addNew">
-                <button onClick={this.addRecipe}>Add <span className="glyphicon glyphicon-plus"></span></button>
+                <button className="btn btn-primary" onClick={this.addRecipe}>Add <span className="glyphicon glyphicon-plus"></span></button>
             </div>
         );
 

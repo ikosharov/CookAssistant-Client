@@ -37,6 +37,10 @@ controls a {
     text-decoration: none;
 }
 
+.image {
+    text-align: center;
+}
+
 .image img {
     max-width: 350px;
     border-radius: 1.5em;
@@ -77,19 +81,18 @@ controls a {
         justify-content: space-around;
     }
 
-    .image-and-controls {
+    /*.image-and-controls {
         flex-direction: row;
         padding-bottom: 1em;
-    }
+    }*/
 
     .controls {
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        flex-direction: column;
-        justify-content: space-between;
+        padding-left: 4em;
+        padding-right: 4em;
     }
 
-    .image {
-        max-width: 50%;
-        margin-right: 2em;
+    .image input {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
