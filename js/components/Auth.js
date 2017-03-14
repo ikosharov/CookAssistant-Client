@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Spinner from './Spinner';
+import Modal from './Modal';
 
 import styles from '../../css/auth.css';
 
@@ -82,6 +83,7 @@ class Auth extends Component {
                     </div>
                 }
                 {this.props.isFetching && <Spinner />}
+                {this.props.authenticateFailed && <Modal message="Authentication failed" closeAction={this.props.clearAuthFailed} />}
             </div>
         );
     }

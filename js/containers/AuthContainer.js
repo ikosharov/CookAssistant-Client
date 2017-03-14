@@ -41,7 +41,9 @@ const mapDispatchToProps = (dispatch) => {
 					dispatch(actions.fetchFinished());
 					dispatch(actions.authenticateFailed());
 				});
-
+		},
+		clearAuthFailed: () => {
+			dispatch(actions.clearAuthFailed());
 		}
 	};
 }

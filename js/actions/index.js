@@ -16,6 +16,13 @@ export function authenticateFailed(username) {
 	}
 }
 
+export function clearAuthFailed() {
+	return {
+		type: actionTypes.CLEAR_AUTH_FAILED,
+	}
+}
+
+
 export function signOut() {
 	return {
 		type: actionTypes.SIGN_OUT

@@ -21,7 +21,7 @@ export default function auth(state, action) {
 
         case actionTypes.AUTHENTICATE_FAILED:
             return Object.assign({}, state, {
-                id: null, 
+                id: null,
                 username: action.username,
                 token: null,
                 authenticateFailed: true
@@ -32,6 +32,10 @@ export default function auth(state, action) {
                 id: null,
                 username: null,
                 token: null,
+                authenticateFailed: false
+            });
+        case actionTypes.CLEAR_AUTH_FAILED:
+            return Object.assign({}, state, {
                 authenticateFailed: false
             });
         default:
