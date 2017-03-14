@@ -40829,6 +40829,8 @@
 	        _this.edit = _this.edit.bind(_this);
 	        _this.share = _this.share.bind(_this);
 	        _this.star = _this.star.bind(_this);
+	        _this.ingredientCheckedCallback = _this.ingredientCheckedCallback.bind(_this);
+	        _this.handleBeginClicked = _this.handleBeginClicked.bind(_this);
 	        return _this;
 	    }
 	
@@ -40836,6 +40838,23 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this.props.loadRecipeDetails(this.props.params.recipeId);
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            this.state = nextProps.recipeDetails;
+	
+	            // once we get recipeDetails from the backend
+	            // attach a 'checked' property to each ingredient 
+	            // so that we can properly update presence/absence of begin button
+	            this.state.ingredients.forEach(function (ingredient) {
+	                if (typeof ingredient.checked == 'undefined') ingredient.checked = false;
+	            });
+	        }
+	    }, {
+	        key: 'handleBeginClicked',
+	        value: function handleBeginClicked(e) {
+	            e.preventDefault();
 	        }
 	    }, {
 	        key: 'edit',
@@ -40856,9 +40875,20 @@
 	            alert('star');
 	        }
 	    }, {
+	        key: 'ingredientCheckedCallback',
+	        value: function ingredientCheckedCallback(e, ingredient) {
+	            var idx = this.state.ingredients.findIndex(function (i) {
+	                return i._id == ingredient._id;
+	            });
+	            this.state.ingredients[idx].checked = e.target.checked;
+	            this.setState({
+	                ingredients: this.state.ingredients
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            if (this.props.isFetching) {
+	            if (this.props.isFetching || !this.state || !this.state.id) {
 	                return _react2.default.createElement(
 	                    'h1',
 	                    null,
@@ -40866,12 +40896,21 @@
 	                );
 	            }
 	
-	            var showEdit = this.props.recipeDetails.userId == this.props.userId;
-	            var ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
+	            var ingredientCheckedCallback = this.ingredientCheckedCallback;
+	
+	            var showEdit = this.state.userId == this.props.userId;
+	            var showBegin = this.state.ingredients.findIndex(function (ingr) {
+	                return !ingr.checked;
+	            }) == -1;
+	            var stepsFading = showBegin ? 'steps-visible' : 'steps-faded';
+	
+	            var ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
 	                var guid = _guid2.default.create();
-	                return _react2.default.createElement(_ShowIngredient2.default, { key: guid.value, ingredient: ingredient });
+	                return _react2.default.createElement(_ShowIngredient2.default, { key: guid.value,
+	                    ingredient: ingredient,
+	                    ingredientCheckedCallback: ingredientCheckedCallback });
 	            });
-	            var stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
+	            var stepsMarkup = this.state.steps.map(function (step) {
 	                var guid = _guid2.default.create();
 	                return _react2.default.createElement(_ShowStep2.default, { key: guid.value, step: step });
 	            });
@@ -40885,9 +40924,9 @@
 	                    _react2.default.createElement(
 	                        'h1',
 	                        null,
-	                        this.props.recipeDetails.title
+	                        this.state.title
 	                    ),
-	                    _react2.default.createElement(_reactRating2.default, { initialRate: this.props.recipeDetails.rating,
+	                    _react2.default.createElement(_reactRating2.default, { initialRate: this.state.rating,
 	                        empty: 'glyphicon glyphicon-star-empty',
 	                        full: 'glyphicon glyphicon-star'
 	                    })
@@ -40898,7 +40937,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { styleName: 'image' },
-	                        _react2.default.createElement(_Base64Image2.default, { data: this.props.recipeDetails.image })
+	                        _react2.default.createElement(_Base64Image2.default, { data: this.state.image })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -40948,7 +40987,7 @@
 	                        null,
 	                        ingredientsMarkup
 	                    ),
-	                    _react2.default.createElement(
+	                    this.state.allIngredientsChecked && _react2.default.createElement(
 	                        'button',
 	                        null,
 	                        'Begin'
@@ -40963,8 +41002,8 @@
 	                        'Steps'
 	                    ),
 	                    _react2.default.createElement(
-	                        'ol',
-	                        null,
+	                        'div',
+	                        { styleName: stepsFading },
 	                        stepsMarkup
 	                    )
 	                )
@@ -41080,7 +41119,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___3Tfa_ {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1yGJd {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK {\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-faded___39Czf {\r\n    opacity: 0.2;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-visible___va4BX {\r\n    opacity: 1;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__image-and-controls___3Tfa_ {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n        flex-direction: column;\r\n        justify-content: space-between;\r\n    }\r\n\r\n    .cookRecipe__image___1yGJd {\r\n        max-width: 50%;\r\n        margin-right: 2em;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -41091,7 +41130,9 @@
 		"image": "cookRecipe__image___1yGJd",
 		"ingredients": "cookRecipe__ingredients___1G69-",
 		"ingredient": "cookRecipe__ingredient___6Fhcc",
-		"steps": "cookRecipe__steps___7fbFK"
+		"steps": "cookRecipe__steps___7fbFK",
+		"steps-faded": "cookRecipe__steps-faded___39Czf",
+		"steps-visible": "cookRecipe__steps-visible___va4BX"
 	};
 
 /***/ },
@@ -41136,10 +41177,25 @@
 	    function ShowIngredient(props) {
 	        _classCallCheck(this, ShowIngredient);
 	
-	        return _possibleConstructorReturn(this, (ShowIngredient.__proto__ || Object.getPrototypeOf(ShowIngredient)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (ShowIngredient.__proto__ || Object.getPrototypeOf(ShowIngredient)).call(this, props));
+	
+	        _this.state = {
+	            checked: _this.props.ingredient.checked
+	        };
+	
+	        _this.handleCheckboxChanged = _this.handleCheckboxChanged.bind(_this);
+	        return _this;
 	    }
 	
 	    _createClass(ShowIngredient, [{
+	        key: 'handleCheckboxChanged',
+	        value: function handleCheckboxChanged(e) {
+	            this.setState({
+	                checked: e.target.checked
+	            });
+	            this.props.ingredientCheckedCallback(e, this.props.ingredient);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -41169,7 +41225,9 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('input', { type: 'checkbox' })
+	                        _react2.default.createElement('input', { type: 'checkbox',
+	                            checked: this.state.checked,
+	                            onChange: this.handleCheckboxChanged })
 	                    )
 	                )
 	            );

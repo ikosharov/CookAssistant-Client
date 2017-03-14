@@ -16,10 +16,29 @@ class CookRecipe extends Component {
         this.edit = this.edit.bind(this);
         this.share = this.share.bind(this);
         this.star = this.star.bind(this);
+        this.ingredientCheckedCallback = this.ingredientCheckedCallback.bind(this);
+        this.handleBeginClicked = this.handleBeginClicked.bind(this);
     }
 
     componentDidMount() {
         this.props.loadRecipeDetails(this.props.params.recipeId);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.state = nextProps.recipeDetails;
+
+        // once we get recipeDetails from the backend
+        // attach a 'checked' property to each ingredient 
+        // so that we can properly update presence/absence of begin button
+        this.state.ingredients.forEach((ingredient) => {
+            if (typeof ingredient.checked == 'undefined')
+                ingredient.checked = false;
+        });
+    }
+
+    handleBeginClicked(e) {
+        e.preventDefault();
+
     }
 
     edit(e) {
@@ -37,19 +56,34 @@ class CookRecipe extends Component {
         alert('star');
     }
 
+    ingredientCheckedCallback(e, ingredient) {
+        let idx = this.state.ingredients.findIndex((i) => i._id == ingredient._id);
+        this.state.ingredients[idx].checked = e.target.checked;
+        this.setState({
+            ingredients: this.state.ingredients
+        });
+    }
+
     render() {
-        if (this.props.isFetching) {
+        if (this.props.isFetching || !this.state || !this.state.id) {
             return (<h1>Loading...</h1>)
         }
 
-        let showEdit = (this.props.recipeDetails.userId == this.props.userId);
-        let ingredientsMarkup = this.props.recipeDetails.ingredients.map(function (ingredient) {
+        let ingredientCheckedCallback = this.ingredientCheckedCallback;
+
+        let showEdit = (this.state.userId == this.props.userId);
+        let showBegin = this.state.ingredients.findIndex((ingr) => !ingr.checked) == -1;
+        let stepsFading = (showBegin) ? 'steps-visible' : 'steps-faded';
+
+        let ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
             var guid = Guid.create();
             return (
-                <ShowIngredient key={guid.value} ingredient={ingredient} />
+                <ShowIngredient key={guid.value}
+                    ingredient={ingredient}
+                    ingredientCheckedCallback={ingredientCheckedCallback} />
             );
         });
-        let stepsMarkup = this.props.recipeDetails.steps.map(function (step) {
+        let stepsMarkup = this.state.steps.map(function (step) {
             var guid = Guid.create();
             return (
                 <ShowStep key={guid.value} step={step} />
@@ -59,15 +93,15 @@ class CookRecipe extends Component {
         return (
             <div styleName="wrapper">
                 <div styleName="title">
-                    <h1>{this.props.recipeDetails.title}</h1>
-                    <Rating initialRate={this.props.recipeDetails.rating}
+                    <h1>{this.state.title}</h1>
+                    <Rating initialRate={this.state.rating}
                         empty={'glyphicon glyphicon-star-empty'}
                         full={'glyphicon glyphicon-star'}
                     />
                 </div>
                 <div styleName='image-and-controls'>
                     <div styleName="image">
-                        <Base64Image data={this.props.recipeDetails.image} />
+                        <Base64Image data={this.state.image} />
                     </div>
                     <div styleName='controls'>
                         {showEdit && <div><a href="#" onClick={this.edit}><span className="glyphicon glyphicon-pencil"></span> Edit</a></div>}
@@ -80,14 +114,13 @@ class CookRecipe extends Component {
                     <div>
                         {ingredientsMarkup}
                     </div>
-                    <button>Begin</button>
+                    {this.state.allIngredientsChecked && <button>Begin</button>}
                 </div>
-                    
                 <div styleName="steps">
                     <h2>Steps</h2>
-                    <ol>
+                    <div styleName={stepsFading}>
                         {stepsMarkup}
-                    </ol>
+                    </div>
                 </div>
             </div>
         );

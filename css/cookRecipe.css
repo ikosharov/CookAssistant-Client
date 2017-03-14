@@ -69,6 +69,20 @@ controls a {
     align-content: center;
 }
 
+.steps {
+    transition: all 1s ease;
+}
+
+.steps-faded {
+    opacity: 0.2;
+    transition: all 1s ease;
+}
+
+.steps-visible {
+    opacity: 1;
+    transition: all 1s ease;
+}
+
 .steps > h2 {
     background-color: blue;
     color: white;
