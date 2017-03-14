@@ -41734,6 +41734,10 @@
 	            var _this2 = this;
 	
 	            e.preventDefault();
+	            if (this.state.image && this.state.image.size > 500 * 1000) {
+	                alert("please choose file smaller than 500kb");
+	                return;
+	            }
 	            this.props.editRecipeDetails(this.props.params.recipeId, this.state).then(function () {
 	                _this2.props.loadRecipeDetails(_this2.props.params.recipeId);
 	            }).catch(function () {
@@ -42164,6 +42168,10 @@
 	            var _this2 = this;
 	
 	            e.preventDefault();
+	            if (this.state.image && this.state.image.size > 500 * 1000) {
+	                alert('please choose file smaller than 500kb');
+	                return;
+	            }
 	            if (this.props.initialState) {
 	                this.props.edit(this.props.recipeDetails.id, this.state).then(function () {
 	                    _this2.props.sendStateToParent(_this2.state);
@@ -42442,6 +42450,10 @@
 	            var _this2 = this;
 	
 	            e.preventDefault();
+	            if (this.state.image && this.state.image.size > 500 * 1000) {
+	                alert('please choose file smaller than 500kb');
+	                return;
+	            }
 	            if (this.props.initialState) {
 	                this.props.edit(this.props.recipeDetails.id, this.state).then(function () {
 	                    _this2.props.sendStateToParent(_this2.state);

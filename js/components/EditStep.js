@@ -33,6 +33,10 @@ class EditStep extends Component {
 
     handleSave(e) {
         e.preventDefault();
+        if (this.state.image && this.state.image.size > 500 * 1000) {
+            alert('please choose file smaller than 500kb');
+            return;
+        }
         if (this.props.initialState) {
             this.props.edit(this.props.recipeDetails.id, this.state).then(() => {
                 this.props.sendStateToParent(this.state);

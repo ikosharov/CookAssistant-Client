@@ -43,6 +43,10 @@ class EditRecipe extends Component {
 
     save(e) {
         e.preventDefault();
+        if(this.state.image && this.state.image.size > 500*1000) {
+            alert("please choose file smaller than 500kb");
+            return;
+        }
         this.props.editRecipeDetails(this.props.params.recipeId, this.state).then(() => {
             this.props.loadRecipeDetails(this.props.params.recipeId);
         }).catch(() => {
