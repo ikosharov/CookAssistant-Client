@@ -6,6 +6,7 @@ import Guid from 'guid';
 import Rating from 'react-rating';
 import styles from '../../css/editRecipe.css';
 import Base64Image from './Base64Image';
+import Spinner from  './Spinner';
 import EditIngredientContainer from '../containers/EditIngredientContainer';
 import EditStepContainer from '../containers/EditStepContainer';
 
@@ -101,7 +102,7 @@ class EditRecipe extends Component {
 
     render() {
         if (this.props.isFetching) {
-            return (<h1>Loading...</h1>)
+            return (<Spinner />);
         }
 
         let receiveIngredientState = this.receiveIngredientState;

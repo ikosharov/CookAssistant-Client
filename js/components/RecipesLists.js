@@ -1,6 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 
+import Spinner from './Spinner';
 import RecipesListContainer from '../containers/RecipesListContainer';
 import styles from '../../css/recipesLists.css';
 
@@ -15,7 +16,7 @@ class RecipesLists extends React.Component {
 
     render() {
         if (this.props.isFetching) {
-            return (<h1>Loading...</h1>)
+            return (<Spinner />);
         }
 
         let currentUserRecipesMarkup = (

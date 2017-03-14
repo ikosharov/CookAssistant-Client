@@ -8,6 +8,7 @@ import Rating from 'react-rating';
 import styles from '../../css/cookRecipe.css';
 import ShowIngredient from './ShowIngredient';
 import ShowStep from './ShowStep';
+import Spinner from './Spinner';
 
 class CookRecipe extends Component {
     constructor(props) {
@@ -66,7 +67,7 @@ class CookRecipe extends Component {
 
     render() {
         if (this.props.isFetching || !this.state || !this.state.id) {
-            return (<h1>Loading...</h1>)
+            return (<Spinner />);
         }
 
         let ingredientCheckedCallback = this.ingredientCheckedCallback;
