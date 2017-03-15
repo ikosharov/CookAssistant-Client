@@ -7,7 +7,8 @@
 
 .title {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-content: center;
 }
 
@@ -42,22 +43,7 @@
     border-radius: 1.5em;
 }
 
-.controls > div:hover {
-    background-color: lightgreen;
-}
-
-.ingredients {
-    margin-bottom: 2em;
-}
-
-@media (min-width: 800px) {
-    .title {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .image input {
+ .image input {
         margin-left: auto;
         margin-right: auto;
-    }
 }

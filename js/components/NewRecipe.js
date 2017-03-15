@@ -74,7 +74,7 @@ class NewRecipe extends Component {
                         <input type="file" name="image" onChange={this.handleImageChange} />
                     </div>
                     <div styleName='controls'>
-                        <div><a href="#"><span className="glyphicon glyphicon-floppy-disk" onClick={this.create}> Create</span></a></div>
+                        <button className="btn btn-primary" onClick={this.create}><span className="glyphicon glyphicon-floppy-disk"></span> Create</button>
                     </div>
                 </div>
             </div>

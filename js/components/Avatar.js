@@ -14,7 +14,7 @@ class Avatar extends Component {
         return (
             <div>
                 <h3>{this.props.username}</h3>
-                <img src={chefImage} styleName='avatar-image' alt="User image" />
+                <img src="/71c314caeb101d09970a6ac354a5df22.png" styleName='avatar-image' alt="User image" />
                 <br />
                 <button onClick={this.props.signOut} className="btn btn-primary">Sign Out</button>
             </div>

@@ -37684,7 +37684,7 @@
 	                    null,
 	                    this.props.username
 	                ),
-	                _react2.default.createElement('img', { src: _chef2.default, styleName: 'avatar-image', alt: 'User image' }),
+	                _react2.default.createElement('img', { src: '/71c314caeb101d09970a6ac354a5df22.png', styleName: 'avatar-image', alt: 'User image' }),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'button',
@@ -42788,17 +42788,10 @@
 	                        'div',
 	                        { styleName: 'controls' },
 	                        _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(
-	                                'a',
-	                                { href: '#' },
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { className: 'glyphicon glyphicon-floppy-disk', onClick: this.create },
-	                                    ' Create'
-	                                )
-	                            )
+	                            'button',
+	                            { className: 'btn btn-primary', onClick: this.create },
+	                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-floppy-disk' }),
+	                            ' Create'
 	                        )
 	                    )
 	                )
@@ -42846,7 +42839,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".newRecipe__wrapper___2AJxl {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.newRecipe__title___2hWsJ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__title___2hWsJ a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.newRecipe__image___2DiXV {\r\n    text-align: center;\r\n}\r\n\r\n.newRecipe__image-and-controls___1y810 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___2tXvK {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2DiXV img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.newRecipe__controls___2tXvK > div:hover {\r\n    background-color: lightgreen;\r\n}\r\n\r\n.newRecipe__ingredients___1qlKV {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .newRecipe__title___2hWsJ {\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    .newRecipe__image___2DiXV input {\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".newRecipe__wrapper___2AJxl {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.newRecipe__title___2hWsJ {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.newRecipe__title___2hWsJ a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.newRecipe__image___2DiXV {\r\n    text-align: center;\r\n}\r\n\r\n.newRecipe__image-and-controls___1y810 {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.newRecipe__controls___2tXvK {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.newRecipe__image___2DiXV img {\r\n    max-width: 100%;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n .newRecipe__image___2DiXV input {\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -42854,8 +42847,7 @@
 		"title": "newRecipe__title___2hWsJ",
 		"image": "newRecipe__image___2DiXV",
 		"image-and-controls": "newRecipe__image-and-controls___1y810",
-		"controls": "newRecipe__controls___2tXvK",
-		"ingredients": "newRecipe__ingredients___1qlKV"
+		"controls": "newRecipe__controls___2tXvK"
 	};
 
 /***/ }
