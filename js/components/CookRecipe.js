@@ -5,6 +5,7 @@ import CSSModules from 'react-css-modules';
 import Guid from 'guid';
 import Base64Image from './Base64Image';
 import Rating from 'react-rating';
+import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 import styles from '../../css/cookRecipe.css';
 import ShowIngredient from './ShowIngredient';
 import ShowStep from './ShowStep';
@@ -70,6 +71,10 @@ class CookRecipe extends Component {
             return (<Spinner />);
         }
 
+        const { FacebookShareButton } = ShareButtons;
+        const FacebookIcon = generateShareIcon('facebook');
+        const location = String(window.location);
+
         let ingredientCheckedCallback = this.ingredientCheckedCallback;
 
         let showEdit = (this.state.userId == this.props.userId);
@@ -106,7 +111,15 @@ class CookRecipe extends Component {
                     </div>
                     <div styleName='controls'>
                         {showEdit && <div><a href="#" onClick={this.edit}><span className="glyphicon glyphicon-pencil"></span> Edit</a></div>}
-                        <div><a href="#" onClick={this.share}><span className="glyphicon glyphicon-share"></span> Share</a></div>
+                        <div>
+                            <FacebookShareButton
+                                url={location}
+                                title={this.state.title}>
+                                <FacebookIcon
+                                    size={32}
+                                    round />
+                            </FacebookShareButton>
+                        </div>
                         <div><a href="#" onClick={this.star}><span className="glyphicon glyphicon-star"></span> Star</a></div>
                     </div>
                 </div>
