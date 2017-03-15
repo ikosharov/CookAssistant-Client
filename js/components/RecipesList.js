@@ -3,6 +3,7 @@ import CSSModules from 'react-css-modules';
 
 import RecipeSummaryContainer from '../containers/RecipeSummaryContainer';
 import Avatar from './Avatar';
+import Spinner from './Spinner';
 import styles from '../../css/recipesList.css';
 
 class RecipesList extends React.Component {
@@ -30,7 +31,7 @@ class RecipesList extends React.Component {
                 );
             });
         } else {
-            recipesMarkup = (<h2>No recipes</h2>);
+            recipesMarkup = (<Spinner />);
         }
 
         let addButton = (

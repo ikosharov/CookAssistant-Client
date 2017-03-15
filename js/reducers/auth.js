@@ -6,7 +6,7 @@ export default function auth(state, action) {
             id: null,
             username: null,
             token: null,
-            authenticateFailed: false,
+            authenticateFailed: false
         }
     }
 
