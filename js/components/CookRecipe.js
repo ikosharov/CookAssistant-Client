@@ -19,7 +19,6 @@ class CookRecipe extends Component {
         this.share = this.share.bind(this);
         this.star = this.star.bind(this);
         this.ingredientCheckedCallback = this.ingredientCheckedCallback.bind(this);
-        this.handleBeginClicked = this.handleBeginClicked.bind(this);
     }
 
     componentDidMount() {
@@ -36,11 +35,6 @@ class CookRecipe extends Component {
             if (typeof ingredient.checked == 'undefined')
                 ingredient.checked = false;
         });
-    }
-
-    handleBeginClicked(e) {
-        e.preventDefault();
-
     }
 
     edit(e) {
@@ -78,8 +72,8 @@ class CookRecipe extends Component {
         let ingredientCheckedCallback = this.ingredientCheckedCallback;
 
         let showEdit = (this.state.userId == this.props.userId);
-        let showBegin = this.state.ingredients.findIndex((ingr) => !ingr.checked) == -1;
-        let stepsFading = (showBegin) ? 'steps-visible' : 'steps-faded';
+        let allIngredientsChecked = this.state.ingredients.findIndex((ingr) => !ingr.checked) == -1;
+        let stepsFading = (allIngredientsChecked) ? 'steps-visible' : 'steps-faded';
 
         let ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
             var guid = Guid.create();

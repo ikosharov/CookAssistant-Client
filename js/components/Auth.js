@@ -47,42 +47,43 @@ class Auth extends Component {
     }
 
     render() {
+        if (this.props.isFetching) {
+            return (<Spinner />);
+        }
+
         return (
             <div styleName='login-page'>
-                {!this.props.isFetching &&
-                    <div styleName='form'>
-                        <form styleName='register-form' onSubmit={this.handleSignUp}>
-                            <input type="text"
-                                placeholder="username"
-                                required
-                                autoFocus
-                                value={this.state.username}
-                                onChange={this.handleUsernameChange} />
-                            <input type="password"
-                                placeholder="password"
-                                required
-                                value={this.state.password}
-                                onChange={this.handlePasswordChange} />
-                            <button>sign up</button>
-                            <p styleName='message'>Already registered? <a href="#" onClick={this.toggleForms}>Sign In</a></p>
-                        </form>
-                        <form onSubmit={this.handleSignIn}>
-                            <input type="text"
-                                placeholder="username"
-                                required
-                                value={this.state.username}
-                                onChange={this.handleUsernameChange} />
-                            <input type="password"
-                                placeholder="password"
-                                required
-                                value={this.state.password}
-                                onChange={this.handlePasswordChange} />
-                            <button>sign in</button>
-                            <p styleName='message'>Not registered? <a href="#" onClick={this.toggleForms}>Create an account</a></p>
-                        </form>
-                    </div>
-                }
-                {this.props.isFetching && <Spinner />}
+                <div styleName='form'>
+                    <form styleName='register-form' onSubmit={this.handleSignUp}>
+                        <input type="text"
+                            placeholder="username"
+                            required
+                            autoFocus
+                            value={this.state.username}
+                            onChange={this.handleUsernameChange} />
+                        <input type="password"
+                            placeholder="password"
+                            required
+                            value={this.state.password}
+                            onChange={this.handlePasswordChange} />
+                        <button>sign up</button>
+                        <p styleName='message'>Already registered? <a href="#" onClick={this.toggleForms}>Sign In</a></p>
+                    </form>
+                    <form onSubmit={this.handleSignIn}>
+                        <input type="text"
+                            placeholder="username"
+                            required
+                            value={this.state.username}
+                            onChange={this.handleUsernameChange} />
+                        <input type="password"
+                            placeholder="password"
+                            required
+                            value={this.state.password}
+                            onChange={this.handlePasswordChange} />
+                        <button>sign in</button>
+                        <p styleName='message'>Not registered? <a href="#" onClick={this.toggleForms}>Create an account</a></p>
+                    </form>
+                </div>
                 {this.props.authenticateFailed && <Modal message="Authentication failed" closeAction={this.props.clearAuthFailed} />}
             </div>
         );
