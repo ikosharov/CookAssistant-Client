@@ -37735,7 +37735,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".avatar__avatar-image___3xupv {\r\n    border-radius: 0px 10px 0px 10px;\r\n    width: 100px;\r\n    height: 100px;\r\n    margin-bottom: .5em;\r\n}", ""]);
+	exports.push([module.id, ".avatar__avatar-image___3xupv {\r\n    border-radius: 0px 10px 0px 10px;\r\n    max-width: 100%;\r\n    height: 150px;\r\n    margin-bottom: .5em;\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -38234,6 +38234,10 @@
 	
 	var _Avatar2 = _interopRequireDefault(_Avatar);
 	
+	var _Spinner = __webpack_require__(477);
+	
+	var _Spinner2 = _interopRequireDefault(_Spinner);
+	
 	var _recipesList = __webpack_require__(500);
 	
 	var _recipesList2 = _interopRequireDefault(_recipesList);
@@ -38267,22 +38271,25 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var recipesMarkup = void 0;
 	
-	            if (this.props.recipes.length) {
-	                recipesMarkup = this.props.recipes.map(function (recipe) {
-	                    return _react2.default.createElement(_RecipeSummaryContainer2.default, {
-	                        key: recipe._id,
-	                        recipe: recipe
-	                    });
-	                });
-	            } else {
-	                recipesMarkup = _react2.default.createElement(
-	                    'h2',
+	            if (this.props.isFetching) {
+	                return _react2.default.createElement(_Spinner2.default, null);
+	            }
+	
+	            if (!this.props.isFetching && !this.props.recipes.length) {
+	                return _react2.default.createElement(
+	                    'h3',
 	                    null,
-	                    'No recipes'
+	                    'No recipes found'
 	                );
 	            }
+	
+	            var recipesMarkup = this.props.recipes.map(function (recipe) {
+	                return _react2.default.createElement(_RecipeSummaryContainer2.default, {
+	                    key: recipe._id,
+	                    recipe: recipe
+	                });
+	            });
 	
 	            var addButton = _react2.default.createElement(
 	                'div',
@@ -38934,18 +38941,13 @@
 	        width = _ref.width,
 	        height = _ref.height;
 	
-	    // let w = width || '100px';
-	    // let h = height || '100px';
 	    var imageSrc = 'http://placehold.it/200x200';
 	
 	    if (data) {
 	        imageSrc = "data:image/png;base64," + data;
 	    }
 	
-	    // let markup = (<img src={imageSrc} width={w} height={h} />);
-	    var markup = _react2.default.createElement('img', { src: imageSrc });
-	
-	    return markup;
+	    return _react2.default.createElement('img', { src: imageSrc });
 	};
 	
 	exports.default = Base64Image;
@@ -40607,10 +40609,14 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            if (this.props.isFetching) {
+	                return _react2.default.createElement(_Spinner2.default, null);
+	            }
+	
 	            return _react2.default.createElement(
 	                'div',
 	                { styleName: 'login-page' },
-	                !this.props.isFetching && _react2.default.createElement(
+	                _react2.default.createElement(
 	                    'div',
 	                    { styleName: 'form' },
 	                    _react2.default.createElement(
@@ -40673,7 +40679,6 @@
 	                        )
 	                    )
 	                ),
-	                this.props.isFetching && _react2.default.createElement(_Spinner2.default, null),
 	                this.props.authenticateFailed && _react2.default.createElement(_Modal2.default, { message: 'Authentication failed', closeAction: this.props.clearAuthFailed })
 	            );
 	        }
@@ -40970,7 +40975,6 @@
 	        _this.share = _this.share.bind(_this);
 	        _this.star = _this.star.bind(_this);
 	        _this.ingredientCheckedCallback = _this.ingredientCheckedCallback.bind(_this);
-	        _this.handleBeginClicked = _this.handleBeginClicked.bind(_this);
 	        return _this;
 	    }
 	
@@ -40990,11 +40994,6 @@
 	            this.state.ingredients.forEach(function (ingredient) {
 	                if (typeof ingredient.checked == 'undefined') ingredient.checked = false;
 	            });
-	        }
-	    }, {
-	        key: 'handleBeginClicked',
-	        value: function handleBeginClicked(e) {
-	            e.preventDefault();
 	        }
 	    }, {
 	        key: 'edit',
@@ -41040,10 +41039,10 @@
 	            var ingredientCheckedCallback = this.ingredientCheckedCallback;
 	
 	            var showEdit = this.state.userId == this.props.userId;
-	            var showBegin = this.state.ingredients.findIndex(function (ingr) {
+	            var allIngredientsChecked = this.state.ingredients.findIndex(function (ingr) {
 	                return !ingr.checked;
 	            }) == -1;
-	            var stepsFading = showBegin ? 'steps-visible' : 'steps-faded';
+	            var stepsFading = allIngredientsChecked ? 'steps-visible' : 'steps-faded';
 	
 	            var ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
 	                var guid = _guid2.default.create();
@@ -46768,7 +46767,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd {\r\n    text-align: center;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__ingredient___6Fhcc > div {\r\n    display: flex;\r\n    align-content: center;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK {\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-faded___39Czf {\r\n    opacity: 0.2;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-visible___va4BX {\r\n    opacity: 1;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 1em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd {\r\n    text-align: center;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK {\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-faded___39Czf {\r\n    opacity: 0.2;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-visible___va4BX {\r\n    opacity: 1;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -46778,7 +46777,6 @@
 		"controls": "cookRecipe__controls___3eysw",
 		"image": "cookRecipe__image___1yGJd",
 		"ingredients": "cookRecipe__ingredients___1G69-",
-		"ingredient": "cookRecipe__ingredient___6Fhcc",
 		"steps": "cookRecipe__steps___7fbFK",
 		"steps-faded": "cookRecipe__steps-faded___39Czf",
 		"steps-visible": "cookRecipe__steps-visible___va4BX"
@@ -48220,7 +48218,6 @@
 	
 	            e.preventDefault();
 	            this.props.createRecipe(this.state).then(function (recipe) {
-	                alert('recipe created');
 	                _this2.props.navigateToEdit(recipe._id);
 	            }).catch(function () {
 	                alert('failed');

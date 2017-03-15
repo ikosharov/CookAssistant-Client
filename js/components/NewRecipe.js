@@ -27,7 +27,6 @@ class NewRecipe extends Component {
     create(e) {
         e.preventDefault();
         this.props.createRecipe(this.state).then((recipe) => {
-            alert('recipe created');
             this.props.navigateToEdit(recipe._id);
         }).catch(() => {
             alert('failed');

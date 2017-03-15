@@ -19,20 +19,24 @@ class RecipesList extends React.Component {
     }
 
     render() {
-        let recipesMarkup;
 
-        if (this.props.recipes.length) {
-            recipesMarkup = this.props.recipes.map(function (recipe) {
-                return (
-                    <RecipeSummaryContainer
-                        key={recipe._id}
-                        recipe={recipe}
-                    />
-                );
-            });
-        } else {
-            recipesMarkup = (<Spinner />);
+        if(this.props.isFetching) {
+            return (<Spinner />);
         }
+
+        if(!this.props.isFetching && !this.props.recipes.length) {
+            return (<h3>No recipes found</h3>);
+        }
+
+        let recipesMarkup = this.props.recipes.map(function (recipe) {
+            return (
+                <RecipeSummaryContainer
+                    key={recipe._id}
+                    recipe={recipe}
+                />
+            );
+        });
+
 
         let addButton = (
             <div styleName="addNew">
