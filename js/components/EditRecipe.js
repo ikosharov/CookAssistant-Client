@@ -6,7 +6,7 @@ import Guid from 'guid';
 import Rating from 'react-rating';
 import styles from '../../css/editRecipe.css';
 import Base64Image from './Base64Image';
-import Spinner from  './Spinner';
+import Spinner from './Spinner';
 import EditIngredientContainer from '../containers/EditIngredientContainer';
 import EditStepContainer from '../containers/EditStepContainer';
 
@@ -44,7 +44,7 @@ class EditRecipe extends Component {
 
     save(e) {
         e.preventDefault();
-        if(this.state.image && this.state.image.size > 500*1000) {
+        if (this.state.image && this.state.image.size > 500 * 1000) {
             alert("please choose file smaller than 500kb");
             return;
         }
@@ -126,7 +126,7 @@ class EditRecipe extends Component {
         });
 
         let visibilityMarkup = '';
-        if(this.state.isPublic) {
+        if (this.state.isPublic) {
             visibilityMarkup = (<a href="#"><span className="label label-success" onClick={this.handleIsPublicChange}>public</span></a>);
         } else {
             visibilityMarkup = (<a href="#"><span className="label label-warning" onClick={this.handleIsPublicChange}>private</span></a>);

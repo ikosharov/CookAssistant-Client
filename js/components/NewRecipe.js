@@ -54,7 +54,7 @@ class NewRecipe extends Component {
         }
 
         let visibilityMarkup = '';
-        if(this.state.isPublic) {
+        if (this.state.isPublic) {
             visibilityMarkup = (<a href="#"><span className="label label-success" onClick={this.handleIsPublicChange}>public</span></a>);
         } else {
             visibilityMarkup = (<a href="#"><span className="label label-warning" onClick={this.handleIsPublicChange}>private</span></a>);

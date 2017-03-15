@@ -326,7 +326,7 @@ export function editIngredient(recipeId, ingredient) {
 
     let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredient._id}`;
 
-    if(typeof ingredient.image == 'string') {
+    if (typeof ingredient.image == 'string') {
         delete ingredient.image;
     }
 
@@ -433,7 +433,7 @@ export function editStep(recipeId, step) {
 
     let url = `${API_URL}/recipes/${recipeId}/steps/${step._id}`;
 
-    if(typeof step.image == 'string') {
+    if (typeof step.image == 'string') {
         delete step.image;
     }
 

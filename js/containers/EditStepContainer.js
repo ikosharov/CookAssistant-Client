@@ -15,42 +15,42 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		edit: (recipeId, step) => {
 			let promise = new Promise((resolve, reject) => {
-			api.editStep(recipeId, step)
-				.then((step) => {
-					// success
-					resolve(step);
-				}).catch(() => {
-					// some error
-					reject();
-				});
+				api.editStep(recipeId, step)
+					.then((step) => {
+						// success
+						resolve(step);
+					}).catch(() => {
+						// some error
+						reject();
+					});
 			});
 			return promise;
 		},
 		create: (recipeId, step) => {
 			let promise = new Promise((resolve, reject) => {
-			api.createStep(recipeId, step)
-				.then((step) => {
-					// success
-					resolve(step);
-				}).catch(() => {
-					// some error
-					reject();
-				});
+				api.createStep(recipeId, step)
+					.then((step) => {
+						// success
+						resolve(step);
+					}).catch(() => {
+						// some error
+						reject();
+					});
 			});
-			return promise; 
+			return promise;
 		},
 		delete: (recipeId, stepId) => {
 			let promise = new Promise((resolve, reject) => {
-			api.deleteStep(recipeId, stepId)
-				.then(() => {
-					// success
-					resolve();
-				}).catch(() => {
-					// some error
-					reject();
-				});
+				api.deleteStep(recipeId, stepId)
+					.then(() => {
+						// success
+						resolve();
+					}).catch(() => {
+						// some error
+						reject();
+					});
 			});
-			return promise; 
+			return promise;
 		}
 	};
 }

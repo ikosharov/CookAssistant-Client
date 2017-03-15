@@ -36,7 +36,7 @@ class ShowIngredient extends Component {
                 </div>
                 <div styleName="checks">
                     <div>
-                        <input type="checkbox" 
+                        <input type="checkbox"
                             checked={this.state.checked}
                             onChange={this.handleCheckboxChanged} />
                     </div>

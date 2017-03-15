@@ -14,14 +14,14 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		createRecipe: (recipe) => {
 			let promise = new Promise((resolve, reject) => {
-			api.addRecipe(recipe)
-				.then((json) => {
-					// success
-					resolve(json);
-				}).catch(() => {
-					// some error
-					reject();
-				});
+				api.addRecipe(recipe)
+					.then((json) => {
+						// success
+						resolve(json);
+					}).catch(() => {
+						// some error
+						reject();
+					});
 			});
 			return promise;
 		},

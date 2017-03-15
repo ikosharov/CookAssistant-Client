@@ -25,14 +25,14 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		editRecipeDetails: (recipeId, recipe) => {
 			let promise = new Promise((resolve, reject) => {
-			api.editRecipeDetails(recipeId, recipe)
-				.then(() => {
-					// success
-					resolve();
-				}).catch(() => {
-					// some error
-					reject();
-				});
+				api.editRecipeDetails(recipeId, recipe)
+					.then(() => {
+						// success
+						resolve();
+					}).catch(() => {
+						// some error
+						reject();
+					});
 			});
 			return promise;
 		},
@@ -44,14 +44,14 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		deleteRecipe: (id) => {
 			let promise = new Promise((resolve, reject) => {
-			api.deleteRecipe(id)
-				.then(() => {
-					// success
-					resolve();
-				}).catch(() => {
-					// some error
-					reject();
-				});
+				api.deleteRecipe(id)
+					.then(() => {
+						// success
+						resolve();
+					}).catch(() => {
+						// some error
+						reject();
+					});
 			});
 			return promise;
 		}

@@ -12,7 +12,7 @@ class ShowStep extends Component {
 
     render() {
         return (
-              <div styleName="wrapper">
+            <div styleName="wrapper">
                 <div styleName="title">
                     <div>
                         <h3>{this.props.step.title}</h3>
