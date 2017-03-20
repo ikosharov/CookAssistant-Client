@@ -20,12 +20,22 @@ class RecipesList extends React.Component {
 
     render() {
 
-        if(this.props.isFetching) {
+        if (this.props.isFetching) {
             return (<Spinner />);
         }
 
-        if(!this.props.isFetching && !this.props.recipes.length) {
-            return (<h3>No recipes found</h3>);
+        let addButton = (
+            <div styleName="addNew">
+                <button className="btn btn-primary" onClick={this.addRecipe}>Add <span className="glyphicon glyphicon-plus"></span></button>
+            </div>
+        );
+
+        if (!this.props.isFetching && !this.props.recipes.length) {
+            return (
+            <div>
+                <h3>No recipes found</h3>
+                {this.props.enableAddButton && addButton}
+            </div>);
         }
 
         let recipesMarkup = this.props.recipes.map(function (recipe) {
@@ -36,13 +46,6 @@ class RecipesList extends React.Component {
                 />
             );
         });
-
-
-        let addButton = (
-            <div styleName="addNew">
-                <button className="btn btn-primary" onClick={this.addRecipe}>Add <span className="glyphicon glyphicon-plus"></span></button>
-            </div>
-        );
 
         return (
             <div styleName='wrapper'>

@@ -38302,21 +38302,6 @@
 	                return _react2.default.createElement(_Spinner2.default, null);
 	            }
 	
-	            if (!this.props.isFetching && !this.props.recipes.length) {
-	                return _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'No recipes found'
-	                );
-	            }
-	
-	            var recipesMarkup = this.props.recipes.map(function (recipe) {
-	                return _react2.default.createElement(_RecipeSummaryContainer2.default, {
-	                    key: recipe._id,
-	                    recipe: recipe
-	                });
-	            });
-	
 	            var addButton = _react2.default.createElement(
 	                'div',
 	                { styleName: 'addNew' },
@@ -38327,6 +38312,26 @@
 	                    _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus' })
 	                )
 	            );
+	
+	            if (!this.props.isFetching && !this.props.recipes.length) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'h3',
+	                        null,
+	                        'No recipes found'
+	                    ),
+	                    this.props.enableAddButton && addButton
+	                );
+	            }
+	
+	            var recipesMarkup = this.props.recipes.map(function (recipe) {
+	                return _react2.default.createElement(_RecipeSummaryContainer2.default, {
+	                    key: recipe._id,
+	                    recipe: recipe
+	                });
+	            });
 	
 	            return _react2.default.createElement(
 	                'div',
