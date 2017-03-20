@@ -31106,7 +31106,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
 	
 	// module
-	exports.push([module.id, "body {\r\n    font-family: \"Roboto\", sans-serif;\r\n}", ""]);
+	exports.push([module.id, "body {\r\n    font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\nbody {\r\n    background: url(/background.jpg);\r\n}", ""]);
 	
 	// exports
 
@@ -37909,7 +37909,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".recipesShell__wrapper___gUE6J {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid lightblue;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n.recipesShell__content___1TbVC {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.recipesShell__recipes-section___1YqXA {\r\n    order: 2;\r\n}\r\n\r\n.recipesShell__avatar-section___3DpDc {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .recipesShell__wrapper___gUE6J {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .recipesShell__content___1TbVC {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .recipesShell__recipes-section___1YqXA {\r\n        order: 1;\r\n        flex: 4;\r\n        padding-right: 1em;\r\n    }\r\n\r\n    .recipesShell__avatar-section___3DpDc {\r\n        order: 2;\r\n        flex: 1;\r\n        border-left: 1px solid lightblue;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".recipesShell__wrapper___gUE6J {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border: 1px solid lightblue;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n    background-color: white;\r\n}\r\n\r\n.recipesShell__content___1TbVC {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.recipesShell__recipes-section___1YqXA {\r\n    order: 2;\r\n}\r\n\r\n.recipesShell__avatar-section___3DpDc {\r\n    order: 1;\r\n    text-align: center;\r\n}\r\n\r\n@media screen and (min-width: 800px) {\r\n    .recipesShell__wrapper___gUE6J {\r\n        width: 80%;\r\n        margin: 0 auto 0 auto;\r\n        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\r\n    }\r\n\r\n    .recipesShell__content___1TbVC {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .recipesShell__recipes-section___1YqXA {\r\n        order: 1;\r\n        flex: 4;\r\n        padding-right: 1em;\r\n    }\r\n\r\n    .recipesShell__avatar-section___3DpDc {\r\n        order: 2;\r\n        flex: 1;\r\n        border-left: 1px solid lightblue;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
