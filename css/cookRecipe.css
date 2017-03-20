@@ -54,7 +54,7 @@
 }
 
 .ingredients > h2 {
-    background-color: blue;
+    background-color: #6699FF;
     color: white;
     border-radius: 0.2em;
     line-height: 1.5em;
@@ -76,7 +76,7 @@
 }
 
 .steps > h2 {
-    background-color: blue;
+    background-color: #6699FF;
     color: white;
     border-radius: 0.2em;
     line-height: 1.5em;
