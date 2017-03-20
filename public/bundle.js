@@ -47386,7 +47386,7 @@
 	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
-	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange }),
+	                        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange, styleName: 'stylishInput' }),
 	                        visibilityMarkup
 	                    )
 	                ),
@@ -47526,7 +47526,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___2JRGe {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___3Rphi {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___3Rphi a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.editRecipe__image-and-controls___o7ziz {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC a {\r\n    text-decoration: none;\r\n}\r\n\r\n.editRecipe__image___1yjLh {\r\n    text-align: center;\r\n}\r\n\r\n.editRecipe__image___1yjLh img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2WNvH > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2f1sY {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___3Rphi {\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    /*.image-and-controls {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }*/\r\n\r\n    .editRecipe__controls___3HSQC {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n    .editRecipe__image___1yjLh input {\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___2JRGe {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___3Rphi {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___3Rphi a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.editRecipe__image-and-controls___o7ziz {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC a {\r\n    text-decoration: none;\r\n}\r\n\r\n.editRecipe__image___1yjLh {\r\n    text-align: center;\r\n}\r\n\r\n.editRecipe__image___1yjLh img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2WNvH > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2f1sY {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n.editRecipe__stylishInput___2ECXK {\r\n    border: 0px;\r\n    border-bottom: 1px solid lightblue;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___3Rphi {\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    /*.image-and-controls {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }*/\r\n\r\n    .editRecipe__controls___3HSQC {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n    .editRecipe__image___1yjLh input {\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -47537,7 +47537,8 @@
 		"image": "editRecipe__image___1yjLh",
 		"ingredients": "editRecipe__ingredients___3olVh",
 		"steps": "editRecipe__steps___2WNvH",
-		"addNew": "editRecipe__addNew___2f1sY"
+		"addNew": "editRecipe__addNew___2f1sY",
+		"stylishInput": "editRecipe__stylishInput___2ECXK"
 	};
 
 /***/ },
@@ -47734,7 +47735,7 @@
 	                        _react2.default.createElement(
 	                            'h3',
 	                            null,
-	                            _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                            _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange, styleName: 'stylishInput' })
 	                        )
 	                    )
 	                ),
@@ -47812,14 +47813,15 @@
 	
 	
 	// module
-	exports.push([module.id, ".editIngredient__wrapper___1z2IM {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___1z2IM > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___2Lu7H {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___VI5GW {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___VI5GW img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editIngredient__actions___2NJqO {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__actions___2NJqO button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___1z2IM {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___1z2IM > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___2Lu7H {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___VI5GW {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___2NJqO {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editIngredient__wrapper___1z2IM {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.editIngredient__wrapper___1z2IM > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.editIngredient__title___2Lu7H {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.editIngredient__image___VI5GW {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.editIngredient__image___VI5GW img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editIngredient__actions___2NJqO {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.editIngredient__stylishInput___fndSl {\r\n    border: 0px;\r\n    border-bottom: 1px solid lightblue;\r\n}\r\n\r\n.editIngredient__actions___2NJqO button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .editIngredient__wrapper___1z2IM {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .editIngredient__wrapper___1z2IM > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .editIngredient__title___2Lu7H {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__image___VI5GW {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .editIngredient__actions___2NJqO {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
 		"wrapper": "editIngredient__wrapper___1z2IM",
 		"title": "editIngredient__title___2Lu7H",
 		"image": "editIngredient__image___VI5GW",
-		"actions": "editIngredient__actions___2NJqO"
+		"actions": "editIngredient__actions___2NJqO",
+		"stylishInput": "editIngredient__stylishInput___fndSl"
 	};
 
 /***/ },
@@ -48016,7 +48018,7 @@
 	                        _react2.default.createElement(
 	                            'h3',
 	                            null,
-	                            _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange })
+	                            _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.title, onChange: this.handleTitleChange, styleName: 'stylishInput' })
 	                        )
 	                    )
 	                ),
@@ -48094,14 +48096,15 @@
 	
 	
 	// module
-	exports.push([module.id, ".EditStep__wrapper___2SjiF {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___2SjiF > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2Ypec {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1rGmf {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1rGmf img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.EditStep__actions___1qAiK {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__actions___1qAiK button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___2SjiF {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___2SjiF > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2Ypec {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1rGmf {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1qAiK {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".EditStep__wrapper___2SjiF {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.EditStep__wrapper___2SjiF > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.EditStep__title___2Ypec {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.EditStep__image___1rGmf {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.EditStep__image___1rGmf img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.EditStep__actions___1qAiK {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 1.3em;\r\n}\r\n\r\n.EditStep__stylishInput___AZYPb {\r\n    border: 0px;\r\n    border-bottom: 1px solid lightblue;\r\n}\r\n\r\n.EditStep__actions___1qAiK button {\r\n    margin: 0 0.2em 0 0.2em;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .EditStep__wrapper___2SjiF {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .EditStep__wrapper___2SjiF > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .EditStep__title___2Ypec {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__image___1rGmf {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .EditStep__actions___1qAiK {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
 		"wrapper": "EditStep__wrapper___2SjiF",
 		"title": "EditStep__title___2Ypec",
 		"image": "EditStep__image___1rGmf",
-		"actions": "EditStep__actions___1qAiK"
+		"actions": "EditStep__actions___1qAiK",
+		"stylishInput": "EditStep__stylishInput___AZYPb"
 	};
 
 /***/ },

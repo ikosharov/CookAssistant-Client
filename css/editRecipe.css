@@ -74,6 +74,11 @@
     margin-top: 0.6em;
 }
 
+.stylishInput {
+    border: 0px;
+    border-bottom: 1px solid lightblue;
+}
+
 @media (min-width: 800px) {
     .title {
         flex-direction: row;

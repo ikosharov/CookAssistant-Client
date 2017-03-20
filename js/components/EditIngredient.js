@@ -61,7 +61,7 @@ class EditIngredient extends Component {
                 <div styleName="title">
                     <div>
                         <h3>
-                            <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
+                            <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} styleName='stylishInput' />
                         </h3>
                     </div>
                 </div>

@@ -136,7 +136,7 @@ class EditRecipe extends Component {
             <div styleName="wrapper">
                 <div styleName="title">
                     <h3>
-                        <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} />
+                        <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} styleName="stylishInput" />
                         {visibilityMarkup}
                     </h3>
                 </div>
