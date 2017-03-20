@@ -23,11 +23,18 @@ class EditRecipe extends Component {
         this.cook = this.cook.bind(this);
         this.addIngredient = this.addIngredient.bind(this);
         this.addStep = this.addStep.bind(this);
-        this.receiveIngredientState = this.receiveIngredientState.bind(this);
-        this.receiveStepState = this.receiveStepState.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
         this.handleImageChange = this.handleImageChange.bind(this);
+
+        this.ingredientAddedCallback = this.ingredientAddedCallback.bind(this);
+        this.ingredientUpdatedCallback = this.ingredientUpdatedCallback.bind(this);
+        this.ingredientDeletedCallback = this.ingredientDeletedCallback.bind(this);
+
+        this.stepAddedCallback = this.stepAddedCallback.bind(this);
+        this.stepUpdatedCallback = this.stepUpdatedCallback.bind(this);
+        this.stepDeletedCallback = this.stepDeletedCallback.bind(this);
+
     }
 
     addIngredient(e) {
@@ -92,12 +99,38 @@ class EditRecipe extends Component {
         this.setState({ 'image': image });
     }
 
-    receiveIngredientState(ingredientState) {
-        this.props.loadRecipeDetails(this.props.params.recipeId);
+    ingredientAddedCallback(ingredient) {
+        let idx = this.state.ingredients.findIndex((i) => i == null);
+        this.state.ingredients[idx] = ingredient;
+        this.setState({ 'ingredients': this.state.ingredients });
     }
 
-    receiveStepState(stepState) {
-        this.props.loadRecipeDetails(this.props.params.recipeId);
+    ingredientUpdatedCallback(ingredient) {
+        let idx = this.state.ingredients.findIndex((i) => i._id == ingredient._id);
+        this.state.ingredients[idx] = ingredient;
+        this.setState({ 'ingredients': this.state.ingredients });
+    }
+
+    ingredientDeletedCallback(ingredient) {
+        let result = this.state.ingredients.filter((i) => i._id != ingredient._id);
+        this.setState({ 'ingredients': result });
+    }
+
+    stepAddedCallback(step) {
+        let idx = this.state.steps.findIndex((s) => s == null);
+        this.state.steps[idx] = step;
+        this.setState({ 'steps': this.state.steps });
+    }
+
+    stepUpdatedCallback(step) {
+        let idx = this.state.steps.findIndex((s) => s._id == step._id);
+        this.state.steps[idx] = step;
+        this.setState({ 'steps': this.state.steps });
+    }
+
+    stepDeletedCallback(step) {
+        let result = this.state.steps.filter((s) => s._id != step._id);
+        this.setState({ 'steps': result });
     }
 
     render() {
@@ -105,15 +138,22 @@ class EditRecipe extends Component {
             return (<Spinner />);
         }
 
-        let receiveIngredientState = this.receiveIngredientState;
-        let receiveStepState = this.receiveStepState;
+        let ingredientAddedCallback = this.ingredientAddedCallback;
+        let ingredientUpdatedCallback = this.ingredientUpdatedCallback;
+        let ingredientDeletedCallback = this.ingredientDeletedCallback;
+
+        let stepAddedCallback = this.stepAddedCallback;
+        let stepUpdatedCallback = this.stepUpdatedCallback;
+        let stepDeletedCallback = this.stepDeletedCallback;
 
         let ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
             var guid = Guid.create();
             return (
                 <EditIngredientContainer key={guid.value}
                     initialState={ingredient}
-                    sendStateToParent={receiveIngredientState} />
+                    ingredientAddedCallback={ingredientAddedCallback}
+                    ingredientUpdatedCallback={ingredientUpdatedCallback}
+                    ingredientDeletedCallback={ingredientDeletedCallback} />
             );
         });
         let stepsMarkup = this.state.steps.map(function (step) {
@@ -121,7 +161,9 @@ class EditRecipe extends Component {
             return (
                 <EditStepContainer key={guid.value}
                     initialState={step}
-                    sendStateToParent={receiveStepState} />
+                    stepAddedCallback={stepAddedCallback}
+                    stepUpdatedCallback={stepUpdatedCallback}
+                    stepDeletedCallback={stepDeletedCallback} />
             );
         });
 

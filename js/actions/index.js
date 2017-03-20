@@ -41,6 +41,18 @@ export function fetchFinished() {
 	}
 }
 
+export function subFetchStarted() {
+	return {
+		type: actionTypes.SUB_FETCH_STARTED
+	}
+}
+
+export function subFetchFinished() {
+	return {
+		type: actionTypes.SUB_FETCH_FINISHED
+	}
+}
+
 export function loadCurrentUserRecipesSuccess(recipes) {
 	return {
 		type: actionTypes.LOAD_CURRENT_USER_RECIPES_SUCCESS,

@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Base64Image from './Base64Image';
+import Spinner from './Spinner';
 import styles from '../../css/EditStep.css';
 
 class EditStep extends Component {
@@ -39,11 +40,11 @@ class EditStep extends Component {
         }
         if (this.props.initialState) {
             this.props.edit(this.props.recipeDetails.id, this.state).then(() => {
-                this.props.sendStateToParent(this.state);
+                this.props.stepUpdatedCallback(this.state);
             });
         } else {
             this.props.create(this.props.recipeDetails.id, this.state).then((step) => {
-                this.props.sendStateToParent(step);
+                this.props.stepAddedCallback(step);
             });
         }
     }
@@ -51,11 +52,15 @@ class EditStep extends Component {
     handleDelete(e) {
         e.preventDefault();
         this.props.delete(this.props.recipeDetails.id, this.state._id).then(() => {
-            this.props.sendStateToParent(this.state);
+            this.props.stepDeletedCallback(this.state);
         });
     }
 
     render() {
+        if (this.props.isFetching) {
+            return (<Spinner />);
+        }
+
         return (
             <div styleName="wrapper">
                 <div styleName="title">
