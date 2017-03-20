@@ -39,8 +39,8 @@ class EditIngredient extends Component {
             return;
         }
         if (this.props.initialState) {
-            this.props.edit(this.props.recipeDetails.id, this.state).then(() => {
-                this.props.ingredientUpdatedCallback(this.state);
+            this.props.edit(this.props.recipeDetails.id, this.state).then((ingredient) => {
+                this.props.ingredientUpdatedCallback(ingredient);
             });
         } else {
             this.props.create(this.props.recipeDetails.id, this.state).then((ingredient) => {

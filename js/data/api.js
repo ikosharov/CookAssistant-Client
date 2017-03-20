@@ -347,10 +347,12 @@ export function editIngredient(recipeId, ingredient) {
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
-            if (response.status != 204) {
+            if (response.status != 200) {
                 reject();
             } else {
-                resolve();
+                response.json().then((json) => {
+                    resolve(json);
+                });
             }
         }).catch(() => {
             // network failure
@@ -454,10 +456,12 @@ export function editStep(recipeId, step) {
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
-            if (response.status != 204) {
+            if (response.status != 200) {
                 reject();
             } else {
-                resolve();
+                response.json().then((json) => {
+                    resolve(json);
+                });
             }
         }).catch(() => {
             // network failure

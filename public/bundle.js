@@ -39404,10 +39404,12 @@
 	    var promise = new Promise(function (resolve, reject) {
 	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
 	            // this will not reject on error. only on network failure
-	            if (response.status != 204) {
+	            if (response.status != 200) {
 	                reject();
 	            } else {
-	                resolve();
+	                response.json().then(function (json) {
+	                    resolve(json);
+	                });
 	            }
 	        }).catch(function () {
 	            // network failure
@@ -39511,10 +39513,12 @@
 	    var promise = new Promise(function (resolve, reject) {
 	        (0, _isomorphicFetch2.default)(url, options).then(function (response) {
 	            // this will not reject on error. only on network failure
-	            if (response.status != 204) {
+	            if (response.status != 200) {
 	                reject();
 	            } else {
-	                resolve();
+	                response.json().then(function (json) {
+	                    resolve(json);
+	                });
 	            }
 	        }).catch(function () {
 	            // network failure
@@ -47825,8 +47829,8 @@
 	                return;
 	            }
 	            if (this.props.initialState) {
-	                this.props.edit(this.props.recipeDetails.id, this.state).then(function () {
-	                    _this2.props.ingredientUpdatedCallback(_this2.state);
+	                this.props.edit(this.props.recipeDetails.id, this.state).then(function (ingredient) {
+	                    _this2.props.ingredientUpdatedCallback(ingredient);
 	                });
 	            } else {
 	                this.props.create(this.props.recipeDetails.id, this.state).then(function (ingredient) {
@@ -48125,8 +48129,8 @@
 	                return;
 	            }
 	            if (this.props.initialState) {
-	                this.props.edit(this.props.recipeDetails.id, this.state).then(function () {
-	                    _this2.props.stepUpdatedCallback(_this2.state);
+	                this.props.edit(this.props.recipeDetails.id, this.state).then(function (step) {
+	                    _this2.props.stepUpdatedCallback(step);
 	                });
 	            } else {
 	                this.props.create(this.props.recipeDetails.id, this.state).then(function (step) {

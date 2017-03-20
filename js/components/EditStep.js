@@ -39,8 +39,8 @@ class EditStep extends Component {
             return;
         }
         if (this.props.initialState) {
-            this.props.edit(this.props.recipeDetails.id, this.state).then(() => {
-                this.props.stepUpdatedCallback(this.state);
+            this.props.edit(this.props.recipeDetails.id, this.state).then((step) => {
+                this.props.stepUpdatedCallback(step);
             });
         } else {
             this.props.create(this.props.recipeDetails.id, this.state).then((step) => {
