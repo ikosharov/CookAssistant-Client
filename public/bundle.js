@@ -25142,11 +25142,11 @@
 	 */
 	var useQueries = function useQueries(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
 	    var history = createHistory(options);
-	    var stringifyQuery = options.stringifyQuery;
-	    var parseQueryString = options.parseQueryString;
+	    var stringifyQuery = options.stringifyQuery,
+	        parseQueryString = options.parseQueryString;
 	
 	    if (typeof stringifyQuery !== 'function') stringifyQuery = defaultStringifyQuery;
 	
@@ -25269,9 +25269,9 @@
 		switch (opts.arrayFormat) {
 			case 'index':
 				return function (key, value, accumulator) {
-					result = /\[(\d*)]$/.exec(key);
+					result = /\[(\d*)\]$/.exec(key);
 	
-					key = key.replace(/\[\d*]$/, '');
+					key = key.replace(/\[\d*\]$/, '');
 	
 					if (!result) {
 						accumulator[key] = value;
@@ -25287,9 +25287,9 @@
 	
 			case 'bracket':
 				return function (key, value, accumulator) {
-					result = /(\[])$/.exec(key);
+					result = /(\[\])$/.exec(key);
 	
-					key = key.replace(/\[]$/, '');
+					key = key.replace(/\[\]$/, '');
 	
 					if (!result || accumulator[key] === undefined) {
 						accumulator[key] = value;
@@ -25577,7 +25577,7 @@
 	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
 	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 	} : function (obj) {
-	  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 	};
 	
 	var _extends = Object.assign || function (target) {
@@ -25611,9 +25611,9 @@
 	};
 	
 	var createLocation = exports.createLocation = function createLocation() {
-	  var input = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? _Actions.POP : arguments[1];
-	  var key = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+	  var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+	  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Actions.POP;
+	  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 	
 	  var object = typeof input === 'string' ? (0, _PathUtils.parsePath)(input) : input;
 	
@@ -25695,11 +25695,10 @@
 	}
 	
 	var addQueryStringValueToPath = exports.addQueryStringValueToPath = function addQueryStringValueToPath(path, key, value) {
-	  var _parsePath = parsePath(path);
-	
-	  var pathname = _parsePath.pathname;
-	  var search = _parsePath.search;
-	  var hash = _parsePath.hash;
+	  var _parsePath = parsePath(path),
+	      pathname = _parsePath.pathname,
+	      search = _parsePath.search,
+	      hash = _parsePath.hash;
 	
 	  return createPath({
 	    pathname: pathname,
@@ -25709,11 +25708,10 @@
 	};
 	
 	var stripQueryStringValueFromPath = exports.stripQueryStringValueFromPath = function stripQueryStringValueFromPath(path, key) {
-	  var _parsePath2 = parsePath(path);
-	
-	  var pathname = _parsePath2.pathname;
-	  var search = _parsePath2.search;
-	  var hash = _parsePath2.hash;
+	  var _parsePath2 = parsePath(path),
+	      pathname = _parsePath2.pathname,
+	      search = _parsePath2.search,
+	      hash = _parsePath2.hash;
 	
 	  return createPath({
 	    pathname: pathname,
@@ -25725,9 +25723,8 @@
 	};
 	
 	var getQueryStringValueFromPath = exports.getQueryStringValueFromPath = function getQueryStringValueFromPath(path, key) {
-	  var _parsePath3 = parsePath(path);
-	
-	  var search = _parsePath3.search;
+	  var _parsePath3 = parsePath(path),
+	      search = _parsePath3.search;
 	
 	  var match = search.match(new RegExp('[?&]' + key + '=([a-zA-Z0-9]+)'));
 	  return match && match[1];
@@ -25769,10 +25766,10 @@
 	var createPath = exports.createPath = function createPath(location) {
 	  if (location == null || typeof location === 'string') return location;
 	
-	  var basename = location.basename;
-	  var pathname = location.pathname;
-	  var search = location.search;
-	  var hash = location.hash;
+	  var basename = location.basename,
+	      pathname = location.pathname,
+	      search = location.search,
+	      hash = location.hash;
 	
 	  var path = (basename || '') + pathname;
 	
@@ -25814,7 +25811,7 @@
 	
 	var useBasename = function useBasename(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
 	    var history = createHistory(options);
 	    var basename = options.basename;
@@ -25823,7 +25820,7 @@
 	      if (!location) return location;
 	
 	      if (basename && location.basename == null) {
-	        if (location.pathname.indexOf(basename) === 0) {
+	        if (location.pathname.toLowerCase().indexOf(basename.toLowerCase()) === 0) {
 	          location.pathname = location.pathname.substring(basename.length);
 	          location.basename = basename;
 	
@@ -25957,7 +25954,7 @@
 	};
 	
 	var createMemoryHistory = function createMemoryHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
 	  if (Array.isArray(options)) {
 	    options = { entries: options };
@@ -26024,9 +26021,9 @@
 	    go: go
 	  }));
 	
-	  var _options = options;
-	  var entries = _options.entries;
-	  var current = _options.current;
+	  var _options = options,
+	      entries = _options.entries,
+	      current = _options.current;
 	
 	  if (typeof entries === 'string') {
 	    entries = [entries];
@@ -26087,13 +26084,13 @@
 	}
 	
 	var createHistory = function createHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var getCurrentLocation = options.getCurrentLocation;
-	  var getUserConfirmation = options.getUserConfirmation;
-	  var pushLocation = options.pushLocation;
-	  var replaceLocation = options.replaceLocation;
-	  var go = options.go;
-	  var keyLength = options.keyLength;
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var getCurrentLocation = options.getCurrentLocation,
+	      getUserConfirmation = options.getUserConfirmation,
+	      pushLocation = options.pushLocation,
+	      replaceLocation = options.replaceLocation,
+	      go = options.go,
+	      keyLength = options.keyLength;
 	
 	  var currentLocation = void 0;
 	  var pendingLocation = void 0;
@@ -26221,7 +26218,7 @@
 	  };
 	
 	  var createLocation = function createLocation(location, action) {
-	    var key = arguments.length <= 2 || arguments[2] === undefined ? createKey() : arguments[2];
+	    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : createKey();
 	    return (0, _LocationUtils.createLocation)(location, action, key);
 	  };
 	
@@ -26495,18 +26492,18 @@
 	 * behavior using { forceRefresh: true } in options.
 	 */
 	var createBrowserHistory = function createBrowserHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Browser history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 	
 	  var useRefresh = options.forceRefresh || !(0, _DOMUtils.supportsHistory)();
 	  var Protocol = useRefresh ? RefreshProtocol : BrowserProtocol;
 	
-	  var getUserConfirmation = Protocol.getUserConfirmation;
-	  var getCurrentLocation = Protocol.getCurrentLocation;
-	  var pushLocation = Protocol.pushLocation;
-	  var replaceLocation = Protocol.replaceLocation;
-	  var go = Protocol.go;
+	  var getUserConfirmation = Protocol.getUserConfirmation,
+	      getCurrentLocation = Protocol.getCurrentLocation,
+	      pushLocation = Protocol.pushLocation,
+	      replaceLocation = Protocol.replaceLocation,
+	      go = Protocol.go;
 	
 	  var history = (0, _createHistory2.default)(_extends({
 	    getUserConfirmation: getUserConfirmation }, options, {
@@ -26611,8 +26608,9 @@
 	
 	var startListener = exports.startListener = function startListener(listener) {
 	  var handlePopState = function handlePopState(event) {
-	    if (event.state !== undefined) // Ignore extraneous popstate events in WebKit
-	      listener(_createLocation(event.state));
+	    if ((0, _DOMUtils.isExtraneousPopstateEvent)(event)) // Ignore extraneous popstate events in WebKit
+	      return;
+	    listener(_createLocation(event.state));
 	  };
 	
 	  (0, _DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
@@ -26635,8 +26633,8 @@
 	};
 	
 	var updateLocation = function updateLocation(location, updateState) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 	
 	  if (state !== undefined) (0, _DOMStateStorage.saveState)(key, state);
 	
@@ -26702,6 +26700,15 @@
 	 */
 	var supportsPopstateOnHashchange = exports.supportsPopstateOnHashchange = function supportsPopstateOnHashchange() {
 	  return window.navigator.userAgent.indexOf('Trident') === -1;
+	};
+	
+	/**
+	 * Returns true if a given popstate event is an extraneous WebKit event.
+	 * Accounts for the fact that Chrome on iOS fires real popstate events
+	 * containing undefined state when pressing the back button.
+	 */
+	var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+	  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 	};
 
 /***/ },
@@ -26970,12 +26977,12 @@
 	};
 	
 	var createHashHistory = function createHashHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Hash history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 	
-	  var queryKey = options.queryKey;
-	  var hashType = options.hashType;
+	  var queryKey = options.queryKey,
+	      hashType = options.hashType;
 	
 	  process.env.NODE_ENV !== 'production' ? (0, _warning2.default)(queryKey !== false, 'Using { queryKey: false } no longer works. Instead, just don\'t ' + 'use location state if you don\'t want a key in your URL query string') : void 0;
 	
@@ -27170,8 +27177,8 @@
 	};
 	
 	var updateLocation = function updateLocation(location, pathCoder, queryKey, updateHash) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 	
 	  var path = pathCoder.encodePath((0, _PathUtils.createPath)(location));
 	
@@ -29615,7 +29622,7 @@
 	  };
 	  unsubscribeFromHistory = history.listen(handleLocationChange);
 	
-	  // support history 3.x
+	  // History 3.x doesn't call listen synchronously, so fire the initial location change ourselves
 	  if (history.getCurrentLocation) {
 	    handleLocationChange(history.getCurrentLocation());
 	  }
@@ -29641,10 +29648,12 @@
 	        }
 	      });
 	
-	      // History listeners expect a synchronous call. Make the first call to the
+	      // History 2.x listeners expect a synchronous call. Make the first call to the
 	      // listener after subscribing to the store, in case the listener causes a
 	      // location change (e.g. when it redirects)
-	      listener(lastPublishedLocation);
+	      if (!history.getCurrentLocation) {
+	        listener(lastPublishedLocation);
+	      }
 	
 	      // Let user unsubscribe later
 	      return function () {
@@ -29722,7 +29731,7 @@
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
 	 *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
-	 * @version   4.0.5
+	 * @version   4.1.0
 	 */
 	
 	(function (global, factory) {
@@ -30029,6 +30038,7 @@
 	    } else {
 	      if (then$$ === GET_THEN_ERROR) {
 	        _reject(promise, GET_THEN_ERROR.error);
+	        GET_THEN_ERROR.error = null;
 	      } else if (then$$ === undefined) {
 	        fulfill(promise, maybeThenable);
 	      } else if (isFunction(then$$)) {
@@ -30149,7 +30159,7 @@
 	      if (value === TRY_CATCH_ERROR) {
 	        failed = true;
 	        error = value.error;
-	        value = null;
+	        value.error = null;
 	      } else {
 	        succeeded = true;
 	      }
@@ -31077,8 +31087,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./global.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31173,7 +31183,7 @@
 			};
 		},
 		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
 		}),
 		getHeadElement = memoize(function () {
 			return document.head || document.getElementsByTagName("head")[0];
@@ -37557,8 +37567,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./breadcrumb.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37716,8 +37726,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./avatar.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37880,8 +37890,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesShell.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -38133,8 +38143,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./spinner.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -38968,8 +38978,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipeSummary.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -39622,6 +39632,10 @@
 	    if (headers instanceof Headers) {
 	      headers.forEach(function (value, name) {
 	        this.append(name, value);
+	      }, this);
+	    } else if (Array.isArray(headers)) {
+	      headers.forEach(function (header) {
+	        this.append(header[0], header[1]);
 	      }, this);
 	    } else if (headers) {
 	      Object.getOwnPropertyNames(headers).forEach(function (name) {
@@ -40377,8 +40391,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesList.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40420,8 +40434,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./recipesLists.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40775,8 +40789,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./modal.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./modal.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./modal.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./modal.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40819,8 +40833,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./auth.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46748,8 +46762,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./cookRecipe.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46767,7 +46781,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 1em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd {\r\n    text-align: center;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK {\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-faded___39Czf {\r\n    opacity: 0.2;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-visible___va4BX {\r\n    opacity: 1;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n}", ""]);
+	exports.push([module.id, ".cookRecipe__wrapper___16x8R {\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-width: 100%;\r\n}\r\n\r\n.cookRecipe__title___LVqNy {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.cookRecipe__title___LVqNy > span {\r\n    line-height: 3em;\r\n    font-size: 3rem;\r\n    color: orange;\r\n}\r\n\r\n.cookRecipe__title___LVqNy h1 {\r\n    margin-right: 1em;\r\n}\r\n\r\n.cookRecipe__image-and-controls___3Tfa_ {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 1em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n}\r\n\r\n.cookRecipe__controls___3eysw a {\r\n    text-decoration: none;\r\n}\r\n\r\n.cookRecipe__image___1yGJd {\r\n    text-align: center;\r\n}\r\n\r\n.cookRecipe__image___1yGJd img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > div {\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.cookRecipe__ingredients___1G69- > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK {\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-faded___39Czf {\r\n    opacity: 0.2;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps-visible___va4BX {\r\n    opacity: 1;\r\n    transition: all 1s ease;\r\n}\r\n\r\n.cookRecipe__steps___7fbFK > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .cookRecipe__title___LVqNy {\r\n        flex-flow: row wrap;\r\n    }\r\n\r\n    .cookRecipe__controls___3eysw {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -46902,8 +46916,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowIngredient.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47035,8 +47049,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./ShowStep.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47493,8 +47507,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editRecipe.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47512,7 +47526,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".editRecipe__wrapper___2JRGe {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___3Rphi {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___3Rphi a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.editRecipe__image-and-controls___o7ziz {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\ncontrols a {\r\n    text-decoration: none;\r\n}\r\n\r\n.editRecipe__image___1yjLh {\r\n    text-align: center;\r\n}\r\n\r\n.editRecipe__image___1yjLh img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2WNvH > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2f1sY {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___3Rphi {\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    /*.image-and-controls {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }*/\r\n\r\n    .editRecipe__controls___3HSQC {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n    .editRecipe__image___1yjLh input {\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".editRecipe__wrapper___2JRGe {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 1em;\r\n    max-width: 100%;\r\n}\r\n\r\n.editRecipe__title___3Rphi {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: center;\r\n}\r\n\r\n.editRecipe__title___3Rphi a {\r\n    text-decoration: none;\r\n    position: relative;\r\n    left: 10px;\r\n    top: -3px;\r\n}\r\n\r\n.editRecipe__image-and-controls___o7ziz {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    font-size: 1.8em;\r\n    padding: 0.5em;\r\n    max-height: 6em;\r\n}\r\n\r\n.editRecipe__controls___3HSQC a {\r\n    text-decoration: none;\r\n}\r\n\r\n.editRecipe__image___1yjLh {\r\n    text-align: center;\r\n}\r\n\r\n.editRecipe__image___1yjLh img {\r\n    max-width: 350px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh {\r\n    margin-bottom: 2em;\r\n}\r\n\r\n.editRecipe__ingredients___3olVh > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__steps___2WNvH > h2 {\r\n    background-color: blue;\r\n    color: white;\r\n    border-radius: 0.2em;\r\n    line-height: 1.5em;\r\n    padding-left: 1em;\r\n}\r\n\r\n.editRecipe__addNew___2f1sY {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-content: center;\r\n    font-size: 1.5em;\r\n    margin-top: 0.6em;\r\n}\r\n\r\n@media (min-width: 800px) {\r\n    .editRecipe__title___3Rphi {\r\n        flex-direction: row;\r\n        justify-content: space-around;\r\n    }\r\n\r\n    /*.image-and-controls {\r\n        flex-direction: row;\r\n        padding-bottom: 1em;\r\n    }*/\r\n\r\n    .editRecipe__controls___3HSQC {\r\n        padding-left: 4em;\r\n        padding-right: 4em;\r\n    }\r\n\r\n    .editRecipe__image___1yjLh input {\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -47779,8 +47793,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./editIngredient.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48061,8 +48075,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./EditStep.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48332,8 +48346,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css");
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./newRecipe.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
