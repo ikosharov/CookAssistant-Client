@@ -30977,11 +30977,11 @@
 	
 	var _CookRecipeContainer2 = _interopRequireDefault(_CookRecipeContainer);
 	
-	var _EditRecipeContainer = __webpack_require__(637);
+	var _EditRecipeContainer = __webpack_require__(640);
 	
 	var _EditRecipeContainer2 = _interopRequireDefault(_EditRecipeContainer);
 	
-	var _NewRecipeContainer = __webpack_require__(649);
+	var _NewRecipeContainer = __webpack_require__(652);
 	
 	var _NewRecipeContainer2 = _interopRequireDefault(_NewRecipeContainer);
 	
@@ -47031,7 +47031,11 @@
 	
 	var _Base64Image2 = _interopRequireDefault(_Base64Image);
 	
-	var _ShowStep = __webpack_require__(635);
+	var _Clock = __webpack_require__(635);
+	
+	var _Clock2 = _interopRequireDefault(_Clock);
+	
+	var _ShowStep = __webpack_require__(638);
 	
 	var _ShowStep2 = _interopRequireDefault(_ShowStep);
 	
@@ -47085,6 +47089,11 @@
 	                    'div',
 	                    { styleName: 'image' },
 	                    _react2.default.createElement(_Base64Image2.default, { data: this.props.step.image })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { styleName: 'clock' },
+	                    _react2.default.createElement(_Clock2.default, null)
 	                )
 	            );
 	        }
@@ -47099,10 +47108,185 @@
 /* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactCssModules = __webpack_require__(295);
+	
+	var _reactCssModules2 = _interopRequireDefault(_reactCssModules);
+	
+	var _clock = __webpack_require__(636);
+	
+	var _clock2 = _interopRequireDefault(_clock);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Clock = function (_React$Component) {
+	    _inherits(Clock, _React$Component);
+	
+	    function Clock(props) {
+	        _classCallCheck(this, Clock);
+	
+	        var _this = _possibleConstructorReturn(this, (Clock.__proto__ || Object.getPrototypeOf(Clock)).call(this, props));
+	
+	        _this.state = {
+	            seconds: 0,
+	            minutes: 0,
+	            started: false
+	        };
+	        _this.timerID = null;
+	        _this.startTimer = _this.startTimer.bind(_this);
+	        _this.stopTimer = _this.stopTimer.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(Clock, [{
+	        key: 'startTimer',
+	        value: function startTimer() {
+	            var _this2 = this;
+	
+	            this.setState({
+	                started: true
+	            });
+	            this.timerID = setInterval(function () {
+	                return _this2.tick();
+	            }, 1000);
+	        }
+	    }, {
+	        key: 'stopTimer',
+	        value: function stopTimer() {
+	            clearInterval(this.timerID);
+	            this.setState({
+	                started: false
+	            });
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            if (this.timerID) {
+	                clearInterval(this.timerID);
+	            }
+	        }
+	    }, {
+	        key: 'tick',
+	        value: function tick() {
+	            var seconds = this.state.seconds;
+	            var minutes = this.state.minutes;
+	
+	            if (seconds == 59) {
+	                seconds = 0;
+	                minutes += 1;
+	            } else {
+	                seconds += 1;
+	            }
+	
+	            this.setState({
+	                minutes: minutes,
+	                seconds: seconds
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var seconds = this.state.seconds;
+	            if (seconds < 10) {
+	                seconds = "0" + seconds;
+	            }
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { styleName: 'wrapper' },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.minutes,
+	                    ':',
+	                    seconds,
+	                    this.state.started && _react2.default.createElement(
+	                        'button',
+	                        { className: 'btn btn-success', onClick: this.stopTimer },
+	                        'Pause'
+	                    ),
+	                    !this.state.started && _react2.default.createElement(
+	                        'button',
+	                        { className: 'btn btn-success', onClick: this.startTimer },
+	                        'Start'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Clock;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _reactCssModules2.default)(Clock, _clock2.default);
+
+/***/ },
+/* 636 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(636);
+	var content = __webpack_require__(637);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(293)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./clock.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js?{\"modules\":true,\"localIdentName\":\"[name]__[local]___[hash:base64:5]\"}!./clock.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 637 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(292)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".clock__wrapper___1xhuG {\r\n    color: green;\r\n}\r\n\r\n.clock__wrapper___1xhuG button {\r\n    margin-left: 1em;\r\n}", ""]);
+	
+	// exports
+	exports.locals = {
+		"wrapper": "clock__wrapper___1xhuG"
+	};
+
+/***/ },
+/* 638 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(639);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -47122,7 +47306,7 @@
 	}
 
 /***/ },
-/* 636 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -47130,7 +47314,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".ShowStep__wrapper___3Uu-F {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___3Uu-F > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___1xFMT {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___3Z9Mw {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___3Z9Mw img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__arrow___2-nLS {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 3em;\r\n    color: cadetblue;\r\n}\r\n\r\n.ShowStep__arrow-right___3yV1l {\r\n    display: none;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___3Uu-F {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___3Uu-F > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___1xFMT {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___3Z9Mw {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow___2-nLS {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow-right___3yV1l {\r\n        display: inline;\r\n    }\r\n\r\n    .ShowStep__arrow-down___2h2fi {\r\n        display: none;\r\n    }\r\n}", ""]);
+	exports.push([module.id, ".ShowStep__wrapper___3Uu-F {\r\n    display: flex;\r\n    flex-direction: column;\r\n    border-bottom: 1px solid lightblue;\r\n    padding: 0.7em;\r\n}\r\n\r\n.ShowStep__wrapper___3Uu-F > div {\r\n    margin-bottom: .5em;\r\n}\r\n\r\n.ShowStep__title___1xFMT {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.ShowStep__image___3Z9Mw {\r\n    display: flex;\r\n    justify-content: center;\r\n    padding: 0 1em 0 1em;\r\n    text-align: center;\r\n}\r\n\r\n.ShowStep__image___3Z9Mw img {\r\n    max-width: 200px;\r\n    max-height: 200px;\r\n    border-radius: 1.5em;\r\n}\r\n\r\n.ShowStep__arrow___2-nLS {\r\n    display: flex;\r\n    justify-content: center;\r\n    font-size: 3em;\r\n    color: cadetblue;\r\n}\r\n\r\n.ShowStep__arrow-right___3yV1l {\r\n    display: none;\r\n}\r\n\r\n.ShowStep__clock___XNTA4 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n@media (min-width:800px) {\r\n    .ShowStep__wrapper___3Uu-F {\r\n        flex-direction: row;\r\n    }\r\n\r\n    .ShowStep__wrapper___3Uu-F > div {\r\n        margin-bottom: 0em;\r\n    }\r\n\r\n\r\n    .ShowStep__title___1xFMT {\r\n        flex: 1;\r\n        justify-content: flex-start;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__image___3Z9Mw {\r\n        flex: 2;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow___2-nLS {\r\n        flex: 1;\r\n        align-items: center;\r\n    }\r\n\r\n    .ShowStep__arrow-right___3yV1l {\r\n        display: inline;\r\n    }\r\n\r\n    .ShowStep__arrow-down___2h2fi {\r\n        display: none;\r\n    }\r\n}", ""]);
 	
 	// exports
 	exports.locals = {
@@ -47139,11 +47323,12 @@
 		"image": "ShowStep__image___3Z9Mw",
 		"arrow": "ShowStep__arrow___2-nLS",
 		"arrow-right": "ShowStep__arrow-right___3yV1l",
+		"clock": "ShowStep__clock___XNTA4",
 		"arrow-down": "ShowStep__arrow-down___2h2fi"
 	};
 
 /***/ },
-/* 637 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47156,7 +47341,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditRecipe = __webpack_require__(638);
+	var _EditRecipe = __webpack_require__(641);
 	
 	var _EditRecipe2 = _interopRequireDefault(_EditRecipe);
 	
@@ -47227,7 +47412,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditRecipe2.default);
 
 /***/ },
-/* 638 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47254,7 +47439,7 @@
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _editRecipe = __webpack_require__(639);
+	var _editRecipe = __webpack_require__(642);
 	
 	var _editRecipe2 = _interopRequireDefault(_editRecipe);
 	
@@ -47266,11 +47451,11 @@
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _EditIngredientContainer = __webpack_require__(641);
+	var _EditIngredientContainer = __webpack_require__(644);
 	
 	var _EditIngredientContainer2 = _interopRequireDefault(_EditIngredientContainer);
 	
-	var _EditStepContainer = __webpack_require__(645);
+	var _EditStepContainer = __webpack_require__(648);
 	
 	var _EditStepContainer2 = _interopRequireDefault(_EditStepContainer);
 	
@@ -47612,13 +47797,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditRecipe, _editRecipe2.default);
 
 /***/ },
-/* 639 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(640);
+	var content = __webpack_require__(643);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -47638,7 +47823,7 @@
 	}
 
 /***/ },
-/* 640 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -47662,7 +47847,7 @@
 	};
 
 /***/ },
-/* 641 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47675,7 +47860,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditIngredient = __webpack_require__(642);
+	var _EditIngredient = __webpack_require__(645);
 	
 	var _EditIngredient2 = _interopRequireDefault(_EditIngredient);
 	
@@ -47751,7 +47936,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditIngredient2.default);
 
 /***/ },
-/* 642 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47778,7 +47963,7 @@
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _editIngredient = __webpack_require__(643);
+	var _editIngredient = __webpack_require__(646);
 	
 	var _editIngredient2 = _interopRequireDefault(_editIngredient);
 	
@@ -47916,13 +48101,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditIngredient, _editIngredient2.default);
 
 /***/ },
-/* 643 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(644);
+	var content = __webpack_require__(647);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -47942,7 +48127,7 @@
 	}
 
 /***/ },
-/* 644 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -47962,7 +48147,7 @@
 	};
 
 /***/ },
-/* 645 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47975,7 +48160,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _EditStep = __webpack_require__(646);
+	var _EditStep = __webpack_require__(649);
 	
 	var _EditStep2 = _interopRequireDefault(_EditStep);
 	
@@ -48051,7 +48236,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_EditStep2.default);
 
 /***/ },
-/* 646 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48078,7 +48263,7 @@
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _EditStep = __webpack_require__(647);
+	var _EditStep = __webpack_require__(650);
 	
 	var _EditStep2 = _interopRequireDefault(_EditStep);
 	
@@ -48216,13 +48401,13 @@
 	exports.default = (0, _reactCssModules2.default)(EditStep, _EditStep2.default);
 
 /***/ },
-/* 647 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(648);
+	var content = __webpack_require__(651);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -48242,7 +48427,7 @@
 	}
 
 /***/ },
-/* 648 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();
@@ -48262,7 +48447,7 @@
 	};
 
 /***/ },
-/* 649 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48275,7 +48460,7 @@
 	
 	var _reactRouterRedux = __webpack_require__(280);
 	
-	var _NewRecipe = __webpack_require__(650);
+	var _NewRecipe = __webpack_require__(653);
 	
 	var _NewRecipe2 = _interopRequireDefault(_NewRecipe);
 	
@@ -48320,7 +48505,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NewRecipe2.default);
 
 /***/ },
-/* 650 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48343,7 +48528,7 @@
 	
 	var _reactRating2 = _interopRequireDefault(_reactRating);
 	
-	var _newRecipe = __webpack_require__(651);
+	var _newRecipe = __webpack_require__(654);
 	
 	var _newRecipe2 = _interopRequireDefault(_newRecipe);
 	
@@ -48488,13 +48673,13 @@
 	exports.default = (0, _reactCssModules2.default)(NewRecipe, _newRecipe2.default);
 
 /***/ },
-/* 651 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(652);
+	var content = __webpack_require__(655);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(293)(content, {});
@@ -48514,7 +48699,7 @@
 	}
 
 /***/ },
-/* 652 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(292)();

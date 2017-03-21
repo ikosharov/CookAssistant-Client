@@ -38,6 +38,12 @@
     display: none;
 }
 
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (min-width:800px) {
     .wrapper {
         flex-direction: row;

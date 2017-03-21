@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Base64Image from './Base64Image';
+import Clock from './Clock';
 import styles from '../../css/ShowStep.css';
 
 class ShowStep extends Component {
@@ -26,6 +27,9 @@ class ShowStep extends Component {
                 </div>
                 <div styleName="image">
                     <Base64Image data={this.props.step.image} />
+                </div>
+                <div styleName="clock">
+                    <Clock />
                 </div>
             </div>
         );
