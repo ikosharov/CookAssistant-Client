@@ -37,6 +37,20 @@
     margin-top: 0.8em;
 }
 
+.wrapper {
+    animation-duration: 1s;
+    animation-name: appear;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @media (min-width: 800px) {
     .wrapper {
         flex-flow: row nowrap;

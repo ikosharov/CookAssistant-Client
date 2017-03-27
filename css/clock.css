@@ -1,7 +1,12 @@
 .wrapper {
     color: green;
+    transition: all 1s ease 500ms;
 }
 
 .wrapper button {
     margin-left: 1em;
+}
+
+[data-started] {
+    color: orange;
 }

@@ -59,12 +59,14 @@ class Clock extends React.Component {
 
     render() {
         let seconds = this.state.seconds;
-        if(seconds < 10) {
+        if (seconds < 10) {
             seconds = "0" + seconds;
         }
 
+
+
         return (
-            <div styleName="wrapper">
+            <div styleName="wrapper" data-started={(this.state.started) ? true : null}>
                 <h2>{this.state.minutes}:{seconds}
                     {this.state.started && <button className="btn btn-success" onClick={this.stopTimer}>Pause</button>}
                     {!this.state.started && <button className="btn btn-success" onClick={this.startTimer}>Start</button>}
