@@ -87,4 +87,12 @@
         align-items: center;
         margin-top: 0px;
     }
+
+    .wrapper:hover {
+        background-color: #eff4fc;
+        transition-property: background-color;
+        transition-delay: 300ms;
+        transition-duration: 300ms;
+        transition-timing-function: linear;
+    }
 }
