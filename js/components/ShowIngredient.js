@@ -1,26 +1,26 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Base64Image from './Base64Image';
-import styles from '../../css/ShowIngredient.css';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Base64Image from './Base64Image'
+import styles from '../../css/ShowIngredient.css'
 
 class ShowIngredient extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             checked: this.props.ingredient.checked
         }
 
-        this.handleCheckboxChanged = this.handleCheckboxChanged.bind(this);
+        this.handleCheckboxChanged = this.handleCheckboxChanged.bind(this)
     }
 
     handleCheckboxChanged(e) {
         this.setState({
             checked: e.target.checked
-        });
-        this.props.ingredientCheckedCallback(e, this.props.ingredient);
+        })
+        this.props.ingredientCheckedCallback(e, this.props.ingredient)
     }
 
     render() {
@@ -42,8 +42,8 @@ class ShowIngredient extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(ShowIngredient, styles);
+export default CSSModules(ShowIngredient, styles)

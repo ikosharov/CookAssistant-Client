@@ -1,50 +1,50 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Rating from 'react-rating';
-import styles from '../../css/newRecipe.css';
-import Base64Image from './Base64Image';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Rating from 'react-rating'
+import styles from '../../css/newRecipe.css'
+import Base64Image from './Base64Image'
 
 class NewRecipe extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         // initialize state
         this.state = {
             title: '',
             isPublic: false,
             image: null
-        };
+        }
 
         // bind handlers to this
-        this.create = this.create.bind(this);
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleIsPublicChange = this.handleIsPublicChange.bind(this);
-        this.handleImageChange = this.handleImageChange.bind(this);
+        this.create = this.create.bind(this)
+        this.handleTitleChange = this.handleTitleChange.bind(this)
+        this.handleIsPublicChange = this.handleIsPublicChange.bind(this)
+        this.handleImageChange = this.handleImageChange.bind(this)
     }
 
     create(e) {
-        e.preventDefault();
+        e.preventDefault()
         this.props.createRecipe(this.state).then((recipe) => {
-            this.props.navigateToEdit(recipe._id);
+            this.props.navigateToEdit(recipe._id)
         }).catch(() => {
-            alert('failed');
-        });
+            alert('failed')
+        })
     }
 
     handleTitleChange(e) {
-        this.setState({ 'title': e.target.value });
+        this.setState({ 'title': e.target.value })
     }
 
     handleIsPublicChange(e) {
-        e.preventDefault();
-        this.setState({ 'isPublic': !this.state.isPublic });
+        e.preventDefault()
+        this.setState({ 'isPublic': !this.state.isPublic })
     }
 
     handleImageChange(e) {
-        var image = e.currentTarget.files[0];
-        this.setState({ 'image': image });
+        var image = e.currentTarget.files[0]
+        this.setState({ 'image': image })
     }
 
     render() {
@@ -52,11 +52,11 @@ class NewRecipe extends Component {
             return (<h1>Loading...</h1>)
         }
 
-        let visibilityMarkup = '';
+        let visibilityMarkup = ''
         if (this.state.isPublic) {
-            visibilityMarkup = (<a href="#"><span className="label label-success" onClick={this.handleIsPublicChange}>public</span></a>);
+            visibilityMarkup = (<a href="#"><span className="label label-success" onClick={this.handleIsPublicChange}>public</span></a>)
         } else {
-            visibilityMarkup = (<a href="#"><span className="label label-warning" onClick={this.handleIsPublicChange}>private</span></a>);
+            visibilityMarkup = (<a href="#"><span className="label label-warning" onClick={this.handleIsPublicChange}>private</span></a>)
         }
 
         return (
@@ -77,8 +77,8 @@ class NewRecipe extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(NewRecipe, styles);
+export default CSSModules(NewRecipe, styles)

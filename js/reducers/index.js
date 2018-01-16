@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import auth from './auth';
-import isFetching from './isFetching';
-import isSubFetching from './isSubFetching';
-import * as recipes from './recipes';
-import recipeDetails from './recipeDetails';
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+import auth from './auth'
+import isFetching from './isFetching'
+import isSubFetching from './isSubFetching'
+import * as recipes from './recipes'
+import recipeDetails from './recipeDetails'
 
 const rootReducer = combineReducers({
   auth: auth,
@@ -14,6 +14,6 @@ const rootReducer = combineReducers({
   anyUserRecipes: recipes.anyUserRecipes,
   recipeDetails: recipeDetails,
   routing: routerReducer
-});
+})
 
-export default rootReducer;
+export default rootReducer

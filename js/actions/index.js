@@ -1,4 +1,4 @@
-import * as actionTypes from './types';
+import * as actionTypes from './types'
 
 export function authenticateSucceeded(username, token, id) {
 	return {

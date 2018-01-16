@@ -1,54 +1,54 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Spinner from './Spinner';
-import Modal from './Modal';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Spinner from './Spinner'
+import Modal from './Modal'
 
-import styles from '../../css/auth.css';
+import styles from '../../css/auth.css'
 
 class Auth extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             username: '',
             password: ''
-        };
+        }
 
         // bind to this
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleSignIn = this.handleSignIn.bind(this);
-        this.handleSignUp = this.handleSignUp.bind(this);
-        this.toggleForms = this.toggleForms.bind(this);
+        this.handleUsernameChange = this.handleUsernameChange.bind(this)
+        this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handleSignIn = this.handleSignIn.bind(this)
+        this.handleSignUp = this.handleSignUp.bind(this)
+        this.toggleForms = this.toggleForms.bind(this)
     }
 
     handleUsernameChange(e) {
-        this.setState({ "username": e.target.value });
+        this.setState({ "username": e.target.value })
     }
 
     handlePasswordChange(e) {
-        this.setState({ "password": e.target.value });
+        this.setState({ "password": e.target.value })
     }
 
     handleSignIn(e) {
-        e.preventDefault();
-        this.props.signIn(this.state.username, this.state.password);
+        e.preventDefault()
+        this.props.signIn(this.state.username, this.state.password)
     }
 
     handleSignUp(e) {
-        e.preventDefault();
-        this.props.signUp(this.state.username, this.state.password);
+        e.preventDefault()
+        this.props.signUp(this.state.username, this.state.password)
     }
 
     toggleForms() {
-        $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        $('form').animate({ height: "toggle", opacity: "toggle" }, "slow")
     }
 
     render() {
         if (this.props.isFetching) {
-            return (<Spinner />);
+            return (<Spinner />)
         }
 
         return (
@@ -86,8 +86,8 @@ class Auth extends Component {
                 </div>
                 {this.props.authenticateFailed && <Modal message="Authentication failed" closeAction={this.props.clearAuthFailed} />}
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(Auth, styles);
+export default CSSModules(Auth, styles)

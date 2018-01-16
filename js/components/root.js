@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from '../../css/global.css';
+import React from 'react'
+import styles from '../../css/global.css'
 
 class Root extends React.Component {
     render() {
@@ -7,8 +7,8 @@ class Root extends React.Component {
             <div>
                 {this.props.children}
             </div>
-        );
+        )
     }
 }
 
-export default Root;
+export default Root

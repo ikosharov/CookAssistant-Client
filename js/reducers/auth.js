@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/types';
+import * as actionTypes from '../actions/types'
 
 export default function auth(state, action) {
     if (state === undefined) {
@@ -17,7 +17,7 @@ export default function auth(state, action) {
                 username: action.username,
                 token: action.token,
                 authenticateFailed: false
-            });
+            })
 
         case actionTypes.AUTHENTICATE_FAILED:
             return Object.assign({}, state, {
@@ -25,7 +25,7 @@ export default function auth(state, action) {
                 username: action.username,
                 token: null,
                 authenticateFailed: true
-            });
+            })
 
         case actionTypes.SIGN_OUT:
             return Object.assign({}, state, {
@@ -33,12 +33,12 @@ export default function auth(state, action) {
                 username: null,
                 token: null,
                 authenticateFailed: false
-            });
+            })
         case actionTypes.CLEAR_AUTH_FAILED:
             return Object.assign({}, state, {
                 authenticateFailed: false
-            });
+            })
         default:
-            return state;
+            return state
     }
 }

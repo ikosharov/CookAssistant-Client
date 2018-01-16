@@ -1,64 +1,64 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Base64Image from './Base64Image';
-import Spinner from './Spinner';
-import styles from '../../css/editIngredient.css';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Base64Image from './Base64Image'
+import Spinner from './Spinner'
+import styles from '../../css/editIngredient.css'
 
 class EditIngredient extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         let emptyState = {
             title: '',
             image: null
-        };
+        }
 
-        this.state = (this.props.initialState) ? this.props.initialState : emptyState;
+        this.state = (this.props.initialState) ? this.props.initialState : emptyState
 
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleImageChange = this.handleImageChange.bind(this);
-        this.handleSave = this.handleSave.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this)
+        this.handleImageChange = this.handleImageChange.bind(this)
+        this.handleSave = this.handleSave.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     handleTitleChange(e) {
-        this.setState({ 'title': e.target.value });
+        this.setState({ 'title': e.target.value })
     }
 
     handleImageChange(e) {
-        var image = e.currentTarget.files[0];
-        this.setState({ 'image': image });
+        var image = e.currentTarget.files[0]
+        this.setState({ 'image': image })
     }
 
     handleSave(e) {
-        e.preventDefault();
+        e.preventDefault()
         if (this.state.image && this.state.image.size > 500 * 1000) {
-            alert('please choose file smaller than 500kb');
-            return;
+            alert('please choose file smaller than 500kb')
+            return
         }
         if (this.props.initialState) {
             this.props.edit(this.props.recipeDetails.id, this.state).then((ingredient) => {
-                this.props.ingredientUpdatedCallback(ingredient);
-            });
+                this.props.ingredientUpdatedCallback(ingredient)
+            })
         } else {
             this.props.create(this.props.recipeDetails.id, this.state).then((ingredient) => {
-                this.props.ingredientAddedCallback(ingredient);
-            });
+                this.props.ingredientAddedCallback(ingredient)
+            })
         }
     }
 
     handleDelete(e) {
-        e.preventDefault();
+        e.preventDefault()
         this.props.delete(this.props.recipeDetails.id, this.state._id).then(() => {
-            this.props.ingredientDeletedCallback(this.state);
-        });
+            this.props.ingredientDeletedCallback(this.state)
+        })
     }
 
     render() {
         if (this.props.isFetching) {
-            return (<Spinner />);
+            return (<Spinner />)
         }
 
         return (
@@ -83,8 +83,8 @@ class EditIngredient extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(EditIngredient, styles);
+export default CSSModules(EditIngredient, styles)

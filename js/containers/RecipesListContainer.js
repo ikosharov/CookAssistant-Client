@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-import RecipesList from '../components/RecipesList';
-import * as actions from '../actions';
-import * as api from '../data/api';
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import RecipesList from '../components/RecipesList'
+import * as actions from '../actions'
+import * as api from '../data/api'
 
 const mapStateToProps = (state) => {
 	return {
@@ -13,9 +13,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		navigateToAddRecipe: () => {
-			dispatch(push(`/Recipes/new`));
+			dispatch(push(`/Recipes/new`))
 		}
-	};
+	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesList);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesList)

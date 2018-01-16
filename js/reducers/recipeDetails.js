@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/types';
+import * as actionTypes from '../actions/types'
 
 export default function recipeDetails(state, action) {
     if (state === undefined) {
@@ -25,7 +25,7 @@ export default function recipeDetails(state, action) {
                 steps: action.recipe.steps,
                 image: action.recipe.image,
                 rating: action.recipe.rating
-            });
+            })
 
         case actionTypes.LOAD_RECIPE_DETAILS_FAILED:
             return Object.assign({}, state, {
@@ -37,8 +37,8 @@ export default function recipeDetails(state, action) {
                 steps: [],
                 image: '',
                 rating: 0
-            });
+            })
         default:
-            return state;
+            return state
     }
 }

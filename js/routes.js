@@ -1,15 +1,15 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import { Route, IndexRoute, Redirect } from 'react-router';
+import React from 'react'
+import { Route, IndexRoute, Redirect } from 'react-router'
 
-import Root from './components/Root';
-import RecipesShell from './components/RecipesShell';
-import RecipesListsContainer from './containers/RecipesListsContainer';
-import AuthContainer from './containers/AuthContainer';
-import CookRecipeContainer from './containers/CookRecipeContainer';
-import EditRecipeContainer from './containers/EditRecipeContainer';
-import NewRecipeContainer from './containers/NewRecipeContainer';
+import Root from './components/Root'
+import RecipesShell from './components/RecipesShell'
+import RecipesListsContainer from './containers/RecipesListsContainer'
+import AuthContainer from './containers/AuthContainer'
+import CookRecipeContainer from './containers/CookRecipeContainer'
+import EditRecipeContainer from './containers/EditRecipeContainer'
+import NewRecipeContainer from './containers/NewRecipeContainer'
 
 let configureRoutes = function (store) {
     let authRequired = function (nextState, replace) {
@@ -18,7 +18,7 @@ let configureRoutes = function (store) {
             replace({
                 pathname: 'Auth',
                 state: { nextPathname: nextState.location.pathname }
-            });
+            })
         }
     }
 
@@ -33,9 +33,9 @@ let configureRoutes = function (store) {
             <Route path="Auth" name="auth" component={AuthContainer} />
             <Redirect from="*" to="Recipes" />
         </Route>
-    );
+    )
 
-    return routes;
+    return routes
 }
 
-export default configureRoutes;
+export default configureRoutes

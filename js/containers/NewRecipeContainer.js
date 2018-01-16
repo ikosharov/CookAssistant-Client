@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-import NewRecipe from '../components/NewRecipe';
-import * as actions from '../actions';
-import * as api from '../data/api';
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import NewRecipe from '../components/NewRecipe'
+import * as actions from '../actions'
+import * as api from '../data/api'
 
 const mapStateToProps = (state) => {
 	return {
@@ -17,18 +17,18 @@ const mapDispatchToProps = (dispatch) => {
 				api.addRecipe(recipe)
 					.then((json) => {
 						// success
-						resolve(json);
+						resolve(json)
 					}).catch(() => {
 						// some error
-						reject();
-					});
-			});
-			return promise;
+						reject()
+					})
+			})
+			return promise
 		},
 		navigateToEdit: (recipeId) => {
-			dispatch(push(`/Recipes/${recipeId}/Edit`));
+			dispatch(push(`/Recipes/${recipeId}/Edit`))
 		}
-	};
+	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe);
+export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe)

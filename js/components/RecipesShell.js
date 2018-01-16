@@ -1,13 +1,13 @@
-import React from 'react';
-import CSSModules from 'react-css-modules';
+import React from 'react'
+import CSSModules from 'react-css-modules'
 
-import Breadcrumb from './Breadcrumb';
-import AvatarContainer from '../containers/AvatarContainer';
-import styles from '../../css/recipesShell.css';
+import Breadcrumb from './Breadcrumb'
+import AvatarContainer from '../containers/AvatarContainer'
+import styles from '../../css/recipesShell.css'
 
 class RecipesShell extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -24,8 +24,8 @@ class RecipesShell extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(RecipesShell, styles);
+export default CSSModules(RecipesShell, styles)

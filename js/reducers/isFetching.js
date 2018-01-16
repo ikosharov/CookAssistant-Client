@@ -1,13 +1,13 @@
-import * as actionTypes from '../actions/types';
+import * as actionTypes from '../actions/types'
 
 export default function isFetching(state = false, action) {
 	
 	switch (action.type) {
 		case actionTypes.FETCH_STARTED:
-			return true;
+			return true
 		case actionTypes.FETCH_FINISHED:
-			return false;
+			return false
 		default:
-			return state;
+			return state
 	}
 } 

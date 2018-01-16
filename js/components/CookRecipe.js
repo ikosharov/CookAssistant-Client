@@ -1,94 +1,94 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Guid from 'guid';
-import Base64Image from './Base64Image';
-import Rating from 'react-rating';
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
-import styles from '../../css/cookRecipe.css';
-import ShowIngredient from './ShowIngredient';
-import ShowStep from './ShowStep';
-import Spinner from './Spinner';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Guid from 'guid'
+import Base64Image from './Base64Image'
+import Rating from 'react-rating'
+import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share'
+import styles from '../../css/cookRecipe.css'
+import ShowIngredient from './ShowIngredient'
+import ShowStep from './ShowStep'
+import Spinner from './Spinner'
 
 class CookRecipe extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.edit = this.edit.bind(this);
-        this.share = this.share.bind(this);
-        this.star = this.star.bind(this);
-        this.ingredientCheckedCallback = this.ingredientCheckedCallback.bind(this);
+        this.edit = this.edit.bind(this)
+        this.share = this.share.bind(this)
+        this.star = this.star.bind(this)
+        this.ingredientCheckedCallback = this.ingredientCheckedCallback.bind(this)
     }
 
     componentDidMount() {
-        this.props.loadRecipeDetails(this.props.params.recipeId);
+        this.props.loadRecipeDetails(this.props.params.recipeId)
     }
 
     componentWillReceiveProps(nextProps) {
-        this.state = nextProps.recipeDetails;
+        this.state = nextProps.recipeDetails
 
         // once we get recipeDetails from the backend
         // attach a 'checked' property to each ingredient 
         // so that we can properly update presence/absence of begin button
         this.state.ingredients.forEach((ingredient) => {
             if (typeof ingredient.checked == 'undefined')
-                ingredient.checked = false;
-        });
+                ingredient.checked = false
+        })
     }
 
     edit(e) {
-        e.preventDefault();
-        this.props.navigateToEdit(this.props.recipeDetails.id);
+        e.preventDefault()
+        this.props.navigateToEdit(this.props.recipeDetails.id)
     }
 
     share(e) {
-        e.preventDefault();
-        alert('share');
+        e.preventDefault()
+        alert('share')
     }
 
     star(e) {
-        e.preventDefault();
-        alert('star');
+        e.preventDefault()
+        alert('star')
     }
 
     ingredientCheckedCallback(e, ingredient) {
-        let idx = this.state.ingredients.findIndex((i) => i._id == ingredient._id);
-        this.state.ingredients[idx].checked = e.target.checked;
+        let idx = this.state.ingredients.findIndex((i) => i._id == ingredient._id)
+        this.state.ingredients[idx].checked = e.target.checked
         this.setState({
             ingredients: this.state.ingredients
-        });
+        })
     }
 
     render() {
         if (this.props.isFetching || !this.state || !this.state.id) {
-            return (<Spinner />);
+            return (<Spinner />)
         }
 
-        const { FacebookShareButton } = ShareButtons;
-        const FacebookIcon = generateShareIcon('facebook');
-        const location = String(window.location);
+        const { FacebookShareButton } = ShareButtons
+        const FacebookIcon = generateShareIcon('facebook')
+        const location = String(window.location)
 
-        let ingredientCheckedCallback = this.ingredientCheckedCallback;
+        let ingredientCheckedCallback = this.ingredientCheckedCallback
 
-        let showEdit = (this.state.userId == this.props.userId);
-        let allIngredientsChecked = this.state.ingredients.findIndex((ingr) => !ingr.checked) == -1;
-        let stepsFading = (allIngredientsChecked) ? 'steps-visible' : 'steps-faded';
+        let showEdit = (this.state.userId == this.props.userId)
+        let allIngredientsChecked = this.state.ingredients.findIndex((ingr) => !ingr.checked) == -1
+        let stepsFading = (allIngredientsChecked) ? 'steps-visible' : 'steps-faded'
 
         let ingredientsMarkup = this.state.ingredients.map(function (ingredient) {
-            var guid = Guid.create();
+            var guid = Guid.create()
             return (
                 <ShowIngredient key={guid.value}
                     ingredient={ingredient}
                     ingredientCheckedCallback={ingredientCheckedCallback} />
-            );
-        });
+            )
+        })
         let stepsMarkup = this.state.steps.map(function (step) {
-            var guid = Guid.create();
+            var guid = Guid.create()
             return (
                 <ShowStep key={guid.value} step={step} />
-            );
-        });
+            )
+        })
 
         return (
             <div styleName="wrapper">
@@ -131,8 +131,8 @@ class CookRecipe extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(CookRecipe, styles);
+export default CSSModules(CookRecipe, styles)

@@ -1,17 +1,17 @@
-'use strict';
+'use strict'
 
-import fetch from 'isomorphic-fetch';
-import FormData from 'form-data';
-import { API_URL } from './../../web.config';
-import { store } from '../store';
+import fetch from 'isomorphic-fetch'
+import FormData from 'form-data'
+import { API_URL } from './../../web.config'
+import { store } from '../store'
 
 export function signIn(username, password) {
     let credentials = {
         username: username,
         password: password
-    };
+    }
 
-    let url = `${API_URL}/signin`;
+    let url = `${API_URL}/signin`
 
     let options = {
         "method": "POST",
@@ -19,34 +19,34 @@ export function signIn(username, password) {
             "content-type": "application/json"
         },
         "body": JSON.stringify(credentials)
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function signUp(username, password) {
     let credentials = {
         username: username,
         password: password
-    };
+    }
 
-    let url = `${API_URL}/signup`;
+    let url = `${API_URL}/signup`
 
     let options = {
         "method": "POST",
@@ -54,31 +54,31 @@ export function signUp(username, password) {
             "content-type": "application/json"
         },
         "body": JSON.stringify(credentials)
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function loadCurrentUserRecipes() {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes?user=current`;
+    let url = `${API_URL}/recipes?user=current`
 
     let options = {
         "method": "GET",
@@ -86,31 +86,31 @@ export function loadCurrentUserRecipes() {
             "content-type": "application/json",
             "Authorization": "JWT " + auth.token
         }
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function loadAnyUserRecipes() {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes?visibility=public`;
+    let url = `${API_URL}/recipes?visibility=public`
 
     let options = {
         "method": "GET",
@@ -118,31 +118,31 @@ export function loadAnyUserRecipes() {
             "content-type": "application/json",
             "Authorization": "JWT " + auth.token
         }
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function loadRecipeDetails(recipeId) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}`;
+    let url = `${API_URL}/recipes/${recipeId}`
 
     let options = {
         "method": "GET",
@@ -150,74 +150,74 @@ export function loadRecipeDetails(recipeId) {
             "content-type": "application/json",
             "Authorization": "JWT " + auth.token
         }
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function deleteRecipe(recipeId) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}`;
+    let url = `${API_URL}/recipes/${recipeId}`
 
     let options = {
         "method": "DELETE",
         "headers": {
             "Authorization": "JWT " + auth.token
         }
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 204) {
-                reject();
+                reject()
             } else {
-                resolve();
+                resolve()
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function editRecipeDetails(recipeId, recipe) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}`;
+    let url = `${API_URL}/recipes/${recipeId}`
 
     // strip ingredients and steps to exceeding max field size (2mb)
-    delete recipe.ingredients;
-    delete recipe.steps;
+    delete recipe.ingredients
+    delete recipe.steps
 
     // make sure you're not sending image as base64 string
     if (typeof recipe.image == 'string') {
-        delete recipe.image;
+        delete recipe.image
     }
 
-    let form = new FormData();
-    form.append("data", JSON.stringify(recipe));
+    let form = new FormData()
+    form.append("data", JSON.stringify(recipe))
     if (recipe.image) {
-        form.append("image", recipe.image);
+        form.append("image", recipe.image)
     }
 
     let options = {
@@ -226,34 +226,34 @@ export function editRecipeDetails(recipeId, recipe) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 204) {
-                reject();
+                reject()
             } else {
-                resolve();
+                resolve()
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function addRecipe(recipe) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes`;
+    let url = `${API_URL}/recipes`
 
-    let form = new FormData();
-    form.append("data", JSON.stringify(recipe));
+    let form = new FormData()
+    form.append("data", JSON.stringify(recipe))
     if (recipe.image) {
-        form.append("image", recipe.image);
+        form.append("image", recipe.image)
     }
 
     let options = {
@@ -262,36 +262,36 @@ export function addRecipe(recipe) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function createIngredient(recipeId, ingredient) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}/ingredients`;
+    let url = `${API_URL}/recipes/${recipeId}/ingredients`
 
-    let form = new FormData();
-    form.append("data", JSON.stringify(ingredient));
+    let form = new FormData()
+    form.append("data", JSON.stringify(ingredient))
     if (ingredient.image) {
-        form.append("image", ingredient.image);
+        form.append("image", ingredient.image)
     }
 
     let options = {
@@ -300,40 +300,40 @@ export function createIngredient(recipeId, ingredient) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function editIngredient(recipeId, ingredient) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredient._id}`;
+    let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredient._id}`
 
     if (typeof ingredient.image == 'string') {
-        delete ingredient.image;
+        delete ingredient.image
     }
 
-    let form = new FormData();
-    form.append("data", JSON.stringify(ingredient));
+    let form = new FormData()
+    form.append("data", JSON.stringify(ingredient))
     if (ingredient.image) {
-        form.append("image", ingredient.image);
+        form.append("image", ingredient.image)
     }
 
     let options = {
@@ -342,65 +342,65 @@ export function editIngredient(recipeId, ingredient) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function deleteIngredient(recipeId, ingredientId) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredientId}`;
+    let url = `${API_URL}/recipes/${recipeId}/ingredients/${ingredientId}`
 
     let options = {
         "method": "DELETE",
         "headers": {
             "Authorization": "JWT " + auth.token
         }
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 204) {
-                reject();
+                reject()
             } else {
-                resolve();
+                resolve()
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function createStep(recipeId, step) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}/steps`;
+    let url = `${API_URL}/recipes/${recipeId}/steps`
 
-    let form = new FormData();
-    form.append("data", JSON.stringify(step));
+    let form = new FormData()
+    form.append("data", JSON.stringify(step))
     if (step.image) {
-        form.append("image", step.image);
+        form.append("image", step.image)
     }
 
     let options = {
@@ -409,40 +409,40 @@ export function createStep(recipeId, step) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function editStep(recipeId, step) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}/steps/${step._id}`;
+    let url = `${API_URL}/recipes/${recipeId}/steps/${step._id}`
 
     if (typeof step.image == 'string') {
-        delete step.image;
+        delete step.image
     }
 
-    let form = new FormData();
-    form.append("data", JSON.stringify(step));
+    let form = new FormData()
+    form.append("data", JSON.stringify(step))
     if (step.image) {
-        form.append("image", step.image);
+        form.append("image", step.image)
     }
 
     let options = {
@@ -451,52 +451,52 @@ export function editStep(recipeId, step) {
             "Authorization": "JWT " + auth.token
         },
         "body": form
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 200) {
-                reject();
+                reject()
             } else {
                 response.json().then((json) => {
-                    resolve(json);
-                });
+                    resolve(json)
+                })
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }
 
 export function deleteStep(recipeId, stepId) {
-    let auth = store.getState().auth;
+    let auth = store.getState().auth
 
-    let url = `${API_URL}/recipes/${recipeId}/steps/${stepId}`;
+    let url = `${API_URL}/recipes/${recipeId}/steps/${stepId}`
 
     let options = {
         "method": "DELETE",
         "headers": {
             "Authorization": "JWT " + auth.token
         }
-    };
+    }
 
     let promise = new Promise((resolve, reject) => {
         fetch(url, options).then((response) => {
             // this will not reject on error. only on network failure
             if (response.status != 204) {
-                reject();
+                reject()
             } else {
-                resolve();
+                resolve()
             }
         }).catch(() => {
             // network failure
-            reject();
-        });
-    });
+            reject()
+        })
+    })
 
-    return promise;
+    return promise
 }

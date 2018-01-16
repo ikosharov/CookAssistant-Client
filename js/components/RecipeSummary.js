@@ -1,30 +1,30 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Rating from 'react-rating';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Rating from 'react-rating'
 
-import Base64Image from './Base64Image';
-import styles from '../../css/recipeSummary.css';
+import Base64Image from './Base64Image'
+import styles from '../../css/recipeSummary.css'
 
 class RecipeSummary extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.cook = this.cook.bind(this);
-        this.edit = this.edit.bind(this);
+        this.cook = this.cook.bind(this)
+        this.edit = this.edit.bind(this)
     }
 
     cook() {
-        this.props.navigateToCook(this.props.recipe._id);
+        this.props.navigateToCook(this.props.recipe._id)
     }
 
     edit() {
-        this.props.navigateToEdit(this.props.recipe._id);
+        this.props.navigateToEdit(this.props.recipe._id)
     }
 
     render() {
-        let showEdit = (this.props.recipe.userId == this.props.userId);
+        let showEdit = (this.props.recipe.userId == this.props.userId)
 
         return (
             <div styleName="wrapper">
@@ -52,8 +52,8 @@ class RecipeSummary extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(RecipeSummary, styles);
+export default CSSModules(RecipeSummary, styles)

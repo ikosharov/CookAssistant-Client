@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import { withRouter } from 'react-router';
-import Breadcrumbs from 'react-breadcrumbs';
-import styles from '../../css/breadcrumb.css';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import { withRouter } from 'react-router'
+import Breadcrumbs from 'react-breadcrumbs'
+import styles from '../../css/breadcrumb.css'
 
 class Breadcrumb extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -19,8 +19,8 @@ class Breadcrumb extends Component {
                     params={this.props.params}
                 />
             </div>
-        );
+        )
     }
 }
 
-export default withRouter(CSSModules(Breadcrumb, styles));
+export default withRouter(CSSModules(Breadcrumb, styles))

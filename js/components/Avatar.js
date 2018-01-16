@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from '../../css/avatar.css';
-import chefImage from '../../images/chef.png';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import styles from '../../css/avatar.css'
+import chefImage from '../../images/chef.png'
 
 class Avatar extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -18,8 +18,8 @@ class Avatar extends Component {
                 <br />
                 <button onClick={this.props.signOut} className="btn btn-primary">Sign Out</button>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(Avatar, styles);
+export default CSSModules(Avatar, styles)

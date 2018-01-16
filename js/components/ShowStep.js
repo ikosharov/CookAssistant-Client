@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
-import Base64Image from './Base64Image';
-import Clock from './Clock';
-import styles from '../../css/ShowStep.css';
+import React, { Component } from 'react'
+import CSSModules from 'react-css-modules'
+import Base64Image from './Base64Image'
+import Clock from './Clock'
+import styles from '../../css/ShowStep.css'
 
 class ShowStep extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -32,8 +32,8 @@ class ShowStep extends Component {
                     <Clock />
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default CSSModules(ShowStep, styles);
+export default CSSModules(ShowStep, styles)
